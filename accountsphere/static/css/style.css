@@ -16,11 +16,23 @@ body {
   color: #fff;
 }
 
+.navbar a:hover {
+  color: #fff;
+}
+
 /* Offcanvas */
 #offcanvasScrolling {
   background-color: #3a405a;
   color: #fff;
   width: auto;
+}
+
+.btn-close-white {
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%)
+    contrast(103%);
+  width: 10px;
+  height: 10px;
+  background-size: 10px 10px;
 }
 
 /* Offcanvas links */
@@ -56,4 +68,10 @@ body {
   width: 35px;
   height: 35px;
   border-radius: 5px;
+}
+
+footer p {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: x-small;
 }
