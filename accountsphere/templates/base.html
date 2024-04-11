@@ -22,15 +22,12 @@
                 
                 <!-- Brand Logo -->
                 <a class="navbar-brand" href="#">
-                    <img class= "logo" src="{{ url_for('static', filename='assets/images/file.png')}}" alt="logo">AccountSphere
+                    <img class= "logo" src="{{ url_for('static', filename='assets/images/file.png')}}" alt="logo">
                 </a>
 
                 </div>
                 <!-- Middle Search Form (adjusting the grid to accommodate the button) -->
                 <div class=" col-6 d-flex justify-content-center flex-grow-1">
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    </form>
                 </div>
                 
                 <!-- Right-aligned Nav Links -->
@@ -53,24 +50,43 @@
         <!-- Offcanvas Sidebar -->
         <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
             <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="offcanvasScrollingLabel">   </h5>
-              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                <h5 class="offcanvas-title" id="offcanvasScrollingLabel">
+                    <img class="logo" src="{{ url_for('static', filename='assets/images/file.png')}}" alt="logo">
+                </h5>
+                <button type="button" class="btn-close" id="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
+                        <a class="nav-link" href="#"><i class="fa-solid fa-house me-2"></i>Home</a>
                     </li>
+                    <br>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
+                        <strong><i class="fa-solid fa-calendar me-2"></i>Dashboards</strong>
+                        <hr>
+                        <a class="nav-link" href="#"><i class="fa-regular fa-folder-open me-2"></i>AD Groups</a>
+                        <a class="nav-link" href="#"><i class="fa-solid fa-users me-2"></i>User Management</a>
+                        <a class="nav-link" href="#"><i class="fa-brands fa-product-hunt me-2"></i>Product Management</a>
+                        <a class="nav-link" href="#"><i class="fa-solid fa-file-invoice me-2"></i>Account Management</a>
                     </li>
+                    <br>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
+                        <strong><i class="fa-solid fa-database me-2"></i></i>Analytics</strong>
+                        <hr>
+                        <a class="nav-link" href="#"><i class="fa-solid fa-chart-simple me-2"></i>Charts</a>
+                        <a class="nav-link" href="#"><i class="fa-solid fa-table me-2"></i>Data Tables</a>
                     </li>
-              
-
+                    <br>
+                    <li class="nav-item">
+                        <strong><i class="fa-solid fa-right-to-bracket me-2"></i>My Account</strong>
+                        <hr>
+                        <a class="nav-link" href="#"><i class="fa-solid fa-user me-2"></i>Profile</a>
+                        <a class="nav-link" href="#"><i class="fa-solid fa-shield-halved me-2"></i>Security</a>
+                        <a class="nav-link" href="#"><i class="fa-solid fa-bell me-2"></i>Notifications</a>
+                    </li>
+                </ul>
             </div>
-          </div>
+        </div>
         
     </header>
      

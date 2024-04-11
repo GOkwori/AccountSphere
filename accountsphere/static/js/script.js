@@ -5,7 +5,3 @@
  */
 // This file is intentionally blank
 // Use this file to add JavaScript to your project
-const offcanvasElementList = document.querySelectorAll(".offcanvas");
-const offcanvasList = [...offcanvasElementList].map(
-  (offcanvasEl) => new bootstrap.Offcanvas(offcanvasEl)
-);

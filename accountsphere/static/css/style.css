@@ -1,5 +1,11 @@
-/* Navbar */
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 0.9rem;
+  background-color: #f4f4f4;
+  color: #333;
+}
 
+/* Navbar */
 .navbar {
   background-color: #3a405a;
   color: #fff;
@@ -12,8 +18,25 @@
 
 /* Offcanvas */
 #offcanvasScrolling {
-  width: 15%;
-  opacity: 0.9;
+  background-color: #3a405a;
+  color: #fff;
+  width: auto;
+}
+
+/* Offcanvas links */
+.offcanvas-body ul li {
+  margin-bottom: 10%;
+}
+
+.offcanvas-body ul li strong {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.offcanvas-body ul li a {
+  margin-top: 0;
+  margin-bottom: 5px;
+  padding-top: 0;
 }
 
 /* Buttons */
@@ -30,7 +53,7 @@
 }
 
 .logo {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  border-radius: 5px;
 }
