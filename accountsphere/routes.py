@@ -5,4 +5,4 @@ from accountsphere.models import User, Customer, Product, Account
 
 @app.route("/")
 def home():
-    return render_template("base.html") 
+    return render_template("index.html") 
