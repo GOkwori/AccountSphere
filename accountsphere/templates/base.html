@@ -67,12 +67,12 @@
                     <li class="nav-item">
                         <strong><i class="fa-solid fa-calendar me-2"></i>Dashboards</strong>
                         <hr>
-                        <a class="nav-link" href="{{url_for('home')}}"><i class="fa-regular fa-folder-open me-2"></i>AD Groups</a>
-                        <a class="nav-link" href="{{url_for('home')}}"><i class="fa-solid fa-users me-2"></i>User Management</a>
-                        <a class="nav-link" href="{{url_for('home')}}"><i class="fa-brands fa-product-hunt me-2"></i>Product Management</a>
-                        <a class="nav-link" href="{{url_for('home')}}"><i class="fa-solid fa-file-invoice me-2"></i>Account Management</a>
+                        <a class="nav-link" href="{{url_for('ad_group')}}"><i class="fa-regular fa-folder-open me-2"></i>AD Groups</a>
+                        <a class="nav-link" href="{{url_for('user')}}"><i class="fa-solid fa-users me-2"></i>User Management</a>
+                        <a class="nav-link" href="{{url_for('product')}}"><i class="fa-brands fa-product-hunt me-2"></i>Product Management</a>
+                        <a class="nav-link" href="{{url_for('account')}}"><i class="fa-solid fa-file-invoice me-2"></i>Account Management</a>
                     </li>
-                    <br>
+                    <br> 
                     <li class="nav-item">
                         <strong><i class="fa-solid fa-database me-2"></i></i>Analytics</strong>
                         <hr>
@@ -93,7 +93,7 @@
         
     </header>
      
-    <main>
+    <main class="container">
         {% block content %}
         {% endblock %}
     </main>

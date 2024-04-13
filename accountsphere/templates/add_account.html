@@ -1,0 +1,63 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="form-content container">
+    <h3>Create Account <i class="fa-regular fa-folder-open ms-2">.....</i></h3>
+    <br>
+    <form action="">
+    <div class="row mb-3">
+        <label for="first_name" class="col-sm-2 col-form-label">First Name</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" id="first_name" required>
+        </div>
+      </div>
+
+    <div class="row mb-3">
+        <label for="last_name" class="col-sm-2 col-form-label">Last Name</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" id="last_name" required>
+        </div>
+      </div>
+
+    <div class="row mb-3">
+        <label for="email" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-4">
+          <input type="email" class="form-control" id="email" required>
+    </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="phone" class="col-sm-2 col-form-label">Phone</label>
+        <div class="col-sm-4">
+          <input type="tel" class="form-control" id="phone" required>
+        </div>
+    </div>
+    
+    <div class="row mb-3">
+        <label class="col-sm-2 col-form-label" for="exhibition">Account Type</label>
+        <div class="col-sm-2">
+          <select class="form-select form-control" name="exhibition" id="exhibition" required>
+            <option value="">--select--</option>
+            <option value="1">Credit Card</option>
+            <option value="2">Current</option>
+            <option value="3">Savings</option>
+            <option value="4">Time Deposit</option>
+          </select>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="balance" class="col-sm-2 col-form-label">Opening Balance</label>
+        <div class="col-sm-4">
+          <input type="number" class="form-control" id="balance">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 d-flex justify-content-center">
+          <button type="submit" value="submit" id="form-button" class="btn btn-light">
+            Submit
+          </button>
+        </div>
+      </div>
+</form>
+</div>
+
+{% endblock %}

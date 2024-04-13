@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2> User Management</h2>
+
+<div class="row">
+    <div class="col text-center">
+        <a href="{{ url_for('add_user')}}" class="btn btn-primary">Add User<i class=" ms-2 fa-solid fa-user"></i></a>  
+    </div>
+</div>
+
+{% endblock %}

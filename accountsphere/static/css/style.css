@@ -1,8 +1,16 @@
 body {
+  background-image: url("../assets/images/background.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
   font-family: "Roboto", sans-serif;
   font-size: 0.9rem;
-  background-color: #f4f4f4;
+  background-color: #fff;
   color: #333;
+  overflow-x: hidden;
+}
+
+main {
+  margin-top: 7%;
 }
 
 /* Navbar */
@@ -68,6 +76,21 @@ body {
   width: 35px;
   height: 35px;
   border-radius: 5px;
+}
+
+.form-content {
+  background-color: #3a405a;
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 70%;
+}
+
+form {
+  font-size: medium;
+  width: 150%;
+  position: relative;
+  margin-left: 10%;
 }
 
 footer p {

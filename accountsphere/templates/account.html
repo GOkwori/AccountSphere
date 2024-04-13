@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Account Management</h3>
+
+<div class="row">
+    <div class="col text-center">
+        <a href="{{ url_for('add_account')}}" class="btn btn-primary">Create Account<i class="fa-solid fa-file-invoice ms-2"></i></a>
+    </div>
+</div>
+
+{% endblock %}

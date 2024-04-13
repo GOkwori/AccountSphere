@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Product Management</h2>
+
+<div class="row">
+    <div class="col text-center">
+        <a href="{{ url_for('add_product')}}" class="btn btn-primary">Create Product<i class="fa-solid fa-upload ms-2"></i></a>  
+    </div>
+</div>
+
+{% endblock %}

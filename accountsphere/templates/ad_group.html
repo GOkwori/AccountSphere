@@ -1,0 +1,13 @@
+{% extends "base.html" %} {% block content %}
+
+<h3>Active Directory Security Groups</h3>
+
+<div class="row">
+  <div class="col text-center">
+    <a href="{{ url_for('add_ad_group')}}" class="btn btn-primary"
+      >Add AD-Security Group <i class="fa-solid fa-shield-halved ms-2"></i
+    ></a>
+  </div>
+</div>
+
+{% endblock %}
