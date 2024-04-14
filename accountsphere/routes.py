@@ -11,7 +11,8 @@ def home():
 
 @app.route("/user")
 def user():
-    return render_template("user.html")
+    users = User.query.all()  # Make sure to call the .all() method to execute the query
+    return render_template("user.html", users=users)
 
 @app.route("/add_user", methods=["GET", "POST"])
 def add_user():
@@ -27,9 +28,7 @@ def add_user():
             flash("Username, email, and password are required.", "error")
             return render_template("add_user.html")
 
-        password_hash = bcrypt.generate_password_hash(password).decode('utf-8')
-
-        user = User(username=username, email=email, first_name=first_name, last_name=last_name, password_hash=password_hash, role=role)
+        user = User(username=username, email=email, first_name=first_name, last_name=last_name, role=role)
         db.session.add(user)
         db.session.commit()
         flash("User added successfully!", "success")
@@ -72,7 +71,6 @@ def ad_group():
     ad_groups = Group.query.order_by(Group.name).all()
     print("Number of groups fetched:", len(ad_groups))  # This will show you how many groups are fetched
     return render_template("ad_group.html", ad_groups=ad_groups)
-
 
 
 @app.route("/add_ad_group", methods=["GET", "POST"])  # Allow both GET and POST
