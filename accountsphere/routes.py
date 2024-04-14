@@ -1,6 +1,9 @@
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, flash
+from flask_bcrypt import Bcrypt
 from accountsphere import app, db
 from accountsphere.models import User, Group, UserGroup, Customer, Product, Account
+
+bcrypt = Bcrypt(app)
 
 @app.route("/")
 def home():
@@ -13,11 +16,23 @@ def user():
 @app.route("/add_user", methods=["GET", "POST"])
 def add_user():
     if request.method == "POST":
+        username = request.form.get("username")
         email = request.form.get("email")
+        first_name = request.form.get("first_name")
+        last_name = request.form.get("last_name")
+        password = request.form.get("password")  # Assuming you have a password field
         role = request.form.get("role")
-        user = User(email=email, role=role)
+
+        if not username or not email or not password:
+            flash("Username, email, and password are required.", "error")
+            return render_template("add_user.html")
+
+        password_hash = bcrypt.generate_password_hash(password).decode('utf-8')
+
+        user = User(username=username, email=email, first_name=first_name, last_name=last_name, password_hash=password_hash, role=role)
         db.session.add(user)
         db.session.commit()
+        flash("User added successfully!", "success")
         return redirect(url_for("user"))
     return render_template("add_user.html")
 
