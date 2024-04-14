@@ -1,51 +1,63 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %}
+{% block content %}
 
 <div class="form-content container">
-    <h3>Add User <i class="fa-regular fa-user ms-2"></i></h3>
+    <h3>Create New User <i class="fa-regular fa-folder-open ms-2"></i></h3>
     <br>
-    <form action="">
-    <div class="row mb-3">
-        <label for="user_name" class="col-sm-2 col-form-label">Username</label>
-        <div class="col-sm-4">
-          <input type="text" class="form-control" id="user_name" required>
+    <form action="/submit-user" method="post">
+        <div class="row mb-3">
+            <label for="first_name" class="col-sm-2 col-form-label">First Name</label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control" id="first_name" name="first_name" required>
+            </div>
         </div>
-      </div>
 
-    <div class="row mb-3">
-        <label for="email" class="col-sm-2 col-form-label">Email</label>
-        <div class="col-sm-4">
-          <input type="email" class="form-control" id="email" required>
-    </div>
-    </div>
-
-    <div class="row mb-3">
-        <label for="email" class="col-sm-2 col-form-label">Password</label>
-        <div class="col-sm-4">
-          <input type="email" class="form-control" id="email" required>
-    </div>
-    </div>
-
-    
-    <div class="row mb-3">
-        <label class="col-sm-2 col-form-label" for="exhibition">Role</label>
-        <div class="col-sm-2">
-          <select class="form-select form-control" name="exhibition" id="exhibition" required>
-            <option value="">--select--</option>
-            <option value="1">Account Officer</option>
-            <option value="2">Administrator</option>
-            <option value="3">Product Manager</option>
-            <option value="4">Reporting Analyst</option>
-          </select>
+        <div class="row mb-3">
+            <label for="last_name" class="col-sm-2 col-form-label">Last Name</label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control" id="last_name" name="last_name" required>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6 d-flex justify-content-center">
-          <button type="submit" value="submit" id="form-button" class="btn btn-light">
-            Submit
-          </button>
+
+        <div class="row mb-3">
+            <label for="user_name" class="col-sm-2 col-form-label">Username</label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control" id="user_name" name="user_name" required>
+            </div>
         </div>
-      </div>
-</form>
+
+        <div class="row mb-3">
+            <label for="email" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-4">
+              <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label for="default_password" class="col-sm-2 col-form-label">Default Password</label>
+            <div class="col-sm-4">
+              <input type="password" class="form-control" id="default_password" name="default_password" required>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label for="role" class="col-sm-2 col-form-label">Role</label>
+            <div class="col-sm-2">
+              <select class="form-select form-control" name="role" id="role" required>
+                <option value="">--select--</option>
+                <option value="1">Account Officer</option>
+                <option value="2">Administrator</option>
+                <option value="3">Product Manager</option>
+                <option value="4">Reporting Analyst</option>
+              </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 d-flex justify-content-center">
+              <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+        </div>
+    </form>
 </div>
 
 {% endblock %}

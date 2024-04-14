@@ -2,10 +2,11 @@ body {
   background-image: url("../assets/images/background.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   font-family: "Roboto", sans-serif;
   font-size: 0.9rem;
   background-color: #fff;
-  color: #333;
+  color: #1a1a1a;
   overflow-x: hidden;
 }
 
