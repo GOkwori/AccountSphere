@@ -54,7 +54,11 @@ def add_account():
 
 @app.route("/ad_group")
 def ad_group():
-    return render_template("ad_group.html")
+    ad_groups = Group.query.order_by(Group.name).all()
+    print("Number of groups fetched:", len(ad_groups))  # This will show you how many groups are fetched
+    return render_template("ad_group.html", ad_groups=ad_groups)
+
+
 
 @app.route("/add_ad_group", methods=["GET", "POST"])  # Allow both GET and POST
 def add_ad_group():
