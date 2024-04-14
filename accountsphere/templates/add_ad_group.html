@@ -2,26 +2,26 @@
 {% block content %}
 
 <div class="form-content container">
-    <h3>Create AD-Security Group <i class="fa-regular fa-folder-open ms-2"></i></h3>
+    <h3 class="text-center ms-5">Create AD-Security Group <i class="fa-regular fa-folder-open ms-2"></i></h3>
     <br>
-    <form action="{{ url_for('add_ad_group')}}" method="post"> 
-        <div class="row mb-3">
+    <form class="justify-content-center" action="{{ url_for('add_ad_group')}}" method="post"> 
+        <div class="row mb-3 ms-5">
             <label for="name" class="col-sm-2 col-form-label">Group Name</label>
-            <div class="col-sm-4">
+            <div class="col-sm-7">
                 <input type="text" class="form-control" id="name" name="name" required>
             </div>
         </div>
 
-        <div class="row mb-3">
+        <div class="row mb-3 ms-5">
             <label for="description" class="col-sm-2 col-form-label">Description</label>
-            <div class="col-sm-4">
+            <div class="col-sm-7">
                 <textarea id="description" name="description" class="form-control" rows="4" placeholder="Brief description of the group" required></textarea>
             </div>
         </div>
 
-        <div class="row mb-3">
+        <div class="row mb-3 ms-5">
             <label for="group_type" class="col-sm-2 col-form-label">Group Type</label>
-            <div class="col-sm-4">
+            <div class="col-sm-7">
                 <select class="form-select" id="group_type" name="group_type" required>
                     <option value="">--Select--</option>
                     <option value="Security">Security</option>
@@ -29,13 +29,17 @@
                 </select>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-sm-6 d-flex justify-content-center">
+        <div class="row button-container">
+            <div class="col-auto me-5">
                 <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+            <div class="col-auto me-5">
+                <button type="button" class="btn btn-secondary">Cancel</button> <!-- Changed type to button for cancel -->
             </div>
         </div>
     </form>
+    
 </div>
+
 
 {% endblock %}

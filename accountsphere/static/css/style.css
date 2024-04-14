@@ -92,13 +92,22 @@ main {
   color: #fff;
   padding: 20px;
   border-radius: 10px;
-  width: 70%;
+  width: 80%;
 }
+
 form {
-  font-size: medium;
-  width: 150%;
-  position: relative;
-  margin-left: 10%;
+  margin-left: 8%;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+label {
+  font-weight: bold;
+  text-align: left;
 }
 
 footer p {

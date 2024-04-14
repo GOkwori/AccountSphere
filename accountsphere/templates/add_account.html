@@ -2,47 +2,47 @@
 {% block content %}
 
 <div class="form-content container">
-    <h3>Create Account <i class="fa-regular fa-folder-open ms-2"></i></h3>
+    <h3 class="text-center">Create Account <i class="fa-regular fa-folder-open ms-2"></i></h3>
     <br>
-    <form action="{{ url_for('add_account')}}" method="post">
-        <div class="row mb-3">
+    <form class="text-center" action="{{ url_for('add_account')}}" method="post">
+        <div class="row mb-3 ms-5">
             <label for="first_name" class="col-sm-2 col-form-label">First Name</label>
-            <div class="col-sm-4">
+            <div class="col-sm-7">
                 <input type="text" class="form-control" id="first_name" name="first_name" required>
             </div>
         </div>
 
-        <div class="row mb-3">
+        <div class="row mb-3 ms-5">
             <label for="last_name" class="col-sm-2 col-form-label">Last Name</label>
-            <div class="col-sm-4">
+            <div class="col-sm-7">
                 <input type="text" class="form-control" id="last_name" name="last_name" required>
             </div>
         </div>
 
-        <div class="row mb-3">
+        <div class="row mb-3 ms-5">
             <label for="email" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-4">
+            <div class="col-sm-7">
                 <input type="email" class="form-control" id="email" name="email" required>
             </div>
         </div>
 
-        <div class="row mb-3">
+        <div class="row mb-3 ms-5">
             <label for="phone" class="col-sm-2 col-form-label">Phone</label>
-            <div class="col-sm-4">
+            <div class="col-sm-7">
                 <input type="tel" class="form-control" id="phone" name="phone" required>
             </div>
         </div>
 
-        <div class="row mb-3">
+        <div class="row mb-3 ms-5">
             <label for="dob" class="col-sm-2 col-form-label">Date of Birth</label>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <input type="date" class="form-control" id="dob" name="dob" required>
             </div>
         </div>
 
-        <div class="row mb-3">
+        <div class="row mb-3 ms-5">
             <label class="col-sm-2 col-form-label" for="exhibition">Account Type</label>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <select class="form-select form-control" name="account_type" id="exhibition" required>
                     <option value="">--select--</option>
                     <option value="1">Credit Card</option>
@@ -53,22 +53,22 @@
             </div>
             </div>
 
-            <div class="row mb-3">
+            <div class="row mb-3 ms-5">
                 <label for="balance" class="col-sm-2 col-form-label">Opening Balance</label>
-                <div class="col-sm-1">
+                <div class="col-sm-2">
                     <select class="form-select" id="currency" name="currency">
                         <option value="USD">USD</option>
                         <option value="EUR">EUR</option>
                         <option value="GBP">GBP</option>
                     </select>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <input type="number" class="form-control" id="balance" name="balance" placeholder="Amount" step="0.01" min="0">
                 </div>
             </div>
             
 
-        <div class="row mb-3">
+        <div class="row mb-3 ms-5">
             <div class="col-sm-6">
                 <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="terms" required>
@@ -77,9 +77,12 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-sm-6 d-flex justify-content-center">
+        <div class="row button-container">
+            <div class="col-auto me-5">
                 <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+            <div class="col-auto me-5">
+                <button type="button" class="btn btn-secondary">Cancel</button> <!-- Changed type to button for cancel -->
             </div>
         </div>
     </form>
