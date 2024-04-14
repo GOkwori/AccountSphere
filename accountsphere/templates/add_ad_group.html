@@ -4,11 +4,11 @@
 <div class="form-content container">
     <h3>Create AD-Security Group <i class="fa-regular fa-folder-open ms-2"></i></h3>
     <br>
-    <form action="/create-ad-group" method="post"> <!-- Ensure your server endpoint matches this action URL -->
+    <form action="{{ url_for('add_ad_group')}}" method="post"> 
         <div class="row mb-3">
-            <label for="group_name" class="col-sm-2 col-form-label">Group Name</label>
+            <label for="name" class="col-sm-2 col-form-label">Group Name</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" id="group_name" name="group_name" required>
+                <input type="text" class="form-control" id="name" name="name" required>
             </div>
         </div>
 
@@ -27,13 +27,6 @@
                     <option value="Security">Security</option>
                     <option value="Distribution">Distribution</option>
                 </select>
-            </div>
-        </div>
-
-        <div class="row mb-3">
-            <label for="managed_by" class="col-sm-2 col-form-label">Managed By</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" id="managed_by" name="managed_by" placeholder="Username of manager">
             </div>
         </div>
 

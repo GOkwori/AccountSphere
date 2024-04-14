@@ -4,7 +4,7 @@
 <div class="form-content container">
     <h3>Create New Product <i class="fa-regular fa-folder-open ms-2"></i></h3>
     <br>
-    <form action="/submit-product" method="post">
+    <form action="{{ url_for('add_product')}}" method="post">
         <div class="row mb-3">
             <label for="product_name" class="col-sm-2 col-form-label">Product Name</label>
             <div class="col-sm-4">
