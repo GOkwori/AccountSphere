@@ -1,6 +1,6 @@
 from flask import render_template
 from accountsphere import app, db
-from accountsphere.models import User, Customer, Product, Account
+from accountsphere.models import User, Group, UserGroup, Customer, Product
 
 
 @app.route("/")

@@ -79,6 +79,14 @@ main {
   border-radius: 5px;
 }
 
+.dashboard-content {
+  background-color: #3a405a;
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  margin-left: 5%;
+}
+
 .form-content {
   background-color: #3a405a;
   color: #fff;
@@ -86,7 +94,6 @@ main {
   border-radius: 10px;
   width: 70%;
 }
-
 form {
   font-size: medium;
   width: 150%;
