@@ -37,18 +37,31 @@ def add_user():
 
 @app.route("/product")
 def product():
-    return render_template("product.html")
+    products = Product.query.order_by(Product.name).all()
+    print("Number of products fetched:", len(products))
+    return render_template("product.html", products=products)
 
-@app.route("/add_product", methods=["GET", "POST"])  # Allow both GET and POST
+@app.route("/add_product", methods=["GET", "POST"])
 def add_product():
     if request.method == "POST":
         name = request.form.get("name")
         description = request.form.get("description")
-        type = request.form.get("type")
-        product = Product(name=name, description=description, type=type)
+        product_type = request.form.get("type")
+
+        if not name or not product_type:  # Validate required fields
+            flash("Product name and type are required.", "error")
+            return render_template("add_product.html")
+
+        product = Product(name=name, description=description, type=product_type)
         db.session.add(product)
-        db.session.commit()
-        return redirect(url_for("product"))
+        try:
+            db.session.commit()
+            flash("Product added successfully!", "success")
+            return redirect(url_for("product"))
+        except Exception as e:
+            db.session.rollback()
+            flash("Error adding product: " + str(e), "error")
+            return render_template("add_product.html")
     return render_template("add_product.html")
 
 @app.route("/account")

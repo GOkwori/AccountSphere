@@ -6,48 +6,34 @@
     <br>
     <form class="text-center" action="{{ url_for('add_product')}}" method="post">
         <div class="row mb-3 ms-5">
-            <label for="product_name" class="col-sm-3 col-form-label">Product Name</label>
+            <label for="name" class="col-sm-3 col-form-label">Product Name</label>
             <div class="col-sm-7">
-                <input type="text" class="form-control" id="product_name" name="product_name" required>
+                <input type="text" class="form-control" id="name" name="name" required>
             </div>
         </div>
 
         <div class="row mb-3 ms-5">
-            <label for="product_description" class="col-sm-3 col-form-label">Product Description</label>
+            <label for="description" class="col-sm-3 col-form-label">Product Description</label>
             <div class="col-sm-7">
-                <textarea id="product_description" name="product_description" class="form-control" rows="4" required></textarea>
+                <textarea id="description" name="description" class="form-control" rows="4" required></textarea>
             </div>
         </div>
 
         <div class="row mb-3 ms-5">
-            <label for="product_type" class="col-sm-3 col-form-label">Product Type</label>
+            <label for="type" class="col-sm-3 col-form-label">Product Type</label>
             <div class="col-sm-7">
-                <input type="text" class="form-control" id="product_type" name="product_type" required>
+                <input type="text" class="form-control" id="type" name="type" required>
             </div>
         </div>
 
-        <div class="row mb-3 ms-5">
-            <label for="product_pricing" class="col-sm-3 col-form-label">Product Pricing</label>
-            <div class="col-sm-3">
-                <input type="number" class="form-control" id="product_pricing" name="product_pricing" required>
-            </div>
-        </div>
-
-        <div class="row mb-3 ms-5">
-            <label for="product_code" class="col-sm-3 col-form-label">Product Code</label>
-            <div class="col-sm-7">
-                <input type="number" class="form-control" id="product_code" name="product_code" required>
-            </div>
-        </div>
 
         <div class="row button-container">
             <div class="col-auto me-5">
                 <button type="submit" class="btn btn-primary">Create</button>
             </div>
             <div class="col-auto me-5">
-                <button type="button" class="btn btn-secondary">Cancel</button> <!-- Changed type to button for cancel -->
+                <button type="button" class="btn btn-secondary">Cancel</button>
             </div>
-        </div>
         </div>
     </form>
 </div>
