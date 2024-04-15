@@ -73,6 +73,7 @@ class Account(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     customer_id = db.Column(db.Integer, db.ForeignKey('customers.id'), nullable=False)
     product_id = db.Column(db.Integer, db.ForeignKey('products.id'), nullable=False)
+    account_type = db.Column(db.String(50), nullable=False)
     balance = db.Column(db.Numeric(10, 2), default=0.00)
     currency = db.Column(db.String(3), nullable=False, default='USD') 
     status = db.Column(db.String(20), default='active')

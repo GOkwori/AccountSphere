@@ -72,18 +72,33 @@ def add_product():
 
 @app.route("/account")
 def account():
-    return render_template("account.html")
+    accounts = Account.query.all()
+    print("Number of accounts fetched:", len(accounts))
+  
+    return render_template("account.html", accounts=accounts)
+
+
 
 @app.route("/add_account", methods=["GET", "POST"])  # Allow both GET and POST
 def add_account():
+    products = Product.query.all()  # Fetch all products from the database
+
     if request.method == "POST":
         customer_id = request.form.get("customer_id")
-        product_id = request.form.get("product_id")
+        product_id = request.form.get("product_id")  # This will now come from the dropdown
         account = Account(customer_id=customer_id, product_id=product_id)
         db.session.add(account)
-        db.session.commit()
+        try:
+            db.session.commit()
+            flash("Account created successfully!", "success")
+        except Exception as e:
+            db.session.rollback()
+            flash(f"An error occurred: {str(e)}", "error")
+
         return redirect(url_for("account"))
-    return render_template("add_account.html")
+
+    return render_template("add_account.html", products=products)  # Pass products to the template for the dropdown
+
 
 @app.route("/ad_group")
 def ad_group():
