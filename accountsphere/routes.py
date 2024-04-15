@@ -11,29 +11,35 @@ def home():
 
 @app.route("/user")
 def user():
-    users = User.query.all()  # Make sure to call the .all() method to execute the query
+    users = User.query.all()
+    print("Number of users fetched:", len(users))  # This will show you how many users are fetched
+    for user in users:
+        print(user.username, user.email)  # This will print each user's username and email to the console
     return render_template("user.html", users=users)
+
 
 @app.route("/add_user", methods=["GET", "POST"])
 def add_user():
+    groups = Group.query.all()  # Fetch all groups from the database
     if request.method == "POST":
         username = request.form.get("username")
         email = request.form.get("email")
         first_name = request.form.get("first_name")
         last_name = request.form.get("last_name")
-        password = request.form.get("password")  # Assuming you have a password field
         role = request.form.get("role")
 
-        if not username or not email or not password:
-            flash("Username, email, and password are required.", "error")
-            return render_template("add_user.html")
+        if not username or not email:
+            flash("Username, and email are required.", "error")
+            return render_template("add_user.html", groups=groups)
 
         user = User(username=username, email=email, first_name=first_name, last_name=last_name, role=role)
         db.session.add(user)
         db.session.commit()
         flash("User added successfully!", "success")
         return redirect(url_for("user"))
-    return render_template("add_user.html")
+    else:
+        return render_template("add_user.html", groups=groups)
+
 
 @app.route("/product")
 def product():

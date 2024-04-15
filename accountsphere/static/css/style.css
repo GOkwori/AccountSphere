@@ -110,6 +110,16 @@ label {
   text-align: left;
 }
 
+.table {
+  background-color: #fff;
+  color: #1a1a1a;
+  margin: 0 auto;
+}
+
+.table i {
+  color: #3a405a;
+}
+
 footer p {
   margin-top: 10px;
   margin-bottom: 10px;
