@@ -94,7 +94,11 @@
           required >
           <option value="">--select--</option>
           {% for product in products %}
-          <option value="{{ product.id }}">{{ product.name }}</option>
+              {% if product.id == account.product_id %}
+                  <option value="{{ product.id }}" selected>{{ product.name }}</option>
+              {% else %}
+                  <option value="{{ product.id }}">{{ product.name }}</option>
+              {% endif %}
           {% endfor %}
         </select>
       </div>
