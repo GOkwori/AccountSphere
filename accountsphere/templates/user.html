@@ -27,17 +27,36 @@
             <tbody>
                 {% for user in users %}
                 <tr>
-                    <th scope="row">{{ loop.index }}</th> <!-- Correctly number each row -->
+                    <th scope="row">{{ loop.index }}</th>
                     <td>{{ user.first_name }}</td>
                     <td>{{ user.last_name }}</td>
                     <td>{{ user.username }}</td>
                     <td>{{ user.email }}</td>
                     <td>{{ user.role }}</td>
                     <td>
-                        <a href="{{ url_for('edit_user', user_id=user.id)}}"><i class="fa-solid fa-pen-to-square me-4"></i></a>
-                        <a href="{{ url_for('delete_user', user_id=user.id)}}" onclick="return confirm('Are you sure you want to delete this user?');"><i class="fa-solid fa-trash"></i></a>
+                        <a href="{{ url_for('edit_user', user_id=user.id)}}" aria-label="Edit User"><i class="fa-solid fa-pen-to-square me-4"></i></a>
+                        <a role="button" data-bs-toggle="modal" data-bs-target="#deleteModal-{{ user.id }}" aria-label="Delete User"><i class="fa-solid fa-trash"></i></a>
                     </td>
                 </tr>
+
+                <!-- Modal for deleting user -->
+                <div class="modal fade" id="deleteModal-{{ user.id }}" tabindex="-1" aria-labelledby="deleteModalLabel-{{ user.id }}" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteModalLabel-{{ user.id }}">Confirm Deletion</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to delete this user "{{ user.first_name }} {{ user.last_name }}"?
+                            </div>
+                            <div class="modal-footer">
+                                <a href="{{ url_for('delete_user', user_id=user.id)}}" class="btn btn-danger">Yes</a>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 {% endfor %}
             </tbody>
         </table>

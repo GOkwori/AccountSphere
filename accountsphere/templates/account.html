@@ -40,11 +40,11 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="deleteModalLabel-{{ account.id }}">Caution!</h5>
+              <h5 class="modal-title" id="deleteModalLabel-{{ account.id }}">Confirm Deletion</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              Are you sure you want to delete this account?
+              Are you sure you want to delete this account "{{ account.first_name }} {{ account.last_name }}"?
             </div>
             <div class="modal-footer">
               <a href="{{ url_for('delete_account', account_id=account.id)}}" class="btn btn-danger">Yes</a>
