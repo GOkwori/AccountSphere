@@ -37,6 +37,19 @@ def add_user():
         return redirect(url_for("user"))
     else:
         return render_template("add_user.html", groups=groups)
+
+
+@app.route("/edit_ad_group/<int:group_id>", methods=["GET", "POST"])
+def edit_ad_group(group_id):
+    group = Group.query.get_or_404(group_id)
+    if request.method == "POST":
+        group.name = request.form.get("name")
+        group.description = request.form.get("description")
+        group.group_type = request.form.get("group_type")
+        db.session.commit()
+        flash("Group updated successfully!", "success")
+        return redirect(url_for("ad_group"))
+    return render_template("edit_ad_group.html", group=group)
     
 
 @app.route("/edit_user/<int:user_id>", methods=["GET", "POST"])
@@ -106,7 +119,6 @@ def account():
 
 
 
-
 @app.route('/add_account', methods=['GET', 'POST'])
 def add_account():
     products = Product.query.all()  # Fetch all products for the form dropdown
@@ -149,6 +161,29 @@ def add_account():
 
     return render_template('add_account.html', products=products)
 
+
+@app.route('/edit_account/<int:account_id>', methods=['GET', 'POST'])
+def edit_account(account_id):
+    account = Account.query.get_or_404(account_id)
+    products = Product.query.all()
+    if request.method == 'POST':
+        # Extract data from form
+        account.first_name = request.form.get('first_name')
+        account.last_name = request.form.get('last_name')
+        account.email = request.form.get('email')
+        account.phone_number = request.form.get('phone_number')
+        account.date_of_birth = request.form.get('date_of_birth')
+        account.product_id = request.form.get('product_id')
+        account.account_type = request.form.get('account_type')
+        account.balance = request.form.get('balance') or 0.00
+        account.currency = request.form.get('currency')
+        
+        # Update the account
+        db.session.commit()
+        flash('Account updated successfully!', 'success')
+        return redirect(url_for('account'))
+    
+    return render_template('edit_account.html', account=account, products=products)
 
 @app.route("/ad_group")
 def ad_group():

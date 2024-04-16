@@ -5,7 +5,7 @@
     Update Account <i class="fa-regular fa-folder-open ms-2"></i>
   </h3>
   <br />
-  <form class="text-center" action="{{ url_for('edit_account')}}" method="post">
+  <form class="text-center" action="{{ url_for('edit_account', account_id=account.id )}}" method="post">
     <div class="row mb-3 ms-5">
       <label for="first_name" class="col-sm-2 col-form-label">First Name</label>
       <div class="col-sm-7">
@@ -14,6 +14,7 @@
           class="form-control"
           id="first_name"
           name="first_name"
+          value="{{ account.first_name }}"
           required
         />
       </div>
@@ -27,6 +28,7 @@
           class="form-control"
           id="last_name"
           name="last_name"
+          value="{{ account.last_name }}"
           required
         />
       </div>
@@ -40,6 +42,7 @@
           class="form-control"
           id="email"
           name="email"
+          value="{{ account.email }}"
           required
         />
       </div>
@@ -53,6 +56,7 @@
           class="form-control"
           id="phone_number"
           name="phone_number"
+          value="{{ account.phone_number }}"
           required
         />
       </div>
@@ -68,6 +72,7 @@
           class="form-control"
           id="date_of_birth"
           name="date_of_birth"
+          value="{{ account.date_of_birth }}"
           required
         />
       </div>
@@ -83,15 +88,8 @@
           name="account_type"
           id="account_type"
           onchange="updateProductID()"
-          <!--
-          Ensure
-          this
-          function
-          is
-          called
-          on
-          change
-          --
+         value = "{{ account.account_type }}"
+          required
         >
           required >
           <option value="">--select--</option>
@@ -121,7 +119,7 @@
         >Opening Balance</label
       >
       <div class="col-sm-2">
-        <select class="form-select" id="currency" name="currency">
+        <select class="form-select" id="currency" name="currency" value="{{ account.currency}}">
           <option value="">--select--</option>
           <option value="USD">USD</option>
           <option value="EUR">EUR</option>
@@ -135,6 +133,7 @@
           id="balance"
           name="balance"
           placeholder="Amount"
+          value="{{ account.balance }}"
           step="0.01"
           min="0"
         />
