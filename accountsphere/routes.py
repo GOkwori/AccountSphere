@@ -7,6 +7,7 @@ from datetime import datetime
 def home():
     return render_template("index.html")
 
+
 @app.route("/user")
 def user():
     users = User.query.all()
@@ -39,19 +40,6 @@ def add_user():
         return render_template("add_user.html", groups=groups)
 
 
-@app.route("/edit_ad_group/<int:group_id>", methods=["GET", "POST"])
-def edit_ad_group(group_id):
-    group = Group.query.get_or_404(group_id)
-    if request.method == "POST":
-        group.name = request.form.get("name")
-        group.description = request.form.get("description")
-        group.group_type = request.form.get("group_type")
-        db.session.commit()
-        flash("Group updated successfully!", "success")
-        return redirect(url_for("ad_group"))
-    return render_template("edit_ad_group.html", group=group)
-    
-
 @app.route("/edit_user/<int:user_id>", methods=["GET", "POST"])
 def edit_user(user_id):
     groups = Group.query.all() 
@@ -68,11 +56,21 @@ def edit_user(user_id):
     return render_template("edit_user.html", groups=groups, user=user)
 
 
+@app.route("/delete_user/<int:user_id>")
+def delete_user(user_id):
+    user = User.query.get_or_404(user_id)
+    db.session.delete(user)
+    db.session.commit()
+    flash("User deleted successfully!", "success")
+    return redirect(url_for("user"))
+
+
 @app.route("/product")
 def product():
     products = Product.query.order_by(Product.name).all()
     print("Number of products fetched:", len(products))
     return render_template("product.html", products=products)
+
 
 @app.route("/add_product", methods=["GET", "POST"])
 def add_product():
@@ -111,12 +109,20 @@ def edit_product(product_id):
     return render_template("edit_product.html", product=product)
 
 
+@app.route("/delete_product/<int:product_id>")
+def delete_product(product_id):
+    product = Product.query.get_or_404(product_id)
+    db.session.delete(product)
+    db.session.commit()
+    flash("Product deleted successfully!", "success")
+    return redirect(url_for("product"))
+
+
 @app.route("/account")
 def account():
     print("Fetching accounts...")
     accounts = Account.query.all()
     return render_template("account.html", accounts=accounts)
-
 
 
 @app.route('/add_account', methods=['GET', 'POST'])
@@ -185,6 +191,16 @@ def edit_account(account_id):
     
     return render_template('edit_account.html', account=account, products=products)
 
+
+@app.route('/delete_account/<int:account_id>')
+def delete_account(account_id):
+    account = Account.query.get_or_404(account_id)
+    db.session.delete(account)
+    db.session.commit()
+    flash('Account deleted successfully!', 'success')
+    return redirect(url_for('account'))
+
+
 @app.route("/ad_group")
 def ad_group():
     ad_groups = Group.query.order_by(Group.name).all()
@@ -203,3 +219,25 @@ def add_ad_group():
         db.session.commit()
         return redirect(url_for("ad_group"))
     return render_template("add_ad_group.html")
+
+
+@app.route("/edit_ad_group/<int:group_id>", methods=["GET", "POST"])
+def edit_ad_group(group_id):
+    group = Group.query.get_or_404(group_id)
+    if request.method == "POST":
+        group.name = request.form.get("name")
+        group.description = request.form.get("description")
+        group.group_type = request.form.get("group_type")
+        db.session.commit()
+        flash("Group updated successfully!", "success")
+        return redirect(url_for("ad_group"))
+    return render_template("edit_ad_group.html", group=group)
+
+
+@app.route("/delete_ad_group/<int:group_id>")
+def delete_ad_group(group_id):
+    group = Group.query.get_or_404(group_id)
+    db.session.delete(group)
+    db.session.commit()
+    flash("Group deleted successfully!", "success")
+    return redirect(url_for("ad_group"))

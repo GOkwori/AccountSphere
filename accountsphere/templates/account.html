@@ -31,14 +31,14 @@
         <td>{{ account.balance }}</td>
         <td>
             <a href="{{ url_for('edit_account', account_id=account.id)}}"><i class="fa-solid fa-pen-to-square me-4"></i></a>
-            <a href="#" onclick="return confirm('Are you sure you want to delete this user?');"><i class="fa-solid fa-trash"></i></a>
+            <a href="{{ url_for('delete_account', account_id=account.id)}}" onclick="return confirm('Are you sure you want to delete this user?');"><i class="fa-solid fa-trash"></i></a>
         </td>
       </tr>
       {% endfor %}
     </tbody>
   </table>
   {% else %}
-  <p>No accounts found.</p>
+  <p class="text-center">No accounts found.</p>
   {% endif %}
 </div>
 {% endblock %}
