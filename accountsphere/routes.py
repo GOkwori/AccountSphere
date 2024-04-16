@@ -1,9 +1,7 @@
 from flask import render_template, request, redirect, url_for, flash
-from flask_bcrypt import Bcrypt
 from accountsphere import app, db
-from accountsphere.models import User, Group, UserGroup, Customer, Product, Account
-
-bcrypt = Bcrypt(app)
+from accountsphere.models import User, Group, UserGroup, Product, Account
+from datetime import datetime
 
 @app.route("/")
 def home():
@@ -70,34 +68,57 @@ def add_product():
             return render_template("add_product.html")
     return render_template("add_product.html")
 
+
 @app.route("/account")
 def account():
+    print("Fetching accounts...")
     accounts = Account.query.all()
-    print("Number of accounts fetched:", len(accounts))
-  
     return render_template("account.html", accounts=accounts)
 
 
 
-@app.route("/add_account", methods=["GET", "POST"])  # Allow both GET and POST
-def add_account():
-    products = Product.query.all()  # Fetch all products from the database
 
-    if request.method == "POST":
-        customer_id = request.form.get("customer_id")
-        product_id = request.form.get("product_id")  # This will now come from the dropdown
-        account = Account(customer_id=customer_id, product_id=product_id)
+@app.route('/add_account', methods=['GET', 'POST'])
+def add_account():
+    products = Product.query.all()  # Fetch all products for the form dropdown
+    if request.method == 'POST':
+        # Extract data from form
+        first_name = request.form.get('first_name')
+        last_name = request.form.get('last_name')
+        email = request.form.get('email')
+        phone_number = request.form.get('phone_number')
+        date_of_birth = request.form.get('date_of_birth')
+        product_id = request.form.get('product_id')
+        account_type = request.form.get('account_type')
+        balance = request.form.get('balance') or 0.00
+        currency = request.form.get('currency')
+        
+        # Create new Account instance
+        account = Account(
+            first_name=first_name,
+            last_name=last_name,
+            email=email,
+            phone_number=phone_number,
+            date_of_birth=date_of_birth,
+            product_id=product_id,
+            account_type=account_type,
+            balance=balance,
+            currency=currency,
+            status='active'  # Assuming new accounts are always active
+        )
+        
+        # Add to the database
         db.session.add(account)
         try:
             db.session.commit()
-            flash("Account created successfully!", "success")
+            flash('Account created successfully!', 'success')
         except Exception as e:
             db.session.rollback()
-            flash(f"An error occurred: {str(e)}", "error")
+            flash(f'Error creating account: {e}', 'error')
+        
+        return redirect(url_for('account'))
 
-        return redirect(url_for("account"))
-
-    return render_template("add_account.html", products=products)  # Pass products to the template for the dropdown
+    return render_template('add_account.html', products=products)
 
 
 @app.route("/ad_group")
