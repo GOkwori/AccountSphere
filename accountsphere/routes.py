@@ -85,6 +85,19 @@ def add_product():
     return render_template("add_product.html")
 
 
+@app.route("/edit_product/<int:product_id>", methods=["GET", "POST"])
+def edit_product(product_id):
+    product = Product.query.get_or_404(product_id)
+    if request.method == "POST":
+        product.name = request.form.get("name")
+        product.description = request.form.get("description")
+        product.type = request.form.get("type")
+        db.session.commit()
+        flash("Product updated successfully!", "success")
+        return redirect(url_for("product"))
+    return render_template("edit_product.html", product=product)
+
+
 @app.route("/account")
 def account():
     print("Fetching accounts...")

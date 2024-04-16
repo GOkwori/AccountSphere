@@ -5,7 +5,7 @@
     Update Product <i class="fa-regular fa-folder-open ms-2"></i>
   </h3>
   <br />
-  <form class="text-center" action="{{ url_for('edit_product')}}" method="post">
+  <form class="text-center" action="{{ url_for('edit_product', product_id=product.id) }}" method="post">
     <div class="row mb-3 ms-5">
       <label for="name" class="col-sm-3 col-form-label">Product Name</label>
       <div class="col-sm-7">
@@ -13,7 +13,7 @@
           type="text"
           class="form-control"
           id="name"
-          name="name"
+          name="name" value="{{ product.name }}"
           required
         />
       </div>
@@ -28,7 +28,7 @@
           id="description"
           name="description"
           class="form-control"
-          rows="4"
+          rows="4" value="{{ product.description }}"
           required
         ></textarea>
       </div>
@@ -41,19 +41,19 @@
           type="text"
           class="form-control"
           id="type"
-          name="type"
+          name="type" value="{{ product.type }}"
           required
         />
       </div>
     </div>
 
     <div class="row button-container">
-      <div class="col-auto me-5">
-        <button type="submit" class="btn btn-primary">Update<i class="fa-solid fa-pen-to-square"></i></button>
-      </div>
-      <div class="col-auto me-5">
-        <button type="button" class="btn btn-secondary">Cancel</button>
-      </div>
+        <div class="col-auto me-5">
+            <button type="submit" class="btn btn-primary">Update<i class="fa-solid fa-pen-to-square ms-2"></i></button>
+        </div>
+        <div class="col-auto me-5">
+            <button type="button" class="btn btn-secondary">Cancel<i class="fa-solid fa-ban ms-2"></i></button>
+        </div>
     </div>
   </form>
 </div>
