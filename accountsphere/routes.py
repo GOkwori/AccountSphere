@@ -122,7 +122,11 @@ def delete_product(product_id):
 def account():
     print("Fetching accounts...")
     accounts = Account.query.all()
+    # Format balance for each account
+    for account in accounts:
+        account.balance = "{:,.2f}".format(account.balance)
     return render_template("account.html", accounts=accounts)
+
 
 
 @app.route('/add_account', methods=['GET', 'POST'])

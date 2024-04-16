@@ -123,6 +123,20 @@ label {
   color: #3a405a;
 }
 
+.modal-header {
+  background-color: #fff;
+  color: #3a405a;
+  font-weight: bold;
+}
+
+.modal-content {
+  background-color: #3a405a;
+}
+
+.modal-footer {
+  background-color: #fff;
+}
+
 footer p {
   margin-top: 10px;
   margin-bottom: 10px;

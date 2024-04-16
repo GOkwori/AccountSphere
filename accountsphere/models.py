@@ -21,7 +21,7 @@ class User(db.Model):
     password_hash = db.Column(db.String(128))
     email = db.Column(db.String(120), unique=True, nullable=False)
     role = db.Column(db.String(50), nullable=False)
-    groups = db.relationship('Group', secondary='user_groups', back_populates="users")
+    groups = db.relationship('Group', secondary='user_groups', back_populates="users",)
     created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
     updated_at = db.Column(db.DateTime, default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
 
