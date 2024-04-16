@@ -37,6 +37,22 @@ def add_user():
         return redirect(url_for("user"))
     else:
         return render_template("add_user.html", groups=groups)
+    
+
+@app.route("/edit_user/<int:user_id>", methods=["GET", "POST"])
+def edit_user(user_id):
+    groups = Group.query.all() 
+    user = User.query.get_or_404(user_id)
+    if request.method == "POST":
+        user.username = request.form.get("username")
+        user.email = request.form.get("email")
+        user.first_name = request.form.get("first_name")
+        user.last_name = request.form.get("last_name")
+        user.role = request.form.get("role")
+        db.session.commit()
+        flash("User updated successfully!", "success")
+        return redirect(url_for("user"))
+    return render_template("edit_user.html", groups=groups, user=user)
 
 
 @app.route("/product")

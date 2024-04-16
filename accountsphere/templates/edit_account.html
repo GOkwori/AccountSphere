@@ -1,0 +1,174 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="form-content container">
+  <h3 class="text-center">
+    Update Account <i class="fa-regular fa-folder-open ms-2"></i>
+  </h3>
+  <br />
+  <form class="text-center" action="{{ url_for('edit_account')}}" method="post">
+    <div class="row mb-3 ms-5">
+      <label for="first_name" class="col-sm-2 col-form-label">First Name</label>
+      <div class="col-sm-7">
+        <input
+          type="text"
+          class="form-control"
+          id="first_name"
+          name="first_name"
+          required
+        />
+      </div>
+    </div>
+
+    <div class="row mb-3 ms-5">
+      <label for="last_name" class="col-sm-2 col-form-label">Last Name</label>
+      <div class="col-sm-7">
+        <input
+          type="text"
+          class="form-control"
+          id="last_name"
+          name="last_name"
+          required
+        />
+      </div>
+    </div>
+
+    <div class="row mb-3 ms-5">
+      <label for="email" class="col-sm-2 col-form-label">Email</label>
+      <div class="col-sm-7">
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          name="email"
+          required
+        />
+      </div>
+    </div>
+
+    <div class="row mb-3 ms-5">
+      <label for="phone_number" class="col-sm-2 col-form-label">Phone</label>
+      <div class="col-sm-7">
+        <input
+          type="tel"
+          class="form-control"
+          id="phone_number"
+          name="phone_number"
+          required
+        />
+      </div>
+    </div>
+
+    <div class="row mb-3 ms-5">
+      <label for="date_of_birth" class="col-sm-2 col-form-label"
+        >Date of Birth</label
+      >
+      <div class="col-sm-3">
+        <input
+          type="date"
+          class="form-control"
+          id="date_of_birth"
+          name="date_of_birth"
+          required
+        />
+      </div>
+    </div>
+
+    <div class="row mb-3 ms-5">
+      <label for="account_type" class="col-sm-2 col-form-label"
+        >Account Type</label
+      >
+      <div class="col-sm-3">
+        <select
+          class="form-select form-control"
+          name="account_type"
+          id="account_type"
+          onchange="updateProductID()"
+          <!--
+          Ensure
+          this
+          function
+          is
+          called
+          on
+          change
+          --
+        >
+          required >
+          <option value="">--select--</option>
+          {% for product in products %}
+          <option value="{{ product.id }}">{{ product.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+
+    <div class="row mb-3 ms-5">
+      <label for="product_id" class="col-sm-2 col-form-label">Product ID</label>
+      <div class="col-sm-3">
+        <input
+          type="text"
+          class="form-control"
+          id="product_id"
+          name="product_id"
+          required
+          readonly
+        />
+      </div>
+    </div>
+
+    <div class="row mb-3 ms-5">
+      <label for="balance" class="col-sm-2 col-form-label"
+        >Opening Balance</label
+      >
+      <div class="col-sm-2">
+        <select class="form-select" id="currency" name="currency">
+          <option value="">--select--</option>
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+          <option value="GBP">GBP</option>
+        </select>
+      </div>
+      <div class="col-sm-3">
+        <input
+          type="number"
+          class="form-control"
+          id="balance"
+          name="balance"
+          placeholder="Amount"
+          step="0.01"
+          min="0"
+        />
+      </div>
+    </div>
+
+    <div class="row mb-3 ms-5">
+      <div class="col-sm-6">
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="terms" required />
+          <label class="form-check-label" for="terms"
+            >I confirm that all details have been verified.</label
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="row button-container">
+      <div class="col-auto me-5">
+        <button type="submit" class="btn btn-primary">Update<i class="fa-solid fa-pen-to-square"></i></button>
+      </div>
+      <div class="col-auto me-5">
+        <button type="button" class="btn btn-secondary">Cancel</button>
+        <!-- Changed type to button for cancel -->
+      </div>
+    </div>
+    <script>
+      function updateProductID() {
+        var accountTypeSelect = document.getElementById("account_type");
+        var productIdInput = document.getElementById("product_id");
+        productIdInput.value = accountTypeSelect.value; // Set the product ID input to the selected option's value
+      }
+    </script>
+  </form>
+</div>
+
+{% endblock %}
