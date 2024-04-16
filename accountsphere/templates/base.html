@@ -64,13 +64,15 @@
                         <a class="nav-link" href="{{url_for('home')}}"><i class="fa-solid fa-house me-2"></i>Home</a>
                     </li>
                     <br>
-                    <li class="nav-item">
-                        <strong><i class="fa-solid fa-calendar me-2"></i>Dashboards</strong>
+                    <li class="nav-item dropdown">
+                        <strong class="dropdown-toggle" id="dropdownMenuButton" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><i class="fa-solid fa-calendar me-2"></i>Dashboards</strong>
                         <hr>
-                        <a class="nav-link" href="{{url_for('ad_group')}}"><i class="fa-regular fa-folder-open me-2"></i>AD Groups</a>
-                        <a class="nav-link" href="{{url_for('user')}}"><i class="fa-solid fa-users me-2"></i>User Management</a>
-                        <a class="nav-link" href="{{url_for('product')}}"><i class="fa-brands fa-product-hunt me-2"></i>Product Management</a>
-                        <a class="nav-link" href="{{url_for('account')}}"><i class="fa-solid fa-file-invoice me-2"></i>Account Management</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="nav-link dropdown-item" href="{{url_for('ad_group')}}"><i class="fa-regular fa-folder-open me-2"></i>AD Groups</a>
+                        <a class="nav-link dropdown-item" href="{{url_for('user')}}"><i class="fa-solid fa-users me-2"></i>User Management</a>
+                        <a class="nav-link dropdown-item" href="{{url_for('product')}}"><i class="fa-brands fa-product-hunt me-2"></i>Product Management</a>
+                        <a class="nav-link dropdown-item" href="{{url_for('account')}}"><i class="fa-solid fa-file-invoice me-2"></i>Account Management</a>
+                    </div>
                     </li>
                     <br> 
                     <li class="nav-item">
