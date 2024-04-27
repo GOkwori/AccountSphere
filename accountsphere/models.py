@@ -1,9 +1,11 @@
 from accountsphere import db
 from datetime import datetime
 from sqlalchemy.orm import relationship
+from flask_login import UserMixin
 
 
 class User(db.Model):
+    __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(100), nullable=False)
     last_name = db.Column(db.String(100), nullable=False)
@@ -12,7 +14,7 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     role = db.Column(db.String(50), nullable=False)
     active = db.Column(db.Boolean, default=True)  # Default as active
-    group_id = db.Column(db.Integer, db.ForeignKey('groups.id', ondelete='CASCADE'), nullable=False)
+    group_id = db.Column(db.Integer, db.ForeignKey('groups.id', ondelete='CASCADE'), nullable=True)
     created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
     updated_at = db.Column(db.DateTime, default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
 
@@ -22,6 +24,8 @@ class User(db.Model):
     @property
     def is_active(self):
         return self.active
+
+
 
 class Group(db.Model):
     __tablename__ = 'groups'
