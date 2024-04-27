@@ -1,37 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Fontawesome-->
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='assets/favicon/apple-touch-icon.png')}}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='assets/favicon/favicon-32x32.png')}}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='assets/favicon/favicon-16x16.png')}}">
+
+    <!-- Favicon-->
+    <link rel="apple-touch-icon" sizes="180x180"
+        href="{{ url_for('static', filename='assets/favicon/apple-touch-icon.png')}}">
+    <link rel="icon" type="image/png" sizes="32x32"
+        href="{{ url_for('static', filename='assets/favicon/favicon-32x32.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16"
+        href="{{ url_for('static', filename='assets/favicon/favicon-16x16.png')}}">
     <link rel="manifest" href="{{ url_for('static', filename='assets/favicon/site.webmanifest')}}">
 
-    <!-- Bootstrap CSS -->
+    <!-- Fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}" type="text/css">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/bootstrap.css')}}" type="text/css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style.css')}}" type="text/css">
     <title>AccountSphere</title>
 </head>
 
 <body>
+
+    {% block header %}
     <header>
         <nav class="navbar navbar-expand fixed-top">
             <div class="container-fluid">
                 <!-- Toggle Button for Offcanvas Sidebar and Brand Logo -->
                 <div class="d-flex align-items-center">
-                    <button class="btn btn-primary me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
+                    <button class="btn btn-primary me-2" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
                         <i class="fas fa-bars"></i>
                     </button>
                     <a class="navbar-brand" href="{{url_for('home')}}">
                         <img class="logo" src="{{ url_for('static', filename='assets/images/file.png')}}" alt="logo">
                     </a>
                 </div>
-                
+
                 <!-- Right-aligned Nav Links -->
                 <div class="d-flex justify-content-end flex-grow-1 pe-3">
                     <ul class="navbar-nav">
@@ -42,21 +54,30 @@
                             <a class="nav-link" href="{{url_for('home')}}"><i class="fa-solid fa-gear"></i></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{url_for('home')}}"><i class="fa-solid fa-user"></i></a>
+                            <div class="dropdown">
+                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
+                                <i class="fa-solid fa-user"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('home') }}">Log out</a></li>
+                            </ul>
+                        </div>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-        
-        
+          
         <!-- Offcanvas Sidebar -->
-        <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+        <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+            id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasScrollingLabel">
+                <a class="navbar-brand offcanvas-title" id="offcanvasScrollingLabel" href="{{url_for('home')}}">
                     <img class="logo" src="{{ url_for('static', filename='assets/images/file.png')}}" alt="logo">
-                </h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </a>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
                 <ul class="navbar-nav">
@@ -64,56 +85,102 @@
                         <a class="nav-link" href="{{url_for('home')}}"><i class="fa-solid fa-house me-2"></i>Home</a>
                     </li>
                     <br>
-                    <li class="nav-item dropdown">
-                        <strong class="dropdown-toggle" id="dropdownMenuButton" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><i class="fa-solid fa-calendar me-2"></i>Dashboards</strong>
-                        <hr>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="nav-link dropdown-item" href="{{url_for('ad_group')}}"><i class="fa-regular fa-folder-open me-2"></i>AD Groups</a>
-                        <a class="nav-link dropdown-item" href="{{url_for('user')}}"><i class="fa-solid fa-users me-2"></i>User Management</a>
-                        <a class="nav-link dropdown-item" href="{{url_for('product')}}"><i class="fa-brands fa-product-hunt me-2"></i>Product Management</a>
-                        <a class="nav-link dropdown-item" href="{{url_for('account')}}"><i class="fa-solid fa-file-invoice me-2"></i>Account Management</a>
-                    </div>
-                    </li>
-                    <br> 
                     <li class="nav-item">
-                        <strong><i class="fa-solid fa-database me-2"></i></i>Analytics</strong>
+                        <strong><i class="fa-solid fa-calendar me-2"></i>Dashboard</strong>
                         <hr>
-                        <a class="nav-link" href="{{url_for('home')}}"><i class="fa-solid fa-chart-simple me-2"></i>Charts</a>
-                        <a class="nav-link" href="{{url_for('home')}}"><i class="fa-solid fa-table me-2"></i>Data Tables</a>
+                        <a id="active-nav"
+                            class="nav-link {{ 'active' if request.path == url_for('ad_group') else '' }}"
+                            href="{{ url_for('ad_group') }}"><i class="fa-regular fa-folder-open me-2"></i>AD Groups</a>
+                        <a id="active-nav" class="nav-link {{ 'active' if request.path == url_for('user') else '' }}"
+                            href="{{ url_for('user') }}"><i class="fa-solid fa-users me-2"></i>User Management</a>
+                        <a id="active-nav" class="nav-link {{ 'active' if request.path == url_for('product') else '' }}"
+                            href="{{ url_for('product') }}"><i class="fa-brands fa-product-hunt me-2"></i>Product
+                            Management</a>
+                        <a id="active-nav" class="nav-link {{ 'active' if request.path == url_for('account') else '' }}"
+                            href="{{ url_for('account') }}"><i class="fa-solid fa-file-invoice me-2"></i>Account
+                            Management</a>
+                        <a id="active-nav" class="nav-link {{ 'active' if request.path == url_for('account') else '' }}"
+                            href="{{ url_for('account') }}"><i class="fa-solid fa-newspaper me-2"></i></i>News Board</a>
+                    </li>
+                    <br>
+                    <li class="nav-item">
+                        <strong><i class="fa-solid fa-database me-2"></i>Analytics</strong>
+                        <hr>
+                        <a id="active-nav" class="nav-link {{ 'active' if request.endpoint == 'data_tables' else '' }}"
+                            href="#"><i class="fa-solid fa-table me-2"></i>Data Tables</a>
                     </li>
                     <br>
                     <li class="nav-item">
                         <strong><i class="fa-solid fa-right-to-bracket me-2"></i>My Account</strong>
                         <hr>
-                        <a class="nav-link" href="{{url_for('home')}}"><i class="fa-solid fa-user me-2"></i>Profile</a>
-                        <a class="nav-link" href="{{url_for('home')}}"><i class="fa-solid fa-shield-halved me-2"></i>Security</a>
-                        <a class="nav-link" href="{{url_for('home')}}"><i class="fa-solid fa-bell me-2"></i>Notifications</a>
+                        <a id="active-nav" class="nav-link {{ 'active' if request.endpoint == 'profile' else '' }}"
+                            href="#"><i class="fa-solid fa-user me-2"></i>Profile</a>
+                        <a id="active-nav" class="nav-link {{ 'active' if request.endpoint == 'security' else '' }}"
+                            href="#"><i class="fa-solid fa-shield-halved me-2"></i>Security</a>
+                        <a id="active-nav"
+                            class="nav-link {{ 'active' if request.endpoint == 'notifications' else '' }}" href="#"><i
+                                class="fa-solid fa-bell me-2"></i>Notifications</a>
+                    </li>
+                </ul>
+            </div>
+            <footer>
+                <div class="container-fluid justify-content-start ms-2">
+                    <p>Copyright &copy; 2024 AccountSphere</p>
+                </div>
+            </footer>
+        </div>
+
+    </header>
+    {% endblock %}
+
+    <main class="container-fluid" id="main-content">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <div class="row navbar navbar-expand-lg" id="footer-container">
+            <div class="col-6 container-fluid justify-content-start ms-2">
+                <p>Copyright &copy; 2024 AccountSphere</p>
+            </div>
+            <div class="col-6 container-fluid justify-content-end">
+                <ul class="list-inline social-media">
+                    <li class="list-inline-item">
+                        <a class="social-link" target="_blank" href="https://github.com/GOkwori">
+                            <i class="fa-brands fa-square-github"></i>
+                            <span class="sr-only">Github</span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="social-link" target="_blank"
+                            href="https://www.linkedin.com/public-profile/settings?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_self_edit_contact-info%3BJ8xDlJkoQuWwzvWs1wUALg%3D%3D">
+                            <i class="fa-brands fa-linkedin"></i>
+                            <span class="sr-only">Linkedin</span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="social-link" target="_blank" href="https://twitter.com/Georgeminto">
+                            <i class="fa-brands fa-square-twitter"></i>
+                            <span class="sr-only">twitter</span>
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
-        
-    </header>
-     
-    <main class="container">
-        {% block content %}
-        {% endblock %}
-    </main>
-    
-    <footer>
-            <div class="row navbar navbar-expand-lg fixed-bottom">
-                <div class="container-fluid justify-content-center">
-                    <p>Copyright &copy; 2024 AccountSphere</p>
-                </div>
-            </div>    
     </footer>
 
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='assets/js/script.js')}}"></script>
 
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-    <script src="{{ url_for('static', filename='js/script.js')}}"></script>
-    
 </body>
+
 </html>
