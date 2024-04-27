@@ -1,57 +1,71 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="container dashboard-content mt-4">
+<div class="container dashboard-content">
     <h2 class="mb-4 text-center">Product Management<i class="fa-solid fa-table-cells-row-lock ms-2"></i></h2>
-
-    <!-- Button to create a new product -->
-    <div class="text-end mb-3">
-        <a href="{{ url_for('add_product') }}" class="btn btn-success">Create Product <i class="fa-solid fa-upload ms-2"></i></a>
+    <!-- Search Form -->
+    <div class="row">
+        <form action="{{ url_for('product_search') }}" method="get" class="mb-3 col-md-6" id="search-bar">
+            <div class="input-group">
+                <input type="text" class="form-control" name="query" placeholder="Search products">
+                <button class="btn btn-outline-secondary" type="submit"><i class="fa-solid fa-search"></i></button>
+                <a href="{{ url_for('product') }}" role="button" class="btn btn-outline-secondary ms-2"><i
+                        class="fa-solid fa-power-off"></i></a>
+            </div>
+        </form>
+        <!-- Button to create a new product -->
+        <div class="text-end mb-3 col-md-6">
+            <a href="{{ url_for('add_product') }}" class="btn btn-success">Create Product <i
+                    class="fa-solid fa-upload ms-2"></i></a>
+        </div>
     </div>
 
     <!-- Products display -->
     <div class="row">
         {% if products %}
-            {% for product in products %}
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-header">
-                            <h4 class="text-center">{{ product.name }}</h4>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">{{ product.description | truncate(150) }}</p>
-                        </div>
-                        <div class="card-footer text-center">
-                            <a href="{{ url_for('edit_product', product_id=product.id)}}" class="btn btn-primary">Edit<i class="fa-solid fa-pen-to-square ms-2"></i></a>
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-{{ product.id }}">
-                                Delete<i class="fa-solid fa-trash ms-2"></i>
-                            </button>
-                        </div>
+        {% for product in products %}
+        <div class="col-md-3 mb-4">
+            <div class="card h-100">
+                <div class="card-header">
+                    <h5 class="text-center">{{ product.name }}</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{ product.description | truncate(150) }}</p>
+                </div>
+                <div class="card-footer text-center">
+                    <a href="{{ url_for('edit_product', product_id=product.id)}}" class="btn btn-primary">Edit<i
+                            class="fa-solid fa-pen-to-square ms-2"></i></a>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                        data-bs-target="#deleteModal-{{ product.id }}">
+                        Delete<i class="fa-solid fa-trash ms-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="deleteModal-{{ product.id }}" tabindex="-1"
+            aria-labelledby="modalLabel-{{ product.id }}" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalLabel-{{ product.id }}">Confirm Deletion</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete the product "{{ product.name }}"?
+                    </div>
+                    <div class="modal-footer">
+                        <a href="{{ url_for('delete_product', product_id=product.id)}}" class="btn btn-danger">Yes</a>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
                     </div>
                 </div>
-                
-                <!-- Modal -->
-                <div class="modal fade" id="deleteModal-{{ product.id }}" tabindex="-1" aria-labelledby="modalLabel-{{ product.id }}" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="modalLabel-{{ product.id }}">Confirm Deletion</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                Are you sure you want to delete the product "{{ product.name }}"?
-                            </div>
-                            <div class="modal-footer">
-                                <a href="{{ url_for('delete_product', product_id=product.id)}}" class="btn btn-danger">Yes</a>
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
         {% else %}
-            <p class="text-center">No products found.</p>
+        <p class="text-center">No products found.</p>
         {% endif %}
     </div>
 </div>
