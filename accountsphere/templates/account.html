@@ -1,10 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container dashboard-content mt-4">
+<div class="container dashboard-content">
   <h3 class="mb-4 text-center">Account Dashboard <i class="fa-solid fa-table-cells-row-lock ms-2"></i></h3>
-  <div class="text-end mb-3">
-    <a href="{{ url_for('add_account') }}" class="btn btn-success">Create Account <i class="fa-solid fa-file-invoice ms-2"></i></a>
+  <div class="row">
+    <!-- Search Form -->
+    <form action="{{ url_for('account') }}" method="get" class="mb-3 col-md-6" id="search-bar">
+      <div class="input-group">
+        <input type="text" class="form-control" name="query" placeholder="Search accounts">
+        <button class="btn btn-outline-secondary" type="submit"><i class="fa-solid fa-search"></i></button>
+        <a href="{{ url_for('account') }}" role="button" class="btn btn-outline-secondary ms-2"><i
+            class="fa-solid fa-power-off"></i></a>
+      </div>
+    </form>
+    <div class="text-end mb-3 col-md-6">
+      <a href="{{ url_for('add_account') }}" class="btn btn-success">Create Account <i
+          class="fa-solid fa-file-invoice ms-2"></i></a>
+    </div>
   </div>
+
+  <!-- Existing Accounts Table -->
   {% if accounts %}
   <table class="table table-striped">
     <thead>
@@ -13,7 +27,7 @@
         <th scope="col">Customer Name</th>
         <th scope="col">Email</th>
         <th scope="col">Phone</th>
-        <th scope="col">Account Type</th>
+        <th scope="col">Product Type</th>
         <th scope="col">Currency</th>
         <th scope="col">Balance</th>
         <th scope="col">Actions</th>
@@ -26,17 +40,19 @@
         <td>{{ account.first_name }} {{ account.last_name }}</td>
         <td>{{ account.email }}</td>
         <td>{{ account.phone_number }}</td>
-        <td>{{ account.account_type }}</td>
+        <td>{{ account.product.name }}</td> <!-- Corrected product name access -->
         <td>{{ account.currency }}</td>
-        <td>{{ account.balance }}</td>
+        <td>{{ "{:,.2f}".format(account.balance) }}</td>
         <td>
-            <a href="{{ url_for('edit_account', account_id=account.id)}}" aria-label="Edit Account"><i class="fa-solid fa-pen-to-square me-4"></i></a>
-            <a role="button" data-bs-toggle="modal" data-bs-target="#deleteModal-{{ account.id }}" aria-label="Delete Account"><i class="fa-solid fa-trash"></i></a>
+          <a href="{{ url_for('edit_account', account_id=account.id)}}" aria-label="Edit Account"><i
+              class="fa-solid fa-pen-to-square me-4"></i></a>
+          <a role="button" data-bs-toggle="modal" data-bs-target="#deleteModal-{{ account.id }}"><i class="fa-solid fa-trash"></i></a>
         </td>
       </tr>
 
       <!-- Modal for each account -->
-      <div class="modal fade" id="deleteModal-{{ account.id }}" tabindex="-1" aria-labelledby="deleteModalLabel-{{ account.id }}" aria-hidden="true">
+      <div class="modal fade" id="deleteModal-{{ account.id }}" tabindex="-1"
+        aria-labelledby="deleteModalLabel-{{ account.id }}" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">

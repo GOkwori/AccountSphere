@@ -1,25 +1,54 @@
 from flask import render_template, request, redirect, url_for, flash
+from werkzeug.security import generate_password_hash, check_password_hash
 from accountsphere import app, db
-from accountsphere.models import User, Group, UserGroup, Product, Account
+from accountsphere.models import User, Group, Product, Account, NewsItem
+from sqlalchemy.orm import joinedload
 from datetime import datetime
+from flask_login import login_user, logout_user, current_user, login_required
+
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    news_items = NewsItem.query.all()
+    return render_template('index.html', news_items=news_items)
+
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    if request.method == "POST":
+        first_name = request.form.get("first_name")
+        last_name = request.form.get("last_name")
+        username = request.form.get("username")
+        email = request.form.get("email")
+        password = request.form.get("password")
+
+        if not all([first_name, last_name, username, email, password]):
+            flash("All fields are required.", "error")
+            return render_template("register.html")
+
+        existing_user = User.query.filter((User.username == username) | (User.email == email)).first()
+        if existing_user:
+            flash("Username or email already exists.", "error")
+            return render_template("register.html")
+
+        hashed_password = generate_password_hash(password, method='sha256')
+        user = User(first_name=first_name, last_name=last_name, username=username, email=email, password_hash=hashed_password, role='User')
+        db.session.add(user)
+        db.session.commit()
+        flash("User registered successfully!", "success")
+        return redirect(url_for("login"))
+    return render_template("register.html")
 
 
 @app.route("/user")
 def user():
-    users = User.query.all()
-    print("Number of users fetched:", len(users))  # This will show you how many users are fetched
-    for user in users:
-        print(user.username, user.email)  # This will print each user's username and email to the console
+    users = User.query.order_by(User.first_name, User.last_name).all()
     return render_template("user.html", users=users)
 
 
 @app.route("/add_user", methods=["GET", "POST"])
 def add_user():
-    groups = Group.query.all()  # Fetch all groups from the database
+    groups = Group.query.all()
     if request.method == "POST":
         username = request.form.get("username")
         email = request.form.get("email")
@@ -27,8 +56,8 @@ def add_user():
         last_name = request.form.get("last_name")
         role = request.form.get("role")
 
-        if not username or not email:
-            flash("Username, and email are required.", "error")
+        if not all([username, email, first_name, last_name]):
+            flash("All fields are required.", "error")
             return render_template("add_user.html", groups=groups)
 
         user = User(username=username, email=email, first_name=first_name, last_name=last_name, role=role)
@@ -36,13 +65,11 @@ def add_user():
         db.session.commit()
         flash("User added successfully!", "success")
         return redirect(url_for("user"))
-    else:
-        return render_template("add_user.html", groups=groups)
+    return render_template("add_user.html", groups=groups)
 
 
 @app.route("/edit_user/<int:user_id>", methods=["GET", "POST"])
 def edit_user(user_id):
-    groups = Group.query.all() 
     user = User.query.get_or_404(user_id)
     if request.method == "POST":
         user.username = request.form.get("username")
@@ -53,7 +80,7 @@ def edit_user(user_id):
         db.session.commit()
         flash("User updated successfully!", "success")
         return redirect(url_for("user"))
-    return render_template("edit_user.html", groups=groups, user=user)
+    return render_template("edit_user.html", user=user)
 
 
 @app.route("/delete_user/<int:user_id>")
@@ -65,9 +92,21 @@ def delete_user(user_id):
     return redirect(url_for("user"))
 
 
+@app.route("/user_search")
+def user_search():
+    query = request.args.get('query', '')
+    users = User.query.filter(
+        (User.first_name.ilike(f'%{query}%')) |
+        (User.last_name.ilike(f'%{query}%')) |
+        (User.username.ilike(f'%{query}%')) |
+        (User.email.ilike(f'%{query}%'))
+    ).all()
+    return render_template('user.html', users=users)
+
+
 @app.route("/product")
 def product():
-    products = Product.query.order_by(Product.name).all()
+    products = list(Product.query.order_by(Product.name).all())
     print("Number of products fetched:", len(products))
     return render_template("product.html", products=products)
 
@@ -118,15 +157,26 @@ def delete_product(product_id):
     return redirect(url_for("product"))
 
 
+@app.route("/product_search")
+def product_search():
+    query = request.args.get('query', '')
+    products = Product.query.filter(
+        (Product.name.ilike(f'%{query}%')) |
+        (Product.description.ilike(f'%{query}%')) |
+        (Product.type.ilike(f'%{query}%'))
+    ).all()
+    return render_template('product.html', products=products)
+
+
 @app.route("/account")
 def account():
-    print("Fetching accounts...")
-    accounts = Account.query.all()
-    # Format balance for each account
-    for account in accounts:
-        account.balance = "{:,.2f}".format(account.balance)
-    return render_template("account.html", accounts=accounts)
+    # Fetch accounts and their related product names using joined load,
+    # sorted by first name and then last name
+    accounts = Account.query \
+        .options(db.joinedload(Account.product)) \
+        .order_by(Account.first_name, Account.last_name).all()
 
+    return render_template("account.html", accounts=accounts)
 
 
 @app.route('/add_account', methods=['GET', 'POST'])
@@ -205,9 +255,24 @@ def delete_account(account_id):
     return redirect(url_for('account'))
 
 
+@app.route('/account_search')
+def account_search():
+    query = request.args.get('query', '')
+    accounts = Account.query.options(joinedload(Account.product)).filter(
+        (Account.first_name.ilike(f'%{query}%')) |
+        (Account.last_name.ilike(f'%{query}%')) |
+        (Account.email.ilike(f'%{query}%')) |
+        (Account.phone_number.ilike(f'%{query}%'))
+    ).all()
+    # Add product names to the account objects for easier access in the template
+    for account in accounts:
+        account.product_name = account.product.name if account.product else 'No Product'
+    return render_template('account.html', accounts=accounts)
+
+
 @app.route("/ad_group")
 def ad_group():
-    ad_groups = Group.query.order_by(Group.name).all()
+    ad_groups = list(Group.query.order_by(Group.name).all())
     print("Number of groups fetched:", len(ad_groups))  # This will show you how many groups are fetched
     return render_template("ad_group.html", ad_groups=ad_groups)
 
@@ -245,3 +310,63 @@ def delete_ad_group(group_id):
     db.session.commit()
     flash("Group deleted successfully!", "success")
     return redirect(url_for("ad_group"))
+
+
+@app.route("/ad_group_search")
+def ad_group_search():
+    query = request.args.get('query', '')
+    ad_groups = Group.query.filter(
+        (Group.name.ilike(f'%{query}%')) |
+        (Group.description.ilike(f'%{query}%')) |
+        (Group.group_type.ilike(f'%{query}%'))
+    ).all()
+    return render_template('ad_group.html', ad_groups=ad_groups)
+
+
+@app.route("/news")
+def news():
+    news_items = NewsItem.query.all()
+    return render_template("news.html", news_items=news_items)
+
+
+@app.route('/add_news', methods=["GET", "POST"])
+def add_news():
+    if request.method == "POST":
+        headline = request.form.get("headline")
+        description = request.form.get("description")
+        news_item = NewsItem(headline=headline, description=description)
+        db.session.add(news_item)
+        db.session.commit()
+        return redirect(url_for("news"))
+    return render_template("add_news.html")
+
+
+@app.route('/edit_news/<int:news_id>', methods=["GET", "POST"])
+def edit_news(news_id):
+    news_item = NewsItem.query.get_or_404(news_id)
+    if request.method == "POST":
+        news_item.headline = request.form.get("headline")
+        news_item.description = request.form.get("description")
+        db.session.commit()
+        return redirect(url_for("news"))
+
+    news_items = NewsItem.query.all()  # This will fetch all news items for listing
+    return render_template("edit_news.html", news_item=news_item, news_items=news_items)
+
+
+@app.route('/delete_news/<int:news_id>')
+def delete_news(news_id):
+    news_item = NewsItem.query.get_or_404(news_id)
+    db.session.delete(news_item)
+    db.session.commit()
+    return redirect(url_for("news"))
+
+
+@app.route('/news_search')
+def news_search():
+    query = request.args.get('query', '')
+    news_items = NewsItem.query.filter(
+        (NewsItem.headline.ilike(f'%{query}%')) |
+        (NewsItem.description.ilike(f'%{query}%'))
+    ).all()
+    return render_template('news.html', news_items=news_items)
