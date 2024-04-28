@@ -197,14 +197,40 @@ background-color: #f0f0f0;
 cursor: pointer;
 }
 
-
+/* Dashboard */
 .dashboard-content {
-  background-color: #3a405a;
-  color: #fff;
+  background-color: #fff;
+  color: #3a405a;
   padding: 20px;
   border-radius: 10px;
-  margin-left: 1%;
+  margin: 7% auto;
 }
+
+#search-bar {
+  margin: 0 0 2% 0;
+}
+
+#search-bar .input-group {
+  width: 50%;
+}
+
+.card {
+  background-color: #3a405a;
+  color: #fff;
+  border-radius: 10px;
+  width: auto;
+}
+
+.card-body {
+  background-color: #fff;
+  color: #3a405a;
+}
+
+
+
+
+
+
 
 .form-content {
   background-color: #3a405a;
