@@ -8,14 +8,14 @@
 }
 
 body {
-  background-image: url("../images/8.jpeg");
+  background-image: url("../images/#");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   font-family: "Roboto", sans-serif;
   font-size: 0.9rem;
-  background-color: #fff;
-  color: #3a405a;
+  background-color: #3a405a;
+  color: #fff;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -47,23 +47,12 @@ body {
 
 /* Offcanvas */
 
-#offcanvasScrolling{
+#offcanvasWithBothOptions {
   background-color: #fff;
   color: #3a405a;
   width: auto;
   opacity: 0.9;
 }
-
-.btn-close-white {
-  filter: none !important;
-  /* Remove any existing filters */
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg fill="%233a405a" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M.293.293a1 1 0 0 1 1.414 0L8 6.586l6.293-6.293a1 1 0 0 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z"/></svg>');
-  /* Replace with your own SVG or adjust this one */
-  width: 16px;
-  /* Adjust size as needed */
-  height: 16px;
-}
-
 
 /* Offcanvas links */
 .offcanvas-body ul li {
@@ -113,6 +102,16 @@ body {
   color: #3a405a;
 }
 
+.btn-close-white {
+  filter: none !important;
+  /* Remove any existing filters */
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg fill="%233a405a" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M.293.293a1 1 0 0 1 1.414 0L8 6.586l6.293-6.293a1 1 0 0 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z"/></svg>');
+  /* Replace with your own SVG or adjust this one */
+  width: 16px;
+  /* Adjust size as needed */
+  height: 16px;
+}
+
 .logo {
   width: 35px;
   height: 35px;
@@ -134,7 +133,6 @@ body {
 .section_1 {
   background-color: #fff;
   backdrop-filter: blur(10px);
-  opacity: 0.9;
   border-radius: 10px;
   margin: 1%;
   width: 40%;
@@ -145,59 +143,64 @@ body {
 .panel_2 {
   background-color: #fff;
   backdrop-filter: blur(10px);
-  opacity: 0.9;
   border-radius: 10px;
   margin: 1%;
   color: #3a405a;
   height: 480px;
 }
 
-
-margin: 10px 0;
-border-color: #3a405a;
-/* Space above and below each card */
-}
-
 #card-container .card {
-background-color: #fff;
-color: #3a405a;
+  background-color: #fff;
+  color: #3a405a;
 }
 
 #card-container .card img {
-height: 8rem;
+  height: 8rem;
+}
+
+.card {
+  background-color: #fff;
+  color: #3a405a;
+  border-radius: 10px;
+  width: auto;
+}
+
+.card-body {
+  background-color: #3a405a;
+  color: #fff;
 }
 
 .card-body-bottom .btn {
-background-color: #3a405a;
-color: #fff;
-margin-bottom: 4px;
+  background-color: #3a405a;
+  color: #fff;
+  margin-bottom: 4px;
 }
 
 .card-body-bottom .btn:hover {
-background-color: #fff;
-color: #3a405a;
+  background-color: #fff;
+  color: #3a405a;
 }
 
 .news-panel {
-height: 400px;
-/* Set a fixed height */
-overflow-y: auto;
-/* Enable vertical scrolling */
-border: 1px solid #ccc;
-/* Add a border */
-margin: 20px;
-/* Add some margin around the panel */
-padding: 15px;
-/* Padding inside the panel */
-background-color: #f9f9f9;
-/* Light background for the panel */
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-border-radius: 5px;
+  height: 400px;
+  /* Set a fixed height */
+  overflow-y: auto;
+  /* Enable vertical scrolling */
+  border: 1px solid #ccc;
+  /* Add a border */
+  margin: 20px;
+  /* Add some margin around the panel */
+  padding: 15px;
+  /* Padding inside the panel */
+  background-color: #f9f9f9;
+  /* Light background for the panel */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
 }
 
 .news-panel:hover {
-background-color: #f0f0f0;
-cursor: pointer;
+  background-color: #f0f0f0;
+  cursor: pointer;
 }
 
 /* Dashboard */
@@ -215,18 +218,6 @@ cursor: pointer;
 
 #search-bar .input-group {
   width: 50%;
-}
-
-.card {
-  background-color: #3a405a;
-  color: #fff;
-  border-radius: 10px;
-  width: auto;
-}
-
-.card-body {
-  background-color: #fff;
-  color: #3a405a;
 }
 
 .form-content {
@@ -282,6 +273,10 @@ label {
 
 .table i {
   color: #3a405a;
+}
+
+.modal {
+  opacity: 0.9;
 }
 
 .modal-content {

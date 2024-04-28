@@ -36,7 +36,7 @@
                 <!-- Toggle Button for Offcanvas Sidebar and Brand Logo -->
                 <div class="d-flex align-items-center">
                     <button class="btn btn-primary me-2" type="button" data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
+                        data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
                         <i class="fas fa-bars"></i>
                     </button>
                     <a class="navbar-brand" href="{{url_for('home')}}">
@@ -70,17 +70,15 @@
         </nav>
           
         <!-- Offcanvas Sidebar -->
-        <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
-            id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
-            <header>
+        <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1"
+            id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
             <div class="offcanvas-header">
-                <a class="navbar-brand offcanvas-title" id="offcanvasScrollingLabel" href="{{url_for('home')}}">
+                <a class="navbar-brand offcanvas-title" id="offcanvasWithBothOptionsLabel" href="{{url_for('home')}}">
                     <img class="logo" src="{{ url_for('static', filename='assets/images/file.png')}}" alt="logo">
                 </a>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
                     aria-label="Close"></button>
             </div>
-        </header>
             <div class="offcanvas-body" id="offcanvas">
                 <ul class="navbar-nav">
                     <li class="nav-item">
