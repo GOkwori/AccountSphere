@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="form-content container">
+    <h3 class="text-center ms-5">Add News <i class="fa-regular fa-folder-open ms-2"></i></h3>
+    <br>
+    <form class="justify-content-center" action="{{ url_for('edit_news', news_id=news_item.id) }}" method="post">
+
+        <div class="row mb-3 ms-5">
+            <label for="description" class="col-sm-2 col-form-label">Headline</label>
+            <div class="col-sm-7">
+                <textarea id="headline" name="headline" class="form-control" rows="4"
+                    placeholder="Please enter headline" required></textarea>
+            </div>
+        </div>
+
+        <div class="row mb-3 ms-5">
+            <label for="description" class="col-sm-2 col-form-label">Description</label>
+            <div class="col-sm-7">
+                <textarea id="description" name="description" class="form-control" rows="4"
+                    placeholder="Brief description of the headline" required></textarea>
+            </div>
+        </div>
+
+        <div class="row button-container">
+            <div class="col-auto me-5">
+                <button type="submit" class="btn btn-primary">Update<i
+                        class="fa-solid fa-pen-to-square ms-2"></i></button>
+            </div>
+            <div class="col-auto me-5">
+                <button type="button" class="btn btn-secondary" onclick="history.back();">Cancel<i
+                        class="fa-solid fa-ban ms-2"></i></button> <!-- Changed type to button for cancel -->
+            </div>
+        </div>
+    </form>
+
+</div>
+
+{% endblock %}
