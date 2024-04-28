@@ -291,6 +291,7 @@ label {
 .modal-header,
 .modal-footer {
   background-color: #fff;
+  color: #3a405a;
 }
 
 .modal-backdrop.show {
