@@ -72,6 +72,7 @@
         <!-- Offcanvas Sidebar -->
         <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
             id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+            <header>
             <div class="offcanvas-header">
                 <a class="navbar-brand offcanvas-title" id="offcanvasScrollingLabel" href="{{url_for('home')}}">
                     <img class="logo" src="{{ url_for('static', filename='assets/images/file.png')}}" alt="logo">
@@ -79,7 +80,8 @@
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
                     aria-label="Close"></button>
             </div>
-            <div class="offcanvas-body">
+        </header>
+            <div class="offcanvas-body" id="offcanvas">
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="{{url_for('home')}}"><i class="fa-solid fa-house me-2"></i>Home</a>
@@ -88,19 +90,19 @@
                     <li class="nav-item">
                         <strong><i class="fa-solid fa-calendar me-2"></i>Dashboard</strong>
                         <hr>
-                        <a id="active-nav"
-                            class="nav-link {{ 'active' if request.path == url_for('ad_group') else '' }}"
-                            href="{{ url_for('ad_group') }}"><i class="fa-regular fa-folder-open me-2"></i>AD Groups</a>
-                        <a id="active-nav" class="nav-link {{ 'active' if request.path == url_for('user') else '' }}"
-                            href="{{ url_for('user') }}"><i class="fa-solid fa-users me-2"></i>User Management</a>
-                        <a id="active-nav" class="nav-link {{ 'active' if request.path == url_for('product') else '' }}"
-                            href="{{ url_for('product') }}"><i class="fa-brands fa-product-hunt me-2"></i>Product
-                            Management</a>
                         <a id="active-nav" class="nav-link {{ 'active' if request.path == url_for('account') else '' }}"
                             href="{{ url_for('account') }}"><i class="fa-solid fa-file-invoice me-2"></i>Account
                             Management</a>
+                        <a id="active-nav"
+                            class="nav-link {{ 'active' if request.path == url_for('ad_group') else '' }}"
+                            href="{{ url_for('ad_group') }}"><i class="fa-regular fa-folder-open me-2"></i>AD Groups</a>
                         <a id="active-nav" class="nav-link {{ 'active' if request.path == url_for('news') else '' }}"
                             href="{{ url_for('news') }}"><i class="fa-solid fa-newspaper me-2"></i></i>News Board</a>
+                        <a id="active-nav" class="nav-link {{ 'active' if request.path == url_for('product') else '' }}"
+                            href="{{ url_for('product') }}"><i class="fa-brands fa-product-hunt me-2"></i>Product
+                            Management</a>
+                        <a id="active-nav" class="nav-link {{ 'active' if request.path == url_for('user') else '' }}"
+                            href="{{ url_for('user') }}"><i class="fa-solid fa-users me-2"></i>User Management</a>
                     </li>
                     <br>
                     <li class="nav-item">

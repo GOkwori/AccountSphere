@@ -46,10 +46,12 @@ body {
 }
 
 /* Offcanvas */
-#offcanvasScrolling {
+
+#offcanvasScrolling{
   background-color: #fff;
   color: #3a405a;
   width: auto;
+  opacity: 0.9;
 }
 
 .btn-close-white {
@@ -61,6 +63,7 @@ body {
   /* Adjust size as needed */
   height: 16px;
 }
+
 
 /* Offcanvas links */
 .offcanvas-body ul li {
@@ -234,7 +237,6 @@ cursor: pointer;
   border-radius: 10px;
   margin: 7% auto;
   width: 60%;
-  opacity: 0.9;
 }
 
 .login-content {
