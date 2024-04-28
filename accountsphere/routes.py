@@ -40,12 +40,6 @@ def register():
     return render_template("register.html")
 
 
-@app.route("/user")
-def user():
-    users = User.query.order_by(User.first_name, User.last_name).all()
-    return render_template("user.html", users=users)
-
-
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -62,6 +56,20 @@ def login():
             return render_template("login.html")
 
     return render_template("login.html")
+
+
+@app.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    flash("You have been logged out.", "info")
+    return redirect(url_for("home"))
+
+
+@app.route("/user")
+def user():
+    users = User.query.order_by(User.first_name, User.last_name).all()
+    return render_template("user.html", users=users)
 
 
 @app.route("/add_user", methods=["GET", "POST"])
