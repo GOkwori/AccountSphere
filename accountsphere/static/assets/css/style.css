@@ -116,6 +116,39 @@ body {
   border-radius: 5px;
 }
 
+.carousel img {
+  height: 60vh;
+  margin-top: 0.5%;
+}
+
+#section-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 2% 0;
+}
+
+.section_1 {
+  background-color: #fff;
+  backdrop-filter: blur(10px);
+  opacity: 0.9;
+  border-radius: 10px;
+  margin: 1%;
+  width: 40%;
+  height: 480px;
+  color: #3a405a;
+}
+
+.panel_2 {
+  background-color: #fff;
+  backdrop-filter: blur(10px);
+  opacity: 0.9;
+  border-radius: 10px;
+  margin: 1%;
+  color: #3a405a;
+  height: 480px;
+}
+
 .dashboard-content {
   background-color: #3a405a;
   color: #fff;
