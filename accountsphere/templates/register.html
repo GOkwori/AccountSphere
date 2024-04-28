@@ -1,55 +1,57 @@
 {% extends "base.html" %}
+
+{% block header %}
+
+{% endblock %}
+
 {% block content %}
 
 <div class="form-content container">
-    <h3 class="text-center">Create New User <i class="fa-regular fa-folder-open ms-2"></i></h3>
+    <h3 class="text-center">Registeration Form<i class="fa-solid fa-id-card ms-2"></i></i></h3>
     <br>
-    <form class="text-center" action="{{ url_for('add_user')}}" method="post">
+    <form class="text-center" action="{{ url_for('register')}}" method="post">
         <div class="row mb-3 ms-5">
             <label for="first_name" class="col-sm-2 col-form-label">First Name</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control" id="first_name" name="first_name" required>
+                <input type="text" class="form-control" id="first_name" name="first_name" required>
             </div>
         </div>
 
         <div class="row mb-3 ms-5">
             <label for="last_name" class="col-sm-2 col-form-label">Last Name</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control" id="last_name" name="last_name" required>
+                <input type="text" class="form-control" id="last_name" name="last_name" required>
             </div>
         </div>
 
         <div class="row mb-3 ms-5">
             <label for="username" class="col-sm-2 col-form-label">Username</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control" id="user_name" name="username" required>
+                <input type="text" class="form-control validate" id="user_name" name="username" required>
             </div>
         </div>
 
         <div class="row mb-3 ms-5">
             <label for="email" class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-7">
-              <input type="email" class="form-control" id="email" name="email" required>
+                <input type="email" class="form-control validate" id="email" name="email" required>
             </div>
         </div>
 
         <div class="row mb-3 ms-5">
-            <label for="role" class="col-sm-2 col-form-label">Role</label>
-            <div class="col-sm-4">
-              <select class="form-select form-control" name="role" id="role" required>
-                <option value="">--select--</option>
-                {% for group in groups %}
-                <option value="{{ group.name }}">{{ group.name }}</option>
-                {% endfor %}
-            </select>            
+            <label for="password" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-7">
+                <input type="password" class="form-control validate" id="password" name="password" required>
             </div>
         </div>
         <div class="row button-container">
             <div class="col-auto me-5">
-                <button type="submit" class="btn btn-primary">Create<i class="fa-solid fa-folder-plus ms-2"></i></button>
+                <button type="submit" class="btn btn-primary">Submit<i
+                        class="fa-solid fa-folder-plus ms-2"></i></button>
             </div>
             <div class="col-auto me-5">
-                <button type="button" class="btn btn-secondary">Cancel<i class="fa-solid fa-ban ms-2"></i></button>
+                <button type="button" class="btn btn-secondary" onclick="history.back();">Cancel<i
+                        class="fa-solid fa-ban ms-2"></i></button>
             </div>
         </div>
     </form>
