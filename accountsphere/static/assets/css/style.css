@@ -226,18 +226,26 @@ cursor: pointer;
   color: #3a405a;
 }
 
-
-
-
-
-
-
 .form-content {
-  background-color: #3a405a;
-  color: #fff;
+  background-color: #fff;
+  backdrop-filter: blur(10px);
+  color: #3a405a;
   padding: 20px;
   border-radius: 10px;
-  width: 80%;
+  margin: 7% auto;
+  width: 60%;
+  opacity: 0.9;
+}
+
+.login-content {
+  background-color: #fff;
+  backdrop-filter: blur(10px);
+  color: #3a405a;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 7% auto;
+  width: 40%;
+  opacity: 0.9;
 }
 
 form {
@@ -259,31 +267,72 @@ label {
   padding: 0 1%;
 }
 
+.table-responsive {
+  width: 20%;
+}
+
 .table {
   background-color: #fff;
-  color: #1a1a1a;
+  color: #3a405a;
+  border-radius: 10px;
 }
 
 .table i {
   color: #3a405a;
 }
 
-.modal-header {
-  background-color: #fff;
-  color: #3a405a;
-  font-weight: bold;
-}
-
 .modal-content {
   background-color: #3a405a;
+  color: #fff;
 }
 
+.modal-header,
 .modal-footer {
   background-color: #fff;
 }
 
+.modal-backdrop.show {
+  z-index: 1040;
+}
+
+.modal.show {
+  z-index: 1050;
+}
+
 footer p {
-  margin-top: 10px;
-  margin-bottom: 10px;
   font-size: x-small;
+}
+
+#footer-container {
+  padding: 1% 3% 0 0;
+}
+
+footer i {
+  font-size: large;
+  transition: ease-in-out 0.3s;
+}
+
+@keyframes rotate3d {
+  from {
+    transform: rotate3d(0, 1, 0, 0deg);
+  }
+
+  to {
+    transform: rotate3d(0, 1, 0, 360deg);
+  }
+}
+
+.list-inline-item {
+  perspective: 1000px;
+}
+
+.social-link {
+  display: inline-block;
+  animation: rotate3d 3s infinite linear;
+  transform-style: preserve-3d;
+  transform-origin: center;
+}
+
+.social-link:hover {
+  animation-play-state: paused;
 }
