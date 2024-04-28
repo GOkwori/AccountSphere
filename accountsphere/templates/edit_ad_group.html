@@ -5,46 +5,26 @@
     Update AD-Security Group <i class="fa-regular fa-folder-open ms-2"></i>
   </h3>
   <br />
-  <form
-    class="justify-content-center"
-    action="{{ url_for('edit_ad_group', group_id=group.id)}}"
-    method="post"
-  >
+  <form class="justify-content-center" action="{{ url_for('edit_ad_group', group_id=group.id)}}" method="post">
     <div class="row mb-3 ms-5">
       <label for="name" class="col-sm-2 col-form-label">Group Name</label>
       <div class="col-sm-7">
-        <input
-          type="text"
-          class="form-control"
-          id="name"
-          name="name"
-            value="{{ group.name }}"
-          required
-        />
+        <input type="text" class="form-control" id="name" name="name" value="{{ group.name }}" required />
       </div>
     </div>
 
     <div class="row mb-3 ms-5">
-      <label for="description" class="col-sm-2 col-form-label"
-        >Description</label
-      >
+      <label for="description" class="col-sm-2 col-form-label">Description</label>
       <div class="col-sm-7">
-        <textarea
-          id="description"
-          name="description"
-          class="form-control"
-          rows="4"
-          placeholder="Brief description of the group"
-            value="{{ group.description }}"
-          required
-        ></textarea>
+        <textarea id="description" name="description" class="form-control" rows="4"
+          placeholder="Brief description of the group" value="{{ group.description }}" required></textarea>
       </div>
     </div>
 
     <div class="row mb-3 ms-5">
       <label for="group_type" class="col-sm-2 col-form-label">Group Type</label>
       <div class="col-sm-7">
-        <select class="form-select" id="group_type" name="group_type" value="{{ group.group_type}}"  required>
+        <select class="form-select" id="group_type" name="group_type" value="{{ group.group_type}}" required>
           <option value="">--Select--</option>
           <option value="Security">Security</option>
           <option value="Distribution">Distribution</option>
@@ -52,12 +32,13 @@
       </div>
     </div>
     <div class="row button-container">
-        <div class="col-auto me-5">
-            <button type="submit" class="btn btn-primary">Update<i class="fa-solid fa-pen-to-square ms-2"></i></button>
-        </div>
-        <div class="col-auto me-5">
-            <button type="button" class="btn btn-secondary">Cancel<i class="fa-solid fa-ban ms-2"></i></button>
-        </div>
+      <div class="col-auto me-5">
+        <button type="submit" class="btn btn-primary">Update<i class="fa-solid fa-pen-to-square ms-2"></i></button>
+      </div>
+      <div class="col-auto me-5">
+        <button type="button" class="btn btn-secondary" onclick="history.back();">Cancel<i
+            class="fa-solid fa-ban ms-2"></i></button>
+      </div>
     </div>
   </form>
 </div>
