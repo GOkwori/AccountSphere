@@ -47,17 +47,19 @@ body {
 
 /* Offcanvas */
 #offcanvasScrolling {
-  background-color: #3a405a;
-  color: #fff;
+  background-color: #fff;
+  color: #3a405a;
   width: auto;
 }
 
 .btn-close-white {
-  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%)
-    contrast(103%);
-  width: 10px;
-  height: 10px;
-  background-size: 10px 10px;
+  filter: none !important;
+  /* Remove any existing filters */
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg fill="%233a405a" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M.293.293a1 1 0 0 1 1.414 0L8 6.586l6.293-6.293a1 1 0 0 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z"/></svg>');
+  /* Replace with your own SVG or adjust this one */
+  width: 16px;
+  /* Adjust size as needed */
+  height: 16px;
 }
 
 /* Offcanvas links */
@@ -71,9 +73,28 @@ body {
 }
 
 .offcanvas-body ul li a {
-  margin-top: 0;
-  margin-bottom: 5px;
-  padding-top: 0;
+  padding: 4px;
+  margin-bottom: 10px;
+}
+
+#active-nav.active {
+  background-color: #3a405a;
+  color: #fff;
+}
+
+.nav-link {
+  transition: background-color 0.3s ease;
+  /* Smooth transition for hover and active changes */
+}
+
+.nav-link.active:hover {
+  background-color: #fff;
+  color: #3a405a;
+}
+
+.offcanvas-body ul li a:hover {
+  background-color: #3a405a;
+  color: #fff;
 }
 
 /* Buttons */
