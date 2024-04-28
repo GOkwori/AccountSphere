@@ -149,6 +149,55 @@ body {
   height: 480px;
 }
 
+
+margin: 10px 0;
+border-color: #3a405a;
+/* Space above and below each card */
+}
+
+#card-container .card {
+background-color: #fff;
+color: #3a405a;
+}
+
+#card-container .card img {
+height: 8rem;
+}
+
+.card-body-bottom .btn {
+background-color: #3a405a;
+color: #fff;
+margin-bottom: 4px;
+}
+
+.card-body-bottom .btn:hover {
+background-color: #fff;
+color: #3a405a;
+}
+
+.news-panel {
+height: 400px;
+/* Set a fixed height */
+overflow-y: auto;
+/* Enable vertical scrolling */
+border: 1px solid #ccc;
+/* Add a border */
+margin: 20px;
+/* Add some margin around the panel */
+padding: 15px;
+/* Padding inside the panel */
+background-color: #f9f9f9;
+/* Light background for the panel */
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+border-radius: 5px;
+}
+
+.news-panel:hover {
+background-color: #f0f0f0;
+cursor: pointer;
+}
+
+
 .dashboard-content {
   background-color: #3a405a;
   color: #fff;
