@@ -31,17 +31,18 @@ body {
 
 /* Navbar */
 .navbar {
-  background-color: #3a405a;
-  color: #fff;
+  background-color: #fff;
+  color: #3a405a;
+  border-color: #3a405a;
 }
 
 /* Navbar links */
 .navbar a {
-  color: #fff;
+  color: #3a405a;
 }
 
 .navbar a:hover {
-  color: #fff;
+  color: #3a405a;
 }
 
 /* Offcanvas */
