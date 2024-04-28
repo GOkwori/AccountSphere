@@ -46,6 +46,24 @@ def user():
     return render_template("user.html", users=users)
 
 
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        username = request.form.get("username")
+        password = request.form.get("password")
+
+        user = User.query.filter_by(username=username).first()
+        if user and check_password_hash(user.password_hash, password):
+            login_user(user)
+            flash("Login successful!", "success")
+            return redirect(url_for("home"))
+        else:
+            flash("Invalid username or password.", "error")
+            return render_template("login.html")
+
+    return render_template("login.html")
+
+
 @app.route("/add_user", methods=["GET", "POST"])
 def add_user():
     groups = Group.query.all()
