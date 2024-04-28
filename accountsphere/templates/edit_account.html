@@ -9,96 +9,55 @@
     <div class="row mb-3 ms-5">
       <label for="first_name" class="col-sm-2 col-form-label">First Name</label>
       <div class="col-sm-7">
-        <input
-          type="text"
-          class="form-control"
-          id="first_name"
-          name="first_name"
-          value="{{ account.first_name }}"
-          required
-        />
+        <input type="text" class="form-control" id="first_name" name="first_name" value="{{ account.first_name }}"
+          required />
       </div>
     </div>
 
     <div class="row mb-3 ms-5">
       <label for="last_name" class="col-sm-2 col-form-label">Last Name</label>
       <div class="col-sm-7">
-        <input
-          type="text"
-          class="form-control"
-          id="last_name"
-          name="last_name"
-          value="{{ account.last_name }}"
-          required
-        />
+        <input type="text" class="form-control" id="last_name" name="last_name" value="{{ account.last_name }}"
+          required />
       </div>
     </div>
 
     <div class="row mb-3 ms-5">
       <label for="email" class="col-sm-2 col-form-label">Email</label>
       <div class="col-sm-7">
-        <input
-          type="email"
-          class="form-control"
-          id="email"
-          name="email"
-          value="{{ account.email }}"
-          required
-        />
+        <input type="email" class="form-control" id="email" name="email" value="{{ account.email }}" required />
       </div>
     </div>
 
     <div class="row mb-3 ms-5">
       <label for="phone_number" class="col-sm-2 col-form-label">Phone</label>
       <div class="col-sm-7">
-        <input
-          type="tel"
-          class="form-control"
-          id="phone_number"
-          name="phone_number"
-          value="{{ account.phone_number }}"
-          required
-        />
+        <input type="tel" class="form-control" id="phone_number" name="phone_number" value="{{ account.phone_number }}"
+          required />
       </div>
     </div>
 
     <div class="row mb-3 ms-5">
-      <label for="date_of_birth" class="col-sm-2 col-form-label"
-        >Date of Birth</label
-      >
+      <label for="date_of_birth" class="col-sm-2 col-form-label">Date of Birth</label>
       <div class="col-sm-3">
-        <input
-          type="date"
-          class="form-control"
-          id="date_of_birth"
-          name="date_of_birth"
-          value="{{ account.date_of_birth }}"
-          required
-        />
+        <input type="date" class="form-control" id="date_of_birth" name="date_of_birth"
+          value="{{ account.date_of_birth }}" required />
       </div>
     </div>
 
     <div class="row mb-3 ms-5">
-      <label for="account_type" class="col-sm-2 col-form-label"
-        >Account Type</label
-      >
+      <label for="account_type" class="col-sm-2 col-form-label">Account Type</label>
       <div class="col-sm-3">
-        <select
-          class="form-select form-control"
-          name="account_type"
-          id="account_type"
-          onchange="updateProductID()"
-         value = "{{ account.account_type }}"
-          required
-        >
+        <select class="form-select form-control" name="account_type" id="account_type" onchange="updateProductID()"
+          value="{{ account.account_type }}" required>
           required >
           <option value="">--select--</option>
           {% for product in products %}
-              {% if product.id == account.product_id %}
-                  <option value="{{ product.id }}" selected>{{ product.name }}</option>
-              {% else %}
-                  <option value="{{ product.id }}">{{ product.name }}</option>
-              {% endif %}
+          {% if product.id == account.product_id %}
+          <option value="{{ product.id }}" selected>{{ product.name }}</option>
+          {% else %}
+          <option value="{{ product.id }}">{{ product.name }}</option>
+          {% endif %}
           {% endfor %}
         </select>
       </div>
@@ -107,21 +66,12 @@
     <div class="row mb-3 ms-5">
       <label for="product_id" class="col-sm-2 col-form-label">Product ID</label>
       <div class="col-sm-3">
-        <input
-          type="text"
-          class="form-control"
-          id="product_id"
-          name="product_id"
-          required
-          readonly
-        />
+        <input type="text" class="form-control" id="product_id" name="product_id" required readonly />
       </div>
     </div>
 
     <div class="row mb-3 ms-5">
-      <label for="balance" class="col-sm-2 col-form-label"
-        >Opening Balance</label
-      >
+      <label for="balance" class="col-sm-2 col-form-label">Opening Balance</label>
       <div class="col-sm-2">
         <select class="form-select" id="currency" name="currency" value="{{ account.currency}}">
           <option value="">--select--</option>
@@ -131,16 +81,8 @@
         </select>
       </div>
       <div class="col-sm-3">
-        <input
-          type="number"
-          class="form-control"
-          id="balance"
-          name="balance"
-          placeholder="Amount"
-          value="{{ account.balance }}"
-          step="0.01"
-          min="0"
-        />
+        <input type="number" class="form-control" id="balance" name="balance" placeholder="Amount"
+          value="{{ account.balance }}" step="0.01" min="0" />
       </div>
     </div>
 
@@ -148,28 +90,20 @@
       <div class="col-sm-6">
         <div class="form-check">
           <input type="checkbox" class="form-check-input" id="terms" required />
-          <label class="form-check-label" for="terms"
-            >I confirm that all details have been verified.</label
-          >
+          <label class="form-check-label" for="terms">I confirm that all details have been verified.</label>
         </div>
       </div>
     </div>
 
     <div class="row button-container">
       <div class="col-auto me-5">
-          <button type="submit" class="btn btn-primary">Update<i class="fa-solid fa-pen-to-square ms-2"></i></button>
+        <button type="submit" class="btn btn-primary">Update<i class="fa-solid fa-pen-to-square ms-2"></i></button>
       </div>
       <div class="col-auto me-5">
-          <button type="button" class="btn btn-secondary">Cancel<i class="fa-solid fa-ban ms-2"></i></button>
+        <button type="button" class="btn btn-secondary" onclick="history.back();">Cancel<i
+            class="fa-solid fa-ban ms-2"></i></button>
       </div>
-  </div>
-    <script>
-      function updateProductID() {
-        var accountTypeSelect = document.getElementById("account_type");
-        var productIdInput = document.getElementById("product_id");
-        productIdInput.value = accountTypeSelect.value; // Set the product ID input to the selected option's value
-      }
-    </script>
+    </div>
   </form>
 </div>
 
