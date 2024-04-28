@@ -267,6 +267,8 @@ label {
 
 .table-container {
   padding: 0 1%;
+  border-radius: 10px;
+  border-color: #3a405a;
 }
 
 .table-responsive {
@@ -276,7 +278,6 @@ label {
 .table {
   background-color: #fff;
   color: #3a405a;
-  border-radius: 10px;
 }
 
 .table i {

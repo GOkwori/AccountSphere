@@ -284,16 +284,16 @@ def delete_account(account_id):
 @app.route('/account_search')
 def account_search():
     query = request.args.get('query', '')
-    accounts = Account.query.options(joinedload(Account.product)).filter(
+    accounts = Account.query.filter(
         (Account.first_name.ilike(f'%{query}%')) |
         (Account.last_name.ilike(f'%{query}%')) |
         (Account.email.ilike(f'%{query}%')) |
-        (Account.phone_number.ilike(f'%{query}%'))
+        (Account.phone_number.ilike(f'%{query}%')) |
+        (Account.account_type.ilike(f'%{query}%')) |
+        (Account.currency.ilike(f'%{query}%'))
     ).all()
-    # Add product names to the account objects for easier access in the template
-    for account in accounts:
-        account.product_name = account.product.name if account.product else 'No Product'
     return render_template('account.html', accounts=accounts)
+
 
 
 @app.route("/ad_group")
