@@ -1,9 +1,22 @@
 {% extends "base.html" %}
+
 {% block content %}
 
 <div class="form-content container">
-    <h3 class="text-center">Registeration Form<i class="fa-solid fa-id-card ms-2"></i></i></h3>
+    <h3 class="text-center">Registration Form <i class="fa-solid fa-id-card ms-2"></i></h3>
     <br>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div id="flash-messages">
+        {% for category, message in messages %}
+        <div class="flash-message" data-category="{{ category }}" data-message="{{ message }}"></div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    <!-- Registration form -->
     <form class="text-center" action="{{ url_for('register')}}" method="post">
         <div class="row mb-3 ms-5">
             <label for="first_name" class="col-sm-2 col-form-label">First Name</label>
@@ -20,10 +33,9 @@
         </div>
 
         <div class="row mb-3 ms-5">
-            <label for="username" class="col-sm-2 col-form-label" minlength="5"
-            maxlength="15">Username</label>
+            <label for="username" class="col-sm-2 col-form-label">Username</label>
             <div class="col-sm-7">
-                <input type="text" class="form-control" id="user_name" name="username" required>
+                <input type="text" class="form-control" id="username" name="username" required minlength="5" maxlength="15">
             </div>
         </div>
 
@@ -37,8 +49,7 @@
         <div class="row mb-3 ms-5">
             <label for="password" class="col-sm-2 col-form-label">Password</label>
             <div class="col-sm-7">
-                <input type="password" class="form-control validate" id="password" name="password" minlength="8"
-                maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
+                <input type="password" class="form-control" id="password" name="password" required minlength="8" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$">
             </div>
         </div>
 
@@ -53,17 +64,22 @@
                 </select>
             </div>
         </div>
+
         <div class="row button-container">
             <div class="col-auto me-5">
-                <button type="submit" class="btn btn-primary">Register<i
-                        class="fa-solid fa-folder-plus ms-2"></i></button>
+                <button type="submit" class="btn btn-primary">Register <i class="fa-solid fa-folder-plus ms-2"></i></button>
             </div>
             <div class="col-auto me-5">
-                <a  href="{{ url_for('login')}}" role="button" class="btn btn-secondary">Cancel<i
-                        class="fa-solid fa-ban ms-2"></i></a>
+                <a href="{{ url_for('login')}}" class="btn btn-secondary">Cancel <i class="fa-solid fa-ban ms-2"></i></a>
             </div>
         </div>
     </form>
+    {% if success %}
+    <script>
+        alert('Registration successful! Redirecting to login...');
+        window.location.href = "{{ url_for('login') }}";
+    </script>
+    {% endif %}
 </div>
 
 {% endblock %}

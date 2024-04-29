@@ -1,6 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
 
+<!-- Display Flash Messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+    {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+{% endif %}
+{% endwith %}
+
 <div class="form-content container">
     <h3 class="text-center">Create New User <i class="fa-regular fa-folder-open ms-2"></i></h3>
     <br>
@@ -20,7 +32,8 @@
         </div>
 
         <div class="row mb-3 ms-5">
-            <label for="username" class="col-sm-2 col-form-label">Username</label>
+            <label for="username" class="col-sm-2 col-form-label" minlength="5"
+            maxlength="15">Username</label>
             <div class="col-sm-7">
                 <input type="text" class="form-control" id="user_name" name="username" required>
             </div>
@@ -30,6 +43,14 @@
             <label for="email" class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-7">
                 <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+        </div>
+
+        <div class="row mb-3 ms-5">
+            <label for="password" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-7">
+                <input type="password" class="form-control validate" id="password" name="password" minlength="8"
+                maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
             </div>
         </div>
 
