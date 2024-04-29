@@ -245,6 +245,15 @@ def add_account():
         account_type = request.form.get('account_type')
         balance = request.form.get('balance') or 0.00
         currency = request.form.get('currency')
+
+        if not first_name or not last_name or not email or not product_id or not account_type or not currency:
+            flash('All fields are required.', 'error')
+            return render_template('add_account.html', products=products)
+        
+        existing_account = Account.query.filter_by(email=email).first()
+        if existing_account:
+            flash('An account with this email already exists.', 'error')
+            return render_template('add_account.html', products=products)
         
         # Create new Account instance
         account = Account(
@@ -262,15 +271,10 @@ def add_account():
         
         # Add to the database
         db.session.add(account)
-        try:
-            db.session.commit()
-            flash('Account created successfully!', 'success')
-        except Exception as e:
-            db.session.rollback()
-            flash(f'Error creating account: {e}', 'error')
-        
-        return redirect(url_for('account'))
-
+        db.session.commit()
+        flash('Account created successfully!', 'success')
+        return render_template('add_account.html', products=products, success=True)
+    
     return render_template('add_account.html', products=products)
 
 
@@ -407,10 +411,22 @@ def add_news():
     if request.method == "POST":
         headline = request.form.get("headline")
         description = request.form.get("description")
+
+        if not headline or not description:
+            flash("All fields are required.", "error")
+            return render_template("add_news.html")
+        
+        existing_news_item = NewsItem.query.filter_by(headline=headline).first()
+        if existing_news_item:
+            flash("A news item with this headline already exists.", "error")
+            return render_template("add_news.html")
+        
         news_item = NewsItem(headline=headline, description=description)
         db.session.add(news_item)
         db.session.commit()
-        return redirect(url_for("news"))
+        flash("News item created successfully!", "success")
+        return render_template("add_news.html", success=True)
+    
     return render_template("add_news.html")
 
 
