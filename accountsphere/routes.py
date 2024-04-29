@@ -128,10 +128,14 @@ def edit_user(user_id):
 def delete_user(user_id):
     user = User.query.get_or_404(user_id)
     db.session.delete(user)
-    db.session.commit()
-    flash("User deleted successfully!", "success")
+    try:
+        db.session.commit()
+        flash("User deleted successfully!", "success")
+    except Exception as e:
+        db.session.rollback()
+        flash(f"Error deleting user: {str(e)}", "error")
     return redirect(url_for("user"))
-
+  
 
 @app.route("/user_search")
 def user_search():
@@ -196,8 +200,12 @@ def edit_product(product_id):
 def delete_product(product_id):
     product = Product.query.get_or_404(product_id)
     db.session.delete(product)
-    db.session.commit()
-    flash("Product deleted successfully!", "success")
+    try:
+        db.session.commit()
+        flash("Product deleted successfully!", "success")
+    except Exception as e:
+        db.session.rollback()
+        flash(f"Error deleting product: {str(e)}", "error")
     return redirect(url_for("product"))
 
 
@@ -294,8 +302,12 @@ def edit_account(account_id):
 def delete_account(account_id):
     account = Account.query.get_or_404(account_id)
     db.session.delete(account)
-    db.session.commit()
-    flash('Account deleted successfully!', 'success')
+    try:
+        db.session.commit()
+        flash('Account deleted successfully!', 'success')
+    except Exception as e:
+        db.session.rollback()
+        flash(f'Error deleting account: {str(e)}', 'error')
     return redirect(url_for('account'))
 
 
@@ -320,16 +332,28 @@ def ad_group():
     return render_template("ad_group.html", ad_groups=ad_groups)
 
 
-@app.route("/add_ad_group", methods=["GET", "POST"])  # Allow both GET and POST
+@app.route("/add_ad_group", methods=["GET", "POST"])
 def add_ad_group():
     if request.method == "POST":
         name = request.form.get("name")
         description = request.form.get("description")
         group_type = request.form.get("group_type")
-        group = Group(name=name, description=description, group_type=group_type)
-        db.session.add(group)
+
+        if not name or not description or not group_type:
+            flash("All fields are required.", "error")
+            return render_template("add_ad_group.html")
+
+        existing_group = Group.query.filter_by(name=name).first()
+        if existing_group:
+            flash("A group with this name already exists.", "error")
+            return render_template("add_ad_group.html")
+
+        new_group = Group(name=name, description=description, group_type=group_type)
+        db.session.add(new_group)
         db.session.commit()
-        return redirect(url_for("ad_group"))
+        flash("AD group created successfully!", "success")
+        return render_template("add_ad_group.html", success=True)  # Note the 'success=True'
+
     return render_template("add_ad_group.html")
 
 
@@ -350,8 +374,14 @@ def edit_ad_group(group_id):
 def delete_ad_group(group_id):
     group = Group.query.get_or_404(group_id)
     db.session.delete(group)
-    db.session.commit()
-    flash("Group deleted successfully!", "success")
+    try:
+        db.session.commit()
+        flash("Group deleted successfully!", "success")
+
+    except Exception as e:
+        db.session.rollback()
+        flash(f"Error deleting group: {str(e)}", "error")
+
     return redirect(url_for("ad_group"))
 
 
@@ -401,7 +431,14 @@ def edit_news(news_id):
 def delete_news(news_id):
     news_item = NewsItem.query.get_or_404(news_id)
     db.session.delete(news_item)
-    db.session.commit()
+
+    try:
+        db.session.commit()
+        flash("News item deleted successfully!", "success")
+    except Exception as e:
+        db.session.rollback()
+        flash(f"Error deleting news item: {str(e)}", "error")
+
     return redirect(url_for("news"))
 
 

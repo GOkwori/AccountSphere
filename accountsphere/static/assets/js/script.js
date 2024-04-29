@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
   console.log("Document loaded and script starting...");
 
-  // Function to display alerts for each message
-  function displayFlashMessages() {
+  // Function to handle flash messages
+  function handleFlashMessages() {
     const flashMessagesContainer = document.getElementById("flash-messages");
     if (flashMessagesContainer) {
       const messages =
@@ -12,7 +12,13 @@ document.addEventListener("DOMContentLoaded", function () {
         messages.forEach((messageDiv) => {
           const message = messageDiv.getAttribute("data-message");
           const category = messageDiv.getAttribute("data-category");
-          alert(`${category.toUpperCase()}: ${message}`); // Display an alert for each message
+          setTimeout(() => {
+            alert(`${category.toUpperCase()}: ${message}`);
+            // Check for redirection attribute and redirect if present
+            if (messageDiv.dataset.redirect) {
+              window.location.href = messageDiv.dataset.redirect;
+            }
+          }, 500); // Delay to ensure users see the message
         });
       } else {
         console.log("No flash messages found.");
@@ -22,8 +28,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Call the function to display flash messages
-  displayFlashMessages();
+  // Call the function to handle and display flash messages
+  handleFlashMessages();
 
   // Remaining event listeners and functions for other features
   const accountTypeSelect = document.getElementById("account_type");
@@ -58,23 +64,5 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   } else {
     console.log("News panel not found for smooth scrolling.");
-  }
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-  const success = {{ success | tojson }};
-  if (success) {
-      alert('Product created successfully!');
-      window.location.href = "{{ url_for('product_dashboard') }}"; // Adjust this URL as necessary
-  }
-
-  const flashMessagesContainer = document.getElementById("flash-messages");
-  if (flashMessagesContainer) {
-      const messages = flashMessagesContainer.querySelectorAll(".flash-message");
-      messages.forEach((messageDiv) => {
-          const message = messageDiv.getAttribute("data-message");
-          const category = messageDiv.getAttribute("data-category");
-          alert(`${category.toUpperCase()}: ${message}`);
-      });
   }
 });
