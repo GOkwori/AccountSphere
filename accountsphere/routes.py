@@ -112,16 +112,19 @@ def add_user():
 @app.route("/edit_user/<int:user_id>", methods=["GET", "POST"])
 def edit_user(user_id):
     user = User.query.get_or_404(user_id)
+    groups = Group.query.all()
+    
     if request.method == "POST":
-        user.username = request.form.get("username")
-        user.email = request.form.get("email")
         user.first_name = request.form.get("first_name")
         user.last_name = request.form.get("last_name")
+        user.username = request.form.get("username")
+        user.email = request.form.get("email")
         user.role = request.form.get("role")
         db.session.commit()
         flash("User updated successfully!", "success")
         return redirect(url_for("user"))
-    return render_template("edit_user.html", user=user)
+    
+    return render_template("edit_user.html", user=user, groups=groups)
 
 
 @app.route("/delete_user/<int:user_id>")

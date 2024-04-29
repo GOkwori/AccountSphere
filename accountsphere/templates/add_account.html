@@ -103,7 +103,7 @@
           --
         >
           required >
-          <option value="" disabled>--select--</option>
+          <option value="">--select--</option>
           {% for product in products %}
           <option value="{{ product.id }}">{{ product.name }}</option>
           {% endfor %}
@@ -131,7 +131,7 @@
       >
       <div class="col-sm-2">
         <select class="form-select" id="currency" name="currency">
-          <option value="">--select--</option>
+          <option value="" disabled>--select--</option>
           <option value="USD">USD</option>
           <option value="EUR">EUR</option>
           <option value="GBP">GBP</option>
