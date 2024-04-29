@@ -5,6 +5,15 @@
     Update Product <i class="fa-regular fa-folder-open ms-2"></i>
   </h3>
   <br />
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div id="flash-messages">
+        {% for category, message in messages %}
+        <div class="flash-message" data-category="{{ category }}" data-message="{{ message }}"></div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
   <form class="text-center" action="{{ url_for('edit_product', product_id=product.id) }}" method="post">
     <div class="row mb-3 ms-5">
       <label for="name" class="col-sm-3 col-form-label">Product Name</label>
@@ -38,6 +47,12 @@
       </div>
     </div>
   </form>
+  {% if success %}
+  <script>
+      alert('Product updated successfully! Redirecting to Accounts Dashboard...');
+      window.location.href = "{{ url_for('product') }}";
+  </script>
+  {% endif %}
 </div>
 
 {% endblock %}

@@ -120,9 +120,11 @@ def edit_user(user_id):
         user.username = request.form.get("username")
         user.email = request.form.get("email")
         user.role = request.form.get("role")
+
+        db.session.add(user)
         db.session.commit()
         flash("User updated successfully!", "success")
-        return redirect(url_for("user"))
+        return render_template("edit_user.html", user=user, groups=groups, success=True)
     
     return render_template("edit_user.html", user=user, groups=groups)
 
@@ -193,10 +195,12 @@ def edit_product(product_id):
         product.name = request.form.get("name")
         product.description = request.form.get("description")
         product.type = request.form.get("type")
+
+        db.session.add(product)
         db.session.commit()
         flash("Product updated successfully!", "success")
-        return redirect(url_for("product"))
-    return render_template("edit_product.html", product=product)
+        return redirect(url_for("product", success=True))
+    return render_template("edit_product.html", product=product )
 
 
 @app.route("/delete_product/<int:product_id>")
@@ -298,9 +302,10 @@ def edit_account(account_id):
         account.currency = request.form.get('currency')
         
         # Update the account
+        db.session.add(account)
         db.session.commit()
         flash('Account updated successfully!', 'success')
-        return redirect(url_for('account'))
+        return redirect(url_for('account', success=True))
     
     return render_template('edit_account.html', account=account, products=products)
 
@@ -371,9 +376,11 @@ def edit_ad_group(group_id):
         group.name = request.form.get("name")
         group.description = request.form.get("description")
         group.group_type = request.form.get("group_type")
+
+        db.session.add(group)
         db.session.commit()
         flash("Group updated successfully!", "success")
-        return redirect(url_for("ad_group"))
+        return redirect(url_for("ad_group", success=True))
     return render_template("edit_ad_group.html", group=group)
 
 
@@ -439,8 +446,11 @@ def edit_news(news_id):
     if request.method == "POST":
         news_item.headline = request.form.get("headline")
         news_item.description = request.form.get("description")
+        
+        db.session.add(news_item)
         db.session.commit()
-        return redirect(url_for("news"))
+        flash("News item updated successfully!", "success")
+        return redirect(url_for("news", success=True))
 
     news_items = NewsItem.query.all()  # This will fetch all news items for listing
     return render_template("edit_news.html", news_item=news_item, news_items=news_items)
