@@ -159,20 +159,23 @@ def add_product():
         description = request.form.get("description")
         product_type = request.form.get("type")
 
-        if not name or not product_type:  # Validate required fields
-            flash("Product name and type are required.", "error")
+        existing_product = Product.query.filter((Product.name == name) | (Product.description == description)).first()
+        if existing_product:
+            flash("This product name or description already exists.", "error")
             return render_template("add_product.html")
 
-        product = Product(name=name, description=description, type=product_type)
-        db.session.add(product)
+        new_product = Product(name=name, description=description, type=product_type)
+        db.session.add(new_product)
         try:
             db.session.commit()
-            flash("Product added successfully!", "success")
-            return redirect(url_for("product"))
+            flash("Product created successfully!", "success")
+            # Render the same page with a success flag
+            return render_template("add_product.html", success=True)
         except Exception as e:
             db.session.rollback()
-            flash("Error adding product: " + str(e), "error")
+            flash(f"Error adding product: {str(e)}", "error")
             return render_template("add_product.html")
+
     return render_template("add_product.html")
 
 

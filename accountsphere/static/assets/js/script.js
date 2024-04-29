@@ -60,3 +60,21 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("News panel not found for smooth scrolling.");
   }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const success = {{ success | tojson }};
+  if (success) {
+      alert('Product created successfully!');
+      window.location.href = "{{ url_for('product_dashboard') }}"; // Adjust this URL as necessary
+  }
+
+  const flashMessagesContainer = document.getElementById("flash-messages");
+  if (flashMessagesContainer) {
+      const messages = flashMessagesContainer.querySelectorAll(".flash-message");
+      messages.forEach((messageDiv) => {
+          const message = messageDiv.getAttribute("data-message");
+          const category = messageDiv.getAttribute("data-category");
+          alert(`${category.toUpperCase()}: ${message}`);
+      });
+  }
+});
