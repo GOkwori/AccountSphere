@@ -57,7 +57,7 @@
             <label for="role" class="col-sm-2 col-form-label">Role</label>
             <div class="col-sm-4">
                 <select class="form-select form-control" name="role" id="role" required>
-                    <option value="">--select--</option>
+                    <option value="" disabled>--select--</option>
                     {% for group in groups %}
                     <option value="{{ group.name }}">{{ group.name }}</option>
                     {% endfor %}

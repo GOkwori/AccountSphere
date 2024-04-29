@@ -103,7 +103,7 @@
           --
         >
           required >
-          <option value="">--select--</option>
+          <option value="" disabled>--select--</option>
           {% for product in products %}
           <option value="{{ product.id }}">{{ product.name }}</option>
           {% endfor %}

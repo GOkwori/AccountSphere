@@ -24,7 +24,7 @@
         <div class="row mb-3 ms-5">
             <label for="description" class="col-sm-2 col-form-label">Description</label>
             <div class="col-sm-7">
-                <textarea id="description" name="description" class="form-control" rows="4"
+                <textarea id="description" name="description" class="form-control validate" rows="4"
                     placeholder="Brief description of the group" required></textarea>
             </div>
         </div>
@@ -33,7 +33,7 @@
             <label for="group_type" class="col-sm-2 col-form-label">Group Type</label>
             <div class="col-sm-7">
                 <select class="form-select" id="group_type" name="group_type" required>
-                    <option value="">--Select--</option>
+                    <option value="" disabled>--Select--</option>
                     <option value="Security">Security</option>
                     <option value="Distribution">Distribution</option>
                 </select>
