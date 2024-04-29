@@ -73,8 +73,8 @@
     <div class="row mb-3 ms-5">
       <label for="balance" class="col-sm-2 col-form-label">Opening Balance</label>
       <div class="col-sm-2">
-        <select class="form-select" id="currency" name="currency" value="{{ account.currency}}" required>
-          <option value="">--select--</option>
+        <select class="form-select validate" id="currency" name="currency" value="{{ account.currency}}" required>
+          <option value="" disabled>--select--</option>
           <option value="USD">USD</option>
           <option value="EUR">EUR</option>
           <option value="GBP">GBP</option>
