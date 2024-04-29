@@ -80,35 +80,31 @@ def user():
 @app.route("/add_user", methods=["GET", "POST"])
 def add_user():
     groups = Group.query.all()
+
     if request.method == "POST":
         username = request.form.get("username")
         email = request.form.get("email")
-        first_name = request.form.get("first_name")
-        last_name = request.form.get("last_name")
-        role = request.form.get("role")
 
-        # Check if all required fields are filled
-        if not all([username, email, first_name, last_name]):
-            flash("All fields are required.", "error")
+        if User.query.filter_by(username=username).first():
+            flash("Username already exists.", "error")
+            return render_template("add_user.html", groups=groups)
+        if User.query.filter_by(email=email).first():
+            flash("Email already exists.", "error")
             return render_template("add_user.html", groups=groups)
 
-        # Check if username or email already exists
-        existing_user = User.query.filter((User.username == username) | (User.email == email)).first()
-        if existing_user:
-            flash("Username or email already exists.", "error")
-            return render_template("add_user.html", groups=groups)
-
-        # Create and add the new user if no duplicates found
-        new_user = User(username=username, email=email, first_name=first_name, last_name=last_name, role=role)
+        new_user = User(
+            first_name=request.form.get("first_name"),
+            last_name=request.form.get("last_name"),
+            username=username,
+            email=email,
+            password_hash=generate_password_hash(request.form.get("password")),
+            role=request.form.get("role")
+        )
         db.session.add(new_user)
-        try:
-            db.session.commit()
-            flash("User added successfully!", "success")
-            return redirect(url_for("user"))
-        except Exception as e:
-            db.session.rollback()
-            flash(f"Error adding user: {str(e)}", "error")
-            return render_template("add_user.html", groups=groups)
+        db.session.commit()
+        
+        flash("User created successfully! You will be redirected to the Users Dashboard.", "success")
+        return render_template("add_user.html", groups=groups, success=True)
 
     return render_template("add_user.html", groups=groups)
 
