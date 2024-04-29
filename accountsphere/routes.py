@@ -1,10 +1,10 @@
-from flask import render_template, request, redirect, url_for, flash
+from flask import render_template, request, redirect, url_for, flash, session
 from werkzeug.security import generate_password_hash, check_password_hash
 from accountsphere import app, db
 from accountsphere.models import User, Group, Product, Account, NewsItem
 from sqlalchemy.orm import joinedload
 from datetime import datetime
-from flask_login import login_user, logout_user, current_user, login_required
+from flask_login import login_user, logout_user, login_required
 
 
 @app.route("/")
@@ -15,29 +15,39 @@ def home():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    groups = Group.query.all()  # Assuming you're using groups in your form
     if request.method == "POST":
-        first_name = request.form.get("first_name")
-        last_name = request.form.get("last_name")
         username = request.form.get("username")
         email = request.form.get("email")
-        password = request.form.get("password")
+        first_name = request.form.get("first_name")
+        last_name = request.form.get("last_name")
+        role = request.form.get("role")
 
-        if not all([first_name, last_name, username, email, password]):
+        # Check if all fields are filled
+        if not all([username, email, first_name, last_name]):
             flash("All fields are required.", "error")
-            return render_template("register.html")
+            return render_template("register.html", groups=groups)
 
+        # Check if the username or email already exists
         existing_user = User.query.filter((User.username == username) | (User.email == email)).first()
         if existing_user:
             flash("Username or email already exists.", "error")
-            return render_template("register.html")
+            return render_template("register.html", groups=groups)
 
-        hashed_password = generate_password_hash(password, method='sha256')
-        user = User(first_name=first_name, last_name=last_name, username=username, email=email, password_hash=hashed_password, role='User')
-        db.session.add(user)
-        db.session.commit()
-        flash("User registered successfully!", "success")
-        return redirect(url_for("login"))
-    return render_template("register.html")
+        # Create new user if no duplicates found
+        new_user = User(username=username, email=email, first_name=first_name, last_name=last_name, role=role)
+        db.session.add(new_user)
+        try:
+            db.session.commit()
+            flash("User added successfully!", "success")
+            return redirect(url_for("home"))
+        except Exception as e:
+            db.session.rollback()
+            flash(f"Error adding user: {str(e)}", "error")
+            return render_template("register.html", groups=groups)
+
+    return render_template("register.html", groups=groups)
+
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -82,15 +92,29 @@ def add_user():
         last_name = request.form.get("last_name")
         role = request.form.get("role")
 
+        # Check if all required fields are filled
         if not all([username, email, first_name, last_name]):
             flash("All fields are required.", "error")
             return render_template("add_user.html", groups=groups)
 
-        user = User(username=username, email=email, first_name=first_name, last_name=last_name, role=role)
-        db.session.add(user)
-        db.session.commit()
-        flash("User added successfully!", "success")
-        return redirect(url_for("user"))
+        # Check if username or email already exists
+        existing_user = User.query.filter((User.username == username) | (User.email == email)).first()
+        if existing_user:
+            flash("Username or email already exists.", "error")
+            return render_template("add_user.html", groups=groups)
+
+        # Create and add the new user if no duplicates found
+        new_user = User(username=username, email=email, first_name=first_name, last_name=last_name, role=role)
+        db.session.add(new_user)
+        try:
+            db.session.commit()
+            flash("User added successfully!", "success")
+            return redirect(url_for("user"))
+        except Exception as e:
+            db.session.rollback()
+            flash(f"Error adding user: {str(e)}", "error")
+            return render_template("add_user.html", groups=groups)
+
     return render_template("add_user.html", groups=groups)
 
 
@@ -293,7 +317,6 @@ def account_search():
         (Account.currency.ilike(f'%{query}%'))
     ).all()
     return render_template('account.html', accounts=accounts)
-
 
 
 @app.route("/ad_group")

@@ -182,24 +182,17 @@ body {
 }
 
 .news-panel {
-  height: 400px;
-  /* Set a fixed height */
+  height: 450px;
   overflow-y: auto;
-  /* Enable vertical scrolling */
-  border: 1px solid #ccc;
-  /* Add a border */
+  border: 1px solid #fff;
   margin: 20px;
-  /* Add some margin around the panel */
   padding: 15px;
-  /* Padding inside the panel */
-  background-color: #f9f9f9;
-  /* Light background for the panel */
+  background-color: #3a405a;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
 }
 
 .news-panel:hover {
-  background-color: #f0f0f0;
   cursor: pointer;
 }
 

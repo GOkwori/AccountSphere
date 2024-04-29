@@ -1,9 +1,4 @@
 {% extends "base.html" %}
-
-{% block header %}
-
-{% endblock %}
-
 {% block content %}
 
 <div class="form-content container">
@@ -25,33 +20,47 @@
         </div>
 
         <div class="row mb-3 ms-5">
-            <label for="username" class="col-sm-2 col-form-label">Username</label>
+            <label for="username" class="col-sm-2 col-form-label" minlength="5"
+            maxlength="15">Username</label>
             <div class="col-sm-7">
-                <input type="text" class="form-control validate" id="user_name" name="username" required>
+                <input type="text" class="form-control" id="user_name" name="username" required>
             </div>
         </div>
 
         <div class="row mb-3 ms-5">
             <label for="email" class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-7">
-                <input type="email" class="form-control validate" id="email" name="email" required>
+                <input type="email" class="form-control" id="email" name="email" required>
             </div>
         </div>
 
         <div class="row mb-3 ms-5">
             <label for="password" class="col-sm-2 col-form-label">Password</label>
             <div class="col-sm-7">
-                <input type="password" class="form-control validate" id="password" name="password" required>
+                <input type="password" class="form-control validate" id="password" name="password" minlength="8"
+                maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
+            </div>
+        </div>
+
+        <div class="row mb-3 ms-5">
+            <label for="role" class="col-sm-2 col-form-label">Role</label>
+            <div class="col-sm-4">
+                <select class="form-select form-control" name="role" id="role" required>
+                    <option value="">--select--</option>
+                    {% for group in groups %}
+                    <option value="{{ group.name }}">{{ group.name }}</option>
+                    {% endfor %}
+                </select>
             </div>
         </div>
         <div class="row button-container">
             <div class="col-auto me-5">
-                <button type="submit" class="btn btn-primary">Submit<i
+                <button type="submit" class="btn btn-primary">Register<i
                         class="fa-solid fa-folder-plus ms-2"></i></button>
             </div>
             <div class="col-auto me-5">
-                <button type="button" class="btn btn-secondary" onclick="history.back();">Cancel<i
-                        class="fa-solid fa-ban ms-2"></i></button>
+                <a  href="{{ url_for('login')}}" role="button" class="btn btn-secondary">Cancel<i
+                        class="fa-solid fa-ban ms-2"></i></a>
             </div>
         </div>
     </form>
