@@ -4,15 +4,6 @@
 <div class="form-content container">
     <h3 class="text-center ms-5">Create AD-Security Group <i class="fa-regular fa-folder-open ms-2"></i></h3>
     <br>
-    {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-    <div id="flash-messages">
-        {% for category, message in messages %}
-        <div class="flash-message" data-category="{{ category }}" data-message="{{ message }}"></div>
-        {% endfor %}
-    </div>
-    {% endif %}
-    {% endwith %}
     <form class="justify-content-center" action="{{ url_for('add_ad_group')}}" method="post">
         <div class="row mb-3 ms-5">
             <label for="name" class="col-sm-2 col-form-label">Group Name</label>
@@ -50,13 +41,6 @@
             </div>
         </div>
     </form>
-    {% if success %}
-    <script>
-        alert('AD Group created successfully! Redirecting to AD Group Dashboard...');
-        window.location.href = "{{ url_for('ad_group') }}";
-    </script>
-    {% endif %}
-
 </div>
 
 {% endblock %}

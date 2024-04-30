@@ -115,6 +115,19 @@
                     </li>
                 </ul>
             </div>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div id="flash-messages">
+        {% for category, message in messages %}
+        <div class="flash-message" data-category="{{ category }}" data-message="{{ message }}"></div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+
+
+
             <footer>
                 <div class="container-fluid justify-content-start ms-2">
                     <p>Copyright &copy; 2024 AccountSphere</p>
