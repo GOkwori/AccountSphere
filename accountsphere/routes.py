@@ -3,11 +3,11 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from accountsphere import app, db
 from accountsphere.models import User, Group, Product, Account, NewsItem
 from sqlalchemy.orm import joinedload
-from datetime import datetime
 from flask_login import login_user, logout_user, login_required
 
 
 @app.route("/")
+@login_required
 def home():
     news_items = NewsItem.query.all()
     return render_template('index.html', news_items=news_items)
@@ -50,17 +50,15 @@ def login():
     if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
-
         user = User.query.filter_by(username=username).first()
         if user and check_password_hash(user.password_hash, password):
-            login_user(user)
-            flash("Login successful!", "success")
-            return redirect(url_for("home"))
+            login_user(user)  # Log the user in
+            flash('Login successful!', 'success')
+            return redirect(url_for('home'))
         else:
-            flash("Invalid username or password.", "error")
-            return render_template("login.html")
-
+            flash('Invalid username or password.', 'error')
     return render_template("login.html")
+
 
 
 @app.route("/logout")
@@ -72,6 +70,7 @@ def logout():
 
 
 @app.route("/user")
+@login_required
 def user():
     users = User.query.order_by(User.first_name, User.last_name).all()
     return render_template("user.html", users=users)
@@ -110,6 +109,7 @@ def add_user():
 
 
 @app.route("/edit_user/<int:user_id>", methods=["GET", "POST"])
+@login_required
 def edit_user(user_id):
     user = User.query.get_or_404(user_id)
     groups = Group.query.all()
@@ -130,6 +130,7 @@ def edit_user(user_id):
 
 
 @app.route("/delete_user/<int:user_id>")
+@login_required
 def delete_user(user_id):
     user = User.query.get_or_404(user_id)
     db.session.delete(user)
@@ -143,6 +144,7 @@ def delete_user(user_id):
   
 
 @app.route("/user_search")
+@login_required
 def user_search():
     query = request.args.get('query', '')
     users = User.query.filter(
@@ -155,6 +157,7 @@ def user_search():
 
 
 @app.route("/product")
+@login_required
 def product():
     products = list(Product.query.order_by(Product.name).all())
     print("Number of products fetched:", len(products))
@@ -162,6 +165,7 @@ def product():
 
 
 @app.route("/add_product", methods=["GET", "POST"])
+@login_required
 def add_product():
     if request.method == "POST":
         name = request.form.get("name")
@@ -189,6 +193,7 @@ def add_product():
 
 
 @app.route("/edit_product/<int:product_id>", methods=["GET", "POST"])
+@login_required
 def edit_product(product_id):
     product = Product.query.get_or_404(product_id)
     if request.method == "POST":
@@ -204,6 +209,7 @@ def edit_product(product_id):
 
 
 @app.route("/delete_product/<int:product_id>")
+@login_required
 def delete_product(product_id):
     product = Product.query.get_or_404(product_id)
     db.session.delete(product)
@@ -217,6 +223,7 @@ def delete_product(product_id):
 
 
 @app.route("/product_search")
+@login_required
 def product_search():
     query = request.args.get('query', '')
     products = Product.query.filter(
@@ -228,6 +235,7 @@ def product_search():
 
 
 @app.route("/account")
+@login_required
 def account():
     # Fetch accounts and their related product names using joined load,
     # sorted by first name and then last name
@@ -239,6 +247,7 @@ def account():
 
 
 @app.route('/add_account', methods=['GET', 'POST'])
+@login_required
 def add_account():
     products = Product.query.all()  # Fetch all products for the form dropdown
     if request.method == 'POST':
@@ -286,6 +295,7 @@ def add_account():
 
 
 @app.route('/edit_account/<int:account_id>', methods=['GET', 'POST'])
+@login_required
 def edit_account(account_id):
     account = Account.query.get_or_404(account_id)
     products = Product.query.all()
@@ -311,6 +321,7 @@ def edit_account(account_id):
 
 
 @app.route('/delete_account/<int:account_id>')
+@login_required
 def delete_account(account_id):
     account = Account.query.get_or_404(account_id)
     db.session.delete(account)
@@ -324,6 +335,7 @@ def delete_account(account_id):
 
 
 @app.route('/account_search')
+@login_required
 def account_search():
     query = request.args.get('query', '')
     accounts = Account.query.filter(
@@ -338,6 +350,7 @@ def account_search():
 
 
 @app.route("/ad_group")
+@login_required
 def ad_group():
     ad_groups = list(Group.query.order_by(Group.name).all())
     print("Number of groups fetched:", len(ad_groups))  # This will show you how many groups are fetched
@@ -345,6 +358,7 @@ def ad_group():
 
 
 @app.route("/add_ad_group", methods=["GET", "POST"])
+@login_required
 def add_ad_group():
     if request.method == "POST":
         name = request.form.get("name")
@@ -370,6 +384,7 @@ def add_ad_group():
 
 
 @app.route("/edit_ad_group/<int:group_id>", methods=["GET", "POST"])
+@login_required
 def edit_ad_group(group_id):
     group = Group.query.get_or_404(group_id)
     if request.method == "POST":
@@ -385,6 +400,7 @@ def edit_ad_group(group_id):
 
 
 @app.route("/delete_ad_group/<int:group_id>")
+@login_required
 def delete_ad_group(group_id):
     group = Group.query.get_or_404(group_id)
     db.session.delete(group)
@@ -400,6 +416,7 @@ def delete_ad_group(group_id):
 
 
 @app.route("/ad_group_search")
+@login_required
 def ad_group_search():
     query = request.args.get('query', '')
     ad_groups = Group.query.filter(
@@ -411,12 +428,14 @@ def ad_group_search():
 
 
 @app.route("/news")
+@login_required
 def news():
     news_items = NewsItem.query.all()
     return render_template("news.html", news_items=news_items)
 
 
 @app.route('/add_news', methods=["GET", "POST"])
+@login_required
 def add_news():
     if request.method == "POST":
         headline = request.form.get("headline")
@@ -441,6 +460,7 @@ def add_news():
 
 
 @app.route('/edit_news/<int:news_id>', methods=["GET", "POST"])
+@login_required
 def edit_news(news_id):
     news_item = NewsItem.query.get_or_404(news_id)
     if request.method == "POST":
@@ -457,6 +477,7 @@ def edit_news(news_id):
 
 
 @app.route('/delete_news/<int:news_id>')
+@login_required
 def delete_news(news_id):
     news_item = NewsItem.query.get_or_404(news_id)
     db.session.delete(news_item)
@@ -472,6 +493,7 @@ def delete_news(news_id):
 
 
 @app.route('/news_search')
+@login_required
 def news_search():
     query = request.args.get('query', '')
     news_items = NewsItem.query.filter(
