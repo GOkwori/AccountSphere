@@ -452,7 +452,7 @@ def add_news():
         db.session.add(news_item)
         db.session.commit()
         flash("News item created successfully!", "success")
-        return render_template("add_news.html", success=True)
+        return redirect(url_for("news", success=True))
     
     return render_template("add_news.html")
 
