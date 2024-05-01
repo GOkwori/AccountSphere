@@ -181,7 +181,7 @@ def add_product():
             db.session.commit()
             flash("Product created successfully!", "success")
             # Render the same page with a success flag
-            return render_template("add_product.html", success=True)
+            return redirect(url_for("product"))
         except Exception as e:
             db.session.rollback()
             flash(f"Error adding product: {str(e)}", "error")
