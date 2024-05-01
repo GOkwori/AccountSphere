@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   console.log("Document loaded and script starting...");
 
-  // Function to handle flash messages
+  // Handle flash messages with a slight delay
   function handleFlashMessages() {
     const flashMessagesContainer = document.getElementById("flash-messages");
     if (flashMessagesContainer) {
@@ -10,15 +10,11 @@ document.addEventListener("DOMContentLoaded", function () {
       if (messages.length > 0) {
         console.log(`Found ${messages.length} flash messages.`);
         messages.forEach((messageDiv) => {
-          const message = messageDiv.getAttribute("data-message");
-          const category = messageDiv.getAttribute("data-category");
           setTimeout(() => {
+            const message = messageDiv.getAttribute("data-message");
+            const category = messageDiv.getAttribute("data-category");
             alert(`${category.toUpperCase()}: ${message}`);
-            // Check for redirection attribute and redirect if present
-            if (messageDiv.dataset.redirect) {
-              window.location.href = messageDiv.dataset.redirect;
-            }
-          }, 500); // Delay to ensure users see the message
+          }, 500);
         });
       } else {
         console.log("No flash messages found.");
@@ -27,80 +23,95 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("Flash messages container not found.");
     }
   }
-
-  // Call the function to handle and display flash messages
   handleFlashMessages();
 
-  // Remaining event listeners and functions for other features
-  const accountTypeSelect = document.getElementById("account_type");
-  const productIdInput = document.getElementById("product_id");
-  if (accountTypeSelect && productIdInput) {
-    accountTypeSelect.addEventListener("change", function () {
-      productIdInput.value = accountTypeSelect.value;
-      console.log("Product ID updated to: ", productIdInput.value);
+  // Date and time panel setup
+  const dateTimeElement = document.getElementById("datetime");
+  function updateDateTime() {
+    const now = new Date();
+    const dateString = now.toLocaleDateString("en-US", {
+      weekday: "long",
     });
+    const timeString = now.toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    });
+    dateTimeElement.innerHTML = `<span>${dateString}</span> <span>${timeString}</span>`;
+  }
+  setInterval(updateDateTime, 1000);
+
+  // Initialize the greeting and smooth scrolling
+  const greetingElement = document.getElementById("greeting");
+  const userDataDiv = document.getElementById("user-data");
+  const userName = userDataDiv ? userDataDiv.dataset.name : "User";
+  function updateGreeting() {
+    const hours = new Date().getHours();
+    let greeting = "Good Day,";
+    if (hours < 12) greeting = "Good Morning,";
+    else if (hours < 18) greeting = "Good Afternoon,";
+    else greeting = "Good Evening,";
+    greetingElement.textContent = `${greeting} ${userName}`;
+    smoothScrollGreeting(greetingElement);
+  }
+  updateGreeting();
+
+  function smoothScrollGreeting(element) {
+    let scrollPosition = element.parentElement.offsetWidth;
+    function scroll() {
+      scrollPosition -= 1; // Move left
+      if (scrollPosition < -element.offsetWidth) {
+        scrollPosition = element.parentElement.offsetWidth;
+      }
+      element.style.transform = `translateX(${scrollPosition}px)`;
+      requestAnimationFrame(scroll);
+    }
+    scroll();
   }
 
-  const panel = document.querySelector(".news-panel");
-  if (panel) {
+  // Smooth scrolling for the news panel
+  const newsPanel = document.querySelector(".news-panel");
+  function smoothScrollNews() {
     let requestID;
-    function smoothScroll() {
-      if (panel.scrollTop < panel.scrollHeight - panel.clientHeight) {
-        panel.scrollTop += 0.5;
-        requestID = requestAnimationFrame(smoothScroll);
+    function scroll() {
+      if (
+        newsPanel.scrollTop <
+        newsPanel.scrollHeight - newsPanel.clientHeight
+      ) {
+        newsPanel.scrollTop += 0.5;
+        requestID = requestAnimationFrame(scroll);
       } else {
-        panel.scrollTop = 0;
-        requestID = requestAnimationFrame(smoothScroll);
+        newsPanel.scrollTop = 0;
+        requestID = requestAnimationFrame(scroll);
       }
     }
-    requestID = requestAnimationFrame(smoothScroll);
+    requestID = requestAnimationFrame(scroll);
 
-    panel.addEventListener("mouseenter", () => {
-      window.cancelAnimationFrame(requestID);
+    newsPanel.addEventListener("mouseenter", () => {
+      cancelAnimationFrame(requestID);
     });
 
-    panel.addEventListener("mouseleave", () => {
-      requestID = requestAnimationFrame(smoothScroll);
+    newsPanel.addEventListener("mouseleave", () => {
+      requestID = requestAnimationFrame(scroll);
+    });
+  }
+  smoothScrollNews();
+
+  // Calendar picker initialization
+  if (typeof $ !== "undefined" && $.fn.datepicker) {
+    $("#calendar").datepicker({
+      showButtonPanel: true,
+      dateFormat: "MM dd, yy",
+      onSelect: function (dateText) {
+        dateTimeElement.innerHTML = dateText; // Update the date and time display with the selected date
+      },
+    });
+
+    // Toggle calendar on icon click
+    $("#datepicker-trigger").on("click", function () {
+      $("#calendar").toggle(); // This will show or hide the calendar
     });
   } else {
-    console.log("News panel not found for smooth scrolling.");
+    console.log("jQuery or jQuery UI not loaded properly.");
   }
 });
-
-document.addEventListener("DOMContentLoaded", function () {
-  const userDataDiv = document.getElementById("user-data");
-  const userName = userDataDiv ? userDataDiv.dataset.name : "User"; // Default to 'User' if not found
-  const greetingDiv = document.getElementById("greeting");
-  const hours = new Date().getHours();
-  let greeting;
-
-  if (hours < 12) {
-    greeting = "Good Morning,";
-  } else if (hours < 18) {
-    greeting = "Good Afternoon,";
-  } else {
-    greeting = "Good Evening,";
-  }
-
-  greetingDiv.textContent = `${greeting} ${userName}...`;
-
-  // Initialize the smooth scrolling animation
-  smoothScrollGreeting(greetingDiv);
-});
-
-function smoothScrollGreeting(element) {
-  const containerWidth = element.parentElement.offsetWidth; // Use the parent's width for boundary
-  const textWidth = element.offsetWidth;
-  let startPosition = containerWidth; // Start from the right edge of the container
-
-  function scroll() {
-    startPosition -= 1; // Adjust speed as necessary
-    if (startPosition < -textWidth) {
-      startPosition = containerWidth; // Reset position after text scrolls out
-    }
-    element.style.transform = `translateX(${startPosition}px)`;
-    requestAnimationFrame(scroll);
-  }
-
-  scroll();
-}

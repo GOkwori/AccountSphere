@@ -125,9 +125,16 @@ body {
   color: #3a405a;
   padding: 20px;
   border-radius: 10px;
-  margin-top: 1.4%;
-  width: 100%;
+  margin: 1.4% 0 0 1.4%;
+  width: fit-content;
   overflow: hidden;
+  height: 80px;
+}
+
+.dash-end {
+  margin-right: 5%;
+  display: flex;
+  justify-content: end;
 }
 
 .scrolling-greeting {
@@ -135,6 +142,16 @@ body {
   position: relative;
   display: block;
   will-change: transform;
+}
+
+.head-container-1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.head-container-2 {
+  margin-top: 2%;
 }
 
 .carousel img {

@@ -1,16 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container-fluid p-0"> <!-- Remove padding and margin if any -->
+<div class="container-fluid p-0">
+    <!-- Top header row to align with nav bar -->
+    <div class="row mt-2 align-items-center">
+        <div class="col-md-6">
+            <!-- Greeting aligned with the start of the navbar -->
+            {% if current_user.is_authenticated %}
+            <div id="user-data" data-name="{{ current_user.first_name | safe }}" style="display:none;"></div>
+            <div class="text-start dash-content">
+                <h1 id="greeting" class="scrolling-greeting"></h1>
+            </div>
+            {% endif %}
+        </div>
+        <div class="col-md-6">
+            <!-- Date and time aligned with the end of the navbar -->
+            <div class="text-end dash-end">
+                <i class="fa-solid fa-business-time me-2 p-0 mt-1"></i>
+                <div id="datetime" role="button" class="date-time-panel"></div>
+            </div>
 
-<!-- Header with dynamic greeting based on the time of day -->
-{% if current_user.is_authenticated %}
-    <!-- Add a hidden div or use any other method to store data for JS to access -->
-    <div id="user-data" data-name="{{ current_user.first_name | safe }}" style="display:none;"></div>
-    <div class="text-center dash-content mx-auto" style="max-width: fit-content; overflow: hidden;">
-        <h1 id="greeting" class="scrolling-greeting"></h1>
+        </div>
     </div>
-    {% endif %}
 
     <!--Carousel container-->
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
