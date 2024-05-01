@@ -369,14 +369,14 @@ def add_ad_group():
 
         existing_group = Group.query.filter_by(name=name).first()
         if existing_group:
-            flash("A group with this name already exists.", "error")
+            flash("An AD-Group with this name already exists.", "error")
             return render_template("add_ad_group.html")
 
         new_group = Group(name=name, description=description, group_type=group_type)
         db.session.add(new_group)
         db.session.commit()
-        flash("AD group created successfully!", "success")
-        return render_template("add_ad_group.html", success=True)  # Note the 'success=True'
+        flash("AD-Group created successfully!", "success")
+        return redirect(url_for("ad_group", success=True))# Note the 'success=True'
 
     return render_template("add_ad_group.html")
 
@@ -392,7 +392,7 @@ def edit_ad_group(group_id):
 
         db.session.add(group)
         db.session.commit()
-        flash("Group updated successfully!", "success")
+        flash("AD-Group updated successfully!", "success")
         return redirect(url_for("ad_group", success=True))
     return render_template("edit_ad_group.html", group=group)
 
@@ -404,7 +404,7 @@ def delete_ad_group(group_id):
     db.session.delete(group)
     try:
         db.session.commit()
-        flash("Group deleted successfully!", "success")
+        flash("AD-Group deleted successfully!", "success")
 
     except Exception as e:
         db.session.rollback()
