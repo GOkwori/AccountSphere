@@ -39,7 +39,7 @@ def register():
         db.session.add(new_user)
         db.session.commit()
         
-        flash("Account created successfully! You will be redirected to login.", "success")
+        flash("Account created successfully! You will be redirected to login.", 'success')
         return render_template("register.html", groups=groups, success=True)
 
     return render_template("register.html", groups=groups)
@@ -64,7 +64,7 @@ def login():
 @login_required
 def logout():
     logout_user()
-    flash("You have been logged out.", "info")
+    flash("You have been logged out.")
     return redirect(url_for("home"))
 
 
@@ -90,7 +90,7 @@ def add_user():
             flash("Email already exists.", "error")
             return render_template("add_user.html", groups=groups)
 
-        new_user = User(
+        user = User(
             first_name=request.form.get("first_name"),
             last_name=request.form.get("last_name"),
             username=username,
@@ -98,11 +98,10 @@ def add_user():
             password_hash=generate_password_hash(request.form.get("password")),
             role=request.form.get("role")
         )
-        db.session.add(new_user)
+        db.session.add(user)
         db.session.commit()
-        
         flash("User created successfully! You will be redirected to the Users Dashboard.", "success")
-        return render_template("add_user.html", groups=groups, success=True)
+        return render_template("user.html", user=user, groups=groups, success=True)
 
     return render_template("add_user.html", groups=groups)
 
@@ -288,7 +287,7 @@ def add_account():
         db.session.add(account)
         db.session.commit()
         flash('Account created successfully!', 'success')
-        return render_template('add_account.html', products=products, success=True)
+        return redirect(url_for('account', success=True))
     
     return render_template('add_account.html', products=products)
 

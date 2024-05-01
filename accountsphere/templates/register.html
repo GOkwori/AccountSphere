@@ -6,16 +6,6 @@
     <h3 class="text-center">Registration Form <i class="fa-solid fa-id-card ms-2"></i></h3>
     <br>
 
-    {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-    <div id="flash-messages">
-        {% for category, message in messages %}
-        <div class="flash-message" data-category="{{ category }}" data-message="{{ message }}"></div>
-        {% endfor %}
-    </div>
-    {% endif %}
-    {% endwith %}
-
     <!-- Registration form -->
     <form class="text-center" action="{{ url_for('register')}}" method="post">
         <div class="row mb-3 ms-5">
@@ -74,12 +64,7 @@
             </div>
         </div>
     </form>
-    {% if success %}
-    <script>
-        alert('Registration successful! Redirecting to login...');
-        window.location.href = "{{ url_for('login') }}";
-    </script>
-    {% endif %}
+   
 </div>
 
 {% endblock %}
