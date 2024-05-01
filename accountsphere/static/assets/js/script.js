@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   setInterval(updateDateTime, 1000);
 
-  // Greeting and smooth scrolling
+  // Initialize the greeting and smooth scrolling
   const greetingElement = document.getElementById("greeting");
   const userDataDiv = document.getElementById("user-data");
   const userName = userDataDiv ? userDataDiv.dataset.name : "User";
@@ -52,49 +52,48 @@ document.addEventListener("DOMContentLoaded", function () {
     else if (hours < 18) greeting = "Good Afternoon,";
     else greeting = "Good Evening,";
     greetingElement.textContent = `${greeting} ${userName}`;
+    smoothScrollGreeting(greetingElement);
   }
   updateGreeting();
-  smoothScrollGreeting(greetingElement);
 
   function smoothScrollGreeting(element) {
-    let startPosition = -element.offsetWidth;
+    let scrollPosition = element.parentElement.offsetWidth;
     function scroll() {
-      startPosition += 2; // Move right
-      if (startPosition > window.innerWidth) {
-        startPosition = -element.offsetWidth;
+      scrollPosition -= 1; // Move left
+      if (scrollPosition < -element.offsetWidth) {
+        scrollPosition = element.parentElement.offsetWidth;
       }
-      element.style.transform = `translateX(${startPosition}px)`;
+      element.style.transform = `translateX(${scrollPosition}px)`;
       requestAnimationFrame(scroll);
     }
     scroll();
   }
 
   // Smooth scrolling for the news panel
-  function smoothScrollNews(panel) {
+  const newsPanel = document.querySelector(".news-panel");
+  function smoothScrollNews() {
     let requestID;
-    let direction = 1; // Scroll down initially
     function scroll() {
-      if (panel.scrollTop >= panel.scrollHeight - panel.clientHeight) {
-        direction = -1; // Scroll up when reach bottom
-      } else if (panel.scrollTop <= 0) {
-        direction = 1; // Scroll down when reach top
+      if (
+        newsPanel.scrollTop <
+        newsPanel.scrollHeight - newsPanel.clientHeight
+      ) {
+        newsPanel.scrollTop += 0.5;
+        requestID = requestAnimationFrame(scroll);
+      } else {
+        newsPanel.scrollTop = 0;
+        requestID = requestAnimationFrame(scroll);
       }
-      panel.scrollTop += direction * 0.5; // Adjust scrolling speed here
-      requestID = requestAnimationFrame(scroll);
     }
+    requestID = requestAnimationFrame(scroll);
 
-    panel.addEventListener("mouseenter", () => {
+    newsPanel.addEventListener("mouseenter", () => {
       cancelAnimationFrame(requestID);
     });
 
-    panel.addEventListener("mouseleave", () => {
+    newsPanel.addEventListener("mouseleave", () => {
       requestID = requestAnimationFrame(scroll);
     });
-
-    requestID = requestAnimationFrame(scroll);
   }
-  const newsPanel = document.querySelector(".news-panel");
-  if (newsPanel) {
-    smoothScrollNews(newsPanel);
-  }
+  smoothScrollNews();
 });
