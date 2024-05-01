@@ -45,44 +45,6 @@ body {
   color: #3a405a;
 }
 
-.user-menu {
-  position: relative;
-  display: inline-block;
-}
-
-.user-menu-dropdown {
-  display: none;
-  position: absolute;
-  right: 0;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
-
-.user-menu-dropdown li {
-  padding: 12px 16px;
-  text-align: right;
-  list-style: none;
-}
-
-.user-menu-dropdown li a {
-  color: black;
-  text-decoration: none;
-  display: block;
-}
-
-.user-menu-dropdown li a:hover {
-  background-color: #f1f1f1;
-}
-
-/* Remove bullets */
-.user-menu ul {
-  padding: 0;
-  margin: 0;
-  list-style-type: none;
-}
-
 /* Offcanvas */
 
 #offcanvasWithBothOptions {
@@ -154,6 +116,25 @@ body {
   width: 35px;
   height: 35px;
   border-radius: 5px;
+}
+
+.dash-content {
+  background-color: #fff;
+  backdrop-filter: blur(10px);
+  opacity: 0.9;
+  color: #3a405a;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 1.4%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.scrolling-greeting {
+  white-space: nowrap;
+  position: relative;
+  display: block;
+  will-change: transform;
 }
 
 .carousel img {

@@ -3,7 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from accountsphere import app, db
 from accountsphere.models import User, Group, Product, Account, NewsItem
 from sqlalchemy.orm import joinedload
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required, current_user
 
 
 @app.route("/")

@@ -66,3 +66,41 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("News panel not found for smooth scrolling.");
   }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const userDataDiv = document.getElementById("user-data");
+  const userName = userDataDiv ? userDataDiv.dataset.name : "User"; // Default to 'User' if not found
+  const greetingDiv = document.getElementById("greeting");
+  const hours = new Date().getHours();
+  let greeting;
+
+  if (hours < 12) {
+    greeting = "Good Morning,";
+  } else if (hours < 18) {
+    greeting = "Good Afternoon,";
+  } else {
+    greeting = "Good Evening,";
+  }
+
+  greetingDiv.textContent = `${greeting} ${userName}...`;
+
+  // Initialize the smooth scrolling animation
+  smoothScrollGreeting(greetingDiv);
+});
+
+function smoothScrollGreeting(element) {
+  const containerWidth = element.parentElement.offsetWidth; // Use the parent's width for boundary
+  const textWidth = element.offsetWidth;
+  let startPosition = containerWidth; // Start from the right edge of the container
+
+  function scroll() {
+    startPosition -= 1; // Adjust speed as necessary
+    if (startPosition < -textWidth) {
+      startPosition = containerWidth; // Reset position after text scrolls out
+    }
+    element.style.transform = `translateX(${startPosition}px)`;
+    requestAnimationFrame(scroll);
+  }
+
+  scroll();
+}
