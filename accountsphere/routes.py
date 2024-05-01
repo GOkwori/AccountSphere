@@ -100,8 +100,8 @@ def add_user():
         )
         db.session.add(user)
         db.session.commit()
-        flash("User created successfully! You will be redirected to the Users Dashboard.", "success")
-        return render_template("user.html", user=user, groups=groups, success=True)
+        flash("User created successfully!", "success")
+        return redirect(url_for("user"))
 
     return render_template("add_user.html", groups=groups)
 
@@ -122,7 +122,7 @@ def edit_user(user_id):
         db.session.add(user)
         db.session.commit()
         flash("User updated successfully!", "success")
-        return render_template("edit_user.html", user=user, groups=groups, success=True)
+        return redirect(url_for("user"))
     
     return render_template("edit_user.html", user=user, groups=groups)
 
