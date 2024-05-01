@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const message = messageDiv.getAttribute("data-message");
             const category = messageDiv.getAttribute("data-category");
             alert(`${category.toUpperCase()}: ${message}`);
-          }, 500);
+          }, 100);
         });
       } else {
         console.log("No flash messages found.");
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   setInterval(updateDateTime, 1000);
 
-  // Initialize the greeting and smooth scrolling
+  // Greeting and smooth scrolling
   const greetingElement = document.getElementById("greeting");
   const userDataDiv = document.getElementById("user-data");
   const userName = userDataDiv ? userDataDiv.dataset.name : "User";
@@ -52,66 +52,49 @@ document.addEventListener("DOMContentLoaded", function () {
     else if (hours < 18) greeting = "Good Afternoon,";
     else greeting = "Good Evening,";
     greetingElement.textContent = `${greeting} ${userName}`;
-    smoothScrollGreeting(greetingElement);
   }
   updateGreeting();
+  smoothScrollGreeting(greetingElement);
 
   function smoothScrollGreeting(element) {
-    let scrollPosition = element.parentElement.offsetWidth;
+    let startPosition = -element.offsetWidth;
     function scroll() {
-      scrollPosition -= 1; // Move left
-      if (scrollPosition < -element.offsetWidth) {
-        scrollPosition = element.parentElement.offsetWidth;
+      startPosition += 2; // Move right
+      if (startPosition > window.innerWidth) {
+        startPosition = -element.offsetWidth;
       }
-      element.style.transform = `translateX(${scrollPosition}px)`;
+      element.style.transform = `translateX(${startPosition}px)`;
       requestAnimationFrame(scroll);
     }
     scroll();
   }
 
   // Smooth scrolling for the news panel
-  const newsPanel = document.querySelector(".news-panel");
-  function smoothScrollNews() {
+  function smoothScrollNews(panel) {
     let requestID;
+    let direction = 1; // Scroll down initially
     function scroll() {
-      if (
-        newsPanel.scrollTop <
-        newsPanel.scrollHeight - newsPanel.clientHeight
-      ) {
-        newsPanel.scrollTop += 0.5;
-        requestID = requestAnimationFrame(scroll);
-      } else {
-        newsPanel.scrollTop = 0;
-        requestID = requestAnimationFrame(scroll);
+      if (panel.scrollTop >= panel.scrollHeight - panel.clientHeight) {
+        direction = -1; // Scroll up when reach bottom
+      } else if (panel.scrollTop <= 0) {
+        direction = 1; // Scroll down when reach top
       }
+      panel.scrollTop += direction * 0.5; // Adjust scrolling speed here
+      requestID = requestAnimationFrame(scroll);
     }
-    requestID = requestAnimationFrame(scroll);
 
-    newsPanel.addEventListener("mouseenter", () => {
+    panel.addEventListener("mouseenter", () => {
       cancelAnimationFrame(requestID);
     });
 
-    newsPanel.addEventListener("mouseleave", () => {
+    panel.addEventListener("mouseleave", () => {
       requestID = requestAnimationFrame(scroll);
     });
+
+    requestID = requestAnimationFrame(scroll);
   }
-  smoothScrollNews();
-
-  // Calendar picker initialization
-  if (typeof $ !== "undefined" && $.fn.datepicker) {
-    $("#calendar").datepicker({
-      showButtonPanel: true,
-      dateFormat: "MM dd, yy",
-      onSelect: function (dateText) {
-        dateTimeElement.innerHTML = dateText; // Update the date and time display with the selected date
-      },
-    });
-
-    // Toggle calendar on icon click
-    $("#datepicker-trigger").on("click", function () {
-      $("#calendar").toggle(); // This will show or hide the calendar
-    });
-  } else {
-    console.log("jQuery or jQuery UI not loaded properly.");
+  const newsPanel = document.querySelector(".news-panel");
+  if (newsPanel) {
+    smoothScrollNews(newsPanel);
   }
 });

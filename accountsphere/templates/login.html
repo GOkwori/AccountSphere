@@ -1,50 +1,71 @@
-{% extends "base.html" %}
-
-
-
-{% block content %}
+{% extends "base.html" %} {% block content %}
 
 <div class="login-content container">
+  <div class="d-flex justify-content-center">
+    <a
+      class="navbar-brand offcanvas-title me-4"
+      id="offcanvasScrollingLabel"
+      href="{{url_for('home')}}"
+    >
+      <img
+        class="logo"
+        src="{{ url_for('static', filename='assets/images/file.png')}}"
+        alt="logo"
+      />
+    </a>
+    <h4>Log-in Credentials</h4>
+  </div>
 
-    <div class="d-flex justify-content-center">
-            <a class="navbar-brand offcanvas-title me-4" id="offcanvasScrollingLabel" href="{{url_for('home')}}">
-                <img class="logo" src="{{ url_for('static', filename='assets/images/file.png')}}" alt="logo">
-            </a>
-            <h4> Log-in Credentials</h4>
+  <br />
+  <form class="text-center" action="{{ url_for('login')}}" method="post">
+    <div class="row mb-3 ms-4">
+      <label for="username" class="col-sm-2 col-form-label">Username</label>
+      <div class="col-sm-7">
+        <input
+          type="text"
+          class="form-control"
+          id="user_name"
+          name="username"
+          required
+        />
+      </div>
     </div>
-    
-    <br>
-    <form class="text-center" action="{{ url_for('login')}}" method="post">
-      
-        <div class="row mb-3 ms-4">
-            <label for="username" class="col-sm-2 col-form-label">Username</label>
-            <div class="col-sm-7">
-                <input type="text" class="form-control" id="user_name" name="username" required>
-            </div>
-        </div>
 
-        <div class="row mb-2 ms-4">
-            <label for="password" class="col-sm-2 col-form-label">Password</label>
-            <div class="col-sm-7">
-                <input type="password" class="form-control" id="password" name="password" required>
-            </div>
-        </div>
-        <div class="row button-container mt-4">
-            <div class="col-auto me-5">
-                <button type="submit" class="btn btn-primary">Submit<i class="fa-solid fa-right-to-bracket ms-2"></i></button>
-            </div>
-            <div class="col-auto me-5">
-                <button type="button" class="btn btn-secondary" onclick="history.back();">Cancel<i
-                        class="fa-solid fa-ban ms-2"></i></button>
-            </div>
-        </div>
-    </form>
-    <br>
-    <div>
-        <p class="text-center mb-2">Don't have an account? <a href="{{ url_for('register')}}">Sign-up</a></p>
+    <div class="row mb-2 ms-4">
+      <label for="password" class="col-sm-2 col-form-label">Password</label>
+      <div class="col-sm-7">
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          name="password"
+          required
+        />
+      </div>
     </div>
-    
-
+    <div class="row button-container mt-4">
+      <div class="col-auto me-5">
+        <button type="submit" class="btn btn-primary">
+          Submit<i class="fa-solid fa-right-to-bracket ms-2"></i>
+        </button>
+      </div>
+      <div class="col-auto me-5">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          onclick="history.back();"
+        >
+          Cancel<i class="fa-solid fa-ban ms-2"></i>
+        </button>
+      </div>
+    </div>
+  </form>
+  <br />
+  <div>
+    <p class="text-center mb-2">
+      Don't have an account? <a href="{{ url_for('register')}}">Sign-up</a>
+    </p>
+  </div>
 </div>
 
 {% endblock %}
