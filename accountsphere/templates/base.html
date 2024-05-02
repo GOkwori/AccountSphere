@@ -92,13 +92,6 @@
                         <a id="active-nav" class="nav-link {{ 'active' if request.path == url_for('user') else '' }}"
                             href="{{ url_for('user') }}"><i class="fa-solid fa-users me-2"></i>User Management</a>
                     </li>
-                    <br>
-                    <li class="nav-item">
-                        <strong><i class="fa-solid fa-database me-2"></i>Analytics</strong>
-                        <hr>
-                        <a id="active-nav" class="nav-link {{ 'active' if request.endpoint == 'data_tables' else '' }}"
-                            href="#"><i class="fa-solid fa-table me-2"></i>Data Tables</a>
-                    </li>
                 </ul>
             </div>
             {% with messages = get_flashed_messages(with_categories=true) %}
