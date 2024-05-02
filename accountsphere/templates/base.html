@@ -99,13 +99,6 @@
                         <a id="active-nav" class="nav-link {{ 'active' if request.endpoint == 'data_tables' else '' }}"
                             href="#"><i class="fa-solid fa-table me-2"></i>Data Tables</a>
                     </li>
-                    <br>
-                    <li class="nav-item">
-                        <strong><i class="fa-solid fa-right-to-bracket me-2"></i>My Account</strong>
-                        <hr>
-                        <a id="active-nav" class="nav-link {{ 'active' if request.endpoint == 'profile' else '' }}"
-                            href="#"><i class="fa-solid fa-user me-2"></i>Profile</a>
-                    </li>
                 </ul>
             </div>
             {% with messages = get_flashed_messages(with_categories=true) %}
