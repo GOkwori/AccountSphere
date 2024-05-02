@@ -13,12 +13,20 @@ def register():
     if request.method == "POST":
         username = request.form.get("username")
         email = request.form.get("email")
+        password = request.form.get("password")
+        confirm_password = request.form.get("confirm_password")
 
         if User.query.filter_by(username=username).first():
             flash("Username already exists.", "error")
             return render_template("register.html", groups=groups)
+
         if User.query.filter_by(email=email).first():
             flash("Email already exists.", "error")
+            return render_template("register.html", groups=groups)
+
+        # Check if the password and confirm password match
+        if password != confirm_password:
+            flash("Passwords do not match.", "error")
             return render_template("register.html", groups=groups)
 
         new_user = User(
@@ -26,14 +34,14 @@ def register():
             last_name=request.form.get("last_name"),
             username=username,
             email=email,
-            password_hash=generate_password_hash(request.form.get("password")),
+            password_hash=generate_password_hash(password),
             role=request.form.get("role")
         )
         db.session.add(new_user)
         db.session.commit()
         
         flash("Account created successfully", 'success')
-        return render_template("login.html", groups=groups, success=True)
+        return redirect(url_for('login'))
 
     return render_template("register.html", groups=groups)
 

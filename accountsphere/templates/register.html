@@ -9,7 +9,7 @@
   <!-- Registration form -->
   <form class="text-center" action="{{ url_for('register')}}" method="post">
     <div class="row mb-3 ms-5">
-      <label for="first_name" class="col-sm-2 col-form-label">First Name</label>
+      <label for="first_name" class="col-sm-3 col-form-label">First Name</label>
       <div class="col-sm-7">
         <input
           type="text"
@@ -22,7 +22,7 @@
     </div>
 
     <div class="row mb-3 ms-5">
-      <label for="last_name" class="col-sm-2 col-form-label">Last Name</label>
+      <label for="last_name" class="col-sm-3 col-form-label">Last Name</label>
       <div class="col-sm-7">
         <input
           type="text"
@@ -35,7 +35,7 @@
     </div>
 
     <div class="row mb-3 ms-5">
-      <label for="username" class="col-sm-2 col-form-label">Username</label>
+      <label for="username" class="col-sm-3 col-form-label">Username</label>
       <div class="col-sm-7">
         <input
           type="text"
@@ -50,7 +50,7 @@
     </div>
 
     <div class="row mb-3 ms-5">
-      <label for="email" class="col-sm-2 col-form-label">Email</label>
+      <label for="email" class="col-sm-3 col-form-label">Email</label>
       <div class="col-sm-7">
         <input
           type="email"
@@ -63,7 +63,7 @@
     </div>
 
     <div class="row mb-3 ms-5">
-      <label for="password" class="col-sm-2 col-form-label">Password</label>
+      <label for="password" class="col-sm-3 col-form-label">Password</label>
       <div class="col-sm-7">
         <input
           type="password"
@@ -78,7 +78,22 @@
     </div>
 
     <div class="row mb-3 ms-5">
-      <label for="role" class="col-sm-2 col-form-label">Role</label>
+        <label for="confirm_password" class="col-sm-3 col-form-label">Confirm Password</label>
+        <div class="col-sm-7">
+          <input
+            type="password"
+            class="form-control"
+            id="confirm_password"
+            name="confirm_password"
+            required
+            minlength="8"
+            pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+          />
+        </div>
+      </div>
+
+    <div class="row mb-3 ms-5">
+      <label for="role" class="col-sm-3 col-form-label">Role</label>
       <div class="col-sm-4">
         <select class="form-select form-control" name="role" id="role" required>
           <option value="">--select--</option>
@@ -92,13 +107,13 @@
     <div class="row button-container">
       <div class="col-auto me-5">
         <button type="submit" class="btn btn-primary">
-          Register <i class="fa-solid fa-folder-plus ms-2"></i>
+            <i class="fa-solid fa-folder-plus me-2"></i>Register 
         </button>
       </div>
       <div class="col-auto me-5">
         <a href="{{ url_for('login')}}" class="btn btn-secondary"
-          >Cancel <i class="fa-solid fa-ban ms-2"></i
-        ></a>
+          ><i class="fa-solid fa-ban me-2"></i>
+            Cancel</a>
       </div>
     </div>
   </form>
