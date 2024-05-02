@@ -39,8 +39,8 @@ def register():
         db.session.add(new_user)
         db.session.commit()
         
-        flash("Account created successfully! You will be redirected to login.", 'success')
-        return render_template("register.html", groups=groups, success=True)
+        flash("Account created successfully", 'success')
+        return render_template("login.html", groups=groups, success=True)
 
     return render_template("register.html", groups=groups)
 
@@ -66,6 +66,38 @@ def logout():
     logout_user()
     flash("You have been logged out.")
     return redirect(url_for("home"))
+
+@app.route('/password_reset', methods=['GET', 'POST'])
+@login_required
+def password_reset():
+    if request.method == 'POST':
+        old_password = request.form.get('old_password')
+        new_password = request.form.get('new_password')
+        confirm_password = request.form.get('confirm_password')
+
+        # Verify old password
+        if not check_password_hash(current_user.password_hash, old_password):
+            flash('Old password is incorrect.', 'error')
+            return redirect(url_for('password_reset'))
+
+        # Check if new passwords match
+        if new_password != confirm_password:
+            flash('New passwords do not match.', 'error')
+            return redirect(url_for('password_reset'))
+
+        # Check if new password is different from the old password
+        if check_password_hash(current_user.password_hash, new_password):
+            flash('New password must be different from the old password.', 'error')
+            return redirect(url_for('password_reset'))
+
+        # Update the stored password hash
+        current_user.password_hash = generate_password_hash(new_password)
+        db.session.commit()
+
+        flash('Your password has been updated successfully!', 'success')
+        return redirect(url_for('home'))
+
+    return render_template('password_reset.html')
 
 
 @app.route("/user")
