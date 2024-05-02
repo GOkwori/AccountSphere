@@ -6,13 +6,6 @@ from sqlalchemy.orm import joinedload
 from flask_login import login_user, logout_user, login_required, current_user
 
 
-@app.route("/")
-@login_required
-def home():
-    news_items = NewsItem.query.all()
-    return render_template('index.html', news_items=news_items)
-
-
 @app.route("/register", methods=["GET", "POST"])
 def register():
     groups = Group.query.all()
@@ -67,6 +60,7 @@ def logout():
     flash("You have been logged out.")
     return redirect(url_for("home"))
 
+
 @app.route('/password_reset', methods=['GET', 'POST'])
 @login_required
 def password_reset():
@@ -100,168 +94,11 @@ def password_reset():
     return render_template('password_reset.html')
 
 
-@app.route("/user")
+@app.route("/")
 @login_required
-def user():
-    users = User.query.order_by(User.first_name, User.last_name).all()
-    return render_template("user.html", users=users)
-
-
-@app.route("/add_user", methods=["GET", "POST"])
-def add_user():
-    groups = Group.query.all()
-
-    if request.method == "POST":
-        username = request.form.get("username")
-        email = request.form.get("email")
-
-        if User.query.filter_by(username=username).first():
-            flash("Username already exists.", "error")
-            return render_template("add_user.html", groups=groups)
-        if User.query.filter_by(email=email).first():
-            flash("Email already exists.", "error")
-            return render_template("add_user.html", groups=groups)
-
-        user = User(
-            first_name=request.form.get("first_name"),
-            last_name=request.form.get("last_name"),
-            username=username,
-            email=email,
-            password_hash=generate_password_hash(request.form.get("password")),
-            role=request.form.get("role")
-        )
-        db.session.add(user)
-        db.session.commit()
-        flash("User created successfully!", "success")
-        return redirect(url_for("user"))
-
-    return render_template("add_user.html", groups=groups)
-
-
-@app.route("/edit_user/<int:user_id>", methods=["GET", "POST"])
-@login_required
-def edit_user(user_id):
-    user = User.query.get_or_404(user_id)
-    groups = Group.query.all()
-    
-    if request.method == "POST":
-        user.first_name = request.form.get("first_name")
-        user.last_name = request.form.get("last_name")
-        user.username = request.form.get("username")
-        user.email = request.form.get("email")
-        user.role = request.form.get("role")
-
-        db.session.add(user)
-        db.session.commit()
-        flash("User updated successfully!", "success")
-        return redirect(url_for("user"))
-    
-    return render_template("edit_user.html", user=user, groups=groups)
-
-
-@app.route("/delete_user/<int:user_id>")
-@login_required
-def delete_user(user_id):
-    user = User.query.get_or_404(user_id)
-    db.session.delete(user)
-    try:
-        db.session.commit()
-        flash("User deleted successfully!", "success")
-    except Exception as e:
-        db.session.rollback()
-        flash(f"Error deleting user: {str(e)}", "error")
-    return redirect(url_for("user"))
-  
-
-@app.route("/user_search")
-@login_required
-def user_search():
-    query = request.args.get('query', '')
-    users = User.query.filter(
-        (User.first_name.ilike(f'%{query}%')) |
-        (User.last_name.ilike(f'%{query}%')) |
-        (User.username.ilike(f'%{query}%')) |
-        (User.email.ilike(f'%{query}%'))
-    ).all()
-    return render_template('user.html', users=users)
-
-
-@app.route("/product")
-@login_required
-def product():
-    products = list(Product.query.order_by(Product.name).all())
-    print("Number of products fetched:", len(products))
-    return render_template("product.html", products=products)
-
-
-@app.route("/add_product", methods=["GET", "POST"])
-@login_required
-def add_product():
-    if request.method == "POST":
-        name = request.form.get("name")
-        description = request.form.get("description")
-        product_type = request.form.get("type")
-
-        existing_product = Product.query.filter((Product.name == name) | (Product.description == description)).first()
-        if existing_product:
-            flash("This product name or description already exists.", "error")
-            return render_template("add_product.html")
-
-        new_product = Product(name=name, description=description, type=product_type)
-        db.session.add(new_product)
-        try:
-            db.session.commit()
-            flash("Product created successfully!", "success")
-            # Render the same page with a success flag
-            return redirect(url_for("product"))
-        except Exception as e:
-            db.session.rollback()
-            flash(f"Error adding product: {str(e)}", "error")
-            return render_template("add_product.html")
-
-    return render_template("add_product.html")
-
-
-@app.route("/edit_product/<int:product_id>", methods=["GET", "POST"])
-@login_required
-def edit_product(product_id):
-    product = Product.query.get_or_404(product_id)
-    if request.method == "POST":
-        product.name = request.form.get("name")
-        product.description = request.form.get("description")
-        product.type = request.form.get("type")
-
-        db.session.add(product)
-        db.session.commit()
-        flash("Product updated successfully!", "success")
-        return redirect(url_for("product", success=True))
-    return render_template("edit_product.html", product=product )
-
-
-@app.route("/delete_product/<int:product_id>")
-@login_required
-def delete_product(product_id):
-    product = Product.query.get_or_404(product_id)
-    db.session.delete(product)
-    try:
-        db.session.commit()
-        flash("Product deleted successfully!", "success")
-    except Exception as e:
-        db.session.rollback()
-        flash(f"Error deleting product: {str(e)}", "error")
-    return redirect(url_for("product"))
-
-
-@app.route("/product_search")
-@login_required
-def product_search():
-    query = request.args.get('query', '')
-    products = Product.query.filter(
-        (Product.name.ilike(f'%{query}%')) |
-        (Product.description.ilike(f'%{query}%')) |
-        (Product.type.ilike(f'%{query}%'))
-    ).all()
-    return render_template('product.html', products=products)
+def home():
+    news_items = NewsItem.query.all()
+    return render_template('index.html', news_items=news_items)
 
 
 @app.route("/account")
@@ -531,3 +368,167 @@ def news_search():
         (NewsItem.description.ilike(f'%{query}%'))
     ).all()
     return render_template('news.html', news_items=news_items)
+
+
+@app.route("/product")
+@login_required
+def product():
+    products = list(Product.query.order_by(Product.name).all())
+    print("Number of products fetched:", len(products))
+    return render_template("product.html", products=products)
+
+
+@app.route("/add_product", methods=["GET", "POST"])
+@login_required
+def add_product():
+    if request.method == "POST":
+        name = request.form.get("name")
+        description = request.form.get("description")
+        product_type = request.form.get("type")
+
+        existing_product = Product.query.filter((Product.name == name) | (Product.description == description)).first()
+        if existing_product:
+            flash("This product name or description already exists.", "error")
+            return render_template("add_product.html")
+
+        new_product = Product(name=name, description=description, type=product_type)
+        db.session.add(new_product)
+        try:
+            db.session.commit()
+            flash("Product created successfully!", "success")
+            # Render the same page with a success flag
+            return redirect(url_for("product"))
+        except Exception as e:
+            db.session.rollback()
+            flash(f"Error adding product: {str(e)}", "error")
+            return render_template("add_product.html")
+
+    return render_template("add_product.html")
+
+
+@app.route("/edit_product/<int:product_id>", methods=["GET", "POST"])
+@login_required
+def edit_product(product_id):
+    product = Product.query.get_or_404(product_id)
+    if request.method == "POST":
+        product.name = request.form.get("name")
+        product.description = request.form.get("description")
+        product.type = request.form.get("type")
+
+        db.session.add(product)
+        db.session.commit()
+        flash("Product updated successfully!", "success")
+        return redirect(url_for("product", success=True))
+    return render_template("edit_product.html", product=product )
+
+
+@app.route("/delete_product/<int:product_id>")
+@login_required
+def delete_product(product_id):
+    product = Product.query.get_or_404(product_id)
+    db.session.delete(product)
+    try:
+        db.session.commit()
+        flash("Product deleted successfully!", "success")
+    except Exception as e:
+        db.session.rollback()
+        flash(f"Error deleting product: {str(e)}", "error")
+    return redirect(url_for("product"))
+
+
+@app.route("/product_search")
+@login_required
+def product_search():
+    query = request.args.get('query', '')
+    products = Product.query.filter(
+        (Product.name.ilike(f'%{query}%')) |
+        (Product.description.ilike(f'%{query}%')) |
+        (Product.type.ilike(f'%{query}%'))
+    ).all()
+    return render_template('product.html', products=products)
+
+
+@app.route("/user")
+@login_required
+def user():
+    users = User.query.order_by(User.first_name, User.last_name).all()
+    return render_template("user.html", users=users)
+
+
+@app.route("/add_user", methods=["GET", "POST"])
+def add_user():
+    groups = Group.query.all()
+
+    if request.method == "POST":
+        username = request.form.get("username")
+        email = request.form.get("email")
+
+        if User.query.filter_by(username=username).first():
+            flash("Username already exists.", "error")
+            return render_template("add_user.html", groups=groups)
+        if User.query.filter_by(email=email).first():
+            flash("Email already exists.", "error")
+            return render_template("add_user.html", groups=groups)
+
+        user = User(
+            first_name=request.form.get("first_name"),
+            last_name=request.form.get("last_name"),
+            username=username,
+            email=email,
+            password_hash=generate_password_hash(request.form.get("password")),
+            role=request.form.get("role")
+        )
+        db.session.add(user)
+        db.session.commit()
+        flash("User created successfully!", "success")
+        return redirect(url_for("user"))
+
+    return render_template("add_user.html", groups=groups)
+
+
+@app.route("/edit_user/<int:user_id>", methods=["GET", "POST"])
+@login_required
+def edit_user(user_id):
+    user = User.query.get_or_404(user_id)
+    groups = Group.query.all()
+    
+    if request.method == "POST":
+        user.first_name = request.form.get("first_name")
+        user.last_name = request.form.get("last_name")
+        user.username = request.form.get("username")
+        user.email = request.form.get("email")
+        user.role = request.form.get("role")
+
+        db.session.add(user)
+        db.session.commit()
+        flash("User updated successfully!", "success")
+        return redirect(url_for("user"))
+    
+    return render_template("edit_user.html", user=user, groups=groups)
+
+
+@app.route("/delete_user/<int:user_id>")
+@login_required
+def delete_user(user_id):
+    user = User.query.get_or_404(user_id)
+    db.session.delete(user)
+    try:
+        db.session.commit()
+        flash("User deleted successfully!", "success")
+    except Exception as e:
+        db.session.rollback()
+        flash(f"Error deleting user: {str(e)}", "error")
+    return redirect(url_for("user"))
+  
+
+@app.route("/user_search")
+@login_required
+def user_search():
+    query = request.args.get('query', '')
+    users = User.query.filter(
+        (User.first_name.ilike(f'%{query}%')) |
+        (User.last_name.ilike(f'%{query}%')) |
+        (User.username.ilike(f'%{query}%')) |
+        (User.email.ilike(f'%{query}%'))
+    ).all()
+    return render_template('user.html', users=users)
