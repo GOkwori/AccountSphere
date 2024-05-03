@@ -36,7 +36,7 @@
             <div class="container-fluid">
                 <!-- Toggle Button for Offcanvas Sidebar and Brand Logo -->
                 <div class="d-flex align-items-center">
-                    {% if not (request.path == url_for('login') or request.path == url_for('register')) %}
+                    {% if not (request.path == url_for('login') or request.path == url_for('home') or request.path == url_for('register')) %}
                     <button class="btn btn-primary me-2" type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
                         <i class="fas fa-bars"></i>
@@ -49,7 +49,7 @@
 
                 <!-- Right-aligned Nav Links -->
                 <div class="d-flex justify-content-end flex-grow-1 pe-3">
-                    {% if not (request.path == url_for('login') or request.path == url_for('register')) %}
+                    {% if not (request.path == url_for('login') or request.path == url_for('home') or request.path == url_for('register')) %}
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link" href="{{url_for('password_reset')}}" title="Reset Password"><i class="fa-solid fa-gear"></i></a>
