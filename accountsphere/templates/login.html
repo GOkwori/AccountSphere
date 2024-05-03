@@ -50,13 +50,9 @@
         </button>
       </div>
       <div class="col-auto me-5">
-        <button
-          type="button"
-          class="btn btn-secondary"
-          onclick="history.back();"
-        >
+        <a href="{{ url_for('home')}}" role="button" class="btn btn-secondary">
           <i class="fa-solid fa-ban me-2"></i>Cancel
-        </button>
+        </a>
       </div>
     </div>
   </form>

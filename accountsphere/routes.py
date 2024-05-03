@@ -55,7 +55,7 @@ def login():
         if user and check_password_hash(user.password_hash, password):
             login_user(user)  # Log the user in
             flash('Login successful!', 'success')
-            return redirect(url_for('home'))
+            return redirect(url_for('profile'))
         else:
             flash('Invalid username or password.', 'error')
     return render_template("login.html")
@@ -66,8 +66,12 @@ def login():
 def logout():
     logout_user()
     flash("You have been logged out.")
-    return redirect(url_for("home"))
+    return redirect(url_for("login"))
 
+
+@app.route("/")
+def home():
+    return render_template("login.html")
 
 @app.route('/password_reset', methods=['GET', 'POST'])
 @login_required
@@ -97,17 +101,17 @@ def password_reset():
         db.session.commit()
 
         flash('Your password has been updated successfully!', 'success')
-        return redirect(url_for('home'))
+        return redirect(url_for('profile'))
 
     return render_template('password_reset.html')
 
 
-@app.route("/")
+
+@app.route("/profile")
 @login_required
-def home():
+def profile():
     news_items = NewsItem.query.all()
     return render_template('index.html', news_items=news_items)
-
 
 @app.route("/account")
 @login_required
