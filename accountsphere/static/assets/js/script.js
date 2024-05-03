@@ -29,9 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const dateTimeElement = document.getElementById("datetime");
   function updateDateTime() {
     const now = new Date();
-    const dateString = now.toLocaleDateString("en-US", {
-      weekday: "long",
-    });
+    const dateString = now.toLocaleDateString("en-US", { weekday: "long" });
     const timeString = now.toLocaleTimeString("en-US", {
       hour: "2-digit",
       minute: "2-digit",
@@ -96,4 +94,25 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
   smoothScrollNews();
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Function to update the Product ID based on the selected Account Type
+  function updateProductID() {
+    var accountTypeSelect = document.getElementById("account_type");
+    var productIdInput = document.getElementById("product_id");
+    if (accountTypeSelect && productIdInput) {
+      // Assuming the product ID is stored as the value of the options
+      productIdInput.value = accountTypeSelect.value;
+      console.log("Product ID updated to: " + accountTypeSelect.value); // Debug statement
+    } else {
+      console.log("Error: Elements not found.");
+    }
+  }
+
+  // Attach the updateProductID function to the account_type select element
+  var accountTypeSelect = document.getElementById("account_type");
+  if (accountTypeSelect) {
+    accountTypeSelect.addEventListener("change", updateProductID);
+  }
 });
