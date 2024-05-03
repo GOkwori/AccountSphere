@@ -12,7 +12,13 @@ if os.path.exists("env.py"):
 # Initialize Flask application
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DB_URL")
+
+# Ensure the database URI is correctly formatted for SQLAlchemy
+uri = os.getenv("DATABASE_URL")  # Heroku automatically sets DATABASE_URL
+if uri and uri.startswith("postgres://"):
+    uri = uri.replace("postgres://", "postgresql://", 1)  # Replace only the first occurrence
+
+app.config["SQLALCHEMY_DATABASE_URI"] = uri
 
 # Initialize database management
 db = SQLAlchemy(app)
