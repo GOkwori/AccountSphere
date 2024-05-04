@@ -18,16 +18,16 @@ def register():
 
         if User.query.filter_by(username=username).first():
             flash("Username already exists.", "error")
-            return render_template("register.html", group=groups)
+            return render_template("register.html", groups=groups)
 
         if User.query.filter_by(email=email).first():
             flash("Email already exists.", "error")
-            return render_template("register.html", group=groups)
+            return render_template("register.html", groups=groups)
 
         # Check if the password and confirm password match
         if password != confirm_password:
             flash("Passwords do not match.", "error")
-            return render_template("register.html", group=groups)
+            return render_template("register.html", groups=groups)
 
         new_user = User(
             first_name=request.form.get("first_name"),
@@ -43,7 +43,7 @@ def register():
         flash("Account created successfully", 'success')
         return redirect(url_for('login'))
 
-    return render_template("register.html", group=groups)
+    return render_template("register.html", groups=groups)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -112,7 +112,7 @@ def home():
 @login_required
 def profile():
     news_items = NewsItem.query.all()
-    return render_template('index.html', news_item=news_items)
+    return render_template('index.html', news_items=news_items)
 
 
 @app.route("/account")
@@ -124,7 +124,7 @@ def account():
         .options(db.joinedload(Account.product)) \
         .order_by(Account.first_name, Account.last_name).all()
 
-    return render_template("account.html", account=accounts)
+    return render_template("account.html", accounts=accounts)
 
 
 @app.route('/add_account', methods=['GET', 'POST'])
@@ -145,12 +145,12 @@ def add_account():
 
         if not first_name or not last_name or not email or not product_id or not account_type or not currency:
             flash('All fields are required.', 'error')
-            return render_template('add_account.html', product=products)
+            return render_template('add_account.html', products=products)
         
         existing_account = Account.query.filter_by(email=email).first()
         if existing_account:
             flash('An account with this email already exists.', 'error')
-            return render_template('add_account.html', product=products)
+            return render_template('add_account.html', products=products)
         
         # Create new Account instance
         account = Account(
@@ -172,7 +172,7 @@ def add_account():
         flash('Account created successfully!', 'success')
         return redirect(url_for('account', success=True))
     
-    return render_template('add_account.html', product=products)
+    return render_template('add_account.html', products=products)
 
 
 @app.route('/edit_account/<int:account_id>', methods=['GET', 'POST'])
@@ -198,7 +198,7 @@ def edit_account(account_id):
         flash('Account updated successfully!', 'success')
         return redirect(url_for('account', success=True))
     
-    return render_template('edit_account.html', account=account, product=products)
+    return render_template('edit_account.html', account=account, products=products)
 
 
 @app.route('/delete_account/<int:account_id>')
@@ -227,7 +227,7 @@ def account_search():
         (Account.account_type.ilike(f'%{query}%')) |
         (Account.currency.ilike(f'%{query}%'))
     ).all()
-    return render_template('account.html', account=accounts)
+    return render_template('account.html', accounts=accounts)
 
 
 @app.route("/ad_group")
@@ -235,7 +235,7 @@ def account_search():
 def ad_group():
     ad_groups = list(Group.query.order_by(Group.name).all())
     print("Number of groups fetched:", len(ad_groups))  # This will show you how many groups are fetched
-    return render_template("ad_group.html", ad_group=ad_groups)
+    return render_template("ad_group.html", ad_groups=ad_groups)
 
 
 @app.route("/add_ad_group", methods=["GET", "POST"])
@@ -305,14 +305,14 @@ def ad_group_search():
         (Group.description.ilike(f'%{query}%')) |
         (Group.group_type.ilike(f'%{query}%'))
     ).all()
-    return render_template('ad_group.html', ad_group=ad_groups)
+    return render_template('ad_group.html', ad_groups=ad_groups)
 
 
 @app.route("/news")
 @login_required
 def news():
     news_items = NewsItem.query.all()
-    return render_template("news.html", news_item=news_items)
+    return render_template("news.html", news_items=news_items)
 
 
 @app.route('/add_news', methods=["GET", "POST"])
@@ -354,7 +354,7 @@ def edit_news(news_id):
         return redirect(url_for("news", success=True))
 
     news_items = NewsItem.query.all()  # This will fetch all news items for listing
-    return render_template("edit_news.html", news_item=news_items)
+    return render_template("edit_news.html", news_item=news_item, news_items=news_items)
 
 
 @app.route('/delete_news/<int:news_id>')
@@ -381,7 +381,7 @@ def news_search():
         (NewsItem.headline.ilike(f'%{query}%')) |
         (NewsItem.description.ilike(f'%{query}%'))
     ).all()
-    return render_template('news.html', news_item=news_items)
+    return render_template('news.html', news_items=news_items)
 
 
 @app.route("/product")
@@ -389,7 +389,7 @@ def news_search():
 def product():
     products = list(Product.query.order_by(Product.name).all())
     print("Number of products fetched:", len(products))
-    return render_template("product.html", product=products)
+    return render_template("product.html", products=products)
 
 
 @app.route("/add_product", methods=["GET", "POST"])
@@ -459,14 +459,14 @@ def product_search():
         (Product.description.ilike(f'%{query}%')) |
         (Product.type.ilike(f'%{query}%'))
     ).all()
-    return render_template('product.html', product=products)
+    return render_template('product.html', products=products)
 
 
 @app.route("/user")
 @login_required
 def user():
     users = User.query.order_by(User.first_name, User.last_name).all()
-    return render_template("user.html", user=users)
+    return render_template("user.html", users=users)
 
 
 @app.route("/add_user", methods=["GET", "POST"])
@@ -479,10 +479,10 @@ def add_user():
 
         if User.query.filter_by(username=username).first():
             flash("Username already exists.", "error")
-            return render_template("add_user.html", group=groups)
+            return render_template("add_user.html", groups=groups)
         if User.query.filter_by(email=email).first():
             flash("Email already exists.", "error")
-            return render_template("add_user.html", group=groups)
+            return render_template("add_user.html", groups=groups)
 
         user = User(
             first_name=request.form.get("first_name"),
@@ -497,7 +497,7 @@ def add_user():
         flash("User created successfully!", "success")
         return redirect(url_for("user"))
 
-    return render_template("add_user.html", group=groups)
+    return render_template("add_user.html", groups=groups)
 
 
 @app.route("/edit_user/<int:user_id>", methods=["GET", "POST"])
@@ -518,7 +518,7 @@ def edit_user(user_id):
         flash("User updated successfully!", "success")
         return redirect(url_for("user"))
     
-    return render_template("edit_user.html", user=user, group=groups)
+    return render_template("edit_user.html", user=user, groups=groups)
 
 
 @app.route("/delete_user/<int:user_id>")
@@ -545,4 +545,4 @@ def user_search():
         (User.username.ilike(f'%{query}%')) |
         (User.email.ilike(f'%{query}%'))
     ).all()
-    return render_template('user.html', user=users)
+    return render_template('user.html', users=users)
