@@ -11,13 +11,13 @@ if os.path.exists("env.py"):
 
 # Initialize Flask application
 app = Flask(__name__)
-app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "any_secret_key")
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 
 # Determine the database URI based on the environment
 if os.environ.get("DEVELOPMENT") == "True":
-    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DB_URL", "sqlite:///default.db")
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DB_URL")
 else:
-    uri = os.environ.get("DATABASE_URL", "sqlite:///default.db")
+    uri = os.environ.get("DATABASE_URL")
     if uri.startswith("postgres://"):
         uri = uri.replace("postgres://", "postgresql://", 1)
     app.config["SQLALCHEMY_DATABASE_URI"] = uri
