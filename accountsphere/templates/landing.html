@@ -6,7 +6,9 @@
 <section class="page-section" id="landing-section">
     <div class="container">
         <div class="text-center">
-            <h1 class="section-heading pt-4">AccountSphere</h1>
+            <h1 class="section-heading"><a class="navbar-brand m-o p-o">
+                <img class="logo" src="{{ url_for('static', filename='assets/images/file.png')}}" alt="logo">
+            </a>AccountSphere</h1>
             <hr>
             <br>
             <h2 class="section-subheading">Your Ultimate Financial Workflow Solution!</h2>
@@ -17,9 +19,8 @@
                 Welcome to smarter financial management!</p>
         </div>
         <br>
-        <div class="text-center mt-4">
+        <div class="text-center">
             <a href="{{url_for('register')}}" class="btn btn-secondary me-4" role="button"><i class="fa-solid fa-id-card me-2"></i>Register</a>
-            
             <a href="{{url_for('login')}}" class="btn btn-secondary ms-4" role="button"><i class="fa-solid fa-right-to-bracket me-2"></i>Login</a>
         </div>
     </div>

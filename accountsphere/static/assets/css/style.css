@@ -8,7 +8,7 @@
 }
 
 body {
-  background-image: url("../images/#");
+  background-image: url("../images/l1.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -122,24 +122,23 @@ body {
   background-image: url("../images/l1.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  height: 80vh;
-  margin-top: 1%;
+  height: 60vh;
 }
 
 #landing-section h1 {
-  font-size: 2.8rem;
+  font-size: 2.6rem;
   font-weight: bold;
   color: #fff;
 }
 
 #landing-section h2 {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: bold;
   color: #fff;
 }
 
 #landing-section p {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #fff;
 }
 
@@ -186,7 +185,6 @@ body {
 .dash-content {
   background-color: #fff;
   backdrop-filter: blur(10px);
-  opacity: 0.9;
   color: #3a405a;
   padding: 20px;
   border-radius: 10px;
@@ -306,6 +304,7 @@ h1 {
   padding: 20px;
   border-radius: 10px;
   margin: 7% auto;
+  backdrop-filter: blur(10px);
 }
 
 #search-bar {
@@ -334,7 +333,6 @@ h1 {
   border-radius: 10px;
   margin: 7% auto;
   width: 40%;
-  opacity: 0.9;
 }
 
 form {

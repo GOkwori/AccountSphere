@@ -66,7 +66,7 @@ def login():
 def logout():
     logout_user()
     flash("You have been logged out.")
-    return redirect(url_for("login"))
+    return redirect(url_for("home"))
 
 
 
@@ -105,13 +105,7 @@ def password_reset():
 
 @app.route("/")
 def home():
-    return render_template("login.html")
-
-
-@app.route("/landing")
-def landing():
     return render_template("landing.html")
-
 
 
 @app.route("/profile")
