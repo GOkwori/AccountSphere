@@ -15,7 +15,7 @@ app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 
 # Determine the database URI based on the environment
 if os.environ.get("DEVELOPMENT") == "True":
-    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DB_URL")
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
 else:
     uri = os.environ.get("DATABASE_URL")
     if uri.startswith("postgres://"):
