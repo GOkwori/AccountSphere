@@ -9,9 +9,9 @@
 
 body {
   background-image: url("../images/l1.jpg");
-  background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-size: cover;
+  background-position: top;
   font-family: "Roboto", sans-serif;
   font-size: 0.9rem;
   background-color: #3a405a;
@@ -121,8 +121,9 @@ body {
 #landing-section {
   background-image: url("../images/l1.jpg");
   background-size: cover;
+  background-position: top;
   background-repeat: no-repeat;
-  height: 60vh;
+  height: 68vh;
 }
 
 #landing-section h1 {
@@ -288,7 +289,7 @@ h1 {
   border: 1px solid #fff;
   margin: 20px;
   padding: 15px;
-  background-color: #3a405a;
+  background-color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
 }
