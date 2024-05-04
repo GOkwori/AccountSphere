@@ -354,7 +354,7 @@ def edit_news(news_id):
         return redirect(url_for("news", success=True))
 
     news_items = NewsItem.query.all()  # This will fetch all news items for listing
-    return render_template("edit_news.html", news_item=news_item, news_item=news_items)
+    return render_template("edit_news.html", news_item=news_items)
 
 
 @app.route('/delete_news/<int:news_id>')
