@@ -247,18 +247,18 @@ def add_ad_group():
         group_type = request.form.get("group_type")
 
         if not name or not description or not group_type:
-            flash("All fields are required.", "error")
+            flash("All fields are required.")
             return render_template("add_ad_group.html")
 
         existing_group = Group.query.filter_by(name=name).first()
         if existing_group:
-            flash("An AD-Group with this name already exists.", "error")
+            flash("An AD-Group with this name already exists.")
             return render_template("add_ad_group.html")
 
         new_group = Group(name=name, description=description, group_type=group_type)
         db.session.add(new_group)
         db.session.commit()
-        flash("AD-Group created successfully!", "success")
+        flash("AD-Group created successfully!")
         return redirect(url_for("ad_group", success=True))# Note the 'success=True'
 
     return render_template("add_ad_group.html")
@@ -275,7 +275,7 @@ def edit_ad_group(group_id):
 
         db.session.add(group)
         db.session.commit()
-        flash("AD-Group updated successfully!", "success")
+        flash("AD-Group updated successfully!")
         return redirect(url_for("ad_group", success=True))
     return render_template("edit_ad_group.html", group=group)
 
@@ -287,11 +287,11 @@ def delete_ad_group(group_id):
     db.session.delete(group)
     try:
         db.session.commit()
-        flash("AD-Group deleted successfully!", "success")
+        flash("AD-Group deleted successfully!")
 
     except Exception as e:
         db.session.rollback()
-        flash(f"Error deleting group: {str(e)}", "error")
+        flash(f"Error deleting group: {str(e)}")
 
     return redirect(url_for("ad_group"))
 
@@ -323,18 +323,18 @@ def add_news():
         description = request.form.get("description")
 
         if not headline or not description:
-            flash("All fields are required.", "error")
+            flash("All fields are required.")
             return render_template("add_news.html")
         
         existing_news_item = NewsItem.query.filter_by(headline=headline).first()
         if existing_news_item:
-            flash("A news item with this headline already exists.", "error")
+            flash("A news item with this headline already exists.")
             return render_template("add_news.html")
         
         news_item = NewsItem(headline=headline, description=description)
         db.session.add(news_item)
         db.session.commit()
-        flash("News item created successfully!", "success")
+        flash("News item created successfully!")
         return redirect(url_for("news", success=True))
     
     return render_template("add_news.html")
@@ -350,7 +350,7 @@ def edit_news(news_id):
         
         db.session.add(news_item)
         db.session.commit()
-        flash("News item updated successfully!", "success")
+        flash("News item updated successfully!")
         return redirect(url_for("news", success=True))
 
     news_items = NewsItem.query.all()  # This will fetch all news items for listing
@@ -365,10 +365,10 @@ def delete_news(news_id):
 
     try:
         db.session.commit()
-        flash("News item deleted successfully!", "success")
+        flash("News item deleted successfully!")
     except Exception as e:
         db.session.rollback()
-        flash(f"Error deleting news item: {str(e)}", "error")
+        flash(f"Error deleting news item: {str(e)}")
 
     return redirect(url_for("news"))
 
@@ -402,19 +402,19 @@ def add_product():
 
         existing_product = Product.query.filter((Product.name == name) | (Product.description == description)).first()
         if existing_product:
-            flash("This product name or description already exists.", "error")
+            flash("This product name or description already exists.")
             return render_template("add_product.html")
 
         new_product = Product(name=name, description=description, type=product_type)
         db.session.add(new_product)
         try:
             db.session.commit()
-            flash("Product created successfully!", "success")
+            flash("Product created successfully!")
             # Render the same page with a success flag
             return redirect(url_for("product"))
         except Exception as e:
             db.session.rollback()
-            flash(f"Error adding product: {str(e)}", "error")
+            flash(f"Error adding product: {str(e)}")
             return render_template("add_product.html")
 
     return render_template("add_product.html")
@@ -431,7 +431,7 @@ def edit_product(product_id):
 
         db.session.add(product)
         db.session.commit()
-        flash("Product updated successfully!", "success")
+        flash("Product updated successfully!")
         return redirect(url_for("product", success=True))
     return render_template("edit_product.html", product=product )
 
@@ -443,10 +443,10 @@ def delete_product(product_id):
     db.session.delete(product)
     try:
         db.session.commit()
-        flash("Product deleted successfully!", "success")
+        flash("Product deleted successfully!")
     except Exception as e:
         db.session.rollback()
-        flash(f"Error deleting product: {str(e)}", "error")
+        flash(f"Error deleting product: {str(e)}")
     return redirect(url_for("product"))
 
 
@@ -478,10 +478,10 @@ def add_user():
         email = request.form.get("email")
 
         if User.query.filter_by(username=username).first():
-            flash("Username already exists.", "error")
+            flash("Username already exists.")
             return render_template("add_user.html", groups=groups)
         if User.query.filter_by(email=email).first():
-            flash("Email already exists.", "error")
+            flash("Email already exists.")
             return render_template("add_user.html", groups=groups)
 
         user = User(
@@ -494,7 +494,7 @@ def add_user():
         )
         db.session.add(user)
         db.session.commit()
-        flash("User created successfully!", "success")
+        flash("User created successfully!")
         return redirect(url_for("user"))
 
     return render_template("add_user.html", groups=groups)
@@ -515,7 +515,7 @@ def edit_user(user_id):
 
         db.session.add(user)
         db.session.commit()
-        flash("User updated successfully!", "success")
+        flash("User updated successfully!")
         return redirect(url_for("user"))
     
     return render_template("edit_user.html", user=user, groups=groups)
@@ -528,10 +528,10 @@ def delete_user(user_id):
     db.session.delete(user)
     try:
         db.session.commit()
-        flash("User deleted successfully!", "success")
+        flash("User deleted successfully!")
     except Exception as e:
         db.session.rollback()
-        flash(f"Error deleting user: {str(e)}", "error")
+        flash(f"Error deleting user: {str(e)}")
     return redirect(url_for("user"))
   
 
