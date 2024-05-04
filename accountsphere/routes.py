@@ -239,7 +239,7 @@ def ad_group():
 
 
 @app.route("/add_ad_group", methods=["GET", "POST"])
-
+@login_required
 def add_ad_group():
     if request.method == "POST":
         name = request.form.get("name")
