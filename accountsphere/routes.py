@@ -18,16 +18,16 @@ def register():
 
         if User.query.filter_by(username=username).first():
             flash("Username already exists.", "error")
-            return render_template("register.html", groups=groups)
+            return render_template("register.html", group=groups)
 
         if User.query.filter_by(email=email).first():
             flash("Email already exists.", "error")
-            return render_template("register.html", groups=groups)
+            return render_template("register.html", group=groups)
 
         # Check if the password and confirm password match
         if password != confirm_password:
             flash("Passwords do not match.", "error")
-            return render_template("register.html", groups=groups)
+            return render_template("register.html", group=groups)
 
         new_user = User(
             first_name=request.form.get("first_name"),
@@ -43,7 +43,7 @@ def register():
         flash("Account created successfully", 'success')
         return redirect(url_for('login'))
 
-    return render_template("register.html", groups=groups)
+    return render_template("register.html", group=groups)
 
 
 @app.route("/login", methods=["GET", "POST"])
