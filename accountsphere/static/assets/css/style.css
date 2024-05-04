@@ -118,6 +118,71 @@ body {
   border-radius: 5px;
 }
 
+#landing-section {
+  background-image: url("../images/l1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 80vh;
+  margin-top: 1%;
+}
+
+#landing-section h1 {
+  font-size: 2.8rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+#landing-section h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+#landing-section p {
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+#landing-section .btn {
+  background-color: #fff;
+  color: #3a405a;
+  border-color: #fff;
+  width: 150px;
+  backdrop-filter: blur(10px);
+  transition: ease-in-out 0.3s;
+}
+
+#landing-section .btn:hover {
+  background-color: #3a405a;
+  color: #fff;
+}
+
+#features h2 {
+  font-weight: bold;
+  color: #3a405a;
+}
+
+#features h4 {
+  color: #3a405a;
+}
+
+#features hr {
+  border: 1px solid #3a405a;
+}
+
+#features .fa-circle {
+  color: #3a405a;
+}
+
+#features_2 {
+  background-image: url("../images/l1.jpg");
+  background-position: left bottom;
+}
+
+#features_2 .fa-stack-1x {
+  color: #3a405a;
+}
+
 .dash-content {
   background-color: #fff;
   backdrop-filter: blur(10px);

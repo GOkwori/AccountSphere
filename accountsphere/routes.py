@@ -69,9 +69,6 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route("/")
-def home():
-    return render_template("login.html")
 
 @app.route('/password_reset', methods=['GET', 'POST'])
 @login_required
@@ -106,12 +103,23 @@ def password_reset():
     return render_template('password_reset.html')
 
 
+@app.route("/")
+def home():
+    return render_template("login.html")
+
+
+@app.route("/landing")
+def landing():
+    return render_template("landing.html")
+
+
 
 @app.route("/profile")
 @login_required
 def profile():
     news_items = NewsItem.query.all()
     return render_template('index.html', news_items=news_items)
+
 
 @app.route("/account")
 @login_required
