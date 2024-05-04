@@ -24,7 +24,6 @@ def register():
             flash("Email already exists.", "error")
             return render_template("register.html", groups=groups)
 
-        # Check if the password and confirm password match
         if password != confirm_password:
             flash("Passwords do not match.", "error")
             return render_template("register.html", groups=groups)
@@ -44,6 +43,7 @@ def register():
         return redirect(url_for('login'))
 
     return render_template("register.html", groups=groups)
+
 
 
 @app.route("/login", methods=["GET", "POST"])
