@@ -32,6 +32,3 @@ from accountsphere import models, routes
 def load_user(user_id):
     return models.User.query.get(int(user_id))
 
-with engine.connect() as connection:
-    result = connection.execute("SELECT 1")
-    print(result.fetchone())
