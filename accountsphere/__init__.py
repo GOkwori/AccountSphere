@@ -11,15 +11,13 @@ if os.path.exists("env.py"):
 
 # Initialize Flask application
 app = Flask(__name__)
-app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "any_secret_key")  # Set the secret key
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "any_secret_key")
 
 # Determine the database URI based on the environment
-db_uri = None
-
 if os.environ.get("DEVELOPMENT") == "True":
-    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DB_URL")
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DB_URL", "sqlite:///default.db")
 else:
-    uri = os.environ.get("DATABASE_URL")
+    uri = os.environ.get("DATABASE_URL", "sqlite:///default.db")
     if uri.startswith("postgres://"):
         uri = uri.replace("postgres://", "postgresql://", 1)
     app.config["SQLALCHEMY_DATABASE_URI"] = uri
@@ -31,7 +29,7 @@ bcrypt = Bcrypt(app)
 
 # Set up Flask-Login
 login_manager = LoginManager(app)
-login_manager.login_view = 'login'  # Specify the login view name
+login_manager.login_view = 'login'
 
 # Import routes and models at the end to avoid circular dependencies
 from accountsphere import models, routes
