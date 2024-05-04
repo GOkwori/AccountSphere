@@ -75,7 +75,6 @@ class Account(db.Model):
     
 
 class NewsItem(db.Model):
-    __tablename__ = 'news_items'
     id = db.Column(db.Integer, primary_key=True)
     headline = db.Column(db.String(255), nullable=False)
     description = db.Column(db.Text, nullable=False)
