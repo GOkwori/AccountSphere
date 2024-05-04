@@ -4,7 +4,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
-from db_config import engine
 
 # Import environment variables if available
 if os.path.exists("env.py"):
@@ -39,4 +38,3 @@ from accountsphere import models, routes
 @login_manager.user_loader
 def load_user(user_id):
     return models.User.query.get(int(user_id))
-
