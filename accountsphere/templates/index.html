@@ -81,13 +81,13 @@
   </div>
 </div>
 
-<section>
+<section id="panels">
   <div class="row container-fluid p-0" id="section-container">
     <div class="col-md-6 section_1 text-center">
       <div class="row text-center mt-4" id="card-container">
         <!-- Adjust columns to use col-md-4 for three cards per row -->
         <div class="col-4 mb-2">
-          <div class="card" style="width: 12rem">
+          <div class="card" style="width: 10rem">
             <img
               src="{{ url_for('static', filename='assets/images/1.jpeg')}}"
               class="card-img-top pb-2"
@@ -102,7 +102,7 @@
           </div>
         </div>
         <div class="col-4 mb-2">
-          <div class="card" style="width: 12rem">
+          <div class="card" style="width: 10rem">
             <img
               src="{{ url_for('static', filename='assets/images/10.webp')}}"
               class="card-img-top pb-2"
@@ -117,7 +117,7 @@
           </div>
         </div>
         <div class="col-4 mb-2">
-          <div class="card" style="width: 12rem">
+          <div class="card" style="width: 10rem">
             <img
               src="{{ url_for('static', filename='assets/images/7.webp')}}"
               class="card-img-top pb-2"
@@ -136,7 +136,7 @@
       <div class="row text-center mt-4" id="card-container">
         <!-- Adjust columns to use col-md-4 for three cards per row -->
         <div class="col-4 mb-2">
-          <div class="card" style="width: 12rem">
+          <div class="card" style="width: 10rem">
             <img
               src="{{ url_for('static', filename='assets/images/2.jpeg')}}"
               class="card-img-top pb-2"
@@ -151,7 +151,7 @@
           </div>
         </div>
         <div class="col-4 mb-2">
-          <div class="card" style="width: 12rem">
+          <div class="card" style="width: 10rem">
             <img
               src="{{ url_for('static', filename='assets/images/landing_1.jpeg')}}"
               class="card-img-top pb-2"
@@ -166,7 +166,7 @@
           </div>
         </div>
         <div class="col-4 mb-2">
-          <div class="card" style="width: 12rem">
+          <div class="card" style="width: 10rem">
             <img
               src="{{ url_for('static', filename='assets/images/6.jpeg')}}"
               class="card-img-top pb-2"
@@ -188,7 +188,7 @@
           >Trending Articles <i class="fa-solid fa-newspaper ms-2"></i
         ></strong>
       </h5>
-      <div class="news-panel" style="max-height: 350px; overflow-y: auto">
+      <div class="news-panel" style="overflow-y: auto">
         <ol class="list-group list-group-flush">
           {% for item in news_items %}
           <li class="list-group-item">
