@@ -524,6 +524,16 @@ footer i {
     font-size: 1.2rem;
   }
 
+  /* login form */
+  .login-content {
+    width: 95%;
+  }
+
+  .login-content h4 {
+    font-size: 1.4rem;
+    padding: 2% 0;
+  }
+
   /* Forms */
   .form-content {
     width: 90%;
@@ -577,17 +587,26 @@ footer i {
     display: none !important;
   }
 
-  /* Footer */
-  #footer-container {
-    margin: 0;
-  }
-
   /* Forms */
   .form-content {
     width: 100%;
   }
 
+  /* Login Form */
+  .login-content {
+    width: 80%;
+  }
+
+  .login-content h4 {
+    font-size: 1.4rem;
+    padding: 1% 0;
+  }
+
   /* Footer */
+  #footer-container {
+    margin: 0;
+  }
+
   .social-link {
     display: none;
   }
@@ -606,6 +625,16 @@ footer i {
     height: 40vh;
   }
 
+  /* Login Form */
+  .login-content {
+    width: 80%;
+  }
+
+  .login-content h4 {
+    font-size: 1.4rem;
+    padding: 1% 0;
+  }
+
   /* Forms */
   .form-content {
     width: 70%;
@@ -618,6 +647,11 @@ footer i {
   /* Forms */
   .form-content {
     width: 70%;
+  }
+
+  /* Login Form */
+  .login-content {
+    width: 60%;
   }
 
   /* Footer */
@@ -651,6 +685,12 @@ footer i {
     height: 40vh;
   }
 
+  /* Login Form */
+  .login-content {
+    width: 60%;
+  }
+
+  /* Footer */
   #footer-container {
     margin: 0;
   }
