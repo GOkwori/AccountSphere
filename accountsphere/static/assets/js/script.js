@@ -1,6 +1,24 @@
 document.addEventListener("DOMContentLoaded", function () {
   console.log("Document loaded and script starting...");
 
+  function updateProductID() {
+    var accountTypeSelect = document.getElementById("account_type");
+    var productIdInput = document.getElementById("product_id");
+    if (accountTypeSelect && productIdInput) {
+      // Assuming the product ID is stored as the value of the options
+      productIdInput.value = accountTypeSelect.value;
+      console.log("Product ID updated to: " + accountTypeSelect.value); // Debug statement
+    } else {
+      console.log("Error: Elements not found.");
+    }
+  }
+
+  // Attach the updateProductID function to the account_type select element
+  var accountTypeSelect = document.getElementById("account_type");
+  if (accountTypeSelect) {
+    accountTypeSelect.addEventListener("change", updateProductID);
+  }
+
   // Handle flash messages with a slight delay
   function handleFlashMessages() {
     const flashMessagesContainer = document.getElementById("flash-messages");
@@ -94,25 +112,4 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
   smoothScrollNews();
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-  // Function to update the Product ID based on the selected Account Type
-  function updateProductID() {
-    var accountTypeSelect = document.getElementById("account_type");
-    var productIdInput = document.getElementById("product_id");
-    if (accountTypeSelect && productIdInput) {
-      // Assuming the product ID is stored as the value of the options
-      productIdInput.value = accountTypeSelect.value;
-      console.log("Product ID updated to: " + accountTypeSelect.value); // Debug statement
-    } else {
-      console.log("Error: Elements not found.");
-    }
-  }
-
-  // Attach the updateProductID function to the account_type select element
-  var accountTypeSelect = document.getElementById("account_type");
-  if (accountTypeSelect) {
-    accountTypeSelect.addEventListener("change", updateProductID);
-  }
 });
