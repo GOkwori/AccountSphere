@@ -3,95 +3,116 @@
 
 {% block content %}
 
+
+<!-- Landing Page -->
 <section class="page-section" id="landing-section">
     <div class="container">
+
+        <!-- Landing Page Content -->
         <div class="text-center">
             <h1 class="section-heading"><a class="navbar-brand m-o p-o">
-                <img class="logo" src="{{ url_for('static', filename='assets/images/file.png')}}" alt="logo">
-            </a>AccountSphere</h1>
+                    <img class="logo" src="{{ url_for('static', filename='assets/images/file.png')}}" alt="logo">
+                </a>AccountSphere</h1>
             <hr>
             <br>
             <h2 class="section-subheading">Your Ultimate Financial Workflow Solution!</h2>
-            <p>Navigating the complexities of financial management can be challenging, but not anymore! 
-            <br>
-                With AccountSphere, you gain complete control over your financial workflows in one seamless, integrated platform. 
+            <p>Navigating the complexities of financial management can be challenging, but not anymore!
                 <br>
-                Welcome to smarter financial management!</p>
+                With AccountSphere, you gain complete control over your financial workflows in one seamless, integrated
+                platform.
+                <br>
+                Welcome to smarter financial management!
+            </p>
         </div>
         <br>
         <div class="text-center">
-            <a href="{{url_for('register')}}" class="btn btn-secondary me-4" role="button"><i class="fa-solid fa-id-card me-2"></i>Register</a>
-            <a href="{{url_for('login')}}" class="btn btn-secondary ms-4" role="button"><i class="fa-solid fa-right-to-bracket me-2"></i>Login</a>
+            <a href="{{url_for('register')}}" class="btn btn-secondary me-4" role="button"><i
+                    class="fa-solid fa-id-card me-2"></i>Register</a>
+            <a href="{{url_for('login')}}" class="btn btn-secondary ms-4" role="button"><i
+                    class="fa-solid fa-right-to-bracket me-2"></i>Login</a>
         </div>
     </div>
-   
 </section>
 
-    <section class="page-section bg-light" id="features">
-        <div class="container">
-            <div class="text-center">
-                <h2 class="section-heading pt-2">Features</h2>
+<!-- Features Section -->
+<section class="page-section bg-light" id="features">
+    <div class="container">
+
+        <!-- Features Section Heading -->
+        <div class="text-center">
+            <h2 class="section-heading pt-2">Features</h2>
+        </div>
+        <hr>
+        <br>
+
+        <!-- Features Section Content -->
+        <div class="row text-center">
+            <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-folder fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4 class="my-3">Account Management</h4>
+                <p class="text-muted">Take charge of your financial records with ease. Our Account Management system
+                    provides all the tools you need to handle your accounts efficiently.</p>
             </div>
-            <hr>
-            <br>
-            <div class="row text-center">
-                <div class="col-md-4">
-                    <span class="fa-stack fa-4x">
-                        <i class="fas fa-circle fa-stack-2x"></i>
-                        <i class="fas fa-folder fa-stack-1x fa-inverse"></i>
-                    </span>
-                    <h4 class="my-3">Account Management</h4>
-                    <p class="text-muted">Take charge of your financial records with ease. Our Account Management system provides all the tools you need to handle your accounts efficiently.</p>
-                </div>
-                <div class="col-md-4">
-                    <span class="fa-stack fa-4x">
-                        <i class="fas fa-circle fa-stack-2x"></i>
-                        <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
-                    </span>
-                    <h4 class="my-3">Active Directory</h4>
-                    <p class="text-muted">Facilitate secure and flexible access controls, ensuring that the right people have the right access at the right times.</p>
-                </div>
-                <div class="col-md-4">
-                    <span class="fa-stack fa-4x">
-                        <i class="fas fa-circle fa-stack-2x"></i>
-                        <i class="fas fa-file fa-stack-1x fa-inverse"></i>
-                    </span>
-                    <h4 class="my-3">Product Management</h4>
-                    <p class="text-muted">Optimize your product lifecycle with our robust Product Management tools. From introduction to phase-out, manage every aspect of your product's journey.</p>
-                </div>
+            
+            <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4 class="my-3">Active Directory</h4>
+                <p class="text-muted">Facilitate secure and flexible access controls, ensuring that the right people
+                    have the right access at the right times.</p>
+            </div>
+
+            <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-file fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4 class="my-3">Product Management</h4>
+                <p class="text-muted">Optimize your product lifecycle with our robust Product Management tools. From
+                    introduction to phase-out, manage every aspect of your product's journey.</p>
             </div>
         </div>
-    </section>
-    <section class="page-section" id="features_2">
-        <div class="container pt-4">
-            <div class="row text-center">
-                <div class="col-md-4">
-                    <span class="fa-stack fa-4x">
-                        <i class="fas fa-circle fa-stack-2x"></i>
-                        <i class="fas fa-users fa-stack-1x fa-inverse"></i>
-                    </span>
-                    <h4 class="my-3">User Role Management</h4>
-                    <p>Our User Role Management system allows for detailed access control, ensuring that team members have appropriate permissions based on their responsibilities. </p>
-                </div>
-                <div class="col-md-4">
-                    <span class="fa-stack fa-4x">
-                        <i class="fas fa-circle fa-stack-2x"></i>
-                        <i class="fas fa-newspaper fa-stack-1x fa-inverse"></i>
-                    </span>
-                    <h4 class="my-3">News Board</h4>
-                    <p>Stay informed and keep your team updated with our News Board. Share important announcements, industry news, and internal updates all in one place. </p>
-                </div>
-                <div class="col-md-4">
-                    <span class="fa-stack fa-4x">
-                        <i class="fas fa-circle fa-stack-2x"></i>
-                        <i class="fas fa-shield fa-stack-1x fa-inverse"></i>
-                    </span>
-                    <h4 class="my-3">Password Management</h4>
-                    <p>Secure and manage your credentials with our advanced Password Management system.</p>
-                </div>
+    </div>
+</section>
+
+<!-- Features Section 2 -->
+<section class="page-section" id="features_2">
+    <div class="container pt-4">
+        <div class="row text-center">
+            <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-users fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4 class="my-3">User Role Management</h4>
+                <p>Our User Role Management system allows for detailed access control, ensuring that team members have
+                    appropriate permissions based on their responsibilities. </p>
+            </div>
+
+            <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-newspaper fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4 class="my-3">News Board</h4>
+                <p>Stay informed and keep your team updated with our News Board. Share important announcements, industry
+                    news, and internal updates all in one place. </p>
+            </div>
+            
+            <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-shield fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4 class="my-3">Password Management</h4>
+                <p>Secure and manage your credentials with our advanced Password Management system.</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 {% endblock %}
-
-
