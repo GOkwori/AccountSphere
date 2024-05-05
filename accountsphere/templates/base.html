@@ -42,7 +42,7 @@
                 <!-- Toggle Button for Offcanvas Sidebar and Brand Logo -->
                 <div class="d-flex align-items-center">
                     <button class="btn btn-primary me-2" type="button" data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
+                        data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
                         <i class="fas fa-bars"></i>
                     </button>
                     <a class="navbar-brand" href="{{url_for('profile')}}">
@@ -69,8 +69,8 @@
         {% endif %}
 
         <!-- Offcanvas Sidebar -->
-        <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
-            aria-labelledby="offcanvasWithBothOptionsLabel">
+        <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="staticBackdrop"
+            aria-labelledby="staticBackdropLabel">
 
             <!-- Offcanvas Header -->
             <div class="offcanvas-header">
