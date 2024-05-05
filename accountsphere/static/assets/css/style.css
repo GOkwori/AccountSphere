@@ -490,3 +490,26 @@ footer i {
   background-color: #3a405a;
   color: #fff;
 }
+
+/*----Media Query----*/
+
+/*---------- Styling for screens with (min-width: 320px) and (max-width: 575px) ----------*/
+
+@media (min-width: 320px) and (max-width: 575px) {}
+
+/*---------- Styling for screens with (min-width: 768px) and (max-width: 991px)----------*/
+
+@media (min-width: 768px) and (max-width: 991px) {}
+
+/*---------- Styling for screens with (min-width: 992px) and (max-width: 1024px)----------*/
+
+@media (min-width: 992px) and (max-width: 1024px) {}
+
+
+/*---------- Styling for screens with (min-width: 1025px) and (max-width: 1199px)----------*/
+
+@media (min-width: 1025px) and (max-width: 1199px) {}
+
+/*---------- Styling for screens with (min-width: 1200px) and (max-width: 1860px)----------*/
+
+@media (min-width: 1200px) and (max-width: 1860px) {}
