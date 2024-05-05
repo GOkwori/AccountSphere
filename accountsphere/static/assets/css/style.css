@@ -524,6 +524,24 @@ footer i {
     font-size: 1.2rem;
   }
 
+  /* Forms */
+  .form-content {
+    width: 90%;
+  }
+
+  form.text-center {
+    margin: 0;
+  }
+
+  .row.mb-3.ms-5 {
+    margin-left: 0 !important;
+  }
+
+  /* Form buttons */
+  .col-auto.me-5 {
+    margin: 0 !important;
+  }
+
   /* Footer */
   #footer-container {
     margin: 0;
@@ -564,6 +582,11 @@ footer i {
     margin: 0;
   }
 
+  /* Forms */
+  .form-content {
+    width: 100%;
+  }
+
   /* Footer */
   .social-link {
     display: none;
@@ -582,11 +605,21 @@ footer i {
   #landing-section {
     height: 40vh;
   }
+
+  /* Forms */
+  .form-content {
+    width: 70%;
+  }
 }
 
 /*---------- Styling for screens with (min-width: 1025px) and (max-width: 1199px)----------*/
 
 @media (min-width: 1025px) and (max-width: 1199px) {
+  /* Forms */
+  .form-content {
+    width: 70%;
+  }
+
   /* Footer */
   #footer-container {
     margin: 0;
