@@ -1,40 +1,37 @@
-import os
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
-from flask_bcrypt import Bcrypt
-from flask_login import LoginManager
+import os 
+from flask import Flask 
+from flask_sqlalchemy import SQLAlchemy 
+from flask_migrate import Migrate 
+from flask_bcrypt import Bcrypt 
+from flask_login import LoginManager 
 
 # Import environment variables if available
-if os.path.exists("env.py"):
+if os.path.exists("env.py"):    
     import env
 
-# Initialize Flask application
-app = Flask(__name__)
-app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
+app = Flask(__name__)    # Initialize Flask application
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")     # Set the secret key for the application
+if os.environ.get("DEVELOPMENT") == "True":    # Check if the application is in development mode
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DB_URL")   # Set the database URI for the application
 
-# Determine the database URI based on the environment
-if os.environ.get("DEVELOPMENT") == "True":
-    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DB_URL")
 else:
     uri = os.environ.get("DATABASE_URL")
     if uri.startswith("postgres://"):
         uri = uri.replace("postgres://", "postgresql://", 1)
     app.config["SQLALCHEMY_DATABASE_URI"] = uri
 
-# Initialize database management
-db = SQLAlchemy(app)
-migrate = Migrate(app, db)
-bcrypt = Bcrypt(app)
+# Initialize the application with the database
+db = SQLAlchemy(app)    # Initialize SQLAlchemy
+migrate = Migrate(app, db)    # Initialize Flask-Migrate
+bcrypt = Bcrypt(app)    # Initialize Bcrypt
+login_manager = LoginManager(app)    # Initialize 
+Flask-Login    # Initialize Flask-Login
+login_manager.login_view = 'login'    # Set the login view for the application
 
-# Set up Flask-Login
-login_manager = LoginManager(app)
-login_manager.login_view = 'login'
+# Import routes and models from the application
+from accountsphere import routes, models    
 
-# Import routes and models at the end to avoid circular dependencies
-from accountsphere import models, routes
-
-# User loader function
-@login_manager.user_loader
+# User loader function to load the user by ID
+@login_manager.user_loader     
 def load_user(user_id):
     return models.User.query.get(int(user_id))
