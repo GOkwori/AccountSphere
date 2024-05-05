@@ -496,30 +496,26 @@ footer i {
 /*---------- Styling for screens with (min-width: 320px) and (max-width: 575px) ----------*/
 
 @media (min-width: 320px) and (max-width: 575px) {
-  body {
-    font-size: 0.8rem;
-  }
-
-  h1 {
-    font-size: 2rem;
-  }
-
-  h2 {
-    font-size: 1.8rem;
-  }
-
-  h3 {
+  /* Typography */
+  h4 {
     font-size: 1rem;
+  }
+
+  p {
+    display: none;
   }
 
   /* Section */
   #landing-section {
-    margin-top: 12%;
-    height: 50vh;
+    height: 60vh;
+  }
+
+  /* Buttons */
+  #landing-section .btn {
+    width: 120px;
   }
 
   /* Landing Section Content */
-
   #landing-section h1 {
     font-size: 2rem;
   }
@@ -528,36 +524,101 @@ footer i {
     font-size: 1.2rem;
   }
 
-  #landing-section p {
-    font-size: 0.8rem;
-    background-color: #3a405a;
-    opacity: 0.9;
-    backdrop-filter: blur(10px);
-    border-radius: 10px;
-  }
-
   /* Footer */
   #footer-container {
     margin: 0;
+  }
+
+  .social-link {
+    display: none;
   }
 }
 
 /*---------- Styling for screens with (min-width: 768px) and (max-width: 991px)----------*/
 
 @media (min-width: 768px) and (max-width: 991px) {
+  /* Heading */
+  h4 {
+    font-size: 1.2rem;
+  }
+
+  p {
+    display: none;
+  }
+
+  /* Section */
+  #landing-section {
+    height: 40vh;
+  }
+
+  #features p {
+    display: none !important;
+  }
+
+  #features_2 p {
+    display: none !important;
+  }
+
+  /* Footer */
+  #footer-container {
+    margin: 0;
+  }
+
+  /* Footer */
+  .social-link {
+    display: none;
+  }
 }
 
 /*---------- Styling for screens with (min-width: 992px) and (max-width: 1024px)----------*/
 
 @media (min-width: 992px) and (max-width: 1024px) {
+  /* Heading */
+  h4 {
+    font-size: 1.2rem;
+  }
+
+  /* Section */
+  #landing-section {
+    height: 40vh;
+  }
 }
 
 /*---------- Styling for screens with (min-width: 1025px) and (max-width: 1199px)----------*/
 
 @media (min-width: 1025px) and (max-width: 1199px) {
+  /* Footer */
+  #footer-container {
+    margin: 0;
+  }
 }
 
 /*---------- Styling for screens with (min-width: 1200px) and (max-width: 1860px)----------*/
 
 @media (min-width: 1200px) and (max-width: 1860px) {
+  /* Typography */
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  h4 {
+    font-size: 1.2rem;
+  }
+
+  p {
+    font-size: 0.8rem;
+  }
+
+  /* Section */
+  #landing-section {
+    height: 40vh;
+  }
+
+  #footer-container {
+    margin: 0;
+  }
 }
