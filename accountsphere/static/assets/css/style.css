@@ -463,10 +463,24 @@ footer i {
   }
 }
 
+/* Error Message */
 #error-message {
   margin-top: 20vh;
 }
 
+/* Error Message Content */
 #error-message h1 {
   font-size: 3rem;
+}
+
+/* Error Message Button */
+#error-message .btn {
+  background-color: #fff;
+  color: #3a405a;
+}
+
+/* Error Message Button on hover */
+#error-message .btn:hover {
+  background-color: #3a405a;
+  color: #fff;
 }
