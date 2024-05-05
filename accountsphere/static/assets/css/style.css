@@ -156,7 +156,6 @@ body {
   color: #3a405a;
   border-color: #fff;
   width: 150px;
-  backdrop-filter: blur(10px);
   transition: ease-in-out 0.3s;
 }
 
@@ -199,7 +198,6 @@ body {
 /* Profile Section */
 .dash-content {
   background-color: #fff;
-  backdrop-filter: blur(10px);
   color: #3a405a;
   padding: 20px;
   border-radius: 10px;
@@ -254,7 +252,6 @@ h1 {
 /* Section */
 .section_1 {
   background-color: #fff;
-  backdrop-filter: blur(10px);
   border-radius: 10px;
   margin: 1%;
   width: 40%;
@@ -265,7 +262,6 @@ h1 {
 /* Section 2 */
 .panel_2 {
   background-color: #fff;
-  backdrop-filter: blur(10px);
   border-radius: 10px;
   margin: 1%;
   color: #3a405a;
@@ -332,7 +328,6 @@ h1 {
   padding: 20px;
   border-radius: 10px;
   margin: 7% auto;
-  backdrop-filter: blur(10px);
 }
 
 /* Dashboard Search bar */
@@ -347,7 +342,6 @@ h1 {
 /* Forms */
 .form-content {
   background-color: #fff;
-  backdrop-filter: blur(10px);
   color: #3a405a;
   padding: 20px;
   border-radius: 10px;
