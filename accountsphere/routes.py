@@ -4,6 +4,7 @@ from accountsphere import app, db
 from accountsphere.models import User, Group, Product, Account, NewsItem
 from sqlalchemy.orm import joinedload
 from flask_login import login_user, logout_user, login_required, current_user
+from sqlalchemy import or_
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -218,15 +219,25 @@ def delete_account(account_id):
 @app.route('/account_search')
 @login_required
 def account_search():
-    query = request.args.get('query', '')
+    query = request.args.get('query', '').strip()
+    
+    if not query:
+        return redirect(url_for('account'))  # Redirect to a default account page if no query
+    
     accounts = Account.query.filter(
-        (Account.first_name.ilike(f'%{query}%')) |
-        (Account.last_name.ilike(f'%{query}%')) |
-        (Account.email.ilike(f'%{query}%')) |
-        (Account.phone_number.ilike(f'%{query}%')) |
-        (Account.account_type.ilike(f'%{query}%')) |
-        (Account.currency.ilike(f'%{query}%'))
+        or_(
+            Account.first_name.ilike(f'%{query}%'),
+            Account.last_name.ilike(f'%{query}%'),
+            Account.email.ilike(f'%{query}%'),
+            Account.phone_number.ilike(f'%{query}%'),
+            Account.account_type.ilike(f'%{query}%'),
+            Account.currency.ilike(f'%{query}%')
+        )
     ).all()
+    
+    if not accounts:
+        return render_template('account.html', accounts=[], message=f'No accounts found for "{query}"')
+    
     return render_template('account.html', accounts=accounts)
 
 
@@ -299,13 +310,20 @@ def delete_ad_group(group_id):
 @app.route("/ad_group_search")
 @login_required
 def ad_group_search():
-    query = request.args.get('query', '')
-    ad_groups = Group.query.filter(
-        (Group.name.ilike(f'%{query}%')) |
-        (Group.description.ilike(f'%{query}%')) |
-        (Group.group_type.ilike(f'%{query}%'))
-    ).all()
-    return render_template('ad_group.html', ad_groups=ad_groups)
+    query = request.args.get('query', '').strip()
+    
+    if query:
+        ad_groups = Group.query.filter(
+            or_(
+                Group.name.ilike(f'%{query}%'),
+                Group.description.ilike(f'%{query}%'),
+                Group.group_type.ilike(f'%{query}%')
+            )
+        ).all()
+    else:
+        ad_groups = []
+
+    return render_template('ad_group.html', ad_groups=ad_groups, query=query)
 
 
 @app.route("/news")
@@ -376,12 +394,19 @@ def delete_news(news_id):
 @app.route('/news_search')
 @login_required
 def news_search():
-    query = request.args.get('query', '')
-    news_items = NewsItem.query.filter(
-        (NewsItem.headline.ilike(f'%{query}%')) |
-        (NewsItem.description.ilike(f'%{query}%'))
-    ).all()
-    return render_template('news.html', news_items=news_items)
+    query = request.args.get('query', '').strip()
+    
+    if query:
+        news_items = NewsItem.query.filter(
+            or_(
+                NewsItem.headline.ilike(f'%{query}%'),
+                NewsItem.description.ilike(f'%{query}%')
+            )
+        ).all()
+    else:
+        news_items = []
+    
+    return render_template('news.html', news_items=news_items, query=query)
 
 
 @app.route("/product")
@@ -453,13 +478,20 @@ def delete_product(product_id):
 @app.route("/product_search")
 @login_required
 def product_search():
-    query = request.args.get('query', '')
-    products = Product.query.filter(
-        (Product.name.ilike(f'%{query}%')) |
-        (Product.description.ilike(f'%{query}%')) |
-        (Product.type.ilike(f'%{query}%'))
-    ).all()
-    return render_template('product.html', products=products)
+    query = request.args.get('query', '').strip()
+    
+    if query:
+        products = Product.query.filter(
+            or_(
+                Product.name.ilike(f'%{query}%'),
+                Product.description.ilike(f'%{query}%'),
+                Product.type.ilike(f'%{query}%')
+            )
+        ).all()
+    else:
+        products = []
+    
+    return render_template('product.html', products=products, query=query)
 
 
 @app.route("/user")
@@ -538,11 +570,18 @@ def delete_user(user_id):
 @app.route("/user_search")
 @login_required
 def user_search():
-    query = request.args.get('query', '')
-    users = User.query.filter(
-        (User.first_name.ilike(f'%{query}%')) |
-        (User.last_name.ilike(f'%{query}%')) |
-        (User.username.ilike(f'%{query}%')) |
-        (User.email.ilike(f'%{query}%'))
-    ).all()
-    return render_template('user.html', users=users)
+    query = request.args.get('query', '').strip()
+    
+    if query:
+        users = User.query.filter(
+            or_(
+                User.first_name.ilike(f'%{query}%'),
+                User.last_name.ilike(f'%{query}%'),
+                User.username.ilike(f'%{query}%'),
+                User.email.ilike(f'%{query}%')
+            )
+        ).all()
+    else:
+        users = []
+
+    return render_template('user.html', users=users, query=query)
