@@ -6,13 +6,14 @@
     Create Account <i class="fa-regular fa-folder-open ms-2"></i>
   </h3>
   <br>
-  <form class="text-center" action="{{ url_for('add_account')}}" method="post"> <!-- Ensure the form action is correct -->
-   
+  <form class="text-center" action="{{ url_for('add_account')}}" method="post">
+    <!-- Ensure the form action is correct -->
+
     <!-- First Name -->
     <div class="row mb-3 ms-5">
       <label for="first_name" class="col-sm-2 col-form-label">First Name</label>
       <div class="col-sm-7">
-        <input type="text" class="form-control" id="first_name" name="first_name" required />
+        <input type="text" class="form-control" id="first_name" name="first_name" required>
       </div>
     </div>
 
@@ -20,7 +21,7 @@
     <div class="row mb-3 ms-5">
       <label for="last_name" class="col-sm-2 col-form-label">Last Name</label>
       <div class="col-sm-7">
-        <input type="text" class="form-control" id="last_name" name="last_name" required />
+        <input type="text" class="form-control" id="last_name" name="last_name" required>
       </div>
     </div>
 
@@ -28,7 +29,7 @@
     <div class="row mb-3 ms-5">
       <label for="email" class="col-sm-2 col-form-label">Email</label>
       <div class="col-sm-7">
-        <input type="email" class="form-control" id="email" name="email" required />
+        <input type="email" class="form-control" id="email" name="email" required>
       </div>
     </div>
 
@@ -36,7 +37,7 @@
     <div class="row mb-3 ms-5">
       <label for="phone_number" class="col-sm-2 col-form-label">Phone</label>
       <div class="col-sm-7">
-        <input type="tel" class="form-control" id="phone_number" name="phone_number" required />
+        <input type="tel" class="form-control" id="phone_number" name="phone_number" required>
       </div>
     </div>
 
@@ -44,7 +45,7 @@
     <div class="row mb-3 ms-5">
       <label for="date_of_birth" class="col-sm-2 col-form-label">Date of Birth</label>
       <div class="col-sm-3">
-        <input type="date" class="form-control" id="date_of_birth" name="date_of_birth" required />
+        <input type="date" class="form-control" id="date_of_birth" name="date_of_birth" required>
       </div>
     </div>
 
@@ -88,7 +89,7 @@
       <!-- Balance -->
       <div class="col-sm-3">
         <input type="number" class="form-control" id="balance" name="balance" placeholder="Amount" step="0.01"
-          min="0" />
+          min="0">
       </div>
     </div>
 
@@ -96,7 +97,7 @@
     <div class="row mb-3 ms-5">
       <div class="col-sm-6">
         <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="terms" required />
+          <input type="checkbox" class="form-check-input" id="terms" required>
           <label class="form-check-label" for="terms">I confirm that all details have been verified.</label>
         </div>
       </div>
