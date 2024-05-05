@@ -1,32 +1,38 @@
+// Event listener for the document ready event
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("Document loaded and script starting...");
 
+  // Update the product ID based on the selected account type
   function updateProductID() {
     var accountTypeSelect = document.getElementById("account_type");
     var productIdInput = document.getElementById("product_id");
     if (accountTypeSelect && productIdInput) {
-      // Assuming the product ID is stored as the value of the options
+
+      // Update the product ID input field with the selected account type
       productIdInput.value = accountTypeSelect.value;
-      console.log("Product ID updated to: " + accountTypeSelect.value); // Debug statement
+      console.log("Product ID updated to: " + accountTypeSelect.value);
     } else {
       console.log("Error: Elements not found.");
     }
   }
 
-  // Attach the updateProductID function to the account_type select element
+  // Add an event listener to the account type select element
   var accountTypeSelect = document.getElementById("account_type");
   if (accountTypeSelect) {
     accountTypeSelect.addEventListener("change", updateProductID);
   }
 
-  // Handle flash messages with a slight delay
+  // Handle flash messages
   function handleFlashMessages() {
     const flashMessagesContainer = document.getElementById("flash-messages");
     if (flashMessagesContainer) {
       const messages =
+
+        // Get all flash messages
         flashMessagesContainer.querySelectorAll(".flash-message");
       if (messages.length > 0) {
         console.log(`Found ${messages.length} flash messages.`);
+
+        // Display each flash message as an alert
         messages.forEach((messageDiv) => {
           setTimeout(() => {
             const message = messageDiv.getAttribute("data-message");
@@ -41,10 +47,14 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("Flash messages container not found.");
     }
   }
+
+  // Call the function to handle flash messages
   handleFlashMessages();
 
-  // Date and time panel setup
+  // Day and time panel setup
   const dateTimeElement = document.getElementById("datetime");
+  
+  // Update the date and time every second
   function updateDateTime() {
     const now = new Date();
     const dateString = now.toLocaleDateString("en-US", { weekday: "long" });
@@ -55,12 +65,16 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     dateTimeElement.innerHTML = `<span>${dateString}</span> <span>${timeString}</span>`;
   }
+
+  // Call the function to update the date and time
   setInterval(updateDateTime, 1000);
 
   // Initialize the greeting and smooth scrolling
   const greetingElement = document.getElementById("greeting");
   const userDataDiv = document.getElementById("user-data");
   const userName = userDataDiv ? userDataDiv.dataset.name : "User";
+
+  // Update the greeting based on the time of the day
   function updateGreeting() {
     const hours = new Date().getHours();
     let greeting = "Good Day,";
@@ -70,10 +84,14 @@ document.addEventListener("DOMContentLoaded", function () {
     greetingElement.textContent = `${greeting} ${userName}`;
     smoothScrollGreeting(greetingElement);
   }
+
+  // Call the function to update the greeting
   updateGreeting();
 
+  // Smooth scrolling for the greeting panel
   function smoothScrollGreeting(element) {
     let scrollPosition = element.parentElement.offsetWidth;
+    // Scroll the greeting text to the left
     function scroll() {
       scrollPosition -= 1; // Move left
       if (scrollPosition < -element.offsetWidth) {
@@ -87,6 +105,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Smooth scrolling for the news panel
   const newsPanel = document.querySelector(".news-panel");
+
+  // Smooth scrolling function for the news panel
   function smoothScrollNews() {
     let requestID;
     function scroll() {
@@ -101,6 +121,7 @@ document.addEventListener("DOMContentLoaded", function () {
         requestID = requestAnimationFrame(scroll);
       }
     }
+    // Start the scrolling animation
     requestID = requestAnimationFrame(scroll);
 
     newsPanel.addEventListener("mouseenter", () => {
@@ -111,5 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
       requestID = requestAnimationFrame(scroll);
     });
   }
+
+  // Call the function to enable smooth scrolling for the news panel
   smoothScrollNews();
 });
