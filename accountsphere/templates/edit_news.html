@@ -1,12 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
 
+<!-- News Update Form -->
 <div class="form-content container">
     <h3 class="text-center ms-5">Update News <i class="fa-regular fa-folder-open ms-2"></i></h3>
     <br>
 
+    <!-- News Update Form -->
     <form class="justify-content-center" action="{{ url_for('edit_news', news_id=news_item.id) }}" method="post">
 
+        <!-- Headline -->
         <div class="row mb-3 ms-5">
             <label for="description" class="col-sm-2 col-form-label">Headline</label>
             <div class="col-sm-7">
@@ -15,6 +18,7 @@
             </div>
         </div>
 
+        <!-- Description -->
         <div class="row mb-3 ms-5">
             <label for="description" class="col-sm-2 col-form-label">Description</label>
             <div class="col-sm-7">
@@ -23,14 +27,15 @@
             </div>
         </div>
 
+        <!-- News Buttons -->
         <div class="row button-container">
             <div class="col-auto me-5">
                 <button type="submit" class="btn btn-primary"><i
-                    class="fa-solid fa-pen-to-square me-2"></i>Update</button>
+                        class="fa-solid fa-pen-to-square me-2"></i>Update</button>
             </div>
             <div class="col-auto me-5">
                 <button type="button" class="btn btn-secondary" onclick="history.back();"><i
-                    class="fa-solid fa-ban me-2"></i>Cancel</button> <!-- Changed type to button for cancel -->
+                        class="fa-solid fa-ban me-2"></i>Cancel</button> 
             </div>
         </div>
     </form>
