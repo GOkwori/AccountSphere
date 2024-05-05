@@ -1,7 +1,6 @@
 /* Font */
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
 
-
 /* Global */
 * {
   margin: 0;
@@ -9,10 +8,9 @@
   box-sizing: border-box;
 }
 
-
 /* Body */
 body {
-  background-image: url("../images/l1.jpg");
+  background-image: url("../images/image|_9.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top;
@@ -25,7 +23,6 @@ body {
   flex-direction: column;
   overflow-x: hidden;
 }
-
 
 /* Main Content */
 #main-content {
@@ -47,7 +44,6 @@ body {
   color: #3a405a;
 }
 
-
 /* Navbar links on hover */
 .navbar a:hover {
   color: #3a405a;
@@ -65,7 +61,6 @@ body {
 .offcanvas-body ul li {
   margin-bottom: 10%;
 }
-
 
 .offcanvas-body ul li strong {
   margin-bottom: 0;
@@ -113,7 +108,6 @@ body {
   color: #3a405a;
 }
 
-
 .btn-close-white {
   filter: none !important;
   /* Remove any existing filters */
@@ -131,7 +125,7 @@ body {
 
 /* Landing Section */
 #landing-section {
-  background-image: url("../images/l1.jpg");
+  background-image: url("../images/image_9.jpg");
   background-size: cover;
   background-position: top;
   background-repeat: no-repeat;
@@ -196,10 +190,9 @@ body {
   color: #3a405a;
 }
 
-
 /* Features Section background images */
 #features_2 {
-  background-image: url("../images/l1.jpg");
+  background-image: url("../images/image_9.jpg");
   background-position: left bottom;
 }
 
@@ -279,9 +272,7 @@ h1 {
   height: 480px;
 }
 
-
 /* Card items */
-
 
 /* Card items */
 .card {
@@ -383,7 +374,6 @@ label {
   margin: 7% auto;
   width: 40%;
 }
-
 
 /* Form Buttons */
 .button-container {

@@ -3,7 +3,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy 
 from flask_migrate import Migrate 
 from flask_bcrypt import Bcrypt 
-from flask_login import LoginManager 
+from flask_login import LoginManager, login_manager
 
 # Import environment variables if available
 if os.path.exists("env.py"):    
@@ -25,7 +25,6 @@ db = SQLAlchemy(app)    # Initialize SQLAlchemy
 migrate = Migrate(app, db)    # Initialize Flask-Migrate
 bcrypt = Bcrypt(app)    # Initialize Bcrypt
 login_manager = LoginManager(app)    # Initialize 
-Flask-Login    # Initialize Flask-Login
 login_manager.login_view = 'login'    # Set the login view for the application
 
 # Import routes and models from the application
