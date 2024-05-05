@@ -4,43 +4,30 @@
   <h3 class="text-center ms-5">
     Add News <i class="fa-regular fa-folder-open ms-2"></i>
   </h3>
-  <br />
+  <br>
 
-  <form
-    class="justify-content-center"
-    action="{{ url_for('add_news')}}"
-    method="post"
-  >
+  <!-- News Creation Form -->
+  <form class="justify-content-center" action="{{ url_for('add_news')}}" method="post">
+
+    <!-- Headline -->
     <div class="row mb-3 ms-5">
       <label for="description" class="col-sm-2 col-form-label">Headline</label>
       <div class="col-sm-7">
-        <textarea
-          id="headline"
-          name="headline"
-          class="form-control"
-          rows="4"
-          placeholder="Please enter headline"
-          required
-        ></textarea>
+        <textarea id="headline" name="headline" class="form-control" rows="4" placeholder="Please enter headline"
+          required></textarea>
       </div>
     </div>
 
+    <!-- Description -->
     <div class="row mb-3 ms-5">
-      <label for="description" class="col-sm-2 col-form-label"
-        >Description</label
-      >
+      <label for="description" class="col-sm-2 col-form-label">Description</label>
       <div class="col-sm-7">
-        <textarea
-          id="description"
-          name="description"
-          class="form-control"
-          rows="4"
-          placeholder="Brief description of the headline"
-          required
-        ></textarea>
+        <textarea id="description" name="description" class="form-control" rows="4"
+          placeholder="Brief description of the headline" required></textarea>
       </div>
     </div>
 
+    <!-- News Buttons -->
     <div class="row button-container">
       <div class="col-auto me-5">
         <button type="submit" class="btn btn-primary">
@@ -48,14 +35,9 @@
         </button>
       </div>
       <div class="col-auto me-5">
-        <button
-          type="button"
-          class="btn btn-secondary"
-          onclick="history.back();"
-        >
-        <i class="fa-solid fa-ban me-2"></i>Cancel
+        <button type="button" class="btn btn-secondary" onclick="history.back();">
+          <i class="fa-solid fa-ban me-2"></i>Cancel
         </button>
-        <!-- Changed type to button for cancel -->
       </div>
     </div>
   </form>
