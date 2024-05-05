@@ -26,13 +26,17 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style.css')}}" type="text/css">
 
-
     <title>AccountSphere</title>
 </head>
 
 <body>
     <header>
-        {% if not (request.path == url_for('login') or request.path == url_for('home') or request.path == url_for('register')) %}
+
+        <!-- Check if the user is not on the login, home or register page -->
+        {% if not (request.path == url_for('login') or request.path == url_for('home') or request.path ==
+        url_for('register')) %} 
+
+        <!-- Navigation Bar -->
         <nav class="navbar navbar-expand fixed-top">
             <div class="container-fluid">
                 <!-- Toggle Button for Offcanvas Sidebar and Brand Logo -->
@@ -45,26 +49,30 @@
                         <img class="logo" src="{{ url_for('static', filename='assets/images/file.png')}}" alt="logo">
                     </a>
                 </div>
-                
 
                 <!-- Right-aligned Nav Links -->
                 <div class="d-flex justify-content-end flex-grow-1 pe-3">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{url_for('password_reset')}}" title="Reset Password"><i class="fa-solid fa-gear"></i></a>
+                            <a class="nav-link" href="{{url_for('password_reset')}}" title="Reset Password"><i
+                                    class="fa-solid fa-gear"></i></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('logout') }}" title="Log Out"><i class="fa-solid fa-power-off"></i></a></li>
+                            <a class="nav-link" href="{{ url_for('logout') }}" title="Log Out"><i
+                                    class="fa-solid fa-power-off"></i></a>
+                        </li>
                         </li>
                     </ul>
-                   
                 </div>
             </div>
         </nav>
         {% endif %}
+
         <!-- Offcanvas Sidebar -->
-        <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1"
-            id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+        <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
+            aria-labelledby="offcanvasWithBothOptionsLabel">
+
+            <!-- Offcanvas Header -->
             <div class="offcanvas-header">
                 <a class="navbar-brand" href="{{url_for('profile')}}">
                     <img class="logo" src="{{ url_for('static', filename='assets/images/file.png')}}" alt="logo">
@@ -73,8 +81,12 @@
                     aria-label="Close"></button>
             </div>
             <br>
+
+            <!-- Offcanvas Body -->
             <div class="offcanvas-body" id="offcanvas">
                 <ul class="navbar-nav">
+
+                    <!-- Navigation Links -->
                     <li class="nav-item">
                         <strong><i class="fa-solid fa-calendar me-2"></i>Dashboard</strong>
                         <hr>
@@ -92,46 +104,51 @@
                         <a id="active-nav" class="nav-link {{ 'active' if request.path == url_for('user') else '' }}"
                             href="{{ url_for('user') }}"><i class="fa-solid fa-users me-2"></i>User Management</a>
                     </li>
-                    
                     <br>
-            <li class="nav-item">
-                <strong><i class="fa-solid fa-user me-2"></i>Profile</strong>
-                <hr>
-                <a class="nav-link" href="{{ url_for('password_reset') }}"><i class="fa-solid fa-gear me-2"></i> Password Reset</a>
-                <a class="nav-link" href="{{ url_for('logout') }}"><i class="fa-solid fa-power-off me-2"></i> Logout</a>
-            </li>
+                    <li class="nav-item">
+                        <strong><i class="fa-solid fa-user me-2"></i>Profile</strong>
+                        <hr>
+                        <a class="nav-link" href="{{ url_for('password_reset') }}"><i class="fa-solid fa-gear me-2"></i>
+                            Password Reset</a>
+                        <a class="nav-link" href="{{ url_for('logout') }}"><i class="fa-solid fa-power-off me-2"></i>
+                            Logout</a>
+                    </li>
                 </ul>
             </div>
-            {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-    <div id="flash-messages">
-        {% for category, message in messages %}
-        <div class="flash-message" data-category="{{ category }}" data-message="{{ message }}"></div>
-        {% endfor %}
-    </div>
-    {% endif %}
-    {% endwith %}
-        
             <footer>
                 <div class="container-fluid justify-content-start ms-2">
                     <p>Copyright &copy; 2024 AccountSphere</p>
                 </div>
             </footer>
+
+            <!-- Flash Messages -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            <div id="flash-messages">
+                {% for category, message in messages %}
+                <div class="flash-message" data-category="{{ category }}" data-message="{{ message }}"></div>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% endwith %}
         </div>
 
     </header>
-  
 
+    <!-- Main Content -->
     <main class="container-fluid" id="main-content">
         {% block content %}
         {% endblock %}
     </main>
 
+    <!-- Footer -->
     <footer>
         <div class="row navbar navbar-expand-lg" id="footer-container">
             <div class="col-6 container-fluid justify-content-start ms-2">
                 <p>Copyright &copy; 2024 AccountSphere</p>
             </div>
+
+            <!-- Social Media Links -->
             <div class="col-6 container-fluid justify-content-end">
                 <ul class="list-inline social-media">
                     <li class="list-inline-item">
@@ -162,12 +179,17 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+
+    <!-- Popper JS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>
+
+    <!-- jQuery -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
+
     <!-- Custom JS -->
     <script src="{{ url_for('static', filename='assets/js/script.js')}}"></script>
 
