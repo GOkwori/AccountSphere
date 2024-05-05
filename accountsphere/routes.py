@@ -7,6 +7,13 @@ from flask_login import login_user, logout_user, login_required, current_user
 from sqlalchemy import or_
 
 
+# Define the home route
+@app.route("/")
+def home():
+    return render_template("landing.html")
+
+
+# Define the register route
 @app.route("/register", methods=["GET", "POST"])
 def register():
     groups = Group.query.all()
@@ -39,14 +46,14 @@ def register():
         )
         db.session.add(new_user)
         db.session.commit()
-        
+
         flash("Account created successfully", 'success')
         return redirect(url_for('login'))
 
     return render_template("register.html", groups=groups)
 
 
-
+# Define the login route
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -62,6 +69,7 @@ def login():
     return render_template("login.html")
 
 
+# Define the logout route
 @app.route("/logout")
 @login_required
 def logout():
@@ -70,7 +78,7 @@ def logout():
     return redirect(url_for("home"))
 
 
-
+# Define the password reset route
 @app.route('/password_reset', methods=['GET', 'POST'])
 @login_required
 def password_reset():
@@ -104,11 +112,7 @@ def password_reset():
     return render_template('password_reset.html')
 
 
-@app.route("/")
-def home():
-    return render_template("landing.html")
-
-
+# Define the profile route
 @app.route("/profile")
 @login_required
 def profile():
@@ -116,6 +120,7 @@ def profile():
     return render_template('index.html', news_items=news_items)
 
 
+# Define the account route
 @app.route("/account")
 @login_required
 def account():
@@ -128,6 +133,7 @@ def account():
     return render_template("account.html", accounts=accounts)
 
 
+# Define the add account route
 @app.route('/add_account', methods=['GET', 'POST'])
 @login_required
 def add_account():
@@ -147,12 +153,12 @@ def add_account():
         if not first_name or not last_name or not email or not product_id or not account_type or not currency:
             flash('All fields are required.', 'error')
             return render_template('add_account.html', products=products)
-        
+
         existing_account = Account.query.filter_by(email=email).first()
         if existing_account:
             flash('An account with this email already exists.', 'error')
             return render_template('add_account.html', products=products)
-        
+
         # Create new Account instance
         account = Account(
             first_name=first_name,
@@ -166,16 +172,17 @@ def add_account():
             currency=currency,
             status='active'  # Assuming new accounts are always active
         )
-        
+
         # Add to the database
         db.session.add(account)
         db.session.commit()
         flash('Account created successfully!', 'success')
         return redirect(url_for('account', success=True))
-    
+
     return render_template('add_account.html', products=products)
 
 
+# Define the edit account route
 @app.route('/edit_account/<int:account_id>', methods=['GET', 'POST'])
 @login_required
 def edit_account(account_id):
@@ -192,16 +199,17 @@ def edit_account(account_id):
         account.account_type = request.form.get('account_type')
         account.balance = request.form.get('balance') or 0.00
         account.currency = request.form.get('currency')
-        
+
         # Update the account
         db.session.add(account)
         db.session.commit()
         flash('Account updated successfully!', 'success')
         return redirect(url_for('account', success=True))
-    
+
     return render_template('edit_account.html', account=account, products=products)
 
 
+# Define the delete account route
 @app.route('/delete_account/<int:account_id>')
 @login_required
 def delete_account(account_id):
@@ -216,14 +224,16 @@ def delete_account(account_id):
     return redirect(url_for('account'))
 
 
+# Define the account search route
 @app.route('/account_search')
 @login_required
 def account_search():
     query = request.args.get('query', '').strip()
-    
+
     if not query:
-        return redirect(url_for('account'))  # Redirect to a default account page if no query
-    
+        # Redirect to a default account page if no query
+        return redirect(url_for('account'))
+
     accounts = Account.query.filter(
         or_(
             Account.first_name.ilike(f'%{query}%'),
@@ -234,18 +244,20 @@ def account_search():
             Account.currency.ilike(f'%{query}%')
         )
     ).all()
-    
+
     if not accounts:
         return render_template('account.html', accounts=[], message=f'No accounts found for "{query}"')
-    
+
     return render_template('account.html', accounts=accounts)
 
 
+# Define the group route
 @app.route("/ad_group")
 @login_required
 def ad_group():
     ad_groups = list(Group.query.order_by(Group.name).all())
-    print("Number of groups fetched:", len(ad_groups))  # This will show you how many groups are fetched
+    # This will show you how many groups are fetched
+    print("Number of groups fetched:", len(ad_groups))
     return render_template("ad_group.html", ad_groups=ad_groups)
 
 
@@ -266,15 +278,18 @@ def add_ad_group():
             flash("An AD-Group with this name already exists.")
             return render_template("add_ad_group.html")
 
-        new_group = Group(name=name, description=description, group_type=group_type)
+        new_group = Group(name=name, description=description,
+                          group_type=group_type)
         db.session.add(new_group)
         db.session.commit()
         flash("AD-Group created successfully!")
-        return redirect(url_for("ad_group", success=True))# Note the 'success=True'
+        # Note the 'success=True'
+        return redirect(url_for("ad_group", success=True))
 
     return render_template("add_ad_group.html")
 
 
+# Define the edit ad group route
 @app.route("/edit_ad_group/<int:group_id>", methods=["GET", "POST"])
 @login_required
 def edit_ad_group(group_id):
@@ -291,6 +306,7 @@ def edit_ad_group(group_id):
     return render_template("edit_ad_group.html", group=group)
 
 
+# Define the delete ad group route
 @app.route("/delete_ad_group/<int:group_id>")
 @login_required
 def delete_ad_group(group_id):
@@ -307,11 +323,12 @@ def delete_ad_group(group_id):
     return redirect(url_for("ad_group"))
 
 
+# Define the ad group search route
 @app.route("/ad_group_search")
 @login_required
 def ad_group_search():
     query = request.args.get('query', '').strip()
-    
+
     if query:
         ad_groups = Group.query.filter(
             or_(
@@ -326,6 +343,7 @@ def ad_group_search():
     return render_template('ad_group.html', ad_groups=ad_groups, query=query)
 
 
+# Define the news route
 @app.route("/news")
 @login_required
 def news():
@@ -333,6 +351,7 @@ def news():
     return render_template("news.html", news_items=news_items)
 
 
+# Define the add news route
 @app.route('/add_news', methods=["GET", "POST"])
 @login_required
 def add_news():
@@ -343,21 +362,23 @@ def add_news():
         if not headline or not description:
             flash("All fields are required.")
             return render_template("add_news.html")
-        
-        existing_news_item = NewsItem.query.filter_by(headline=headline).first()
+
+        existing_news_item = NewsItem.query.filter_by(
+            headline=headline).first()
         if existing_news_item:
             flash("A news item with this headline already exists.")
             return render_template("add_news.html")
-        
+
         news_item = NewsItem(headline=headline, description=description)
         db.session.add(news_item)
         db.session.commit()
         flash("News item created successfully!")
         return redirect(url_for("news", success=True))
-    
+
     return render_template("add_news.html")
 
 
+# Define the edit news route
 @app.route('/edit_news/<int:news_id>', methods=["GET", "POST"])
 @login_required
 def edit_news(news_id):
@@ -365,7 +386,7 @@ def edit_news(news_id):
     if request.method == "POST":
         news_item.headline = request.form.get("headline")
         news_item.description = request.form.get("description")
-        
+
         db.session.add(news_item)
         db.session.commit()
         flash("News item updated successfully!")
@@ -375,6 +396,7 @@ def edit_news(news_id):
     return render_template("edit_news.html", news_item=news_item, news_items=news_items)
 
 
+# Define the delete news route
 @app.route('/delete_news/<int:news_id>')
 @login_required
 def delete_news(news_id):
@@ -391,11 +413,12 @@ def delete_news(news_id):
     return redirect(url_for("news"))
 
 
+# Define the news search route
 @app.route('/news_search')
 @login_required
 def news_search():
     query = request.args.get('query', '').strip()
-    
+
     if query:
         news_items = NewsItem.query.filter(
             or_(
@@ -405,10 +428,11 @@ def news_search():
         ).all()
     else:
         news_items = []
-    
+
     return render_template('news.html', news_items=news_items, query=query)
 
 
+# Define the product route
 @app.route("/product")
 @login_required
 def product():
@@ -417,6 +441,7 @@ def product():
     return render_template("product.html", products=products)
 
 
+# Define the add product route
 @app.route("/add_product", methods=["GET", "POST"])
 @login_required
 def add_product():
@@ -425,12 +450,14 @@ def add_product():
         description = request.form.get("description")
         product_type = request.form.get("type")
 
-        existing_product = Product.query.filter((Product.name == name) | (Product.description == description)).first()
+        existing_product = Product.query.filter(
+            (Product.name == name) | (Product.description == description)).first()
         if existing_product:
             flash("This product name or description already exists.")
             return render_template("add_product.html")
 
-        new_product = Product(name=name, description=description, type=product_type)
+        new_product = Product(
+            name=name, description=description, type=product_type)
         db.session.add(new_product)
         try:
             db.session.commit()
@@ -445,6 +472,7 @@ def add_product():
     return render_template("add_product.html")
 
 
+# Define the edit product route
 @app.route("/edit_product/<int:product_id>", methods=["GET", "POST"])
 @login_required
 def edit_product(product_id):
@@ -458,9 +486,10 @@ def edit_product(product_id):
         db.session.commit()
         flash("Product updated successfully!")
         return redirect(url_for("product", success=True))
-    return render_template("edit_product.html", product=product )
+    return render_template("edit_product.html", product=product)
 
 
+# Define the delete product route
 @app.route("/delete_product/<int:product_id>")
 @login_required
 def delete_product(product_id):
@@ -475,11 +504,12 @@ def delete_product(product_id):
     return redirect(url_for("product"))
 
 
+# Define the product search route
 @app.route("/product_search")
 @login_required
 def product_search():
     query = request.args.get('query', '').strip()
-    
+
     if query:
         products = Product.query.filter(
             or_(
@@ -490,10 +520,11 @@ def product_search():
         ).all()
     else:
         products = []
-    
+
     return render_template('product.html', products=products, query=query)
 
 
+# Define the user route
 @app.route("/user")
 @login_required
 def user():
@@ -501,6 +532,7 @@ def user():
     return render_template("user.html", users=users)
 
 
+# Define the add user route
 @app.route("/add_user", methods=["GET", "POST"])
 def add_user():
     groups = Group.query.all()
@@ -532,12 +564,13 @@ def add_user():
     return render_template("add_user.html", groups=groups)
 
 
+# Define the edit user route
 @app.route("/edit_user/<int:user_id>", methods=["GET", "POST"])
 @login_required
 def edit_user(user_id):
     user = User.query.get_or_404(user_id)
     groups = Group.query.all()
-    
+
     if request.method == "POST":
         user.first_name = request.form.get("first_name")
         user.last_name = request.form.get("last_name")
@@ -549,10 +582,11 @@ def edit_user(user_id):
         db.session.commit()
         flash("User updated successfully!")
         return redirect(url_for("user"))
-    
+
     return render_template("edit_user.html", user=user, groups=groups)
 
 
+# Define the delete user route
 @app.route("/delete_user/<int:user_id>")
 @login_required
 def delete_user(user_id):
@@ -565,13 +599,14 @@ def delete_user(user_id):
         db.session.rollback()
         flash(f"Error deleting user: {str(e)}")
     return redirect(url_for("user"))
-  
 
+
+# Define the user search route
 @app.route("/user_search")
 @login_required
 def user_search():
     query = request.args.get('query', '').strip()
-    
+
     if query:
         users = User.query.filter(
             or_(

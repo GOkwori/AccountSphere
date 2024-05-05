@@ -5,7 +5,8 @@ from sqlalchemy.orm import relationship
 from flask_login import UserMixin
 
 
-class User(db.Model, UserMixin):    # Define the User model
+# Define the User model
+class User(db.Model, UserMixin):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(100), nullable=False)
@@ -29,7 +30,8 @@ class User(db.Model, UserMixin):    # Define the User model
         return self.active    # Return the active status of the user
 
 
-class Group(db.Model):    # Define the Group model
+# Define the Group model
+class Group(db.Model):
     __tablename__ = 'groups'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), unique=True, nullable=False)
@@ -44,8 +46,10 @@ class Group(db.Model):    # Define the Group model
     def __repr__(self):    # Return the group name
         return f'<Group {self.name}>'    # Return the group name
 
+# Define the Product model
 
-class Product(db.Model):    # Define the Product model
+
+class Product(db.Model):
     __tablename__ = 'products'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
@@ -58,8 +62,10 @@ class Product(db.Model):    # Define the Product model
     def __repr__(self):    # Return the product name
         return f'<Product {self.name}>'    # Return the product name
 
+# Define the Account model
 
-class Account(db.Model):    # Define the Account model
+
+class Account(db.Model):
     __tablename__ = 'accounts'
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(100), nullable=False)
@@ -78,10 +84,13 @@ class Account(db.Model):    # Define the Account model
     ), onupdate=db.func.current_timestamp())
 
     def __repr__(self):    # Return the account name
-        return f'<Account {self.first_name} {self.last_name} | Account ID: {self.id}>'    # Return the account name
+        # Return the account name
+        return f'<Account {self.first_name} {self.last_name} | Account ID: {self.id}>'
+
+# Define the NewsItem model
 
 
-class NewsItem(db.Model):    # Define the NewsItem model
+class NewsItem(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     headline = db.Column(db.String(255), nullable=False)
     description = db.Column(db.Text, nullable=False)
