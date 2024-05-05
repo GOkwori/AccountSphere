@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 
+<!-- Product Management -->
 <div class="container dashboard-content">
     <h2 class="mb-4 text-center">Product Management<i class="fa-solid fa-table-cells-row-lock ms-2"></i></h2>
+
     <!-- Search Form -->
     <div class="row">
         <form action="{{ url_for('product_search') }}" method="get" class="mb-3 col-md-6" id="search-bar">
@@ -13,15 +15,18 @@
                         class="fa-solid fa-power-off"></i></a>
             </div>
         </form>
+
         <!-- Button to create a new product -->
         <div class="text-end mb-3 col-md-6">
-            <a href="{{ url_for('add_product') }}" class="btn btn-success"><i
-                class="fa-solid fa-upload me-2"></i>Create Product </a>
+            <a href="{{ url_for('add_product') }}" class="btn btn-success"><i class="fa-solid fa-upload me-2"></i>Create
+                Product </a>
         </div>
     </div>
 
     <!-- Products display -->
     <div class="row">
+
+        <!-- Loop through products -->
         {% if products %}
         {% for product in products %}
         <div class="col-md-3 mb-4">
@@ -32,9 +37,12 @@
                 <div class="card-body">
                     <p class="card-text">{{ product.description | truncate(150) }}</p>
                 </div>
+
+                <!-- Product Buttons -->
                 <div class="card-footer text-center">
                     <a href="{{ url_for('edit_product', product_id=product.id)}}" class="btn btn-primary"><i
                             class="fa-solid fa-pen-to-square"></i></a>
+
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-danger ms-2" data-bs-toggle="modal"
                         data-bs-target="#deleteModal-{{ product.id }}"><i class="fa-solid fa-trash"></i>
@@ -46,15 +54,23 @@
         <!-- Modal -->
         <div class="modal fade" id="deleteModal-{{ product.id }}" tabindex="-1"
             aria-labelledby="modalLabel-{{ product.id }}" aria-hidden="true">
+
+            <!-- Modal Content -->
             <div class="modal-dialog">
                 <div class="modal-content">
+
+                    <!-- Modal Header -->
                     <div class="modal-header">
                         <h5 class="modal-title" id="modalLabel-{{ product.id }}">Confirm Deletion</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+
+                    <!-- Modal Body -->
                     <div class="modal-body">
                         Are you sure you want to delete the product "{{ product.name }}"?
                     </div>
+
+                    <!-- Modal Footer -->
                     <div class="modal-footer">
                         <a href="{{ url_for('delete_product', product_id=product.id)}}" class="btn btn-danger">Yes</a>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
