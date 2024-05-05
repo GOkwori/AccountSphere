@@ -1,0 +1,14 @@
+{% extends 'base.html' %} 
+{% block content %}
+
+<section>
+    <div class="container" id="error-message">
+        <div class="text-center">
+            <h1 class="section-subheading">Oops, Page not Found!</h1>
+            <hr>
+        <div class="text-center">
+            <a href="{{url_for('home')}}" class="btn btn-secondary me-4" role="button"><i class="fa-solid fa-house me-2"></i>Return Home</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

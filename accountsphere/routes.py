@@ -620,3 +620,15 @@ def user_search():
         users = []
 
     return render_template('user.html', users=users, query=query)
+
+
+# Define the error handler for 404
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('404.html'), 404
+
+
+# Define the error handler for 500
+@app.errorhandler(500)
+def internal_server_error(error):
+    return render_template('500.html'), 500

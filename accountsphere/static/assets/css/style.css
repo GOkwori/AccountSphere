@@ -462,3 +462,11 @@ footer i {
     transform: rotate3d(0, 1, 0, 360deg);
   }
 }
+
+#error-message {
+  margin-top: 20vh;
+}
+
+#error-message h1 {
+  font-size: 3rem;
+}
