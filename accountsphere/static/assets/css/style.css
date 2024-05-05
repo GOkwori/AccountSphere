@@ -1,4 +1,6 @@
+/* Font */
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
+
 
 /* Global */
 * {
@@ -7,6 +9,8 @@
   box-sizing: border-box;
 }
 
+
+/* Body */
 body {
   background-image: url("../images/l1.jpg");
   background-repeat: no-repeat;
@@ -22,6 +26,8 @@ body {
   overflow-x: hidden;
 }
 
+
+/* Main Content */
 #main-content {
   margin: 3% 0 0 0;
   padding: 0;
@@ -41,12 +47,13 @@ body {
   color: #3a405a;
 }
 
+
+/* Navbar links on hover */
 .navbar a:hover {
   color: #3a405a;
 }
 
 /* Offcanvas */
-
 #offcanvasWithBothOptions {
   background-color: #fff;
   color: #3a405a;
@@ -59,6 +66,7 @@ body {
   margin-bottom: 10%;
 }
 
+
 .offcanvas-body ul li strong {
   margin-bottom: 0;
   padding-bottom: 0;
@@ -69,6 +77,7 @@ body {
   margin-bottom: 10px;
 }
 
+/* Smooth transition for hover and active changes */
 #active-nav.active {
   background-color: #3a405a;
   color: #fff;
@@ -76,14 +85,15 @@ body {
 
 .nav-link {
   transition: background-color 0.3s ease;
-  /* Smooth transition for hover and active changes */
 }
 
+/* Active class */
 .nav-link.active:hover {
   background-color: #fff;
   color: #3a405a;
 }
 
+/* Offcanvas links on hover */
 .offcanvas-body ul li a:hover {
   background-color: #3a405a;
   color: #fff;
@@ -97,27 +107,29 @@ body {
   font-size: 1rem;
 }
 
+/* Buttons on hover */
 .btn:hover {
   background-color: #fff;
   color: #3a405a;
 }
 
+
 .btn-close-white {
   filter: none !important;
   /* Remove any existing filters */
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg fill="%233a405a" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M.293.293a1 1 0 0 1 1.414 0L8 6.586l6.293-6.293a1 1 0 0 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z"/></svg>');
-  /* Replace with your own SVG or adjust this one */
   width: 16px;
-  /* Adjust size as needed */
   height: 16px;
 }
 
+/* Logo */
 .logo {
   width: 35px;
   height: 35px;
   border-radius: 5px;
 }
 
+/* Landing Section */
 #landing-section {
   background-image: url("../images/l1.jpg");
   background-size: cover;
@@ -126,6 +138,7 @@ body {
   height: 68vh;
 }
 
+/* Landing Section Content */
 #landing-section h1 {
   font-size: 2.6rem;
   font-weight: bold;
@@ -143,6 +156,7 @@ body {
   color: #fff;
 }
 
+/* Landing Section Button */
 #landing-section .btn {
   background-color: #fff;
   color: #3a405a;
@@ -152,11 +166,13 @@ body {
   transition: ease-in-out 0.3s;
 }
 
+/* Landing Section Button on hover */
 #landing-section .btn:hover {
   background-color: #3a405a;
   color: #fff;
 }
 
+/* Features Section */
 #features h2 {
   font-weight: bold;
   color: #3a405a;
@@ -166,23 +182,28 @@ body {
   color: #3a405a;
 }
 
+/* Features Section horizontal rule */
 #features hr {
   border: 1px solid #3a405a;
 }
 
+/* Features Section icons */
 #features .fa-circle {
   color: #3a405a;
-}
-
-#features_2 {
-  background-image: url("../images/l1.jpg");
-  background-position: left bottom;
 }
 
 #features_2 .fa-stack-1x {
   color: #3a405a;
 }
 
+
+/* Features Section background images */
+#features_2 {
+  background-image: url("../images/l1.jpg");
+  background-position: left bottom;
+}
+
+/* Profile Section */
 .dash-content {
   background-color: #fff;
   backdrop-filter: blur(10px);
@@ -202,6 +223,7 @@ body {
   justify-content: end;
 }
 
+/* Profile Section Greeting Panel Animation */
 .scrolling-greeting {
   white-space: nowrap;
   position: relative;
@@ -209,22 +231,26 @@ body {
   will-change: transform;
 }
 
+/* Header Container */
 .head-container-1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+/* Header*/
 h1 {
   font-size: 2rem;
   font-weight: bold;
 }
 
+/* Carousel */
 .carousel img {
   height: 60vh;
   margin-top: 0.5%;
 }
 
+/* Section Container */
 #section-container {
   display: flex;
   justify-content: center;
@@ -232,6 +258,7 @@ h1 {
   margin: 0 0 2% 0;
 }
 
+/* Section */
 .section_1 {
   background-color: #fff;
   backdrop-filter: blur(10px);
@@ -242,6 +269,7 @@ h1 {
   color: #3a405a;
 }
 
+/* Section 2 */
 .panel_2 {
   background-color: #fff;
   backdrop-filter: blur(10px);
@@ -251,15 +279,11 @@ h1 {
   height: 480px;
 }
 
-#card-container .card {
-  background-color: #fff;
-  color: #3a405a;
-}
 
-#card-container .card img {
-  height: 8rem;
-}
+/* Card items */
 
+
+/* Card items */
 .card {
   background-color: #fff;
   color: #3a405a;
@@ -283,6 +307,17 @@ h1 {
   color: #3a405a;
 }
 
+#card-container .card {
+  background-color: #fff;
+  color: #3a405a;
+}
+
+/* Card items Images */
+#card-container .card img {
+  height: 8rem;
+}
+
+/* News Section */
 .news-panel {
   height: 400px;
   overflow-y: auto;
@@ -294,6 +329,7 @@ h1 {
   border-radius: 5px;
 }
 
+/* News Section on hover */
 .news-panel:hover {
   cursor: pointer;
 }
@@ -308,6 +344,7 @@ h1 {
   backdrop-filter: blur(10px);
 }
 
+/* Dashboard Search bar */
 #search-bar {
   margin: 0 0 2% 0;
 }
@@ -316,6 +353,7 @@ h1 {
   width: 50%;
 }
 
+/* Forms */
 .form-content {
   background-color: #fff;
   backdrop-filter: blur(10px);
@@ -326,6 +364,16 @@ h1 {
   width: 60%;
 }
 
+form {
+  margin-left: 8%;
+}
+
+label {
+  font-weight: bold;
+  text-align: left;
+}
+
+/* Login Form */
 .login-content {
   background-color: #fff;
   backdrop-filter: blur(10px);
@@ -336,21 +384,15 @@ h1 {
   width: 40%;
 }
 
-form {
-  margin-left: 8%;
-}
 
+/* Form Buttons */
 .button-container {
   display: flex;
   justify-content: center;
   margin: 0;
 }
 
-label {
-  font-weight: bold;
-  text-align: left;
-}
-
+/* Table Container on forms */
 .table-container {
   padding: 0 1%;
   border-radius: 10px;
@@ -370,6 +412,7 @@ label {
   color: #3a405a;
 }
 
+/* Modal */
 .modal {
   opacity: 0.9;
 }
@@ -393,27 +436,20 @@ label {
   z-index: 1050;
 }
 
+/* Footer */
 footer p {
   font-size: x-small;
 }
 
+/* Footer Container */
 #footer-container {
   padding: 1% 3% 0 0;
 }
 
+/* Social Links */
 footer i {
   font-size: large;
   transition: ease-in-out 0.3s;
-}
-
-@keyframes rotate3d {
-  from {
-    transform: rotate3d(0, 1, 0, 0deg);
-  }
-
-  to {
-    transform: rotate3d(0, 1, 0, 360deg);
-  }
 }
 
 .list-inline-item {
@@ -427,6 +463,18 @@ footer i {
   transform-origin: center;
 }
 
+/* Social Links on hover */
 .social-link:hover {
   animation-play-state: paused;
+}
+
+/* Social Links animation */
+@keyframes rotate3d {
+  from {
+    transform: rotate3d(0, 1, 0, 0deg);
+  }
+
+  to {
+    transform: rotate3d(0, 1, 0, 360deg);
+  }
 }
