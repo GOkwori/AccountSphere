@@ -2,54 +2,48 @@
 
 <div class="login-content container">
   <div class="d-flex justify-content-center">
-    <a
-      class="navbar-brand offcanvas-title me-4"
-      id="offcanvasScrollingLabel"
-      href="{{url_for('home')}}"
-    >
-      <img
-        class="logo"
-        src="{{ url_for('static', filename='assets/images/file.png')}}"
-        alt="logo"
-      />
+    <a class="navbar-brand offcanvas-title me-4" id="offcanvasScrollingLabel" href="{{url_for('home')}}">
+      <img class="logo" src="{{ url_for('static', filename='assets/images/file.png')}}" alt="logo" />
     </a>
     <h4>Log-in Credentials</h4>
   </div>
 
   <br />
   <form class="text-center" action="{{ url_for('login')}}" method="post">
+
+    <!-- User Icon -->
+    <div class="col-md-4 text-center">
+      <span class="fa-stack fa-4x">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-user fa-stack-1x fa-inverse"></i>
+      </span>
+    </div>
+
+    <!-- Username -->
     <div class="row mb-3 ms-4">
       <label for="username" class="col-sm-2 col-form-label">Username</label>
       <div class="col-sm-7">
-        <input
-          type="text"
-          class="form-control"
-          id="user_name"
-          name="username"
-          required
-        />
+        <input type="text" class="form-control" id="user_name" name="username" required />
       </div>
     </div>
 
+    <!-- Password -->
     <div class="row mb-2 ms-4">
       <label for="password" class="col-sm-2 col-form-label">Password</label>
       <div class="col-sm-7">
-        <input
-          type="password"
-          class="form-control"
-          id="password"
-          name="password"
-          title="minimum 8 character - alphanumeric"
-          required
-        />
+        <input type="password" class="form-control" id="password" name="password"
+          title="minimum 8 character - alphanumeric" required />
       </div>
     </div>
+
+    <!-- Login Buttons -->
     <div class="row button-container mt-4">
       <div class="col-auto me-5">
         <button type="submit" class="btn btn-primary">
           <i class="fa-solid fa-right-to-bracket me-2"></i>Submit
         </button>
       </div>
+      
       <div class="col-auto me-5">
         <a href="{{ url_for('home')}}" role="button" class="btn btn-secondary">
           <i class="fa-solid fa-ban me-2"></i>Cancel
@@ -57,7 +51,9 @@
       </div>
     </div>
   </form>
-  <br />
+  <br>
+
+  <!-- Sign-up Link -->
   <div>
     <p class="text-center mb-2">
       Don't have an account? <a href="{{ url_for('register')}}">Sign-up</a>
