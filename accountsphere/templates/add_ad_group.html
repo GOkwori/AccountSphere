@@ -1,10 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
 
+<!-- Active Directory Groups Dashboard -->
 <div class="form-content container">
     <h3 class="text-center ms-5">Create AD-Security Group <i class="fa-regular fa-folder-open ms-2"></i></h3>
     <br>
+
+    <!-- Account Creation Form -->
     <form class="justify-content-center" action="{{ url_for('add_ad_group')}}" method="post">
+
+        <!-- Group Name -->
         <div class="row mb-3 ms-5">
             <label for="name" class="col-sm-2 col-form-label">Group Name</label>
             <div class="col-sm-7">
@@ -12,6 +17,7 @@
             </div>
         </div>
 
+        <!-- Description -->
         <div class="row mb-3 ms-5">
             <label for="description" class="col-sm-2 col-form-label">Description</label>
             <div class="col-sm-7">
@@ -20,6 +26,7 @@
             </div>
         </div>
 
+        <!-- Group Type -->
         <div class="row mb-3 ms-5">
             <label for="group_type" class="col-sm-2 col-form-label">Group Type</label>
             <div class="col-sm-7">
@@ -30,14 +37,16 @@
                 </select>
             </div>
         </div>
+
+        <!-- Group Buttons -->
         <div class="row button-container">
             <div class="col-auto me-5">
                 <button type="submit" class="btn btn-primary"><i
-                    class="fa-solid fa-folder-plus me-2"></i>Create</button>
+                        class="fa-solid fa-folder-plus me-2"></i>Create</button>
             </div>
             <div class="col-auto me-5">
                 <button type="button" class="btn btn-secondary" onclick="history.back();"><i
-                    class="fa-solid fa-ban me-2"></i>Cancel</button> <!-- Changed type to button for cancel -->
+                        class="fa-solid fa-ban me-2"></i>Cancel</button> 
             </div>
         </div>
     </form>
