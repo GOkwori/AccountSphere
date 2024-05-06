@@ -14,7 +14,7 @@
 
     <!-- First Name -->
     <div class="row mb-3 ms-5">
-      <label for="first_name" class="col-sm-2 col-form-label">First Name</label>
+      <label for="first_name" class="col-sm-2 col-md-3 col-form-label">First Name</label>
       <div class="col-sm-7">
         <input type="text" class="form-control" id="first_name" name="first_name" value="{{ account.first_name }}"
           required>
@@ -23,7 +23,7 @@
 
     <!-- Last Name -->
     <div class="row mb-3 ms-5">
-      <label for="last_name" class="col-sm-2 col-form-label">Last Name</label>
+      <label for="last_name" class="col-sm-2 col-md-3 col-form-label">Last Name</label>
       <div class="col-sm-7">
         <input type="text" class="form-control" id="last_name" name="last_name" value="{{ account.last_name }}"
           required>
@@ -32,7 +32,7 @@
 
     <!-- Email -->
     <div class="row mb-3 ms-5">
-      <label for="email" class="col-sm-2 col-form-label">Email</label>
+      <label for="email" class="col-sm-2 col-md-3 col-form-label">Email</label>
       <div class="col-sm-7">
         <input type="email" class="form-control" id="email" name="email" value="{{ account.email }}" required>
       </div>
@@ -40,7 +40,7 @@
 
     <!-- Phone Number -->
     <div class="row mb-3 ms-5">
-      <label for "phone_number" class="col-sm-2 col-form-label">Phone</label>
+      <label for "phone_number" class="col-sm-2 col-md-3 col-form-label">Phone</label>
       <div class="col-sm-7">
         <input type="tel" class="form-control" id="phone_number" name="phone_number" value="{{ account.phone_number }}"
           required>
@@ -49,8 +49,8 @@
 
     <!-- Date of Birth -->
     <div class="row mb-3 ms-5">
-      <label for "date_of_birth" class="col-sm-2 col-form-label">Date of Birth</label>
-      <div class="col-sm-3">
+      <label for "date_of_birth" class="col-sm-2 col-md-3 col-form-label">Date of Birth</label>
+      <div class="col-sm-3 col-md-4">
         <input type="date" class="form-control" id="date_of_birth" name="date_of_birth" value="{{ account.date_of_birth }}"
           required>
       </div>
@@ -58,8 +58,8 @@
 
     <!-- Account Type -->
     <div class="row mb-3 ms-5">
-      <label for "account_type" class="col-sm-2 col-form-label">Account Type</label>
-      <div class="col-sm-3">
+      <label for "account_type" class="col-sm-2 col-md-3 col-form-label">Account Type</label>
+      <div class="col-sm-4">
         <select class="form-select form-control" name="account_type" id="account_type" onchange="updateProductID()"
           required>
           <option value="">--select--</option>
@@ -76,7 +76,7 @@
 
     <!-- Product ID -->
     <div class="row mb-3 ms-5">
-      <label for "product_id" class="col-sm-2 col-form-label">Product ID</label>
+      <label for "product_id" class="col-sm-2 col-md-3 col-form-label">Product ID</label>
       <div class="col-sm-3">
         <input type="text" class="form-control" id="product_id" name="product_id" value="{{ account.product_id }}" 
           required readonly />
@@ -85,8 +85,8 @@
 
     <!-- Opening Balance -->
     <div class="row mb-3 ms-5">
-      <label for "balance" class="col-sm-2 col-form-label">Opening Balance</label>
-      <div class="col-sm-2">
+      <label for "balance" class="col-sm-2 col-md-3 col-form-label">Opening Balance</label>
+      <div class="col-sm-3 col-md-3">
         <select class="form-select" id="currency" name="currency" required>
           <option value="" disabled>--select--</option>
           <option value="USD" {% if account.currency == 'USD' %} selected {% endif %}>USD</option>
@@ -104,7 +104,7 @@
 
     <!-- Terms and Conditions -->
     <div class="row mb-3 ms-5">
-      <div class="col-sm-6">
+      <div class="col-sm-7">
         <div class="form-check">
           <input type="checkbox" class="form-check-input" id="terms" required>
           <label class="form-check-label" for="terms">I confirm that all details have been verified.</label>
