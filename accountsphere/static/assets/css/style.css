@@ -537,6 +537,7 @@ footer i {
   /* Forms */
   .form-content {
     width: 90%;
+    margin-top: 15%;
   }
 
   form.text-center {
@@ -550,6 +551,10 @@ footer i {
   /* Form buttons */
   .col-auto.me-5 {
     margin: 0 !important;
+  }
+
+  .col-sm-2 {
+    margin-bottom: 2%;
   }
 
   /* Dashboard */
@@ -732,11 +737,6 @@ footer i {
   /* Section */
   #landing-section {
     height: 40vh;
-  }
-
-  /* Login Form */
-  .login-content {
-    width: 60%;
   }
 
   /* Footer */

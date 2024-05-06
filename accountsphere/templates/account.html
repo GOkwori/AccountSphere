@@ -73,7 +73,6 @@
           <td>{{ account.email }}</td>
           <td>{{ account.phone_number }}</td>
           <td>{{ account.product.name }}</td>
-          <!-- Corrected product name access -->
           <td>{{ account.currency }}</td>
           <td>{{ "{:,.2f}".format(account.balance) }}</td>
           <td>
@@ -145,9 +144,9 @@
         {% endfor %}
       </tbody>
     </table>
+    {% else %}
+    <p class="text-center">No accounts found.</p>
+    {% endif %}
   </div>
-  {% else %}
-  <p class="text-center">No accounts found.</p>
-  {% endif %}
 </div>
 {% endblock %}
