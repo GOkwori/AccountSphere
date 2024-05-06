@@ -1,41 +1,56 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
 
 <!-- Active Directory Groups Dashboard -->
 <div class="container dashboard-content">
-  <h3 class="mb-4 text-center">Active Directory Groups <i class="fa-solid fa-table-cells-row-lock ms-2"></i></h3>
+  <h3 class="mb-4 text-center">
+    Active Directory Groups
+    <i class="fa-solid fa-table-cells-row-lock ms-2"></i>
+  </h3>
   <div class="row">
-
     <!-- Search Form -->
-    <form action="{{ url_for('ad_group_search') }}" method="get" class="mb-3 col-md-6" id="search-bar">
+    <form
+      action="{{ url_for('ad_group_search') }}"
+      method="get"
+      class="mb-3 col-md-6"
+      id="search-bar"
+    >
       <div class="input-group">
-
         <!-- Search Input -->
-        <input type="text" class="form-control" name="query" placeholder="Search active directory">
+        <input
+          type="text"
+          class="form-control"
+          name="query"
+          placeholder="Search active directory"
+        />
 
         <!-- Search Button -->
-        <button class="btn btn-outline-secondary" type="submit"><i class="fa-solid fa-search"></i></button>
+        <button class="btn btn-outline-secondary" type="submit">
+          <i class="fa-solid fa-search"></i>
+        </button>
 
         <!-- Clear Button -->
-        <a href="{{ url_for('ad_group') }}" role="button" class="btn btn-outline-secondary ms-2"><i
-            class="fa-solid fa-power-off"></i></a>
+        <a
+          href="{{ url_for('ad_group') }}"
+          role="button"
+          class="btn btn-outline-secondary ms-2"
+          ><i class="fa-solid fa-power-off"></i
+        ></a>
       </div>
     </form>
 
     <!-- Button to add a new security group -->
     <div class="text-end mb-3 col-md-6">
-      <a href="{{ url_for('add_ad_group') }}" class="btn btn-success"><i class="fa-solid fa-shield-halved me-2"></i>Add
-        AD Group</a>
+      <a href="{{ url_for('add_ad_group') }}" class="btn btn-success"
+        ><i class="fa-solid fa-shield-halved me-2"></i>Add AD Group</a
+      >
     </div>
   </div>
 
   <!-- Display of Security Groups -->
   <div class="row">
-
     <!-- Loop through security groups -->
-    {% if ad_groups %}
-    {% for group in ad_groups %}
-    <div class="col-md-3 mb-4">
+    {% if ad_groups %} {% for group in ad_groups %}
+    <div class="col-md-4 col-lg-3 mb-4">
       <div class="card h-100">
         <div class="card-header">
           <h5 class="text-center">{{ group.name }}</h5>
@@ -44,34 +59,50 @@
           <p class="card-text">{{ group.description | truncate(140) }}</p>
         </div>
         <div class="card-footer text-center">
-          <a href="{{ url_for('edit_ad_group', group_id=group.id)}}" class="btn btn-primary"><i
-              class="fa-solid fa-pen-to-square"></i></a>
+          <a
+            href="{{ url_for('edit_ad_group', group_id=group.id)}}"
+            class="btn btn-primary"
+            ><i class="fa-solid fa-pen-to-square"></i
+          ></a>
           <!-- Button trigger modal -->
-          <button type="button" class="btn btn-danger ms-2" data-bs-toggle="modal"
-            data-bs-target="#deleteModal-{{ group.id }}"><i class="fa-solid fa-trash"></i>
+          <button
+            type="button"
+            class="btn btn-danger ms-2"
+            data-bs-toggle="modal"
+            data-bs-target="#deleteModal-{{ group.id }}"
+          >
+            <i class="fa-solid fa-trash"></i>
           </button>
         </div>
       </div>
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="deleteModal-{{ group.id }}" tabindex="-1" aria-labelledby="modalLabel-{{ group.id }}"
-      aria-hidden="true">
-
+    <div
+      class="modal fade"
+      id="deleteModal-{{ group.id }}"
+      tabindex="-1"
+      aria-labelledby="modalLabel-{{ group.id }}"
+      aria-hidden="true"
+    >
       <!-- Modal Dialog -->
       <div class="modal-dialog">
-
         <!-- Modal Content -->
         <div class="modal-content">
-
           <!-- Modal Header -->
           <div class="modal-header">
-
             <!-- Modal Title -->
-            <h5 class="modal-title" id="modalLabel-{{ group.id }}">Confirm Deletion</h5>
+            <h5 class="modal-title" id="modalLabel-{{ group.id }}">
+              Confirm Deletion
+            </h5>
 
             <!-- Close Button -->
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
           </div>
 
           <!-- Modal Body -->
@@ -81,16 +112,24 @@
 
           <!-- Modal Footer -->
           <div class="modal-footer">
-
             <!-- Yes and No Buttons -->
-            <a href="{{ url_for('delete_ad_group', group_id=group.id)}}" class="btn btn-danger">Yes</a>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+            <a
+              href="{{ url_for('delete_ad_group', group_id=group.id)}}"
+              class="btn btn-danger"
+              >Yes</a
+            >
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              No
+            </button>
           </div>
         </div>
       </div>
     </div>
-    {% endfor %}
-    {% else %}
+    {% endfor %} {% else %}
     <p class="text-center">No groups found.</p>
     {% endif %}
   </div>
