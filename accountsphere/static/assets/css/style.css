@@ -557,6 +557,14 @@ footer i {
     margin-bottom: 2%;
   }
 
+  .ms-5 {
+    margin-left: 0 !important;
+  }
+
+  form {
+    margin-left: 0;
+  }
+
   /* Dashboard */
   .dashboard-content {
     margin: 18% 0;
