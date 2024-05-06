@@ -199,7 +199,6 @@ body {
 .dash-content {
   background-color: #fff;
   color: #3a405a;
-  padding: 20px;
   border-radius: 10px;
   margin: 1.4% 0 0 1.4%;
   width: fit-content;
@@ -217,7 +216,6 @@ body {
 /* Profile Section Greeting Panel Animation */
 .scrolling-greeting {
   white-space: nowrap;
-  position: relative;
   display: block;
   will-change: transform;
 }
@@ -497,12 +495,21 @@ footer i {
 
 @media (min-width: 320px) and (max-width: 575px) {
   /* Typography */
+
+  body {
+    overflow-x: hidden;
+  }
+
   h4 {
     font-size: 1rem;
   }
 
   p {
     display: none;
+  }
+
+  #main-content {
+    margin: 15% 0 0 0;
   }
 
   /* Section */
@@ -537,7 +544,6 @@ footer i {
   /* Forms */
   .form-content {
     width: 90%;
-    margin-top: 15%;
   }
 
   form.text-center {
@@ -567,7 +573,48 @@ footer i {
 
   /* Dashboard */
   .dashboard-content {
-    margin: 18% 0;
+    width: 90%;
+  }
+
+  .col-md-6 {
+    padding: 0;
+  }
+
+  #profile-container {
+    margin: 0;
+    padding: 3% 2% 0 2%;
+    width: 100%;
+  }
+
+  .dash-content {
+    padding: 10px;
+    width: 100%;
+    margin: 0;
+  }
+
+  .dash-end {
+    width: 100%;
+    margin: 0;
+  }
+
+  .carousel-inner {
+    height: 40vh;
+    margin: 0 0 2% 0;
+  }
+
+  #section-container {
+    margin: 0;
+    padding: 0;
+  }
+
+  .section_1 {
+    width: 98%;
+    margin: 1% 0 0 1%;
+  }
+
+  .panel_2 {
+    width: 98%;
+    margin: 0 0 1% 0 !important;
   }
 
   #search-bar .input-group {
@@ -597,6 +644,18 @@ footer i {
 /*---------- Styling for screens with (min-width: 768px) and (max-width: 991px)----------*/
 
 @media (min-width: 768px) and (max-width: 991px) {
+  #main-content {
+    margin: 7% 0 0 0;
+  }
+
+  #profile-container {
+    width: 80%;
+  }
+
+  .dash-content {
+    padding: 15px;
+  }
+
   /* Heading */
   h4 {
     font-size: 1.2rem;
@@ -604,6 +663,15 @@ footer i {
 
   p {
     display: none;
+  }
+
+  .section_1 {
+    width: 95%;
+    padding: 0 7%;
+  }
+
+  .panel_2 {
+    width: 95%;
   }
 
   /* Section */
@@ -662,6 +730,27 @@ footer i {
 /*---------- Styling for screens with (min-width: 992px) and (max-width: 1024px)----------*/
 
 @media (min-width: 992px) and (max-width: 1024px) {
+  #main-content {
+    margin: 5% 0 0 0;
+  }
+
+  #profile-container {
+    width: 100%;
+  }
+
+  .section_1 {
+    width: 95%;
+    padding: 0 15%;
+  }
+
+  .panel_2 {
+    width: 95%;
+  }
+
+  .dash-content {
+    padding: 15px;
+  }
+
   /* Heading */
   h4 {
     font-size: 1.2rem;
@@ -706,6 +795,22 @@ footer i {
 /*---------- Styling for screens with (min-width: 1025px) and (max-width: 1199px)----------*/
 
 @media (min-width: 1025px) and (max-width: 1199px) {
+  #main-content {
+    margin: 4% 0 0 0;
+  }
+
+  #profile-container {
+    width: 100%;
+  }
+
+  .section_1 {
+    width: 53%;
+  }
+
+  .panel_2 {
+    width: 42%;
+  }
+
   /* Forms */
   .form-content {
     width: 70%;
@@ -722,9 +827,72 @@ footer i {
   }
 }
 
-/*---------- Styling for screens with (min-width: 1200px) and (max-width: 1860px)----------*/
+/*---------- Styling for screens with (min-width: 1200px) and (max-width: 1920px)----------*/
 
-@media (min-width: 1200px) and (max-width: 1860px) {
+@media (min-width: 1200px) and (max-width: 1499px) {
+  #main-content {
+    margin: 5% 0 0 0;
+  }
+
+  #profile-container {
+    width: 100%;
+  }
+
+  .section_1 {
+    width: 53%;
+  }
+
+  .panel_2 {
+    width: 42%;
+  }
+
+  /* Typography */
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  h4 {
+    font-size: 1.2rem;
+  }
+
+  p {
+    font-size: 0.8rem;
+  }
+
+  /* Section */
+  #landing-section {
+    height: 40vh;
+  }
+
+  /* Footer */
+  #footer-container {
+    margin: 0;
+  }
+}
+
+/*---------- Styling for screens with (min-width: 1200px) and (max-width: 1920px)----------*/
+
+@media (min-width: 1500px) and (max-width: 1920px) {
+  #main-content {
+    margin: 3% 0 0 0;
+  }
+
+  #profile-container {
+    width: 100%;
+  }
+
+  .section_1 {
+    width: 50%;
+  }
+
+  .panel_2 {
+    width: 45%;
+  }
+
   /* Typography */
   h1 {
     font-size: 3rem;
