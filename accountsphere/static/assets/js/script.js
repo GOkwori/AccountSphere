@@ -1,12 +1,10 @@
 // Event listener for the document ready event
 document.addEventListener("DOMContentLoaded", function () {
-
   // Update the product ID based on the selected account type
   function updateProductID() {
     var accountTypeSelect = document.getElementById("account_type");
     var productIdInput = document.getElementById("product_id");
     if (accountTypeSelect && productIdInput) {
-
       // Update the product ID input field with the selected account type
       productIdInput.value = accountTypeSelect.value;
       console.log("Product ID updated to: " + accountTypeSelect.value);
@@ -26,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const flashMessagesContainer = document.getElementById("flash-messages");
     if (flashMessagesContainer) {
       const messages =
-
         // Get all flash messages
         flashMessagesContainer.querySelectorAll(".flash-message");
       if (messages.length > 0) {
@@ -53,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Day and time panel setup
   const dateTimeElement = document.getElementById("datetime");
-  
+
   // Update the date and time every second
   function updateDateTime() {
     const now = new Date();
@@ -78,10 +75,10 @@ document.addEventListener("DOMContentLoaded", function () {
   function updateGreeting() {
     const hours = new Date().getHours();
     let greeting = "Good Day,";
-    if (hours < 12) greeting = "Good Morning,";
-    else if (hours < 18) greeting = "Good Afternoon,";
-    else greeting = "Good Evening,";
-    greetingElement.textContent = `${greeting} ${userName}`;
+    if (hours < 12) greeting = "Good Morning";
+    else if (hours < 16) greeting = "Good Afternoon";
+    else greeting = "Good Evening";
+    greetingElement.textContent = `${greeting} ${userName}; Welcome to AccountSphere!`;
     smoothScrollGreeting(greetingElement);
   }
 
