@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (hours < 12) greeting = "Good Morning";
     else if (hours < 16) greeting = "Good Afternoon";
     else greeting = "Good Evening";
-    greetingElement.textContent = `${greeting} ${userName}; Welcome to AccountSphere!`;
+    greetingElement.textContent = `${greeting} ${userName}`;
     smoothScrollGreeting(greetingElement);
   }
 
