@@ -4,7 +4,7 @@
 
 Visit the deployed site: [AccountSphere](https://flask-accountsphere-d734c062c293.herokuapp.com/)
 
-Welcome to AccountSphere! An advanced financial workflow management platform designed to streamline and simplify your organisation's accounting, product management, user administration, and more.
+Welcome to AccountSphere! A financial workflow management platform designed to streamline and simplify your organisation's accounting, product management, user administration, and more.
 
 In today's complex financial landscape, AccountSphere offers a comprehensive solution that provides effortless control over your financial workflows. Whether you're managing accounts, overseeing products, or maintaining user roles and permissions, our platform is tailored to meet your specific needs.
 
