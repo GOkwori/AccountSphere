@@ -75,3 +75,9 @@ AccountSphere empowers you to manage your financial workflows seamlessly in one 
   - [Code References](#code-references)
   - [Content Sources](#content-sources)
   - [Acknowledgments](#acknowledgments)
+
+---
+
+![AccountSphere Banner](./accountsphere/static/assets/favicon/android-chrome-192x192.png)
+
+## User Experience (UX)
