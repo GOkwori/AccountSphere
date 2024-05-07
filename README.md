@@ -43,7 +43,6 @@ AccountSphere empowers you to manage your financial workflows seamlessly in one 
   - [Imagery](#imagery)
   - [Wireframes](#wireframes)
   - [Flow Chart](#flow-chart)
-  - [Use Case Diagram](#use-case-diagram)
   - [Entity Relationship Diagram](#entity-relationship-diagram)
   - [Features](#features)
     - [Landing Page](#landing-page)
@@ -229,3 +228,22 @@ The imagery used in AccountSphere enhances the user experience by creating a vis
 - `Background Images`: The background images for AccountSphere are high-quality visuals that align with the platform's business-oriented focus. These images, sourced from [Vecteezy](https://www.vecteezy.com/), provide a clean and modern backdrop that supports the user interface without overwhelming it. The choice of images ensures a professional appearance that resonates with the platform's audience.
 
 - `Iconography and Logo`: The logo and icons used in AccountSphere reflect the platform's emphasis on financial management and business operations. The logo, a stylised representation of financial elements, serves as a visual anchor for the site, reinforcing the platform's identity and purpose. The icons, sourced from [Vecteezy](https://www.vecteezy.com/), offer clear visual communication and thematic consistency, enhancing the platform's usability and user experience.
+
+### Wireframes
+
+The development of AccountSphere began with the creation of detailed wireframes that outlined the structure and layout of each page. These wireframes served as the visual blueprint for designing a user-friendly interface that ensures a seamless experience across the platform. 
+
+Each wireframe was crafted with careful attention to user experience, emphasising intuitive navigation and efficient workflows that align with the goals of various user roles, including administrators, account officers, product managers, and news analysts.
+
+![Login Page Wireframe](./accountsphere/static/documentation/wireframes/wireframe_7.png)
+![Profile Page Wireframe](./accountsphere/static/documentation/wireframes/wireframe_1_main.png)
+![Account Management Page Wireframe](./accountsphere/static/documentation/wireframes/wireframe_1.png)
+![Account Management Page Wireframe](./accountsphere/static/documentation/wireframes/wireframe_2.png)
+![AD_Group Management Page Wireframe](./accountsphere/static/documentation/wireframes/wireframe_3.png)
+![Product Management Page Wireframe](./accountsphere/static/documentation/wireframes/wireframe_4.png)
+![User Management Page Wireframe](./accountsphere/static/documentation/wireframes/wireframe_5.png)
+![AD_Group Management Page Wireframe](./accountsphere/static/documentation/wireframes/wireframe_6.png)
+![AD_Group Management Page Wireframe](./accountsphere/static/documentation/wireframes/wireframe_9.png)
+![User Management Page Wireframe](./accountsphere/static/documentation/wireframes/wireframe_10.png)
+
+These wireframes guided the design process to ensure that AccountSphere provides a visually consistent and efficient user interface that aligns with the platform's overall goals.
