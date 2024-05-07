@@ -25,3 +25,53 @@ AccountSphere empowers you to manage your financial workflows seamlessly in one 
 ![Python](https://img.shields.io/badge/4%20-%20Python%20-%20green)
 ![Contributors](https://img.shields.io/badge/Contributors%20-%201%20-%20navy)
 ![Testing](https://img.shields.io/badge/Testing%20-%20Passed%20-%20lime)
+
+## CONTENTS
+
+- **[User Experience](#user-experience-ux)**
+
+  - [Project Overview](#project-overview)
+  - [Target Audience](#target-audience)
+  - [User Goals](#user-goals)
+  - [Business Objectives](#business-objectives)
+  - [User Stories](#user-stories)
+
+- **[Design Choices](#design-choices)**
+
+  - [Colour Scheme](#colour-scheme)
+  - [Typography](#typography)
+  - [Imagery](#imagery)
+  - [Wireframes](#wireframes)
+  - [Features](#features)
+    - [Landing Page](#landing-page)
+    - [Login Page](#login-page)
+    - [Registration Page](#registration-page)
+    - [Profile Page](#profile-page)
+    - [Account Management](#account-management)
+    - [Product Management](#product-management)
+    - [Active Directory Groups](#active-directory-groups)
+    - [News Board](#news-board)
+    - [User Role Management](#user-role-management)
+    - [Future Implementations](#future-implementations)
+  - [Accessibility](#accessibility)
+
+- **[Technologies Used](#technologies-used)**
+
+  - [Languages](#languages)
+  - [Frameworks and Libraries](#frameworks-and-libraries)
+
+- **[Deployment & Local Development](#deployment--local-development)**
+
+  - [Deployment](#deployment)
+  - [Local Development](#local-development)
+    - [How to Fork](#how-to-fork)
+    - [How to Clone](#how-to-clone)
+
+- **[Testing](#testing)**
+
+  - [Solved Bugs](#solved-bugs)
+
+- **[Credits](#credits)**
+  - [Code References](#code-references)
+  - [Content Sources](#content-sources)
+  - [Acknowledgments](#acknowledgments)
