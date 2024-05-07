@@ -221,3 +221,11 @@ For the typography of AccountSphere, the Roboto Condensed font from Google Fonts
 ![Colour Scheme](./accountsphere/static/documentation/google_font/google-fonts.PNG)
 
 The use of Roboto Condensed throughout AccountSphere reinforces the platform's focus on streamlined functionality and effective communication. This font choice complements the platform's focus on financial management and business operations, providing a professional yet approachable appearance that aligns with the target audience's needs and preferences.
+
+### Imagery
+
+The imagery used in AccountSphere enhances the user experience by creating a visually engaging and professional platform that aligns with its financial management focus. The visual elements have been carefully curated to reflect the platform's branding and thematic focus, providing a cohesive and appealing atmosphere for users.
+
+- `Background Images`: The background images for AccountSphere are high-quality visuals that align with the platform's business-oriented focus. These images, sourced from [Vecteezy](https://www.vecteezy.com/), provide a clean and modern backdrop that supports the user interface without overwhelming it. The choice of images ensures a professional appearance that resonates with the platform's audience.
+
+- `Iconography and Logo`: The logo and icons used in AccountSphere reflect the platform's emphasis on financial management and business operations. The logo, a stylised representation of financial elements, serves as a visual anchor for the site, reinforcing the platform's identity and purpose. The icons, sourced from [Vecteezy](https://www.vecteezy.com/), offer clear visual communication and thematic consistency, enhancing the platform's usability and user experience.
