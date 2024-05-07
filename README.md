@@ -211,3 +211,13 @@ The colour scheme of AccountSphere has been deliberately selected to establish a
 ![Colour Scheme](./accountsphere/static/documentation/colour_palette/colour-palette.PNG)
 
 This carefully curated colour scheme leverages a mix of neutral tones and vibrant accents to create a professional, engaging, and accessible platform. The deliberate use of white and slate blue ensures that essential information stands out, while the uniformity across the platform provides a seamless experience for users navigating through different sections of AccountSphere.
+
+### Typography
+
+For the typography of AccountSphere, the Roboto Condensed font from Google Fonts was selected to align with the platform's modern and professional aesthetic.
+
+- `Primary Font: Roboto Condensed` - This sans-serif typeface offers a clean, contemporary look that enhances the platform's user experience. Its narrow letterforms and balanced proportions lend themselves well to both headings and body text, ensuring clarity and legibility across various screen sizes and devices.
+
+![Colour Scheme](./accountsphere/static/documentation/google_font/google-fonts.PNG)
+
+The use of Roboto Condensed throughout AccountSphere reinforces the platform's focus on streamlined functionality and effective communication. This font choice complements the platform's focus on financial management and business operations, providing a professional yet approachable appearance that aligns with the target audience's needs and preferences.
