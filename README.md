@@ -43,7 +43,7 @@ AccountSphere empowers you to manage your financial workflows seamlessly in one 
   - [Imagery](#imagery)
   - [Wireframes](#wireframes)
   - [FlowChart](#flowchart)
-  - [Entity Relationship Diagram](#entity-relationship-diagram)
+  - [Entity-Relationship Diagram](#entity-relationship-diagram)
   - [Features](#features)
     - [Landing Page](#landing-page)
     - [Login Page](#login-page)
@@ -263,13 +263,14 @@ This wireframe details the Active Directory group management page, providing adm
 
 ![AD_Group Management Page Wireframe](./accountsphere/static/documentation/wireframes/wireframe_3.png)
 ![AD_Group Management Page Wireframe](./accountsphere/static/documentation/wireframes/wireframe_6.png)
-![AD_Group Management Page Wireframe](./accountsphere/static/documentation/wireframes/wireframe_9.png)
+
 
 #### `Product Management Page Wireframe`
 
 The product management page wireframe provides Product Managers with a clear overview of all products. They can update product details, analyze performance, and coordinate with other teams to optimize the product lifecycle.
 
 ![Product Management Page Wireframe](./accountsphere/static/documentation/wireframes/wireframe_4.png)
+![Product Management Page Wireframe](./accountsphere/static/documentation/wireframes/wireframe_9.png)
 
 #### `User Management Page Wireframe`
 
@@ -324,3 +325,22 @@ This diagram illustrates the responsibilities of Administrators in maintaining s
 These flowcharts illustrate the interactions between users and the system, highlighting key functionalities and decision points within AccountSphere. They ensure that the platform is designed to meet user needs effectively while maintaining robust security and operational efficiency.
 
 </details>
+
+### Entity-Relationship Diagram
+The Entity-Relationship Diagram (ERD) provides a visual overview of the relationships and data structure within the AccountSphere application. This diagram illustrates how different data entities such as users, groups, accounts, products, and news items interact with each other, helping to clarify the system's architecture.
+
+The ERD is crucial for understanding how data is organised, stored, and accessed within the application. Each entity corresponds to a table in the database, with attributes representing the columns of that table. Relationships between entities, indicated by lines, depict foreign key constraints, showing how data is linked together.
+
+In this diagram:
+
+- `User`: Represents an individual accessing the platform, who belongs to a specific group.
+- `Group`: Contains information about various user groups for role-based access management.
+- `Account`: Represents financial accounts linked to a specific product.
+- `Product`: Contains details about products available within the system, each having a unique association with multiple accounts.
+- `NewsItem`: Contains information about various news articles related to finance.
+
+![ERD](./accountsphere/static/documentation/entity_diagram/erd.PNG)
+
+This diagram not only showcases the logical structure of the database but also provides insight into how CRUD operations are performed across different modules in the application. Understanding this structure is essential for maintaining, enhancing, and scaling the application over time.
+
+
