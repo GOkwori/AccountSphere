@@ -15,7 +15,7 @@ body {
   background-size: cover;
   background-position: top;
   font-family: "Roboto Condensed", sans-serif;
-  font-size: 1.2rem;
+  font-size: 0.8rem;
   background-color: #3a405a;
   color: #fff;
   display: flex;
@@ -65,11 +65,13 @@ body {
 .offcanvas-body ul li strong {
   margin-bottom: 0;
   padding-bottom: 0;
+  font-family: "Roboto", sans-serif;
 }
 
 .offcanvas-body ul li a {
   padding: 4px;
   margin-bottom: 10px;
+  font-family: "Roboto", sans-serif;
 }
 
 /* Smooth transition for hover and active changes */
@@ -265,6 +267,7 @@ h1 {
   margin: 1%;
   color: #3a405a;
   height: 480px;
+  font-size: 1.4rem;
 }
 
 /* Card Container */
