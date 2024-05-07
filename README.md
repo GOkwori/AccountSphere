@@ -42,6 +42,9 @@ AccountSphere empowers you to manage your financial workflows seamlessly in one 
   - [Typography](#typography)
   - [Imagery](#imagery)
   - [Wireframes](#wireframes)
+  - [Flow Chart](#flow-chart)
+  - [Use Case Diagram](#use-case-diagram)
+  - [Entity Relationship Diagram](#entity-relationship-diagram)
   - [Features](#features)
     - [Landing Page](#landing-page)
     - [Login Page](#login-page)
@@ -182,3 +185,29 @@ The business strategy includes continuous improvement based on user feedback, le
 - Read: As a News Analyst, I want to analyse news trends and readership so that I can identify emerging risks or opportunities.
 - Update: As a News Analyst, I want to revise or update articles to ensure the information remains relevant and accurate.
 - Delete: As a News Analyst, I want to remove outdated or inaccurate articles so that I can provide a clean and reliable news board.
+
+## Design Choices
+
+### Colour Scheme
+
+The colour scheme of AccountSphere has been deliberately selected to establish a professional, clear, and appealing interface that enhances usability and visual aesthetics. The primary colours used throughout the platform include shades of grey and vibrant highlights, which not only create a modern look but also aid in distinguishing between different UI elements effectively. Here’s a detailed breakdown of the colour palette:
+
+- `#3a405a (Slate Blue)`: Serving as the dominant background and accent colour, this shade defines the overall visual identity of the platform. It appears prominently in the navbar, buttons, and cards, providing a professional look that conveys sophistication and confidence.
+
+- `#ffffff (White)`: White is primarily used for the text and main background of forms, dashboards, and other elements, ensuring high contrast and readability. This universal and clean shade gives a fresh and uncluttered feel to the user interface.
+
+- `#fff (White) and #3a405a (Slate Blue)`: The combination of these colours makes interactive buttons prominent, enhancing the navigation and actions across the interface. These colours also highlight key UI elements and cards to create an intuitive and user-friendly experience.
+
+- `#fff (White) and Black for Buttons`: For the buttons, a classic white-on-black and black-on-white contrast is employed, creating visual appeal and drawing attention to call-to-action areas.
+
+- `#000000 (Black)`: Appears in close buttons and provides contrast against white backgrounds.
+
+- `#f0f0f0 (Light Gray`): Used for the news panel to differentiate the section and improve content readability.
+
+- `Slate Blue Accents`: Various UI components, such as panels, headlines, and borders, are highlighted in slate blue to maintain consistency across the platform. These accents are crucial for intuitive navigation and visual hierarchy.
+
+- `News Panel Accent`: The news panel utilises a subtle gradient of white and grey to distinguish it from other sections. This panel retains the visual theme but incorporates a gentle distinction to improve the readability of content.
+
+![Colour Scheme](./accountsphere/static/documentation/colour_palette/colour-palette.PNG)
+
+This carefully curated colour scheme leverages a mix of neutral tones and vibrant accents to create a professional, engaging, and accessible platform. The deliberate use of white and slate blue ensures that essential information stands out, while the uniformity across the platform provides a seamless experience for users navigating through different sections of AccountSphere.
