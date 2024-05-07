@@ -235,18 +235,50 @@ The development of AccountSphere began with the creation of detailed wireframes 
 
 Each wireframe was crafted with careful attention to user experience, emphasising intuitive navigation and efficient workflows that align with the goals of various user roles, including administrators, account officers, product managers, and news analysts.
 
+<details>
+  <summary>Expand to view wireframes</summary>
+### `Login Page Wireframe`
+
+The login page wireframe shows a streamlined, user-friendly design focused on getting users into the system efficiently. It includes fields for username and password, as well as buttons for submission and navigation to the registration page for new users.
+
 ![Login Page Wireframe](./accountsphere/static/documentation/wireframes/wireframe_7.png)
+
+### `Profile Page Wireframe`
+
+The profile page wireframe provides a structured layout where users can view and manage their personal information. This design is optimized for ease of navigation, allowing users to edit their profile, view their recent activities, and access different management features.
+
 ![Profile Page Wireframe](./accountsphere/static/documentation/wireframes/wireframe_1_main.png)
+
+### `Account Management Page Wireframe`
+
+The account management page wireframe illustrates a comprehensive view where Account Officers can manage user accounts. The interface allows for viewing detailed account information, performing search operations, and initiating account modifications.
+
 ![Account Management Page Wireframe](./accountsphere/static/documentation/wireframes/wireframe_1.png)
 ![Account Management Page Wireframe](./accountsphere/static/documentation/wireframes/wireframe_2.png)
+
+### `AD_Group Management Page Wireframe`
+
+This wireframe details the Active Directory group management page, providing administrators with an intuitive interface to manage user groups and their permissions. The layout facilitates easy group creation, editing, and deletion.
+
 ![AD_Group Management Page Wireframe](./accountsphere/static/documentation/wireframes/wireframe_3.png)
-![Product Management Page Wireframe](./accountsphere/static/documentation/wireframes/wireframe_4.png)
-![User Management Page Wireframe](./accountsphere/static/documentation/wireframes/wireframe_5.png)
 ![AD_Group Management Page Wireframe](./accountsphere/static/documentation/wireframes/wireframe_6.png)
 ![AD_Group Management Page Wireframe](./accountsphere/static/documentation/wireframes/wireframe_9.png)
+
+### `Product Management Page Wireframe`
+
+The product management page wireframe provides Product Managers with a clear overview of all products. They can update product details, analyze performance, and coordinate with other teams to optimize the product lifecycle.
+
+![Product Management Page Wireframe](./accountsphere/static/documentation/wireframes/wireframe_4.png)
+
+### `User Management Page Wireframe`
+
+These wireframes depict the user management page, where administrators can efficiently manage user roles and permissions. The design ensures ease of adding new users, editing their roles, and handling deletions while maintaining data integrity.
+
+![User Management Page Wireframe](./accountsphere/static/documentation/wireframes/wireframe_5.png)
 ![User Management Page Wireframe](./accountsphere/static/documentation/wireframes/wireframe_10.png)
 
 These wireframes guided the design process to ensure that AccountSphere provides a visually consistent and efficient user interface that aligns with the platform's overall goals.
+</details>
 
 ### Flowchart
 
@@ -254,19 +286,40 @@ To visualise the user journey and functionality of AccountSphere, detailed flowc
 
 Each flowchart focuses on a specific aspect of AccountSphere, capturing the logical flow of user actions and system responses, ensuring that the platform operates smoothly and efficiently. The flowcharts serve as valuable guides for understanding the system's architecture and how different roles—such as administrators, account officers, product managers, and news analysts—interact with the platform.
 
+<details>
+  <summary>Expand to view flowcharts</summary>
+
 #### `Authentication Flow`
+
+The authentication flow diagram outlines how users gain access to AccountSphere. It covers the steps for login and registration, ensuring secure access and proper onboarding.
+
 ![Authentication Flowchart](./accountsphere/static/documentation/flow_chart/authentication.PNG)
 
 #### `Account Management Flow`
+
+This flowchart shows how Account Officers handle account creation, updates, and deletions. It provides a streamlined approach for managing client data and maintaining accurate records.
+
 ![Account Management Flowchart](./accountsphere/static/documentation/flow_chart/account_officer.PNG)
 
 #### `Product Management Flow`
+
+The product management flow outlines how Product Managers oversee product lifecycles. It emphasises efficient coordination between product development, market trend analysis, and portfolio optimisation.
+
 ![Product Management Flowchart](./accountsphere/static/documentation/flow_chart/product_manager.PNG)
 
 #### `News Management Flow`
+
+The news management flowchart displays how News Analysts curate and disseminate relevant information. It demonstrates the steps involved in collecting, organising, and sharing important updates with stakeholders.
+
 ![News Management Flowchart](./accountsphere/static/documentation/flow_chart/news_analyst.PNG)
 
 #### `Administrator Flow`
+
+This diagram illustrates the responsibilities of Administrators in maintaining system integrity. It highlights their role in managing user roles, permissions, and ensuring compliance and data security.
+
 ![Settings Flowchart](./accountsphere/static/documentation/flow_chart/admin.PNG)
 
+
 These flowcharts illustrate the interactions between users and the system, highlighting key functionalities and decision points within AccountSphere. They ensure that the platform is designed to meet user needs effectively while maintaining robust security and operational efficiency.
+
+</details>
