@@ -237,26 +237,27 @@ Each wireframe was crafted with careful attention to user experience, emphasisin
 
 <details>
   <summary>Expand to view wireframes</summary>
-### `Login Page Wireframe`
+
+#### `Login Page Wireframe`
 
 The login page wireframe shows a streamlined, user-friendly design focused on getting users into the system efficiently. It includes fields for username and password, as well as buttons for submission and navigation to the registration page for new users.
 
 ![Login Page Wireframe](./accountsphere/static/documentation/wireframes/wireframe_7.png)
 
-### `Profile Page Wireframe`
+#### `Profile Page Wireframe`
 
 The profile page wireframe provides a structured layout where users can view and manage their personal information. This design is optimized for ease of navigation, allowing users to edit their profile, view their recent activities, and access different management features.
 
 ![Profile Page Wireframe](./accountsphere/static/documentation/wireframes/wireframe_1_main.png)
 
-### `Account Management Page Wireframe`
+#### `Account Management Page Wireframe`
 
 The account management page wireframe illustrates a comprehensive view where Account Officers can manage user accounts. The interface allows for viewing detailed account information, performing search operations, and initiating account modifications.
 
 ![Account Management Page Wireframe](./accountsphere/static/documentation/wireframes/wireframe_1.png)
 ![Account Management Page Wireframe](./accountsphere/static/documentation/wireframes/wireframe_2.png)
 
-### `AD_Group Management Page Wireframe`
+#### `AD_Group Management Page Wireframe`
 
 This wireframe details the Active Directory group management page, providing administrators with an intuitive interface to manage user groups and their permissions. The layout facilitates easy group creation, editing, and deletion.
 
@@ -264,13 +265,13 @@ This wireframe details the Active Directory group management page, providing adm
 ![AD_Group Management Page Wireframe](./accountsphere/static/documentation/wireframes/wireframe_6.png)
 ![AD_Group Management Page Wireframe](./accountsphere/static/documentation/wireframes/wireframe_9.png)
 
-### `Product Management Page Wireframe`
+#### `Product Management Page Wireframe`
 
 The product management page wireframe provides Product Managers with a clear overview of all products. They can update product details, analyze performance, and coordinate with other teams to optimize the product lifecycle.
 
 ![Product Management Page Wireframe](./accountsphere/static/documentation/wireframes/wireframe_4.png)
 
-### `User Management Page Wireframe`
+#### `User Management Page Wireframe`
 
 These wireframes depict the user management page, where administrators can efficiently manage user roles and permissions. The design ensures ease of adding new users, editing their roles, and handling deletions while maintaining data integrity.
 
