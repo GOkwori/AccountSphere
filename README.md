@@ -1,39 +1,27 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# AccountSphere
 
-Welcome,
+![AccountSphere shown on a variety of screen sizes](./accountsphere/static/documentation/web_pages/landing_page.png)
 
-This is the Code Institute student template for Codeanywhere. If you are using Gitpod then you need [this template](https://github.com/Code-Institute-Org/gitpod-full-template) instead.  We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+Visit the deployed site: [AccountSphere](https://flask-accountsphere-d734c062c293.herokuapp.com/)
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Codeanywhere and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **August 30th, 2023**
+Welcome to AccountSphere! An advanced financial workflow management platform designed to streamline and simplify your organisation's accounting, product management, user administration, and more.
 
-## Codeanywhere Reminders
+In today's complex financial landscape, AccountSphere offers a comprehensive solution that provides effortless control over your financial workflows. Whether you're managing accounts, overseeing products, or maintaining user roles and permissions, our platform is tailored to meet your specific needs.
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere, in the terminal, type:
+Explore a feature-rich environment where you can:
 
-`python3 -m http.server`
+- Manage Accounts Efficiently: Gain insights and control over accounts, ensuring accurate and secure financial records.
+- Oversee Product Management: Monitor and optimize your product lifecycle from introduction to phase-out, keeping everything organised.
+- Handle Active Directory Groups: Securely manage user access controls, ensuring the right permissions for each team member.
+- Stay Informed with the News Board: Keep up-to-date with industry news, internal updates, and essential announcements.
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+AccountSphere empowers you to manage your financial workflows seamlessly in one integrated platform. Embrace smarter financial management today!
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere with no-cache, you can use this alias for `python3 -m http.server`.
-
-`http_server`
-
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
-
-A button should appear to click: _Open Preview_ or _Open Browser_.
-
-In Codeanywhere you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
-
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In Codeanywhere, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
-
----
-
-Happy coding!
+![GitHub Last Commit](https://img.shields.io/badge/Last%20Commit%20-%20May%202024%20-%20blue)
+![GitHub Languages](https://img.shields.io/badge/Languages%20-%204%20-%20teal)
+![HTML](https://img.shields.io/badge/1%20-%20HTML%20-%20orange)
+![CSS](https://img.shields.io/badge/2%20-%20CSS%20-%20blueviolet)
+![JavaScript](https://img.shields.io/badge/3%20-%20JavaScript%20-%20gold)
+![Python](https://img.shields.io/badge/4%20-%20Python%20-%20green)
+![Contributors](https://img.shields.io/badge/Contributors%20-%201%20-%20navy)
+![Testing](https://img.shields.io/badge/Testing%20-%20Passed%20-%20lime)
