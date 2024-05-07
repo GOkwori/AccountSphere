@@ -42,7 +42,7 @@ AccountSphere empowers you to manage your financial workflows seamlessly in one 
   - [Typography](#typography)
   - [Imagery](#imagery)
   - [Wireframes](#wireframes)
-  - [Flow Chart](#flow-chart)
+  - [FlowChart](#flowchart)
   - [Entity Relationship Diagram](#entity-relationship-diagram)
   - [Features](#features)
     - [Landing Page](#landing-page)
@@ -247,3 +247,26 @@ Each wireframe was crafted with careful attention to user experience, emphasisin
 ![User Management Page Wireframe](./accountsphere/static/documentation/wireframes/wireframe_10.png)
 
 These wireframes guided the design process to ensure that AccountSphere provides a visually consistent and efficient user interface that aligns with the platform's overall goals.
+
+### Flowchart
+
+To visualise the user journey and functionality of AccountSphere, detailed flowcharts were developed. These flowcharts outline the interactions between the different components of the platform, demonstrating how users navigate through various features and perform essential tasks.
+
+Each flowchart focuses on a specific aspect of AccountSphere, capturing the logical flow of user actions and system responses, ensuring that the platform operates smoothly and efficiently. The flowcharts serve as valuable guides for understanding the system's architecture and how different roles—such as administrators, account officers, product managers, and news analysts—interact with the platform.
+
+#### `Authentication Flow`
+![Authentication Flowchart](./accountsphere/static/documentation/flow_chart/authentication.PNG)
+
+#### `Account Management Flow`
+![Account Management Flowchart](./accountsphere/static/documentation/flow_chart/account_officer.PNG)
+
+#### `Product Management Flow`
+![Product Management Flowchart](./accountsphere/static/documentation/flow_chart/product_manager.PNG)
+
+#### `News Management Flow`
+![News Management Flowchart](./accountsphere/static/documentation/flow_chart/news_analyst.PNG)
+
+#### `Administrator Flow`
+![Settings Flowchart](./accountsphere/static/documentation/flow_chart/admin.PNG)
+
+These flowcharts illustrate the interactions between users and the system, highlighting key functionalities and decision points within AccountSphere. They ensure that the platform is designed to meet user needs effectively while maintaining robust security and operational efficiency.
