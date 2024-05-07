@@ -8,35 +8,20 @@
 
   <!-- Search Form -->
   <div class="row">
-    <form
-      action="{{ url_for('user_search') }}"
-      method="get"
-      class="mb-3 col-md-6"
-      id="search-bar"
-    >
+    <form action="{{ url_for('user_search') }}" method="get" class="mb-3 col-md-6" id="search-bar">
       <div class="input-group">
-        <input
-          type="text"
-          class="form-control"
-          name="query"
-          placeholder="Search user"
-        />
+        <input type="text" class="form-control" name="query" placeholder="Search user" />
         <button class="btn btn-outline-secondary" type="submit">
           <i class="fa-solid fa-search"></i>
         </button>
-        <a
-          href="{{ url_for('user') }}"
-          role="button"
-          class="btn btn-outline-secondary ms-2"
-          ><i class="fa-solid fa-power-off"></i
-        ></a>
+        <a href="{{ url_for('user') }}" role="button" class="btn btn-outline-secondary ms-2"><i
+            class="fa-solid fa-power-off"></i></a>
       </div>
     </form>
 
     <!-- Button to add a new user -->
     <div class="text-end mb-3 col-md-6">
-      <a href="{{ url_for('add_user') }}" class="btn btn-success"
-        ><i class="fa fa-users me-2"></i>Add User
+      <a href="{{ url_for('add_user') }}" class="btn btn-success"><i class="fa fa-users me-2"></i>Add User
       </a>
     </div>
   </div>
@@ -68,29 +53,16 @@
           <td>{{ user.role }}</td>
           <td>
             <!-- Edit and Delete Buttons -->
-            <a
-              href="{{ url_for('edit_user', user_id=user.id)}}"
-              aria-label="Edit User"
-              ><i class="fa-solid fa-pen-to-square me-4"></i
-            ></a>
-            <a
-              role="button"
-              data-bs-toggle="modal"
-              data-bs-target="#deleteModal-{{ user.id }}"
-              aria-label="Delete User"
-              ><i class="fa-solid fa-trash"></i
-            ></a>
+            <a href="{{ url_for('edit_user', user_id=user.id)}}" aria-label="Edit User"><i
+                class="fa-solid fa-pen-to-square me-4"></i></a>
+            <a role="button" data-bs-toggle="modal" data-bs-target="#deleteModal-{{ user.id }}"
+              aria-label="Delete User"><i class="fa-solid fa-trash"></i></a>
           </td>
         </tr>
 
         <!-- Modal for deleting user -->
-        <div
-          class="modal fade"
-          id="deleteModal-{{ user.id }}"
-          tabindex="-1"
-          aria-labelledby="deleteModalLabel-{{ user.id }}"
-          aria-hidden="true"
-        >
+        <div class="modal fade" id="deleteModal-{{ user.id }}" tabindex="-1"
+          aria-labelledby="deleteModalLabel-{{ user.id }}" aria-hidden="true">
           <div class="modal-dialog">
             <!-- Modal Content -->
             <div class="modal-content">
@@ -98,12 +70,7 @@
                 <h5 class="modal-title" id="deleteModalLabel-{{ user.id }}">
                   Confirm Deletion
                 </h5>
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
 
               <!-- Modal Body -->
@@ -114,16 +81,8 @@
 
               <!-- Modal Footer -->
               <div class="modal-footer">
-                <a
-                  href="{{ url_for('delete_user', user_id=user.id)}}"
-                  class="btn btn-danger"
-                  >Yes</a
-                >
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
+                <a href="{{ url_for('delete_user', user_id=user.id)}}" class="btn btn-danger">Yes</a>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                   No
                 </button>
               </div>

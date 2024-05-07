@@ -51,8 +51,8 @@
     <div class="row mb-3 ms-5">
       <label for "date_of_birth" class="col-sm-2 col-md-3 col-form-label">Date of Birth</label>
       <div class="col-sm-3 col-md-4">
-        <input type="date" class="form-control" id="date_of_birth" name="date_of_birth" value="{{ account.date_of_birth }}"
-          required>
+        <input type="date" class="form-control" id="date_of_birth" name="date_of_birth"
+          value="{{ account.date_of_birth }}" required>
       </div>
     </div>
 
@@ -64,11 +64,11 @@
           required>
           <option value="">--select--</option>
           {% for product in products %}
-            {% if product.id == account.product_id %}
-              <option value="{{ product.id }}" selected>{{ product.name }}</option>
-            {% else %}
-              <option value="{{ product.id }}">{{ product.name }}</option>
-            {% endif %}
+          {% if product.id == account.product_id %}
+          <option value="{{ product.id }}" selected>{{ product.name }}</option>
+          {% else %}
+          <option value="{{ product.id }}">{{ product.name }}</option>
+          {% endif %}
           {% endfor %}
         </select>
       </div>
@@ -78,7 +78,7 @@
     <div class="row mb-3 ms-5">
       <label for "product_id" class="col-sm-2 col-md-3 col-form-label">Product ID</label>
       <div class="col-sm-3">
-        <input type="text" class="form-control" id="product_id" name="product_id" value="{{ account.product_id }}" 
+        <input type="text" class="form-control" id="product_id" name="product_id" value="{{ account.product_id }}"
           required readonly />
       </div>
     </div>
@@ -89,9 +89,9 @@
       <div class="col-sm-3 col-md-3">
         <select class="form-select" id="currency" name="currency" required>
           <option value="" disabled>--select--</option>
-          <option value="USD" {% if account.currency == 'USD' %} selected {% endif %}>USD</option>
-          <option value="EUR" {% if account.currency == 'EUR' %} selected {% endif %}>EUR</option>
-          <option value="GBP" {% if account.currency == 'GBP' %} selected {% endif %}>GBP</option>
+          <option value="USD" {% if account.currency=='USD' %} selected {% endif %}>USD</option>
+          <option value="EUR" {% if account.currency=='EUR' %} selected {% endif %}>EUR</option>
+          <option value="GBP" {% if account.currency=='GBP' %} selected {% endif %}>GBP</option>
         </select>
       </div>
 

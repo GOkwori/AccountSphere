@@ -8,20 +8,10 @@
   </h3>
   <div class="row">
     <!-- Search Form -->
-    <form
-      action="{{ url_for('ad_group_search') }}"
-      method="get"
-      class="mb-3 col-md-6"
-      id="search-bar"
-    >
+    <form action="{{ url_for('ad_group_search') }}" method="get" class="mb-3 col-md-6" id="search-bar">
       <div class="input-group">
         <!-- Search Input -->
-        <input
-          type="text"
-          class="form-control"
-          name="query"
-          placeholder="Search active directory"
-        />
+        <input type="text" class="form-control" name="query" placeholder="Search active directory">
 
         <!-- Search Button -->
         <button class="btn btn-outline-secondary" type="submit">
@@ -29,20 +19,15 @@
         </button>
 
         <!-- Clear Button -->
-        <a
-          href="{{ url_for('ad_group') }}"
-          role="button"
-          class="btn btn-outline-secondary ms-2"
-          ><i class="fa-solid fa-power-off"></i
-        ></a>
+        <a href="{{ url_for('ad_group') }}" role="button" class="btn btn-outline-secondary ms-2"><i
+            class="fa-solid fa-power-off"></i></a>
       </div>
     </form>
 
     <!-- Button to add a new security group -->
     <div class="text-end mb-3 col-md-6">
-      <a href="{{ url_for('add_ad_group') }}" class="btn btn-success"
-        ><i class="fa-solid fa-shield-halved me-2"></i>Add AD Group</a
-      >
+      <a href="{{ url_for('add_ad_group') }}" class="btn btn-success"><i class="fa-solid fa-shield-halved me-2"></i>Add
+        AD Group</a>
     </div>
   </div>
 
@@ -59,18 +44,11 @@
           <p class="card-text">{{ group.description | truncate(140) }}</p>
         </div>
         <div class="card-footer text-center">
-          <a
-            href="{{ url_for('edit_ad_group', group_id=group.id)}}"
-            class="btn btn-primary"
-            ><i class="fa-solid fa-pen-to-square"></i
-          ></a>
+          <a href="{{ url_for('edit_ad_group', group_id=group.id)}}" class="btn btn-primary"><i
+              class="fa-solid fa-pen-to-square"></i></a>
           <!-- Button trigger modal -->
-          <button
-            type="button"
-            class="btn btn-danger ms-2"
-            data-bs-toggle="modal"
-            data-bs-target="#deleteModal-{{ group.id }}"
-          >
+          <button type="button" class="btn btn-danger ms-2" data-bs-toggle="modal"
+            data-bs-target="#deleteModal-{{ group.id }}">
             <i class="fa-solid fa-trash"></i>
           </button>
         </div>
@@ -78,13 +56,8 @@
     </div>
 
     <!-- Modal -->
-    <div
-      class="modal fade"
-      id="deleteModal-{{ group.id }}"
-      tabindex="-1"
-      aria-labelledby="modalLabel-{{ group.id }}"
-      aria-hidden="true"
-    >
+    <div class="modal fade" id="deleteModal-{{ group.id }}" tabindex="-1" aria-labelledby="modalLabel-{{ group.id }}"
+      aria-hidden="true">
       <!-- Modal Dialog -->
       <div class="modal-dialog">
         <!-- Modal Content -->
@@ -97,12 +70,7 @@
             </h5>
 
             <!-- Close Button -->
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
 
           <!-- Modal Body -->
@@ -113,16 +81,8 @@
           <!-- Modal Footer -->
           <div class="modal-footer">
             <!-- Yes and No Buttons -->
-            <a
-              href="{{ url_for('delete_ad_group', group_id=group.id)}}"
-              class="btn btn-danger"
-              >Yes</a
-            >
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
+            <a href="{{ url_for('delete_ad_group', group_id=group.id)}}" class="btn btn-danger">Yes</a>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
               No
             </button>
           </div>
