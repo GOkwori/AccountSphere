@@ -71,7 +71,6 @@ def login():
 
 # Define the logout route
 @app.route("/logout")
-@login_required
 def logout():
     logout_user()
     flash("You have been logged out.")
@@ -80,7 +79,6 @@ def logout():
 
 # Define the password reset route
 @app.route('/password_reset', methods=['GET', 'POST'])
-@login_required
 def password_reset():
     if request.method == 'POST':
         old_password = request.form.get('old_password')
@@ -114,7 +112,6 @@ def password_reset():
 
 # Define the profile route
 @app.route("/profile")
-@login_required
 def profile():
     news_items = NewsItem.query.all()
     return render_template('index.html', news_items=news_items)
@@ -122,7 +119,6 @@ def profile():
 
 # Define the account route
 @app.route("/account")
-@login_required
 def account():
     # Fetch accounts and their related product names using joined load,
     # sorted by first name and then last name
@@ -135,7 +131,6 @@ def account():
 
 # Define the add account route
 @app.route('/add_account', methods=['GET', 'POST'])
-@login_required
 def add_account():
     products = Product.query.all()  # Fetch all products for the form dropdown
     if request.method == 'POST':
@@ -184,7 +179,6 @@ def add_account():
 
 # Define the edit account route
 @app.route('/edit_account/<int:account_id>', methods=['GET', 'POST'])
-@login_required
 def edit_account(account_id):
     account = Account.query.get_or_404(account_id)
     products = Product.query.all()
@@ -211,7 +205,6 @@ def edit_account(account_id):
 
 # Define the delete account route
 @app.route('/delete_account/<int:account_id>')
-@login_required
 def delete_account(account_id):
     account = Account.query.get_or_404(account_id)
     db.session.delete(account)
@@ -226,7 +219,6 @@ def delete_account(account_id):
 
 # Define the account search route
 @app.route('/account_search')
-@login_required
 def account_search():
     query = request.args.get('query', '').strip()
 
@@ -253,7 +245,6 @@ def account_search():
 
 # Define the group route
 @app.route("/ad_group")
-@login_required
 def ad_group():
     ad_groups = list(Group.query.order_by(Group.name).all())
     # This will show you how many groups are fetched
@@ -262,7 +253,6 @@ def ad_group():
 
 
 @app.route("/add_ad_group", methods=["GET", "POST"])
-@login_required
 def add_ad_group():
     if request.method == "POST":
         name = request.form.get("name")
@@ -291,7 +281,6 @@ def add_ad_group():
 
 # Define the edit ad group route
 @app.route("/edit_ad_group/<int:group_id>", methods=["GET", "POST"])
-@login_required
 def edit_ad_group(group_id):
     group = Group.query.get_or_404(group_id)
     if request.method == "POST":
@@ -308,7 +297,6 @@ def edit_ad_group(group_id):
 
 # Define the delete ad group route
 @app.route("/delete_ad_group/<int:group_id>")
-@login_required
 def delete_ad_group(group_id):
     group = Group.query.get_or_404(group_id)
     db.session.delete(group)
@@ -325,7 +313,6 @@ def delete_ad_group(group_id):
 
 # Define the ad group search route
 @app.route("/ad_group_search")
-@login_required
 def ad_group_search():
     query = request.args.get('query', '').strip()
 
@@ -345,7 +332,6 @@ def ad_group_search():
 
 # Define the news route
 @app.route("/news")
-@login_required
 def news():
     news_items = NewsItem.query.all()
     return render_template("news.html", news_items=news_items)
@@ -353,7 +339,6 @@ def news():
 
 # Define the add news route
 @app.route('/add_news', methods=["GET", "POST"])
-@login_required
 def add_news():
     if request.method == "POST":
         headline = request.form.get("headline")
@@ -380,7 +365,6 @@ def add_news():
 
 # Define the edit news route
 @app.route('/edit_news/<int:news_id>', methods=["GET", "POST"])
-@login_required
 def edit_news(news_id):
     news_item = NewsItem.query.get_or_404(news_id)
     if request.method == "POST":
@@ -398,7 +382,6 @@ def edit_news(news_id):
 
 # Define the delete news route
 @app.route('/delete_news/<int:news_id>')
-@login_required
 def delete_news(news_id):
     news_item = NewsItem.query.get_or_404(news_id)
     db.session.delete(news_item)
@@ -415,7 +398,6 @@ def delete_news(news_id):
 
 # Define the news search route
 @app.route('/news_search')
-@login_required
 def news_search():
     query = request.args.get('query', '').strip()
 
@@ -434,7 +416,6 @@ def news_search():
 
 # Define the product route
 @app.route("/product")
-@login_required
 def product():
     products = list(Product.query.order_by(Product.name).all())
     print("Number of products fetched:", len(products))
@@ -443,7 +424,6 @@ def product():
 
 # Define the add product route
 @app.route("/add_product", methods=["GET", "POST"])
-@login_required
 def add_product():
     if request.method == "POST":
         name = request.form.get("name")
@@ -474,7 +454,6 @@ def add_product():
 
 # Define the edit product route
 @app.route("/edit_product/<int:product_id>", methods=["GET", "POST"])
-@login_required
 def edit_product(product_id):
     product = Product.query.get_or_404(product_id)
     if request.method == "POST":
@@ -491,7 +470,6 @@ def edit_product(product_id):
 
 # Define the delete product route
 @app.route("/delete_product/<int:product_id>")
-@login_required
 def delete_product(product_id):
     product = Product.query.get_or_404(product_id)
     db.session.delete(product)
@@ -506,7 +484,6 @@ def delete_product(product_id):
 
 # Define the product search route
 @app.route("/product_search")
-@login_required
 def product_search():
     query = request.args.get('query', '').strip()
 
@@ -526,7 +503,6 @@ def product_search():
 
 # Define the user route
 @app.route("/user")
-@login_required
 def user():
     users = User.query.order_by(User.first_name, User.last_name).all()
     return render_template("user.html", users=users)
@@ -566,7 +542,6 @@ def add_user():
 
 # Define the edit user route
 @app.route("/edit_user/<int:user_id>", methods=["GET", "POST"])
-@login_required
 def edit_user(user_id):
     user = User.query.get_or_404(user_id)
     groups = Group.query.all()
@@ -588,7 +563,6 @@ def edit_user(user_id):
 
 # Define the delete user route
 @app.route("/delete_user/<int:user_id>")
-@login_required
 def delete_user(user_id):
     user = User.query.get_or_404(user_id)
     db.session.delete(user)
@@ -603,7 +577,6 @@ def delete_user(user_id):
 
 # Define the user search route
 @app.route("/user_search")
-@login_required
 def user_search():
     query = request.args.get('query', '').strip()
 
