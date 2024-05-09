@@ -50,10 +50,12 @@ AccountSphere empowers you to manage your financial workflows seamlessly in one 
     - [Registration Page](#registration-page)
     - [Profile Page](#profile-page)
     - [Account Management](#account-management)
-    - [Product Management](#product-management)
     - [Active Directory Groups](#active-directory-groups)
     - [News Board](#news-board)
+    - [Product Management](#product-management)
     - [User Role Management](#user-role-management)
+    - [Log out Functionality](#log-out-functionality)
+    - [404 Page](#404-page)
     - [Future Implementations](#future-implementations)
   - [Accessibility](#accessibility)
 
@@ -267,7 +269,7 @@ This wireframe details the Active Directory group management page, providing adm
 
 #### `Product Management Page Wireframe`
 
-The product management page wireframe provides Product Managers with a clear overview of all products. They can update product details, analyze performance, and coordinate with other teams to optimize the product lifecycle.
+The product management page wireframe provides Product Managers with a clear overview of all products. They can update product details, analyse performance, and coordinate with other teams to optimise the product lifecycle.
 
 ![Product Management Page Wireframe](./accountsphere/static/documentation/wireframes/wireframe_4.png)
 ![Product Management Page Wireframe](./accountsphere/static/documentation/wireframes/wireframe_9.png)
@@ -342,5 +344,309 @@ In this diagram:
 ![ERD](./accountsphere/static/documentation/entity_diagram/erd.PNG)
 
 This diagram not only showcases the logical structure of the database but also provides insight into how CRUD operations are performed across different modules in the application. Understanding this structure is essential for maintaining, enhancing, and scaling the application over time.
+
+### Features
+
+The AccountSphere web application provides a comprehensive solution for financial management, offering a range of interactive features that cater to different user roles for ease of use and enhanced productivity.
+
+**All Pages Feature:**
+
+* `Responsive Navigation`: Consistent navigation across all pages ensures that users can seamlessly access sections like accounts, products, and user management. Navigation links are well-labeled and intuitive, reducing the learning curve for new users.
+
+  ![Responsive Pages](./accountsphere/static/documentation/web_pages/nav-feature.PNG)
+
+* `Search Functionality`: Each management page includes a dedicated search bar that filters data quickly, enabling efficient information retrieval. Users can search based on keywords and multiple criteria to locate the information they need swiftly.
+
+  ![Responsive Pages](./accountsphere/static/documentation/web_pages/search_feature.PNG)
+
+* `Mobile-Friendly Layout`: The application's responsive design ensures a seamless user experience across desktops, tablets, and mobile devices. Content adapts dynamically to different screen sizes, maintaining usability and clarity across devices.
+
+  ![Responsive Pages](./accountsphere/static/documentation/web_pages/landing_page.png)
+
+* `Access Control`: Role-based access control ensures that each user has permissions aligned with their role, whether it's an Account Officer, Administrator, Product Manager, or News Analyst. This minimises risks associated with data security and unauthorized access.
+
+**Specific Role-Based Features:**
+
+* `Account Officer Features`: 
+  - Efficient account creation, updating, and management
+  - Quick search for client accounts and data filtering
+
+* `Administrator Features`:
+  - Manage user roles and permissions for maintaining system security
+  - Enforce compliance policies directly within the platform
+
+* `Product Manager Features`:
+  - Comprehensive product lifecycle oversight
+  - Efficient product creation, updating, and management
+
+* `News Analyst Features`:
+  - Efficiently collect, organise, and analyse industry news and updates
+  - Track trends and emerging risks for accurate insights
+  - Curate and disseminate relevant information to stakeholders efficiently
+
+These features collectively contribute to a robust financial management platform that addresses the unique needs of different user roles, ensuring accurate, efficient, and secure workflows.
+
+<details>
+  <summary>Expand to view web pages</summary>
+
+#### `Login Page`
+![Login Page](./accountsphere/static/documentation/web_pages/login_page.png)
+
+The login page offers a secure and user-friendly gateway to AccountSphere:
+
+* `Simple Login Form`: Features username and password fields for authentication. Users can quickly enter their credentials to access their accounts securely.
+
+* `Sign-Up Link`: Directs new users to the registration page for account creation. This option ensures that first-time users can easily set up their accounts.
+
+* `Error Handling`: Provides feedback for incorrect login credentials. If a user enters invalid information, clear error messages guide them to rectify the issue.
+
+
+#### `Registration Page`
+
+![Registration Page](./accountsphere/static/documentation/web_pages/register_page.png)
+
+The registration page is designed to provide a seamless onboarding experience for new users:
+
+* `Intuitive Form Layout`: Presents fields for entering personal information, including first name, last name, username, email, and password.
+
+* `Role Selection`: Allows users to choose their role within the organisation, ensuring appropriate access to platform features.
+
+* `Password Confirmation`: Ensures that users enter their desired password correctly by requiring re-entry in the confirmation field.
+
+* `Error Handling`: Offers user-friendly error messages if mandatory fields are incomplete or if passwords do not match.
+
+
+#### `Profile Page`
+
+![Profile Page](./accountsphere/static/documentation/web_pages/profile_page.png)
+
+The Profile Page in AccountSphere serves as a centralised dashboard for users, providing them with immediate access to a wide array of features and functionalities tailored to their roles within the platform:
+
+* `Dynamic Greeting and Time Display`: At the top of the page, users are greeted with a personalised message that changes based on the time of day, enhancing the user experience with a warm welcome. Additionally, a real-time clock displays the current day and time, helping users manage their schedule more effectively.
+
+* `Carousel of Visual Highlights`: A visually appealing carousel showcases relevant images such as world maps, teamwork concepts, and transformational changes, offering users an engaging and informative visual experience right on their profile page.
+
+* `Quick Access Cards`: Below the carousel, a series of cards provide quick access to major management sections like Accounts, Groups, Products, Users, and News Board. Each card includes a thumbnail image related to the section and a direct link, simplifying navigation and enhancing efficiency:
+
+  * `Accounts Card`: Directs users to manage financial accounts.
+  * `Groups Card`: Provides access to group management functionalities.
+  * `Products Card`: Links to product management settings.
+  * `Users Card`: Offers a shortcut to user management tools.
+  * `News Board Card`: Leads to the latest news and updates within the organisation.
+
+* `Interactive News Panel`: Adjacent to the quick access cards, a dedicated panel for Trending Articles displays the latest news items. This panel supports scrolling, making it easy for users to browse through various articles. Each news item is presented with a headline and a brief description, ensuring users are well-informed about recent developments.
+
+* `Responsive Design`: The entire profile page is designed to be responsive, ensuring that all elements display correctly across different devices and screen sizes, enhancing the user's experience whether on desktop, tablet, or mobile.
+
+
+#### `Account Management`
+
+![Account Management Page](./accountsphere/static/documentation/web_pages/account_dashboard.png)
+
+The Account Management Board in AccountSphere enables Account Officers and other relevant roles to efficiently oversee client accounts and manage key financial data.
+
+* `Search Bar`: A search function allows users to quickly find specific accounts by filtering based on client name, email, or other relevant data fields.
+
+* `Account Overview`: A table displays all managed accounts in a comprehensive view, including columns like client name, account type, balance, and currency. The table is sortable, providing flexibility in reviewing data.
+
+* `Create New Account`: A prominently positioned button enables the creation of new client accounts. Clicking this button redirects to the "Add Account" page, where users can fill out necessary client information.
+  ![Create Account](./accountsphere/static/documentation/web_pages/create_account.png)
+
+* `Edit and Delete Options`: Each row in the table provides edit and delete icons that let Account Officers update client information or remove an account if needed. A modal prompts the user to confirm their choice before deleting.
+  ![Edit Account](./accountsphere/static/documentation/web_pages/update_account.png)
+  ![Delete Account](./accountsphere/static/documentation/web_pages/delete_account.png)
+
+* `Responsive Design`: The board is optimised for various screen sizes, ensuring Account Officers can access data and perform their tasks effectively across desktop, tablet, and mobile devices.
+
+* `Navigation Links`: Quick links to other sections, like Product and User Management Boards, are included to streamline navigation.
+
+
+#### `Active Directory Groups`
+
+![AD Group Management Page](./accountsphere/static/documentation/web_pages/ad_group_page.png)
+
+The AD Group Management Page in AccountSphere offers Administrators an organised interface for managing Active Directory groups efficiently.
+
+* `Search Bar`: Allows Administrators to filter groups by name, description, or group type to quickly locate relevant information.
+
+* `Group List`: Displays all available groups in a sortable table format with columns like group name, description, and group type. This comprehensive overview helps Administrators manage and review group data effectively.
+
+* `Create New Group`: A button that links to the "Add AD Group" page, where new Active Directory groups can be defined and added to the system.
+  ![AD Group Management Page](./accountsphere/static/documentation/web_pages/create_ad.png)
+
+* `Edit and Delete Actions`: Each group entry in the table includes edit and delete buttons, allowing Administrators to modify or remove a group. A confirmation modal ensures that groups are not deleted accidentally.
+  ![AD Group Management Page](./accountsphere/static/documentation/web_pages/update_ad.png)
+  ![AD Group Management Page](./accountsphere/static/documentation/web_pages/delete_ad.png)
+
+* `Navigation Links`: Includes links to other management sections like Accounts and Products, helping Administrators quickly navigate between different management tasks.
+
+* `Responsive Layout`: The page is optimised for various devices, ensuring seamless group management whether the Administrator is using a desktop or mobile device.
+
+#### `News Board`
+
+![News Board](./accountsphere/static/documentation/web_pages/news_board.png)
+
+The News Board page in AccountSphere serves as a centralised hub for keeping team members updated with relevant articles and internal announcements.
+
+* `Search Bar`: Helps News Analysts quickly find specific articles or announcements by filtering based on keywords in the title or description.
+
+* `News List`: Displays a table with all published news items, organised by headlines, brief descriptions, and publication dates. This summary view allows stakeholders to quickly scan for key updates.
+
+* `Create New Article`: A button links to the "Add News" page where analysts can draft and publish new articles for immediate dissemination.
+  ![News Board](./accountsphere/static/documentation/web_pages/add_news.png)
+
+* `Edit and Delete Actions`: Each article entry includes edit and delete buttons, providing Analysts with full control over the content. Confirmation dialogs are used to prevent accidental deletions.
+  ![News Board Wireframe](./accountsphere/static/documentation/web_pages/update_news.png)
+  ![News Board Wireframe](./accountsphere/static/documentation/web_pages/delete_news.pngg)
+
+* `Trending Articles`: Highlights important or popular articles to draw attention to them. This helps team members prioritise their reading.
+
+* `Collaboration and Feedback`: Team members can leave comments or suggestions, fostering a collaborative environment to refine the news content.
+
+* `Responsive Design`: The layout ensures a smooth reading experience on devices ranging from desktops to smartphones.
+
+#### `Product Management`
+
+![Product Management Page](./accountsphere/static/documentation/web_pages/product_page.png)
+
+The Product Management page in AccountSphere provides a comprehensive overview of the products available and allows efficient management for Product Managers.
+
+* `Search Bar`: A quick search feature lets managers find specific products by name or description, streamlining the management process.
+
+* `Product List`: Displays all available products in a card layout, with each card containing the product name, description, and type. This layout provides a clear overview of the product catalog.
+
+* `Create New Product`: A button directs to the "Add Product" page, where new products can be defined and added to the catalog.
+  ![Product Management Page](./accountsphere/static/documentation/web_pages/add_product.png)
+
+* `Edit and Delete Actions`: Each product card includes edit and delete buttons, enabling quick modifications or removal of outdated products.
+  ![Product Management Page](./accountsphere/static/documentation/web_pages/update_product.png)
+  ![Product Management Page ](./accountsphere/static/documentation/web_pages/delete_product.png)
+
+* `Product Details`: Clicking on a product card reveals more information, such as associated accounts, sales data, and performance metrics.
+
+* `Analytics Integration`: Managers can view analytics and insights related to each product's lifecycle, helping them make data-driven decisions.
+
+* `Responsive Design`: The layout adapts to different screen sizes, ensuring managers can easily access product information from any device.
+
+#### `User Role Management`
+
+![User Management Page](./accountsphere/static/documentation/web_pages/user_page.png)
+
+The User Board in AccountSphere allows administrators to manage user accounts effectively through various functionalities.
+
+* `Search Functionality`: The search bar helps administrators quickly find users based on their first name, last name, username, email, or role.
+
+* `User List`: Displays a table of all registered users with columns for the first name, last name, username, email, and role. This table provides a comprehensive overview of the user base.
+
+* `Add New User`: A button leads to the "Add User" page, where new user accounts can be created with details like name, email, username, and password.
+  ![User Management Page](./accountsphere/static/documentation/web_pages/add_user.png)
+
+* `Edit and Delete Actions`: Each row contains edit and delete buttons, allowing administrators to update user information or remove accounts.
+  ![User Management Page](./accountsphere/static/documentation/web_pages/update_user.png)
+  ![User Management Page](./accountsphere/static/documentation/web_pages/delete_user.png)
+
+* `Role Management`: Administrators can assign, update, or change user roles directly from the board, ensuring that the right permissions are granted.
+
+* `Responsive Layout`: The table is fully responsive, ensuring that administrators can easily manage users on both desktop and mobile devices.
+
+#### `Password Reset Page`
+
+![Password Reset Page](./accountsphere/static/documentation/web_pages/change_password.png)
+
+The Password Reset page provides users with a secure way to change their passwords directly in AccountSphere.
+
+* `Old Password Verification`: Users must input their current password to verify their identity before setting a new one.
+
+* `New Password Fields`: Two fields for the new password and its confirmation ensure accuracy and prevent typos.
+
+* `Validation`: Password validation checks that the new password meets length and complexity requirements.
+
+* `Update Button`: The "Update" button securely saves the new password after successful verification and validation.
+
+* `Cancel Button`: A "Cancel" button allows users to exit without making changes, returning them to the profile page.
+
+* `Responsive Design`: The form adjusts to different screen sizes, ensuring ease of use across devices.
+
+#### `Log Out Functionality`
+
+The log-out feature ensures secure exit from AccountSphere:
+
+* `Secure Logout`: Upon logging out, the current session is terminated, and all authenticated data is cleared.
+
+* `Confirmation Message`: Users receive a notification confirming their successful logout.
+
+* `Redirect to Home`: After logout, users are redirected to the Home page to start a new session or browse public content.
+
+* `Access Restriction`: Access to protected pages is immediately revoked for logged-out users, preventing unauthorised access.
+
+* `Login Prompt`: The login page encourages users to authenticate again if required, ensuring a secure re-entry.
+
+* `Mobile Compatibility`: The log-out feature works seamlessly across different devices, enhancing user security on the go.
+
+
+#### `404 Page`
+
+![404 Page](./accountsphere/static/documentation/web_pages/404.png)
+
+The 404 error page provides a user-friendly way to handle navigation issues:
+
+* `Clear Error Message`: Informs users that the page they tried to access is not available, providing clarity on the issue.
+
+* `Navigation Options`: Offers links back to the Home Page and other relevant sections, enabling users to quickly find their way back to familiar content.
+
+* `Search Functionality`: Incorporates a search bar to help users locate the desired content directly from the error page.
+
+* `Consistent Design`: Maintains the overall style of the platform to ensure a cohesive user experience, even in error states.
+
+* `Visual Cue`: Includes a recognisable error icon to reinforce the page's purpose and direct users' attention.
+
+* `Mobile Responsiveness`: Adapts gracefully across screen sizes to ensure users can always recover from errors on any device.
+</details>
+
+### Future Implementations
+
+AccountSphere is committed to continuous improvement and user-centric enhancements. Here are some of the future implementations planned to enrich the platform's capabilities and user experience:
+
+#### `Advanced Analytics Dashboard`
+- **Goal**: To provide users, especially Account Officers and Product Managers, with more sophisticated tools for data analysis and decision-making.
+- **Features**: Interactive charts, real-time data updates, and customisable reports that cater to the specific needs of different user roles.
+
+#### `Mobile Application`
+- **Goal**: To offer a dedicated mobile application for iOS and Android to enhance accessibility and on-the-go management.
+- **Features**: Seamless synchronisation with the web platform, offline access to critical data, and mobile-specific user interface enhancements.
+
+#### `Integration with External Financial Services`
+- **Goal**: To expand functionality by integrating with external financial APIs, allowing users to manage payments, invoicing, and other financial services directly through AccountSphere.
+- **Features**: Secure connections to major financial platforms, streamlined payment processing, and expanded reporting capabilities.
+
+#### `AI-Driven Insights for Account Management`
+- **Goal**: To implement artificial intelligence technologies to provide predictive analytics and personalised insights for account management.
+- **Features**: AI algorithms that analyse user data to predict trends, suggest optimisations, and alert users about important account changes or opportunities.
+
+#### `Customisable User Interface`
+- **Goal**: To allow users to customise the interface according to their preferences and organisational branding.
+- **Features**: Theme options, layout configurations, and the ability to add custom logos and color schemes.
+
+#### `Enhanced Security Features`
+- **Goal**: To further enhance the security of the platform to protect sensitive financial data.
+- **Features**: Two-factor authentication, advanced encryption methods, and continuous security audits.
+
+#### `Multi-language Support`
+- **Goal**: To make AccountSphere accessible to a global audience by supporting multiple languages.
+- **Features**: Language selection options, culturally relevant user interface adaptations, and support for right-to-left text layouts.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
