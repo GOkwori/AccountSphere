@@ -14,12 +14,12 @@
         <input type="text" class="form-control" name="query" placeholder="Search active directory">
 
         <!-- Search Button -->
-        <button class="btn btn-outline-secondary" type="submit">
+        <button class="btn btn-outline-secondary" title="Search" type="submit">
           <i class="fa-solid fa-search"></i>
         </button>
 
         <!-- Clear Button -->
-        <a href="{{ url_for('ad_group') }}" role="button" class="btn btn-outline-secondary ms-2"><i
+        <a href="{{ url_for('account') }}" role="button" title="Clear Search" class="btn btn-outline-secondary ms-2"><i
             class="fa-solid fa-power-off"></i></a>
       </div>
     </form>
@@ -44,11 +44,11 @@
           <p class="card-text">{{ group.description | truncate(140) }}</p>
         </div>
         <div class="card-footer text-center">
-          <a href="{{ url_for('edit_ad_group', group_id=group.id)}}" class="btn btn-primary"><i
+          <a href="{{ url_for('edit_ad_group', group_id=group.id)}}" class="btn btn-primary" title="Edit"><i
               class="fa-solid fa-pen-to-square"></i></a>
           <!-- Button trigger modal -->
           <button type="button" class="btn btn-danger ms-2" data-bs-toggle="modal"
-            data-bs-target="#deleteModal-{{ group.id }}">
+            data-bs-target="#deleteModal-{{ group.id }}" title="Delete">
             <i class="fa-solid fa-trash"></i>
           </button>
         </div>
