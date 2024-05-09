@@ -804,8 +804,8 @@ These fixes have significantly improved the stability, security, and usability o
 - **Microsoft Visio**: For creating flowcharts and ERD diagrams.
 
 ### Acknowledgements
-- **Code Institute**: For comprehensive educational resources.
-- **Jubril Akolade - Mentor Support**: Acknowledging the invaluable support from my mentor.
-- **Amy Richardson - Cohort Facilitator**: For providing guidance and educational resources throughout the development process. 
-- **Real Python & W3Schools**: For Python programming resources and tutorials.
+- **`Code Institute`**: For comprehensive educational resources.
+- **`Jubril Akolade - Mentor Support`**: Acknowledging the invaluable support from my mentor.
+- **`Amy Richardson - Cohort Facilitator`**: For providing guidance and educational resources throughout the development process. 
+- **`Real Python & W3Schools`**: For Python programming resources and tutorials.
 
