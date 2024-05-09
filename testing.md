@@ -242,7 +242,7 @@ The HTML code from all pages in AccountSphere was validated using the [W3C Marku
 
 | Page | Validation Result |
 |------|-------------------|
-| Login Page | ![HTML Validation](./accountsphere/static/documentation/validation/login_page.png) |
+| Login Page | ![HTML Validation](./accountsphere/static/testing/code_validation/html/login_page.PNG) |
 | Registration Page | ![HTML Validation](./accountsphere/static/documentation/validation/registration_page.png) |
 | Landing Page | ![HTML Validation](./accountsphere/static/testing/code_validation/html/landing_page.PNG) |
 | Account Management Page | ![HTML Validation](./accountsphere/static/documentation/validation/account_management_page.png) |
