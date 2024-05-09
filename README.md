@@ -678,7 +678,21 @@ The development of AccountSphere involves a range of modern web technologies and
 | ![Python](https://img.shields.io/badge/Python%20-%2314354C.svg?&style=for-the-badge&logo=python&logoColor=white) | Utilized for server-side logic, including request handling, data manipulation, and interacting with the database. |
 | | |
 
-### Frameworks, Libraries & Programs Used
+## Technologies Used
+
+The development of AccountSphere involves a range of modern web technologies and software tools, ensuring a robust, secure, and user-friendly platform for financial management. Below is a detailed overview of the key technologies and tools utilized in creating AccountSphere:
+
+### `Languages Used`
+
+|  |  |
+| -- | --|
+| ![HTML](https://img.shields.io/badge/HTML%20-%23e34f26.svg?&style=for-the-badge&logo=html5&logoColor=white) | The structural foundation of our application, used to build the framework and content layout of the web pages. |
+| ![CSS](https://img.shields.io/badge/CSS%20-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white) | Enhances the presentation of our web application, controlling the layout, colors, and fonts to ensure an engaging and adaptive user interface. |
+| ![JavaScript](https://img.shields.io/badge/JavaScript%20-%23F7DF1E.svg?&style=for-the-badge&logo=javascript&logoColor=black) | Powers the dynamic aspects of AccountSphere, enabling interactive elements and real-time functionality without the need for page reloads. |
+| ![Python](https://img.shields.io/badge/Python%20-%2314354C.svg?&style=for-the-badge&logo=python&logoColor=white) | Utilized for server-side logic, including request handling, data manipulation, and interacting with the database. |
+| | |
+
+### `Frameworks, Libraries & Programs Used`
 
 * [Flask](https://flask.palletsprojects.com/) - A lightweight WSGI web application framework, used to facilitate the backend setup, URL routing, and the integration of front-end technologies.
 
@@ -702,18 +716,5 @@ The development of AccountSphere involves a range of modern web technologies and
 
 * [Heroku](https://www.heroku.com/) - A cloud platform as a service supporting several programming languages, used to deploy the web application.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+* [Microsoft Visio](https://www.microsoft.com/en-us/microsoft-365/visio/flowchart-software) - Employed for creating clear and detailed flowcharts and ERDs (Entity-Relationship Diagrams) to visualize data relationships and process flows in the application.
 
