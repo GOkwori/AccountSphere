@@ -664,6 +664,45 @@ AccountSphere prioritises accessibility to ensure an inclusive and user-friendly
 - **Features**: Regular testing with screen readers, magnifiers, and speech recognition tools to address compatibility issues.
 
 
+## Technologies Used
+
+The development of AccountSphere involves a range of modern web technologies and software tools, ensuring a robust, secure, and user-friendly platform for financial management. Below is a detailed overview of the key technologies and tools utilized in creating AccountSphere:
+
+### Languages Used
+
+|  |  |
+| -- | --|
+| ![HTML](https://img.shields.io/badge/HTML%20-%23e34f26.svg?&style=for-the-badge&logo=html5&logoColor=white) | The structural foundation of our application, used to build the framework and content layout of the web pages. |
+| ![CSS](https://img.shields.io/badge/CSS%20-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white) | Enhances the presentation of our web application, controlling the layout, colors, and fonts to ensure an engaging and adaptive user interface. |
+| ![JavaScript](https://img.shields.io/badge/JavaScript%20-%23F7DF1E.svg?&style=for-the-badge&logo=javascript&logoColor=black) | Powers the dynamic aspects of AccountSphere, enabling interactive elements and real-time functionality without the need for page reloads. |
+| ![Python](https://img.shields.io/badge/Python%20-%2314354C.svg?&style=for-the-badge&logo=python&logoColor=white) | Utilized for server-side logic, including request handling, data manipulation, and interacting with the database. |
+| | |
+
+### Frameworks, Libraries & Programs Used
+
+* [Flask](https://flask.palletsprojects.com/) - A lightweight WSGI web application framework, used to facilitate the backend setup, URL routing, and the integration of front-end technologies.
+
+* [SQLAlchemy](https://www.sqlalchemy.org/) - The Python SQL toolkit and Object-Relational Mapping (ORM) system that gives application developers the full power and flexibility of SQL.
+
+* [Flask-Migrate](https://flask-migrate.readthedocs.io/en/latest/) - An extension that handles SQLAlchemy database migrations for Flask applications using Alembic.
+
+* [Jinja](https://jinja.palletsprojects.com/) - A modern and designer-friendly templating language for Python, modeled after Django’s templates. Used to dynamically render HTML templates.
+
+* [Bootstrap](https://getbootstrap.com/) - Extensive library of HTML, CSS, and JS tools used to create mobile-first and responsive web pages.
+
+* [Font Awesome](https://fontawesome.com/) - A font and icon toolkit based on CSS and LESS, used to incorporate custom icons throughout the application.
+
+* [Git](https://git-scm.com/) - For version control to track changes in the source code during development.
+
+* [GitHub](https://github.com/) - Hosts the repository that can be deployed to GitHub Pages, providing backup and version control.
+
+* [Visual Studio Code](https://code.visualstudio.com/) - The source-code editor used for software development, offering features such as debugging, syntax highlighting, and code refactoring.
+
+* [PostgreSQL](https://www.postgresql.org/) - An open-source relational database system used to manage the application’s data effectively.
+
+* [Heroku](https://www.heroku.com/) - A cloud platform as a service supporting several programming languages, used to deploy the web application.
+
+
 
 
 
