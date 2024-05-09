@@ -660,7 +660,6 @@ AccountSphere prioritises accessibility to ensure an inclusive and user-friendly
 - **Goal**: Ensure the application functions smoothly with popular assistive technologies.
 - **Features**: Regular testing with screen readers, magnifiers, and speech recognition tools to address compatibility issues.
 
-
 ## Technologies Used
 
 The development of AccountSphere involves a range of modern web technologies and software tools, ensuring a robust, secure, and user-friendly platform for financial management. Below is a detailed overview of the key technologies and tools utilized in creating AccountSphere:
@@ -675,21 +674,7 @@ The development of AccountSphere involves a range of modern web technologies and
 | ![Python](https://img.shields.io/badge/Python%20-%2314354C.svg?&style=for-the-badge&logo=python&logoColor=white) | Utilized for server-side logic, including request handling, data manipulation, and interacting with the database. |
 | | |
 
-## Technologies Used
-
-The development of AccountSphere involves a range of modern web technologies and software tools, ensuring a robust, secure, and user-friendly platform for financial management. Below is a detailed overview of the key technologies and tools utilized in creating AccountSphere:
-
-### `Languages Used`
-
-|  |  |
-| -- | --|
-| ![HTML](https://img.shields.io/badge/HTML%20-%23e34f26.svg?&style=for-the-badge&logo=html5&logoColor=white) | The structural foundation of our application, used to build the framework and content layout of the web pages. |
-| ![CSS](https://img.shields.io/badge/CSS%20-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white) | Enhances the presentation of our web application, controlling the layout, colors, and fonts to ensure an engaging and adaptive user interface. |
-| ![JavaScript](https://img.shields.io/badge/JavaScript%20-%23F7DF1E.svg?&style=for-the-badge&logo=javascript&logoColor=black) | Powers the dynamic aspects of AccountSphere, enabling interactive elements and real-time functionality without the need for page reloads. |
-| ![Python](https://img.shields.io/badge/Python%20-%2314354C.svg?&style=for-the-badge&logo=python&logoColor=white) | Utilized for server-side logic, including request handling, data manipulation, and interacting with the database. |
-| | |
-
-### `Frameworks, Libraries & Programs Used`
+### Frameworks, Libraries & Programs Used
 
 * [Flask](https://flask.palletsprojects.com/) - A lightweight WSGI web application framework, used to facilitate the backend setup, URL routing, and the integration of front-end technologies.
 
@@ -717,7 +702,7 @@ The development of AccountSphere involves a range of modern web technologies and
 
 ## Deployment & Local Development
 
-### `Deployment`
+### Deployment
 
 AccountSphere is deployed using Heroku, a cloud platform that enables developers to build, run, and operate applications entirely in the cloud.
 
@@ -738,9 +723,9 @@ To deploy the site using Heroku:
 7. After deployment, Heroku will give you a URL to access your deployed application.
 8. Click on "Open app" in the top right of the dashboard to view your deployed site.
 
-### `Local Development`
+### Local Development
 
-#### How to Fork
+#### `How to Fork`
 
 To fork the repository:
 
@@ -748,7 +733,7 @@ To fork the repository:
 2. Navigate to the repository for this project on GitHub.
 3. Click the "Fork" button in the top-right corner of the page.
 
-#### How to Clone
+#### `How to Clone`
 
 To clone the repository:
 
@@ -785,8 +770,6 @@ These fixes have significantly improved the stability, security, and usability o
 
 ### Code Used
 
-Below is a summary of code snippets and inspirations from various sources used to build the project:
-
 #### `Web Frameworks and Libraries`
 - **Flask**: Used for server-side logic including routing and session management.
 - **Jinja2**: Templating engine for rendering HTML from data.
@@ -820,9 +803,9 @@ Below is a summary of code snippets and inspirations from various sources used t
   - [Python Tutor](https://pythontutor.com/python-compiler.html#mode=edit)
 - **Microsoft Visio**: For creating flowcharts and ERD diagrams.
 
-### `Acknowledgements`
+### Acknowledgements
 - **Code Institute**: For comprehensive educational resources.
-- **Jubril Akolade Mentor Support**: Acknowledging the invaluable support from my cohort facilitator and mentor.
-- **Amy Richardson Cohort Facilitator**: For providing guidance and educational resources throughout the development process. 
+- **Jubril Akolade - Mentor Support**: Acknowledging the invaluable support from my mentor.
+- **Amy Richardson - Cohort Facilitator**: For providing guidance and educational resources throughout the development process. 
 - **Real Python & W3Schools**: For Python programming resources and tutorials.
 
