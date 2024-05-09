@@ -781,3 +781,48 @@ The development of AccountSphere involved identifying and resolving several bugs
 | 9 | `Group management access rights` | Non-administrative users were able to access and modify group settings. | Revised access controls to restrict group management functionalities to administrators only. |
 
 These fixes have significantly improved the stability, security, and usability of AccountSphere, ensuring a reliable and efficient experience for all users.
+## Credits
+
+### Code Used
+
+Below is a summary of code snippets and inspirations from various sources used to build the project:
+
+#### `Web Frameworks and Libraries`
+- **Flask**: Used for server-side logic including routing and session management.
+- **Jinja2**: Templating engine for rendering HTML from data.
+- **SQLAlchemy**: ORM used for database interactions.
+- **Flask-Login**: For handling user authentication.
+- **Bootstrap**: For responsive design and UI components.
+
+#### `Tutorials and Guides`
+- **YouTube Python Authentication Tutorial**: Provided guidance for setting up authentication features.
+  - [YouTube Python Authentication Tutorial](https://www.youtube.com/watch?v=71EU8gnZqZQ)
+- **YouTube Series for User Management System**: Helped in implementing user roles and permissions.
+  - [Code Maven](https://www.youtube.com/watch?v=SzWNnUdY6ZE&list=PL193izPqf5X51LG3xhVgeLuIUKbe9a_qs)
+- **Code Institute Walkthrough Projects**: Offered foundational knowledge and reusable patterns.
+- **OpenAI**: Generated textual content and descriptions within the site.
+
+#### `Design and Media`
+- **Vecteezy.com**: Source for stock images used across the platform.
+  - [Vecteezy](https://www.vecteezy.com/)
+- **Icons and UI Enhancements**: Leveraged Bootstrap icons and custom graphics from various sources.
+
+#### `Database and Tools`
+- **PostgreSQL**: Database system used for storing application data.
+- **Microsoft Visio**: Used for creating ERDs and flowcharts.
+
+#### `Miscellaneous Tools`
+- **Git**: For version control.
+- **GitHub**: For repository hosting and deployment.
+- **CI PEP8 Linter**: Validator for ensuring PEP8 compliance.
+  - [CI PEP8 Linter](https://pep8ci.herokuapp.com/)
+- **Python Tutor**: Tool for Python code visualization and debugging.
+  - [Python Tutor](https://pythontutor.com/python-compiler.html#mode=edit)
+- **Microsoft Visio**: For creating flowcharts and ERD diagrams.
+
+### `Acknowledgements`
+- **Code Institute**: For comprehensive educational resources.
+- **Jubril Akolade Mentor Support**: Acknowledging the invaluable support from my cohort facilitator and mentor.
+- **Amy Richardson Cohort Facilitator**: For providing guidance and educational resources throughout the development process. 
+- **Real Python & W3Schools**: For Python programming resources and tutorials.
+
