@@ -157,3 +157,32 @@ To verify that AccountSphere meets the needs of different user types, we conduct
 | **Create** | News Analysts can create articles and reports quickly using the in-platform news creation tools to keep stakeholders informed. |
 | **Update** | Analysts can revise or update articles through intuitive editing controls to keep information accurate. |
 | **Delete** | Outdated or inaccurate articles can be removed with ease, providing a clean and reliable news board. |
+
+
+## Browser Compatibility
+
+AccountSphere was thoroughly tested to ensure consistent performance across different web browsers. This step is crucial to ensure that every user experiences the platform as intended regardless of their choice of browser.
+
+### Tested Browsers
+
+| **Browser** | **Compatibility** | **Performance** |
+|-------------|--------------------|-----------------|
+| **Google Chrome** | Fully Compatible | Excellent |
+| **Mozilla Firefox** | Fully Compatible | Excellent |
+| **Safari** | Fully Compatible | Excellent |
+| **Microsoft Edge** | Fully Compatible | Excellent |
+| **Opera** | Fully Compatible | Excellent |
+
+### Specific Tests Conducted
+
+1. **Functionality Testing**:
+   - All CRUD operations (Create, Read, Update, Delete) across all user roles were tested to ensure smooth functionality.
+   - Navigation and responsive design elements were verified to perform well.
+
+2. **Visual Testing**:
+   - Checked for consistent rendering of layout and styles.
+   - Ensured that all interactive elements like buttons and links function correctly.
+
+3. **Performance Testing**:
+   - Pages were tested for quick load times and responsive interactions under typical usage conditions.
+
