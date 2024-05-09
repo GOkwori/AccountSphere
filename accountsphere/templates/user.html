@@ -56,9 +56,9 @@
           <td>{{ user.role }}</td>
           <td>
             <!-- Edit and Delete Buttons -->
-            <a href="{{ url_for('edit_user', user_id=user.id)}}" aria-label="Edit Account" title="Edit"><i
+            <a href="{{ url_for('edit_user', user_id=user.id)}}" aria-label="Edit User" title="Edit"><i
                 class="fa-solid fa-pen-to-square me-4"></i></a>
-            <a role="button" data-bs-toggle="modal" data-bs-target="#deleteModal-{{ account.id }}" title="Delete"><i
+            <a role="button" data-bs-toggle="modal" data-bs-target="#deleteModal-{{ User.id }}" title="Delete"><i
                 class="fa-solid fa-trash"></i></a>
           </td>
         </tr>
