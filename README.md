@@ -349,6 +349,8 @@ This diagram not only showcases the logical structure of the database but also p
 
 The AccountSphere web application provides a comprehensive solution for financial management, offering a range of interactive features that cater to different user roles for ease of use and enhanced productivity.
 
+![Responsive Pages](./accountsphere/static/documentation/web_pages/landing_page.png)
+
 **All Pages Feature:**
 
 * `Responsive Navigation`: Consistent navigation across all pages ensures that users can seamlessly access sections like accounts, products, and user management. Navigation links are well-labeled and intuitive, reducing the learning curve for new users.
@@ -361,7 +363,6 @@ The AccountSphere web application provides a comprehensive solution for financia
 
 * `Mobile-Friendly Layout`: The application's responsive design ensures a seamless user experience across desktops, tablets, and mobile devices. Content adapts dynamically to different screen sizes, maintaining usability and clarity across devices.
 
-  ![Responsive Pages](./accountsphere/static/documentation/web_pages/landing_page.png)
 
 * `Access Control`: Role-based access control ensures that each user has permissions aligned with their role, whether it's an Account Officer, Administrator, Product Manager, or News Analyst. This minimises risks associated with data security and unauthorized access.
 
