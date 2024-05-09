@@ -718,3 +718,48 @@ The development of AccountSphere involves a range of modern web technologies and
 
 * [Microsoft Visio](https://www.microsoft.com/en-us/microsoft-365/visio/flowchart-software) - Employed for creating clear and detailed flowcharts and ERDs (Entity-Relationship Diagrams) to visualize data relationships and process flows in the application.
 
+## Deployment & Local Development
+
+### `Deployment`
+
+AccountSphere is deployed using Heroku, a cloud platform that enables developers to build, run, and operate applications entirely in the cloud.
+
+To deploy the site using Heroku:
+
+1. Login (or signup) to [Heroku](https://www.heroku.com/).
+2. From the dashboard, create a new app by selecting "New" -> "Create new app."
+3. Give your app a name (must be unique) and select the region closest to your location.
+4. Once the app is created, connect your app to your GitHub repository:
+    - Go to the "Deploy" tab in your Heroku dashboard.
+    - Select "GitHub" as the deployment method.
+    - Connect to GitHub by entering your GitHub account credentials.
+    - Search for the repository name and click "Connect".
+5. Configure environment variables under "Settings" -> "Reveal Config Vars". Set keys like `SECRET_KEY`, `DATABASE_URL`, etc.
+6. Go back to the "Deploy" tab and scroll down to "Manual deploy".
+    - Choose the branch you want to deploy (usually "main" or "master").
+    - Click "Deploy Branch".
+7. After deployment, Heroku will give you a URL to access your deployed application.
+8. Click on "Open app" in the top right of the dashboard to view your deployed site.
+
+### `Local Development`
+
+#### How to Fork
+
+To fork the repository:
+
+1. Log in (or sign up) to GitHub.
+2. Navigate to the repository for this project on GitHub.
+3. Click the "Fork" button in the top-right corner of the page.
+
+#### How to Clone
+
+To clone the repository:
+
+1. Log in (or sign up) to GitHub.
+2. Navigate to the repository for this project on GitHub.
+3. Click on the "Code" button, then choose to clone via HTTPS, SSH, or GitHub CLI, and copy the URL provided.
+4. Open your terminal.
+5. Change the current working directory to the location where you want the cloned directory.
+6. Type `git clone`, then paste the URL you copied earlier.
+7. Press Enter to create your local clone.
+
