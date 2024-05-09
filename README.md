@@ -760,3 +760,24 @@ To clone the repository:
 6. Type `git clone`, then paste the URL you copied earlier.
 7. Press Enter to create your local clone.
 
+## Testing
+
+For a comprehensive overview of all testing conducted during the development of AccountSphere, please refer to the [Testing.md](testing.md) file. This document includes detailed test cases, results, and methodologies used.
+
+### Solved Bugs
+
+The development of AccountSphere involved identifying and resolving several bugs to enhance functionality and user experience. Below is a table detailing some of the notable bugs encountered and the fixes applied:
+
+| No | Bug | Description | Fix Applied | 
+| --- | --- | --- | --- | 
+| 1 | `Form submission error` | Users experienced form submission issues on the account creation page due to incorrect form data validation. | Corrected the form validation logic to ensure accurate data processing. |
+| 2 | `Login redirect error` | After successful login, users were not redirected to their profile page. | Implemented a redirect to the profile page upon successful authentication. |
+| 3 | `Database connection timeout` | The application experienced frequent database timeouts. | Optimised database queries and revalidated database connection settings. |
+| 4 | `Responsive layout issues` | Some pages were not displaying correctly on mobile devices. | Applied additional responsive CSS fixes to ensure compatibility across all devices. |
+| 5 | `Search functionality not working` | The search feature in user management was returning incorrect results. | Refined the search algorithm to accurately filter and display results based on user queries. |
+| 6 | `Security vulnerability in user session` | A security vulnerability was discovered that could allow an unauthorized user to access session data. | Enhanced session management and implemented additional security checks. |
+| 7 | `Missing error messages` | Error messages were not displayed to the user on failed login attempts. | Added error handling to catch and display appropriate feedback messages to the user. |
+| 8 | `Product deletion error` | Users were unable to delete products due to a foreign key constraint error. | Adjusted the database schema to properly handle deletions with cascade rules. |
+| 9 | `Group management access rights` | Non-administrative users were able to access and modify group settings. | Revised access controls to restrict group management functionalities to administrators only. |
+
+These fixes have significantly improved the stability, security, and usability of AccountSphere, ensuring a reliable and efficient experience for all users.
