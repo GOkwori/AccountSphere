@@ -213,13 +213,13 @@ This carefully curated colour scheme leverages a mix of neutral tones and vibran
 
 ### Typography
 
-For the typography of AccountSphere, the Roboto Condensed font from Google Fonts was selected to align with the platform's modern and professional aesthetic.
+For the typography of AccountSphere, the Roboto font from Google Fonts was selected to align with the platform's modern and professional aesthetic.
 
-- `Primary Font: Roboto Condensed` - This sans-serif typeface offers a clean, contemporary look that enhances the platform's user experience. Its narrow letterforms and balanced proportions lend themselves well to both headings and body text, ensuring clarity and legibility across various screen sizes and devices.
+- `Primary Font: Roboto` - This sans-serif typeface offers a clean, contemporary look that enhances the platform's user experience. Its narrow letterforms and balanced proportions lend themselves well to both headings and body text, ensuring clarity and legibility across various screen sizes and devices.
 
 ![Colour Scheme](./accountsphere/static/documentation/google_font/google-fonts.PNG)
 
-The use of Roboto Condensed throughout AccountSphere reinforces the platform's focus on streamlined functionality and effective communication. This font choice complements the platform's focus on financial management and business operations, providing a professional yet approachable appearance that aligns with the target audience's needs and preferences.
+The use of Roboto throughout AccountSphere reinforces the platform's focus on streamlined functionality and effective communication. This font choice complements the platform's focus on financial management and business operations, providing a professional yet approachable appearance that aligns with the target audience's needs and preferences.
 
 ### Imagery
 
