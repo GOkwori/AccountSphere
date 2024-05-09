@@ -61,7 +61,6 @@
                             <a class="nav-link d-none d-sm-block" href="{{ url_for('logout') }}" title="Log Out"><i
                                     class="fa-solid fa-power-off"></i></a>
                         </li>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -73,7 +72,7 @@
             aria-labelledby="staticBackdropLabel">
 
             <!-- Offcanvas Header -->
-            <div class="offcanvas-header">
+            <div class="offcanvas-header" id="staticBackdropLabel">
                 <a class="navbar-brand" href="{{url_for('profile')}}">
                     <img class="logo" src="{{ url_for('static', filename='assets/images/image_8.jpg')}}" alt="logo">
                 </a>
