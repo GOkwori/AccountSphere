@@ -635,6 +635,34 @@ AccountSphere is committed to continuous improvement and user-centric enhancemen
 - **Goal**: To make AccountSphere accessible to a global audience by supporting multiple languages.
 - **Features**: Language selection options, culturally relevant user interface adaptations, and support for right-to-left text layouts.
 
+### `Accessibility`
+
+AccountSphere prioritises accessibility to ensure an inclusive and user-friendly platform. We strive to create an environment where all users, regardless of their abilities or disabilities, can effectively use the application. Here are some key accessibility features and considerations:
+
+#### `Semantic HTML`
+- **Goal**: Improve screen reader compatibility and navigation for visually impaired users.
+- **Features**: Proper use of headings, landmarks (e.g., `<nav>`, `<main>`, `<footer>`), and descriptive `<alt>` attributes for images to provide context.
+
+#### `Keyboard Navigation`
+- **Goal**: Enable navigation and control of all interactive elements via keyboard for users with mobility impairments.
+- **Features**: Logical tab order, focus indicators, and keyboard shortcuts ensure a seamless user experience without a mouse.
+
+#### `Contrast and Color Choices`
+- **Goal**: Enhance readability and visibility for users with color blindness or low vision.
+- **Features**: High-contrast color schemes and color-blind-friendly designs.
+
+#### `Form Accessibility`
+- **Goal**: Make form inputs and labels usable and understandable by all users.
+- **Features**: Explicit `<label>` elements associated with their respective inputs, informative error messages, and user-friendly validation.
+
+#### `Text Resizing and Scaling`
+- **Goal**: Allow users to adjust text size without compromising layout or functionality.
+- **Features**: Responsive design, flexible font sizes, and media queries to ensure content adapts to user preferences.
+
+#### `Assistive Technology Compatibility`
+- **Goal**: Ensure the application functions smoothly with popular assistive technologies.
+- **Features**: Regular testing with screen readers, magnifiers, and speech recognition tools to address compatibility issues.
+
 
 
 
