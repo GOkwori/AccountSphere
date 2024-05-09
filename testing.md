@@ -111,25 +111,49 @@ Each feature was tested to ensure seamless user interactions, proper form valida
 | Verify 404 page functionality | 404 Page | Load a non-existent page | Displays custom 404 page | Displays custom 404 page | Pass | ![404 Page](./accountsphere/static/documentation/web_pages/404.png) |
 
 
-### `Browser Compatibility`
+## User Story Testing
 
-Tested the site across different browsers, ensuring consistent functionality and appearance.
+To verify that AccountSphere meets the needs of different user types, we conducted thorough user story testing based on their specific goals. Here's a detailed breakdown of how each role's CRUD functionalities were tested and achieved:
 
-| Browser | Version | Operating System | Pass/Fail |
-|---------|---------|------------------|-----------|
-| Chrome  | Latest  | Windows         | Pass      |
-| Firefox | Latest  | Windows         | Pass      |
-| Safari  | Latest  | macOS           | Pass      |
-| Edge    | Latest  | Windows         | Pass      |
+### `First-Time User Stories`
 
-### `Responsiveness Testing`
+| **Action** | **How Was It Achieved?** |
+|---|---|
+| **Create** | During onboarding, users are guided through profile creation with step-by-step instructions to start using AccountSphere efficiently. |
+| **Read** | The onboarding guide provides detailed instructions on how to set up and manage accounts for easy navigation of the platform. |
+| **Update** | The dashboard allows users to customise their view, letting them prioritise frequently used features. |
+| **Delete** | Users can remove any test data created during onboarding via clear data management controls, ensuring accurate records. |
 
-Tested the site across various screen sizes, ensuring a seamless layout and user experience.
+### `Account Officer User Stories`
 
-| Device Type   | Pass/Fail |
-|---------------|-----------|
-| Mobile        | Pass      |
-| Tablet        | Pass      |
-| Laptop/PC     | Pass      |
-| Large Monitor | Pass      |
+| **Action** | **How Was It Achieved?** |
+|---|---|
+| **Create** | Account Officers can create new client accounts using standardised templates that help expand the client base while maintaining accuracy. |
+| **Read** | An advanced search function enables Account Officers to quickly find and retrieve specific account information efficiently. |
+| **Update** | Officers can update client details directly on the account management page to ensure accurate data and compliance. |
+| **Delete** | They can deactivate or delete outdated client accounts through the account management dashboard to maintain a clean database. |
 
+### `Administrator User Stories`
+
+| **Action** | **How Was It Achieved?** |
+|---|---|
+| **Create** | Administrators can create user roles and permissions through a comprehensive role management module, ensuring controlled access. |
+| **Read** | They can monitor user activity and system health via the admin dashboard, identifying potential issues or suspicious behavior. |
+| **Update** | Permissions can be modified easily to reflect changing responsibilities, using the flexible role management controls. |
+| **Delete** | Administrators can remove inactive or unauthorised users via user management tools to ensure system security. |
+
+### `Product Manager User Stories`
+
+| **Action** | **How Was It Achieved?** |
+|---|---|
+| **Create** | New product entries can be created easily with the product creation module, enabling managers to handle lifecycles efficiently. |
+| **Update** | Managers can update product details directly via the product page to ensure current and accurate information. |
+| **Delete** | Obsolete products can be archived or removed, helping managers maintain a clean product portfolio. |
+
+###    `News Analyst User Stories`
+
+| **Action** | **How Was It Achieved?** |
+|---|---|
+| **Create** | News Analysts can create articles and reports quickly using the in-platform news creation tools to keep stakeholders informed. |
+| **Update** | Analysts can revise or update articles through intuitive editing controls to keep information accurate. |
+| **Delete** | Outdated or inaccurate articles can be removed with ease, providing a clean and reliable news board. |
