@@ -163,7 +163,7 @@ To verify that AccountSphere meets the needs of different user types, we conduct
 
 AccountSphere was thoroughly tested to ensure consistent performance across different web browsers. This step is crucial to ensure that every user experiences the platform as intended regardless of their choice of browser.
 
-### Tested Browsers
+### `Tested Browsers`
 
 | **Browser** | **Compatibility** | **Performance** |
 |-------------|--------------------|-----------------|
@@ -173,7 +173,7 @@ AccountSphere was thoroughly tested to ensure consistent performance across diff
 | **Microsoft Edge** | Fully Compatible | Excellent |
 | **Opera** | Fully Compatible | Excellent |
 
-### Specific Tests Conducted
+### `Specific Tests Conducted`
 
 1. **Functionality Testing**:
    - All CRUD operations (Create, Read, Update, Delete) across all user roles were tested to ensure smooth functionality.
@@ -186,3 +186,47 @@ AccountSphere was thoroughly tested to ensure consistent performance across diff
 3. **Performance Testing**:
    - Pages were tested for quick load times and responsive interactions under typical usage conditions.
 
+## Responsiveness Testing
+
+AccountSphere was designed with a mobile-first approach, ensuring that it provides an optimal user experience across devices of varying screen sizes. This testing process involved using browser developer tools and real devices to confirm that the platform is fully responsive.
+
+### `Tested Devices`
+
+| **Device** | **Screen Size** | **Compatibility** |
+|------------|-----------------|-------------------|
+| **iPhone 12 Pro** | 390px x 844px | Fully Responsive |
+| **iPhone 14 Pro Max** | 430px x 932px | Fully Responsive |
+| **iPad Mini** | 768px x 1024px | Fully Responsive |
+| **Samsung Galaxy S21** | 360px x 800px | Fully Responsive |
+| **Google Pixel 6** | 412px x 915px | Fully Responsive |
+| **Laptop (13-inch)** | 1280px x 800px | Fully Responsive |
+| **Desktop (Full HD)** | 1920px x 1080px | Fully Responsive |
+
+### `Testing Results`
+
+1. **Navigation**:
+   - The navigation menu was checked to ensure it adapts properly to smaller screen sizes.
+   - On larger screens, the navigation menu is displayed, ensuring a consistent user experience.
+
+2. **Layout and Elements**:
+   - All grid layouts, forms, and tables were verified to ensure they resize appropriately.
+   - Elements like buttons, images, and text adapt well to various screen sizes.
+
+3. **Performance**:
+   - Each page was tested for smooth scrolling, quick load times, and responsive interactions on all screen sizes.
+
+### Visual Examples of Responsiveness
+
+| **Device** | **Screenshot** |
+|------------|----------------|
+| **iPhone 12 Pro** | ![iPhone 12 Pro Screenshot](./accountsphere/static/testing/responsiveness/iphone.PNG) |
+| **iPad Mini** | ![iPad Mini Screenshot](./accountsphere/static/testing/responsiveness/ipad.PNG) |
+| **Laptop (13-inch)** | ![Laptop Screenshot](./accountsphere/static/testing/responsiveness/desktop.PNG) |
+
+### Tools Used
+
+- **Google Chrome DevTools**: Verified responsiveness through simulated devices and screen sizes.
+- **BrowserStack**: Allowed live testing across multiple device simulators.
+- **Real Devices**: Ensured that the platform works seamlessly on physical devices for a real-world experience.
+
+The comprehensive responsiveness testing ensures that AccountSphere adapts flawlessly to different devices and screen sizes, providing a consistent, reliable experience for all users.
