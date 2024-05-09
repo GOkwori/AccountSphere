@@ -51,7 +51,7 @@ body {
 }
 
 /* Offcanvas */
-#offcanvasWithBothOptionsLabel {
+#staticBackdrop {
   background-color: #fff;
   color: #3a405a;
   width: auto;
