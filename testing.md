@@ -230,3 +230,65 @@ AccountSphere was designed with a mobile-first approach, ensuring that it provid
 - **Real Devices**: Ensured that the platform works seamlessly on physical devices for a real-world experience.
 
 The comprehensive responsiveness testing ensures that AccountSphere adapts flawlessly to different devices and screen sizes, providing a consistent, reliable experience for all users.
+
+
+## Code Validation
+
+To ensure AccountSphere adheres to web standards and delivers a high-quality experience across all browsers and platforms, extensive code validation was conducted. This involved using industry-standard tools to assess the HTML, CSS, JavaScript, and Python files against current web standards, accessibility guidelines, and best practices.
+
+### `HTML Validation`
+
+The HTML code from all pages in AccountSphere was validated using the [W3C Markup Validation Service](https://validator.w3.org/) to ensure they are error-free and standards-compliant.
+
+| Page | Validation Result |
+|------|-------------------|
+| Login Page | ![HTML Validation](./accountsphere/static/documentation/validation/login_page.png) |
+| Registration Page | ![HTML Validation](./accountsphere/static/documentation/validation/registration_page.png) |
+| Landing Page | ![HTML Validation](./accountsphere/static/documentation/validation/profile_page.png) |
+| Account Management Page | ![HTML Validation](./accountsphere/static/documentation/validation/account_management_page.png) |
+| Account Add Page | ![HTML Validation](./accountsphere/static/documentation/validation/account_add_page.png) |
+| Account Edit Page | ![HTML Validation](./accountsphere/static/documentation/validation/account_edit_page.png) |
+| AD Group Management Page | ![HTML Validation](./accountsphere/static/documentation/validation/ad_group_management_page.png) |
+| AD Group Add Page | ![HTML Validation](./accountsphere/static/documentation/validation/ad_group_add_page.png) |
+| AD Group Edit Page | ![HTML Validation](./accountsphere/static/documentation/validation/ad_group_edit_page.png) |
+| Product Management Page | ![HTML Validation](./accountsphere/static/documentation/validation/product_management_page.png) |
+| Product Add Page | ![HTML Validation](./accountsphere/static/documentation/validation/product_add_page.png) |
+| Product Edit Page | ![HTML Validation](./accountsphere/static/documentation/validation/product_edit_page.png) |
+| User Board Page | ![HTML Validation](./accountsphere/static/documentation/validation/user_board_page.png) |
+| User Add Page | ![HTML Validation](./accountsphere/static/documentation/validation/user_add_page.png) |
+| User Edit Page | ![HTML Validation](./accountsphere/static/documentation/validation/user_edit_page.png) |
+| Settings Page | ![HTML Validation](./accountsphere/static/documentation/validation/settings_page.png) |
+| Profile Page | ![HTML Validation](./accountsphere/static/documentation/validation/dashboard.png) |
+| 404 Error Page | ![HTML Validation](./accountsphere/static/documentation/validation/404_error_page.png) |
+| 500 Error Page | ![HTML Validation](./accountsphere/static/documentation/validation/500_error_page.png) |
+
+
+### `CSS Validation`
+
+CSS files were checked using the [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/) to confirm adherence to CSS3 standards and improve visual consistency across platforms.
+
+| CSS File | Validation Output |
+|----------|-------------------|
+| Main Stylesheet | ![CSS Validation](./accountsphere/static/documentation/validation/css_validation.png) |
+
+### `JavaScript Validation`
+
+JavaScript code was scrutinized for syntax errors and compatibility issues using [JSHint](https://jshint.com/), ensuring smooth functionality and interactivity across different browsers.
+
+| JavaScript File | Validation Output |
+|-----------------|-------------------|
+| Main Script | ![JavaScript Validation](./accountsphere/static/documentation/validation/main_script_validation.png) |
+| Dashboard Functions | ![JavaScript Validation](./accountsphere/static/documentation/validation/dashboard_functions_validation.png) |
+| Login Functions | ![JavaScript Validation](./accountsphere/static/documentation/validation/login_functions_validation.png) |
+
+### `Python Validation`
+
+All Python files were validated for PEP8 compliance using the [CI PEP8 Linter](https://pep8ci.herokuapp.com/). This step ensures that the Python code follows the coding conventions outlined in PEP8, improving code readability and maintainability.
+
+| Python File | Validation Output |
+|-------------|-------------------|
+| `models.py` | ![Python Validation](./accountsphere/static/documentation/validation/python_validation_models.png) |
+| `views.py` | ![Python Validation](./accountsphere/static/documentation/validation/python_validation_views.png) |
+| `app.py` | ![Python Validation](./accountsphere/static/documentation/validation/python_validation_app.png) |
+
+Through these validation efforts, AccountSphere aims to maintain a high standard of quality, delivering a reliable, accessible, and user-friendly platform for all users.

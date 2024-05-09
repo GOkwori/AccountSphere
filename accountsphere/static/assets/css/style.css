@@ -76,10 +76,15 @@ body {
 }
 
 /* Smooth transition for hover and active changes */
-#active-nav.active {
+#active-nav-1.active,
+#active-nav-2.active,
+#active-nav-3.active,
+#active-nav-4.active,
+#active-nav-5.active {
   background-color: #3a405a;
   color: #fff;
 }
+
 
 .nav-link {
   transition: background-color 0.3s ease;
