@@ -595,11 +595,7 @@ The 404 error page provides a user-friendly way to handle navigation issues:
 
 * `Navigation Options`: Offers links back to the Home Page and other relevant sections, enabling users to quickly find their way back to familiar content.
 
-* `Search Functionality`: Incorporates a search bar to help users locate the desired content directly from the error page.
-
 * `Consistent Design`: Maintains the overall style of the platform to ensure a cohesive user experience, even in error states.
-
-* `Visual Cue`: Includes a recognisable error icon to reinforce the page's purpose and direct users' attention.
 
 * `Mobile Responsiveness`: Adapts gracefully across screen sizes to ensure users can always recover from errors on any device.
 </details>
