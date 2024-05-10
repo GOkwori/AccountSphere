@@ -180,7 +180,7 @@ def add_account():
         flash('Account created successfully!', 'success')
         return redirect(url_for('account', success=True))
 
-    return render_template('add_account.html', products=products)
+    return render_template('add_account', products=products)
 
 
 # Define the edit account route
