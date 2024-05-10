@@ -798,8 +798,9 @@ These fixes have significantly improved the stability, security, and usability o
 - **Bootstrap**: For responsive design and UI components.
 
 #### `Tutorials and Guides`
-- **YouTube Python Authentication Tutorial**: Provided guidance for setting up authentication features.
+- **YouTube Python Authentication and Role Based Access Control (RBAC) Tutorial**: Provided guidance for setting up authentication features.
   - [YouTube Python Authentication Tutorial](https://www.youtube.com/watch?v=71EU8gnZqZQ)
+  - [YouTube Python Authentication Tutorial](https://www.youtube.com/watch?v=7AkJvQXOjYg)
 - **YouTube Series for User Management System**: Helped in implementing user roles and permissions.
   - [Code Maven](https://www.youtube.com/watch?v=SzWNnUdY6ZE&list=PL193izPqf5X51LG3xhVgeLuIUKbe9a_qs)
 - **Code Institute Walkthrough Projects**: Offered foundational knowledge and reusable patterns.
