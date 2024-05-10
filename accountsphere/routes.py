@@ -99,7 +99,8 @@ def password_reset():
 
         # Check if new password is different from the old password
         if check_password_hash(current_user.password_hash, new_password):
-            flash('New password must be different from the old password.', 'error')
+            flash
+            ('New password must be different from the old password.', 'error')
             return redirect(url_for('password_reset'))
 
         # Update the stored password hash
@@ -150,7 +151,8 @@ def add_account():
         balance = request.form.get('balance') or 0.00
         currency = request.form.get('currency')
 
-        if not first_name or not last_name or not email or not product_id or not account_type or not currency:
+        if not first_name or not last_name or not email
+        or not product_id or not account_type or not currency:
             flash('All fields are required.', 'error')
             return render_template('add_account.html', products=products)
 
@@ -206,7 +208,8 @@ def edit_account(account_id):
         flash('Account updated successfully!', 'success')
         return redirect(url_for('account', success=True))
 
-    return render_template('edit_account.html', account=account, products=products)
+    return render_template('edit_account.html',
+                           account=account, products=products)
 
 
 # Define the delete account route
@@ -246,7 +249,8 @@ def account_search():
     ).all()
 
     if not accounts:
-        return render_template('account.html', accounts=[], message=f'No accounts found for "{query}"')
+        return render_template('account.html', accounts=[],
+                               message=f'No accounts found for "{query}"')
 
     return render_template('account.html', accounts=accounts)
 
@@ -392,8 +396,9 @@ def edit_news(news_id):
         flash("News item updated successfully!")
         return redirect(url_for("news", success=True))
 
-    news_items = NewsItem.query.all()  # This will fetch all news items for listing
-    return render_template("edit_news.html", news_item=news_item, news_items=news_items)
+    news_items = NewsItem.query.all()
+    return render_template("edit_news.html", news_item=news_item,
+                           news_items=news_items)
 
 
 # Define the delete news route
@@ -451,7 +456,8 @@ def add_product():
         product_type = request.form.get("type")
 
         existing_product = Product.query.filter(
-            (Product.name == name) | (Product.description == description)).first()
+            (Product.name == name) |
+            (Product.description == description)).first()
         if existing_product:
             flash("This product name or description already exists.")
             return render_template("add_product.html")

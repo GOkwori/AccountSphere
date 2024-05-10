@@ -286,8 +286,9 @@ All Python files were validated for PEP8 compliance using the [CI PEP8 Linter](h
 
 | Python File | Validation Output |
 |-------------|-------------------|
-| `models.py` | ![Python Validation](./accountsphere/static/documentation/validation/python_validation_models.png) |
-| `views.py` | ![Python Validation](./accountsphere/static/documentation/validation/python_validation_views.png) |
-| `app.py` | ![Python Validation](./accountsphere/static/documentation/validation/python_validation_app.png) |
+| `__init__.py` | ![Python Validation](./accountsphere/static/testing/code_validation/python/__init__.PNG) |
+| `models.py` | ![Python Validation](./accountsphere/static/testing/code_validation/python/models.PNG) |
+| `routes.py` | ![Python Validation](./accountsphere/static/testing/code_validation/python/routes.PNG) |
+| `run.py` | ![Python Validation](./accountsphere/static/testing/code_validation/python/run.PNGg) |
 
 Through these validation efforts, AccountSphere aims to maintain a high standard of quality, delivering a reliable, accessible, and user-friendly platform for all users.

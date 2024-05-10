@@ -85,7 +85,8 @@ class Account(db.Model):
 
     def __repr__(self):    # Return the account name
         # Return the account name
-        return f'<Account {self.first_name} {self.last_name} | Account ID: {self.id}>'
+        return
+        f'<Account {self.first_name}{self.last_name} | Account ID:{self.id}>'
 
 # Define the NewsItem model
 
