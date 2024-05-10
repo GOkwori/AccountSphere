@@ -1,11 +1,9 @@
-// Event listener for the document ready event
 document.addEventListener("DOMContentLoaded", function () {
-  // Update the product ID based on the selected account type
+  // Function to update product ID
   function updateProductID() {
     var accountTypeSelect = document.getElementById("account_type");
     var productIdInput = document.getElementById("product_id");
     if (accountTypeSelect && productIdInput) {
-      // Update the product ID input field with the selected account type
       productIdInput.value = accountTypeSelect.value;
       console.log("Product ID updated to: " + accountTypeSelect.value);
     } else {
@@ -13,7 +11,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Add an event listener to the account type select element
   var accountTypeSelect = document.getElementById("account_type");
   if (accountTypeSelect) {
     accountTypeSelect.addEventListener("change", updateProductID);
@@ -24,12 +21,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const flashMessagesContainer = document.getElementById("flash-messages");
     if (flashMessagesContainer) {
       const messages =
-        // Get all flash messages
         flashMessagesContainer.querySelectorAll(".flash-message");
       if (messages.length > 0) {
         console.log(`Found ${messages.length} flash messages.`);
-
-        // Display each flash message as an alert
         messages.forEach((messageDiv) => {
           setTimeout(() => {
             const message = messageDiv.getAttribute("data-message");
@@ -45,13 +39,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Call the function to handle flash messages
   handleFlashMessages();
 
-  // Day and time panel setup
+  // Update day and time panel
   const dateTimeElement = document.getElementById("datetime");
 
-  // Update the date and time every second
   function updateDateTime() {
     const now = new Date();
     const dateString = now.toLocaleDateString("en-US", { weekday: "long" });
@@ -63,15 +55,13 @@ document.addEventListener("DOMContentLoaded", function () {
     dateTimeElement.innerHTML = `<span>${dateString}</span> <span>${timeString}</span>`;
   }
 
-  // Call the function to update the date and time
   setInterval(updateDateTime, 1000);
 
-  // Initialize the greeting and smooth scrolling
+  // Initialize greeting
   const greetingElement = document.getElementById("greeting");
   const userDataDiv = document.getElementById("user-data");
   const userName = userDataDiv ? userDataDiv.dataset.name : "User";
 
-  // Update the greeting based on the time of the day
   function updateGreeting() {
     const hours = new Date().getHours();
     let greeting = "Good Day,";
@@ -82,13 +72,11 @@ document.addEventListener("DOMContentLoaded", function () {
     smoothScrollGreeting(greetingElement);
   }
 
-  // Call the function to update the greeting
   updateGreeting();
 
-  // Smooth scrolling for the greeting panel
   function smoothScrollGreeting(element) {
     let scrollPosition = element.parentElement.offsetWidth;
-    // Scroll the greeting text to the left
+
     function scroll() {
       scrollPosition -= 1; // Move left
       if (scrollPosition < -element.offsetWidth) {
@@ -100,48 +88,42 @@ document.addEventListener("DOMContentLoaded", function () {
     scroll();
   }
 
-  // Smooth scrolling for the news panel
-  const newsPanel = document.querySelector(".news-panel");
-
-  // Smooth scrolling function for the news panel
+  // Smooth scroll for the news panel
   function smoothScrollNews() {
-    console.log("Starting smooth scrolling for news panel.");
-    let requestID;
-    function scroll() {
-      console.log(
-        `Current scrollTop: ${newsPanel.scrollTop}, scrollHeight: ${newsPanel.scrollHeight}, clientHeight: ${newsPanel.clientHeight}`
-      );
-      if (
-        newsPanel.scrollTop <
-        newsPanel.scrollHeight - newsPanel.clientHeight
-      ) {
-        newsPanel.scrollTop += 0.5;
-        requestID = requestAnimationFrame(scroll);
-      } else {
-        console.log("Restarting scroll from top.");
-        newsPanel.scrollTop = 0;
-        requestID = requestAnimationFrame(scroll);
-      }
+    const newsPanel = document.querySelector(".news-panel");
+    if (!newsPanel) {
+      console.error("News panel element not found!");
+      return;
     }
 
-    // Start the scrolling animation
-    requestID = requestAnimationFrame(scroll);
-    console.log("Request ID for animation frame:", requestID);
+    let lastPosition = -1;
+    let frame;
 
-    newsPanel.addEventListener("mouseenter", () => {
-      console.log(
-        "Mouse entered, cancelling scroll animation frame:",
-        requestID
-      );
-      cancelAnimationFrame(requestID);
+    function scroll() {
+      if (newsPanel.scrollTop !== lastPosition) {
+        lastPosition = newsPanel.scrollTop;
+        newsPanel.scrollTop = lastPosition + 1;
+      } else {
+        newsPanel.scrollTop = 0; // Reset if reached the bottom
+      }
+      frame = requestAnimationFrame(scroll);
+    }
+
+    function stopScrolling() {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(scroll); // Restart scrolling
+    }
+
+    newsPanel.addEventListener("mouseenter", function () {
+      cancelAnimationFrame(frame); // Pause on hover
     });
 
-    newsPanel.addEventListener("mouseleave", () => {
-      console.log("Mouse left, resuming scroll animation.");
-      requestID = requestAnimationFrame(scroll);
+    newsPanel.addEventListener("mouseleave", function () {
+      stopScrolling(); // Resume scrolling
     });
+
+    scroll(); // Start scrolling
   }
 
-  // Call the function to enable smooth scrolling for the news panel
   smoothScrollNews();
 });
