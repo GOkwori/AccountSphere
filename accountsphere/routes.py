@@ -151,8 +151,7 @@ def add_account():
         balance = request.form.get('balance') or 0.00
         currency = request.form.get('currency')
 
-        if not first_name or not last_name or not email
-        or not product_id or not account_type or not currency:
+        if not first_name or not last_name or not email or not product_id or not account_type or not currency:
             flash('All fields are required.', 'error')
             return render_template('add_account.html', products=products)
 
