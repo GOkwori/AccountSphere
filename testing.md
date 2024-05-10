@@ -269,7 +269,7 @@ CSS files were checked using the [W3C CSS Validation Service](https://jigsaw.w3.
 
 | CSS File | Validation Output |
 |----------|-------------------|
-| Main Stylesheet | ![CSS Validation](./accountsphere/static/documentation/validation/css_validation.png) |
+| Main Stylesheet | ![CSS Validation](./accountsphere/static/testing/code_validation/css/css_validator.PNG) |
 
 ### `JavaScript Validation`
 
