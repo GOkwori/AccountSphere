@@ -1,11 +1,15 @@
-from flask import render_template, request, redirect, url_for, flash, session
+from flask import render_template, request, redirect, url_for, flash, session, abort
 from werkzeug.security import generate_password_hash, check_password_hash
 from accountsphere import app, db
 from accountsphere.models import User, Group, Product, Account, NewsItem
 from sqlalchemy.orm import joinedload
 from flask_login import login_user, logout_user, login_required, current_user
-from flask import abort
 from sqlalchemy import or_
+
+
+# Function to verify user role(s)
+def user_role(*roles):
+    return current_user.role in roles
 
 
 # Define the home route
@@ -14,15 +18,10 @@ def home():
     return render_template("landing.html")
 
 
-def user_role(required_role):
-    # Check if the current user has the required role
-    return current_user.role == required_role
-
 # Define the register route
 @app.route("/register", methods=["GET", "POST"])
 def register():
     groups = Group.query.all()
-
     if request.method == "POST":
         username = request.form.get("username")
         email = request.form.get("email")
@@ -51,7 +50,6 @@ def register():
         )
         db.session.add(new_user)
         db.session.commit()
-
         flash("Account created successfully", 'success')
         return redirect(url_for('login'))
 
@@ -66,7 +64,7 @@ def login():
         password = request.form.get("password")
         user = User.query.filter_by(username=username).first()
         if user and check_password_hash(user.password_hash, password):
-            login_user(user)  # Log the user in
+            login_user(user)
             flash('Login successful!', 'success')
             return redirect(url_for('profile'))
         else:
@@ -92,26 +90,20 @@ def password_reset():
         new_password = request.form.get('new_password')
         confirm_password = request.form.get('confirm_password')
 
-        # Verify old password
         if not check_password_hash(current_user.password_hash, old_password):
             flash('Old password is incorrect.', 'error')
             return redirect(url_for('password_reset'))
 
-        # Check if new passwords match
         if new_password != confirm_password:
             flash('New passwords do not match.', 'error')
             return redirect(url_for('password_reset'))
 
-        # Check if new password is different from the old password
         if check_password_hash(current_user.password_hash, new_password):
-            flash
-            ('New password must be different from the old password.', 'error')
+            flash('New password must be different from the old password.', 'error')
             return redirect(url_for('password_reset'))
 
-        # Update the stored password hash
         current_user.password_hash = generate_password_hash(new_password)
         db.session.commit()
-
         flash('Your password has been updated successfully!', 'success')
         return redirect(url_for('profile'))
 
@@ -130,17 +122,12 @@ def profile():
 @app.route("/account")
 @login_required
 def account():
-    # Check if the user has the required role
     if not user_role('administrator', 'account officer'):
         flash("You do not have permission to view this page.", 'error')
         return redirect(url_for('profile'))
-    
-    # Fetch accounts and their related product names using joined load,
-    # sorted by first name and then last name
-    accounts = Account.query \
-        .options(db.joinedload(Account.product)) \
-        .order_by(Account.first_name, Account.last_name).all()
 
+    accounts = Account.query.options(joinedload(Account.product))\
+        .order_by(Account.first_name, Account.last_name).all()
     return render_template("account.html", accounts=accounts)
 
 
@@ -148,16 +135,13 @@ def account():
 @app.route('/add_account', methods=['GET', 'POST'])
 @login_required
 def add_account():
-    # Check if the user has the required role
     if not user_role('administrator', 'account officer'):
         flash("You do not have permission to view this page.", 'error')
         return redirect(url_for('profile'))
 
-    # Fetch all products for the form dropdown
     products = Product.query.order_by(Product.name.asc()).all()
 
     if request.method == 'POST':
-        # Extract data from the form submission
         first_name = request.form.get('first_name')
         last_name = request.form.get('last_name')
         email = request.form.get('email')
@@ -168,18 +152,15 @@ def add_account():
         balance = request.form.get('balance') or 0.00
         currency = request.form.get('currency')
 
-        # Check for missing required fields
         if not first_name or not last_name or not email or not product_id or not account_type or not currency:
             flash('All fields are required.', 'error')
             return render_template('add_account.html', products=products)
 
-        # Check if an account with the given email already exists
         existing_account = Account.query.filter_by(email=email).first()
         if existing_account:
             flash('An account with this email already exists.', 'error')
             return render_template('add_account.html', products=products)
 
-        # Create a new Account instance
         account = Account(
             first_name=first_name,
             last_name=last_name,
@@ -193,13 +174,11 @@ def add_account():
             status='active'
         )
 
-        # Add the account to the database
         db.session.add(account)
         db.session.commit()
         flash('Account created successfully!', 'success')
-        return redirect(url_for('account')) 
+        return redirect(url_for('account'))
 
-    # Render the account creation form
     return render_template('add_account.html', products=products)
 
 
@@ -207,16 +186,13 @@ def add_account():
 @app.route('/edit_account/<int:account_id>', methods=['GET', 'POST'])
 @login_required
 def edit_account(account_id):
-
-    # Check if the user has the required role
     if not user_role('administrator', 'account officer'):
         flash("You do not have permission to edit this item.", 'error')
         return redirect(url_for('profile'))
-    
+
     account = Account.query.get_or_404(account_id)
     products = Product.query.all()
     if request.method == 'POST':
-        # Extract data from form
         account.first_name = request.form.get('first_name')
         account.last_name = request.form.get('last_name')
         account.email = request.form.get('email')
@@ -227,14 +203,12 @@ def edit_account(account_id):
         account.balance = request.form.get('balance') or 0.00
         account.currency = request.form.get('currency')
 
-        # Update the account
         db.session.add(account)
         db.session.commit()
         flash('Account updated successfully!', 'success')
         return redirect(url_for('account', success=True))
 
-    return render_template('edit_account.html',
-                           account=account, products=products)
+    return render_template('edit_account.html', account=account, products=products)
 
 
 # Define the delete account route
@@ -260,8 +234,6 @@ def delete_account(account_id):
 @app.route('/account_search')
 @login_required
 def account_search():
-
-    # Check if the user has the required role
     if not user_role('administrator', 'account officer'):
         flash("You do not have permission to view this page.", 'error')
         return redirect(url_for('profile'))
@@ -269,7 +241,6 @@ def account_search():
     query = request.args.get('query', '').strip()
 
     if not query:
-        # Redirect to a default account page if no query
         return redirect(url_for('account'))
 
     accounts = Account.query.filter(
@@ -282,10 +253,6 @@ def account_search():
             Account.currency.ilike(f'%{query}%')
         )
     ).all()
-
-    if not accounts:
-        return render_template('account.html', accounts=[],
-                               message=f'No accounts found for "{query}"')
 
     return render_template('account.html', accounts=accounts)
 
