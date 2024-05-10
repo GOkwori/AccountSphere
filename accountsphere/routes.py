@@ -8,7 +8,8 @@ from sqlalchemy import or_
 
 
 # Function to verify user role(s)
-def user_role(*roles):
+def has_any_role(*roles):
+    # Check if the current user has any of the roles passed
     return current_user.role in roles
 
 
@@ -122,7 +123,7 @@ def profile():
 @app.route("/account")
 @login_required
 def account():
-    if not user_role('administrator', 'account officer'):
+    if not has_any_role('administrator', 'account officer'):
         flash("You do not have permission to view this page.", 'error')
         return redirect(url_for('profile'))
 
@@ -135,7 +136,7 @@ def account():
 @app.route('/add_account', methods=['GET', 'POST'])
 @login_required
 def add_account():
-    if not user_role('administrator', 'account officer'):
+    if not has_any_role('administrator', 'account officer'):
         flash("You do not have permission to view this page.", 'error')
         return redirect(url_for('profile'))
 
@@ -186,7 +187,7 @@ def add_account():
 @app.route('/edit_account/<int:account_id>', methods=['GET', 'POST'])
 @login_required
 def edit_account(account_id):
-    if not user_role('administrator', 'account officer'):
+    if not has_any_role('administrator', 'account officer'):
         flash("You do not have permission to edit this item.", 'error')
         return redirect(url_for('profile'))
 
@@ -215,7 +216,7 @@ def edit_account(account_id):
 @app.route('/delete_account/<int:account_id>')
 @login_required
 def delete_account(account_id):
-    if not user_role('administrator'):
+    if not has_any_role('administrator'):
         flash("You do not have permission to delete this item.", 'error')
         return redirect(url_for('profile'))
 
@@ -234,7 +235,7 @@ def delete_account(account_id):
 @app.route('/account_search')
 @login_required
 def account_search():
-    if not user_role('administrator', 'account officer'):
+    if not has_any_role('administrator', 'account officer'):
         flash("You do not have permission to view this page.", 'error')
         return redirect(url_for('profile'))
 
@@ -262,7 +263,7 @@ def account_search():
 @login_required
 def ad_group():
 
-    if not user_role('administrator'):
+    if not has_any_role('administrator'):
         flash("You do not have permission to view this page.", 'error')
         return redirect(url_for('profile'))
 
@@ -277,7 +278,7 @@ def ad_group():
 @login_required
 def add_ad_group():
 
-    if not user_role('administrator'):
+    if not has_any_role('administrator'):
         flash("You do not have permission to view this page.", 'error')
         return redirect(url_for('profile'))
     
@@ -311,7 +312,7 @@ def add_ad_group():
 @login_required
 def edit_ad_group(group_id):
 
-    if not user_role('administrator'):
+    if not has_any_role('administrator'):
         flash("You do not have permission to edit this item.", 'error')
         return redirect(url_for('profile'))
     
@@ -333,7 +334,7 @@ def edit_ad_group(group_id):
 @login_required
 def delete_ad_group(group_id):
 
-    if not user_role('administrator'):
+    if not has_any_role('administrator'):
         flash("You do not have permission to delete this item.", 'error')
         return redirect(url_for('profile'))
     
@@ -355,7 +356,7 @@ def delete_ad_group(group_id):
 @login_required
 def ad_group_search():
 
-    if not user_role('administrator'):
+    if not has_any_role('administrator'):
         flash("You do not have permission to view this page.", 'error')
         return redirect(url_for('profile'))
     
@@ -380,7 +381,7 @@ def ad_group_search():
 @login_required
 def news():
 
-    if not user_role('administrator', 'news analyst'):
+    if not has_any_role('administrator', 'news analyst'):
         flash("You do not have permission to view this page.", 'error')
         return redirect(url_for('profile'))
     
@@ -393,7 +394,7 @@ def news():
 @login_required
 def add_news():
 
-    if not user_role('administrator', 'news analyst'):
+    if not has_any_role('administrator', 'news analyst'):
         flash("You do not have permission to view this page.", 'error')
         return redirect(url_for('profile'))
     
@@ -425,7 +426,7 @@ def add_news():
 @login_required
 def edit_news(news_id):
 
-    if not user_role('administrator', 'news analyst'):
+    if not has_any_role('administrator', 'news analyst'):
         flash("You do not have permission to edit this item.", 'error')
         return redirect(url_for('profile'))
     
@@ -449,7 +450,7 @@ def edit_news(news_id):
 @login_required
 def delete_news(news_id):
 
-    if not user_role('administrator', 'news analyst'):
+    if not has_any_role('administrator', 'news analyst'):
         flash("You do not have permission to delete this item.", 'error')
         return redirect(url_for('profile'))
     
@@ -471,7 +472,7 @@ def delete_news(news_id):
 @login_required
 def news_search():
 
-    if not user_role('administrator', 'news analyst'):
+    if not has_any_role('administrator', 'news analyst'):
         flash("You do not have permission to view this page.", 'error')
         return redirect(url_for('profile'))
     
@@ -495,7 +496,7 @@ def news_search():
 @login_required
 def product():
 
-    if not user_role('administrator', 'product manager'):
+    if not has_any_role('administrator', 'product manager'):
         flash("You do not have permission to view this page.", 'error')
         return redirect(url_for('profile'))
     
@@ -509,7 +510,7 @@ def product():
 @login_required
 def add_product():
 
-    if not user_role('administrator', 'product manager'):
+    if not has_any_role('administrator', 'product manager'):
         flash("You do not have permission to view this page.", 'error')
         return redirect(url_for('profile'))
     
@@ -546,7 +547,7 @@ def add_product():
 @login_required
 def edit_product(product_id):
 
-    if not user_role('administrator', 'product manager'):
+    if not has_any_role('administrator', 'product manager'):
         flash("You do not have permission to edit this item.", 'error')
         return redirect(url_for('profile'))
     
@@ -568,7 +569,7 @@ def edit_product(product_id):
 @login_required
 def delete_product(product_id):
 
-    if not user_role('administrator', 'product manager'):
+    if not has_any_role('administrator', 'product manager'):
         flash("You do not have permission to delete this item.", 'error')
         return redirect(url_for('profile'))
     
@@ -588,7 +589,7 @@ def delete_product(product_id):
 @login_required
 def product_search():
 
-    if not user_role('administrator', 'product manager'):
+    if not has_any_role('administrator', 'product manager'):
         flash("You do not have permission to view this page.", 'error')
         return redirect(url_for('profile'))
     
@@ -613,7 +614,7 @@ def product_search():
 @login_required
 def user():
 
-    if not user_role('administrator'):
+    if not has_any_role('administrator'):
         flash("You do not have permission to view this page.", 'error')
         return redirect(url_for('profile'))
     
@@ -625,7 +626,7 @@ def user():
 @app.route("/add_user", methods=["GET", "POST"])
 @login_required
 def add_user():
-    if not user_role('administrator'):
+    if not has_any_role('administrator'):
         flash("You do not have permission to view this page.", 'error')
         return redirect(url_for('profile'))
     
@@ -663,7 +664,7 @@ def add_user():
 @login_required
 def edit_user(user_id):
 
-    if not user_role('administrator'):
+    if not has_any_role('administrator'):
         flash("You do not have permission to edit this item.", 'error')
         return redirect(url_for('profile'))
     
@@ -690,7 +691,7 @@ def edit_user(user_id):
 @login_required
 def delete_user(user_id):
 
-    if not user_role('administrator'):
+    if not has_any_role('administrator'):
         flash("You do not have permission to delete this item.", 'error')
         return redirect(url_for('profile'))
     
@@ -710,7 +711,7 @@ def delete_user(user_id):
 @login_required
 def user_search():
 
-    if not user_role('administrator'):
+    if not has_any_role('administrator'):
         flash("You do not have permission to view this page.", 'error')
         return redirect(url_for('profile'))
     
