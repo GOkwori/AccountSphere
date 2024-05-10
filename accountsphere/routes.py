@@ -139,7 +139,7 @@ def account():
 @login_required
 def add_account():
     # Fetch all products for the form dropdown
-    products = Product.query.all()
+    products = Product.query.order_by(Product.name.asc()).all()
 
     if request.method == 'POST':
         # Extract data from the form submission
