@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, url_for, flash, session, abort
+from flask import render_template, request, redirect, url_for, flash, session
 from werkzeug.security import generate_password_hash, check_password_hash
 from accountsphere import app, db
 from accountsphere.models import User, Group, Product, Account, NewsItem
@@ -9,8 +9,13 @@ from sqlalchemy import or_
 
 # Function to verify user role(s)
 def has_any_role(*roles):
-    # Check if the current user has any of the roles passed
-    return current_user.role in roles
+    """Check if the current user has any of the given roles."""
+    if not current_user.is_authenticated:
+        return False
+    # Convert the current user's roles into a list of lowercase strings
+    user_roles = [role.strip().lower() for role in current_user.role.split(',')]
+    # Check if any of the given roles match the user's roles
+    return any(role.lower() in user_roles for role in roles)
 
 
 # Define the home route
