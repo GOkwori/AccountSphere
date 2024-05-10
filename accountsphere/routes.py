@@ -138,9 +138,11 @@ def account():
 @app.route('/add_account', methods=['GET', 'POST'])
 @login_required
 def add_account():
-    products = Product.query.all()  # Fetch all products for the form dropdown
+    # Fetch all products for the form dropdown
+    products = Product.query.all()
+
     if request.method == 'POST':
-        # Extract data from form
+        # Extract data from the form submission
         first_name = request.form.get('first_name')
         last_name = request.form.get('last_name')
         email = request.form.get('email')
@@ -151,16 +153,18 @@ def add_account():
         balance = request.form.get('balance') or 0.00
         currency = request.form.get('currency')
 
+        # Check for missing required fields
         if not first_name or not last_name or not email or not product_id or not account_type or not currency:
             flash('All fields are required.', 'error')
             return render_template('add_account.html', products=products)
 
+        # Check if an account with the given email already exists
         existing_account = Account.query.filter_by(email=email).first()
         if existing_account:
             flash('An account with this email already exists.', 'error')
             return render_template('add_account.html', products=products)
 
-        # Create new Account instance
+        # Create a new Account instance
         account = Account(
             first_name=first_name,
             last_name=last_name,
@@ -171,16 +175,18 @@ def add_account():
             account_type=account_type,
             balance=balance,
             currency=currency,
-            status='active'  # Assuming new accounts are always active
+            status='active'
         )
 
-        # Add to the database
+        # Add the account to the database
         db.session.add(account)
         db.session.commit()
         flash('Account created successfully!', 'success')
-        return redirect(url_for('account', success=True))
+        return redirect(url_for('account')) 
 
-    return render_template('add_account', products=products)
+    # Render the account creation form
+    return render_template('add_account.html', products=products)
+
 
 
 # Define the edit account route
