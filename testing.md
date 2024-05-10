@@ -243,24 +243,24 @@ The HTML code from all pages in AccountSphere was validated using the [W3C Marku
 | Page | Validation Result |
 |------|-------------------|
 | Login Page | ![HTML Validation](./accountsphere/static/testing/code_validation/html/login_page.PNG) |
-| Registration Page | ![HTML Validation](./accountsphere/static/documentation/validation/registration_page.png) |
+| Registration Page | ![HTML Validation](./accountsphere/static/testing/code_validation/html/register_page.PNG) |
 | Landing Page | ![HTML Validation](./accountsphere/static/testing/code_validation/html/landing_page.PNG) |
-| Account Management Page | ![HTML Validation](./accountsphere/static/documentation/validation/account_management_page.png) |
-| Account Add Page | ![HTML Validation](./accountsphere/static/documentation/validation/account_add_page.png) |
-| Account Edit Page | ![HTML Validation](./accountsphere/static/documentation/validation/account_edit_page.png) |
-| AD Group Management Page | ![HTML Validation](./accountsphere/static/documentation/validation/ad_group_management_page.png) |
-| AD Group Add Page | ![HTML Validation](./accountsphere/static/documentation/validation/ad_group_add_page.png) |
-| AD Group Edit Page | ![HTML Validation](./accountsphere/static/documentation/validation/ad_group_edit_page.png) |
-| Product Management Page | ![HTML Validation](./accountsphere/static/documentation/validation/product_management_page.png) |
-| Product Add Page | ![HTML Validation](./accountsphere/static/documentation/validation/product_add_page.png) |
-| Product Edit Page | ![HTML Validation](./accountsphere/static/documentation/validation/product_edit_page.png) |
-| User Board Page | ![HTML Validation](./accountsphere/static/documentation/validation/user_board_page.png) |
-| User Add Page | ![HTML Validation](./accountsphere/static/documentation/validation/user_add_page.png) |
-| User Edit Page | ![HTML Validation](./accountsphere/static/documentation/validation/user_edit_page.png) |
-| Settings Page | ![HTML Validation](./accountsphere/static/documentation/validation/settings_page.png) |
-| Profile Page | ![HTML Validation](./accountsphere/static/documentation/validation/dashboard.png) |
-| 404 Error Page | ![HTML Validation](./accountsphere/static/documentation/validation/404_error_page.png) |
-| 500 Error Page | ![HTML Validation](./accountsphere/static/documentation/validation/500_error_page.png) |
+| Profile Page | ![HTML Validation](./accountsphere/static/testing/code_validation/html/profile_page.PNG) |
+| Account Page | ![HTML Validation](./accountsphere/static/testing/code_validation/html/account_page.PNG) |
+| Account Add Page | ![HTML Validation](./accountsphere/static/testing/code_validation/html/add_account.PNG) |
+| Account Edit Page | ![HTML Validation](./accountsphere/static/testing/code_validation/html/edit_account.PNG) |
+| AD Group Page | ![HTML Validation](./accountsphere/static/testing/code_validation/html/ad_group.PNG) |
+| AD Group Add Page | ![HTML Validation](./accountsphere/static/testing/code_validation/html/add_ad.PNG) |
+| AD Group Edit Page | ![HTML Validation](./accountsphere/static/testing/code_validation/html/edit_ad.PNG) |
+| News Page | ![HTML Validation](./accountsphere/static/testing/code_validation/html/news_board.PNG) |
+| News Add Page | ![HTML Validation](./accountsphere/static/testing/code_validation/html/add_news.PNG) |
+| News Edit Page | ![HTML Validation](./accountsphere/static/testing/code_validation/html/edit_news.PNG) |
+| Product Page | ![HTML Validation](./accountsphere/static/testing/code_validation/html/product_page.PNG) |
+| Product Add Page | ![HTML Validation](./accountsphere/static/testing/code_validation/html/add_product.PNG) |
+| Product Edit Page | ![HTML Validation](./accountsphere/static/testing/code_validation/html/edit_product.PNG) |
+| User Board Page | ![HTML Validation](./accountsphere/static/testing/code_validation/html/user_board.PNG) |
+| User Add Page | ![HTML Validation](./accountsphere/static/testing/code_validation/html/add_user.PNG) |
+| User Edit Page | ![HTML Validation](./accountsphere/static/testing/code_validation/html/edit_user.PNG) |
 
 
 ### `CSS Validation`
