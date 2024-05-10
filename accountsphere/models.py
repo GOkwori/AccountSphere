@@ -13,8 +13,9 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(80), unique=True, nullable=False)
     password_hash = db.Column(db.String(256))
     email = db.Column(db.String(120), unique=True, nullable=False)
-    role = db.Column(db.String(50), nullable=False)  # Store a single role or multiple roles as a comma-separated string
+    role = db.Column(db.String(50), nullable=False)  # Comma-separated string for multiple roles
     active = db.Column(db.Boolean, default=True)
+    group_id = db.Column(db.Integer, db.ForeignKey('groups.id', ondelete='CASCADE'), nullable=True)  # Foreign key to the Group model
     created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
     updated_at = db.Column(db.DateTime, default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
 
@@ -30,22 +31,24 @@ class User(db.Model, UserMixin):
         user_roles = [role.strip().lower() for role in self.role.split(',')]  # Convert to list if multiple roles
         return any(role.lower() in user_roles for role in roles)
 
+    def __repr__(self):
+        return f'<User {self.username}>'
 
-# Define other models below (Group, Product, etc.)
+# Define the Group model
 class Group(db.Model):
     __tablename__ = 'groups'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), unique=True, nullable=False)
     description = db.Column(db.Text)
     group_type = db.Column(db.String(50), nullable=False)
-    users = db.relationship('User', backref='group', cascade='all, delete', lazy=True)
+    users = db.relationship('User', backref='group', cascade='all, delete', lazy='dynamic')  # Dynamic relationship loading
     created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
     updated_at = db.Column(db.DateTime, default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
 
     def __repr__(self):
         return f'<Group {self.name}>'
 
-
+# Define the Product model
 class Product(db.Model):
     __tablename__ = 'products'
     id = db.Column(db.Integer, primary_key=True)
@@ -57,7 +60,7 @@ class Product(db.Model):
     def __repr__(self):
         return f'<Product {self.name}>'
 
-
+# Define the Account model
 class Account(db.Model):
     __tablename__ = 'accounts'
     id = db.Column(db.Integer, primary_key=True)
@@ -77,7 +80,7 @@ class Account(db.Model):
     def __repr__(self):
         return f'<Account {self.first_name} {self.last_name} | Account ID:{self.id}>'
 
-
+# Define the NewsItem model
 class NewsItem(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     headline = db.Column(db.String(255), nullable=False)
