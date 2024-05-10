@@ -77,7 +77,6 @@ AccountSphere empowers you to manage your financial workflows seamlessly in one 
 
 - **[Credits](#credits)**
   - [Code References](#code-references)
-  - [Content Sources](#content-sources)
   - [Acknowledgments](#acknowledgments)
 
 ---
@@ -778,7 +777,7 @@ The development of AccountSphere involved identifying and resolving several bugs
 These fixes have significantly improved the stability, security, and usability of AccountSphere, ensuring a reliable and efficient experience for all users.
 ## Credits
 
-### Code Used
+### Code References
 
 #### `Web Frameworks and Libraries`
 - **Flask**: Used for server-side logic including routing and session management.
