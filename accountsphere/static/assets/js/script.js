@@ -105,8 +105,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Smooth scrolling function for the news panel
   function smoothScrollNews() {
+    console.log("Starting smooth scrolling for news panel.");
     let requestID;
     function scroll() {
+      console.log(
+        `Current scrollTop: ${newsPanel.scrollTop}, scrollHeight: ${newsPanel.scrollHeight}, clientHeight: ${newsPanel.clientHeight}`
+      );
       if (
         newsPanel.scrollTop <
         newsPanel.scrollHeight - newsPanel.clientHeight
@@ -114,18 +118,26 @@ document.addEventListener("DOMContentLoaded", function () {
         newsPanel.scrollTop += 0.5;
         requestID = requestAnimationFrame(scroll);
       } else {
+        console.log("Restarting scroll from top.");
         newsPanel.scrollTop = 0;
         requestID = requestAnimationFrame(scroll);
       }
     }
+
     // Start the scrolling animation
     requestID = requestAnimationFrame(scroll);
+    console.log("Request ID for animation frame:", requestID);
 
     newsPanel.addEventListener("mouseenter", () => {
+      console.log(
+        "Mouse entered, cancelling scroll animation frame:",
+        requestID
+      );
       cancelAnimationFrame(requestID);
     });
 
     newsPanel.addEventListener("mouseleave", () => {
+      console.log("Mouse left, resuming scroll animation.");
       requestID = requestAnimationFrame(scroll);
     });
   }
