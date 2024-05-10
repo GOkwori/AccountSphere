@@ -56,9 +56,8 @@
         <select class="form-select form-control" name="account_type" id="account_type" onchange="updateProductID()"
           required>
           <option value="">--select--</option>
-          <!-- Loop through account types -->
           {% for account_type in account_types %}
-          <option value="{{ account_type.id }}">{{ account_type.name }}</option>
+          <option value="{{ account_type.name }}">{{ account_type.name }}</option>
           {% endfor %}
         </select>
       </div>
