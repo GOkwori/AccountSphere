@@ -89,21 +89,36 @@
                     <li class="nav-item">
                         <strong><i class="fa-solid fa-calendar me-2"></i>Dashboard</strong>
                         <hr>
+                        {% if user_role('administrator', 'account officer') %}
                         <a id="active-nav-1"
                             class="nav-link {{ 'active' if request.path == url_for('account') else '' }}"
                             href="{{ url_for('account') }}"><i class="fa-solid fa-file-invoice me-2"></i>Account
                             Management</a>
+                        {% endif %}
+
+                        {% if user_role('administrator') %}
                         <a id="active-nav-2"
                             class="nav-link {{ 'active' if request.path == url_for('ad_group') else '' }}"
                             href="{{ url_for('ad_group') }}"><i class="fa-regular fa-folder-open me-2"></i>AD Groups</a>
+                        {% endif %}
+
+                        {% if user_role('administrator', 'news analyst') %}
                         <a id="active-nav-3" class="nav-link {{ 'active' if request.path == url_for('news') else '' }}"
                             href="{{ url_for('news') }}"><i class="fa-solid fa-newspaper me-2"></i>News Board</a>
+                        {% endif %}
+
+                        {% if user_role('administrator', 'product manager') %}
                         <a id="active-nav-4"
                             class="nav-link {{ 'active' if request.path == url_for('product') else '' }}"
                             href="{{ url_for('product') }}"><i class="fa-brands fa-product-hunt me-2"></i>Product
                             Management</a>
+                        {% endif %}
+
+                        {% if user_role('administrator') %}
                         <a id="active-nav-5" class="nav-link {{ 'active' if request.path == url_for('user') else '' }}"
                             href="{{ url_for('user') }}"><i class="fa-solid fa-users me-2"></i>User Management</a>
+                        {% endif %}
+
                     </li>
 
                     <li class="nav-item">

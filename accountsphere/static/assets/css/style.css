@@ -504,14 +504,14 @@ footer i {
 /*---------- Styling for screens with (min-width: 320px) and (max-width: 575px) ----------*/
 
 @media (min-width: 320px) and (max-width: 575px) {
-  /* Typography */
 
   body {
     overflow-x: hidden;
+    font-size: small;
   }
 
   h4 {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 
   p {
