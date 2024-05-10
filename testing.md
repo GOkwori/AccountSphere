@@ -277,9 +277,8 @@ JavaScript code was scrutinized for syntax errors and compatibility issues using
 
 | JavaScript File | Validation Output |
 |-----------------|-------------------|
-| Main Script | ![JavaScript Validation](./accountsphere/static/documentation/validation/main_script_validation.png) |
-| Dashboard Functions | ![JavaScript Validation](./accountsphere/static/documentation/validation/dashboard_functions_validation.png) |
-| Login Functions | ![JavaScript Validation](./accountsphere/static/documentation/validation/login_functions_validation.png) |
+| Main Script | ![JavaScript Validation](./accountsphere/static/testing/code_validation/js/js_validator.PNG) |
+
 
 ### `Python Validation`
 
