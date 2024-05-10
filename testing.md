@@ -110,6 +110,7 @@ Each feature was tested to ensure seamless user interactions, proper form valida
 |-----------------|-------------------|----------------|----------------------|------------------|------------|--------------|
 | Verify 404 page functionality | 404 Page | Load a non-existent page | Displays custom 404 page | Displays custom 404 page | Pass | ![404 Page](./accountsphere/static/documentation/web_pages/404.png) |
 
+- - -
 
 ## User Story Testing
 
@@ -158,6 +159,7 @@ To verify that AccountSphere meets the needs of different user types, we conduct
 | **Update** | Analysts can revise or update articles through intuitive editing controls to keep information accurate. |
 | **Delete** | Outdated or inaccurate articles can be removed with ease, providing a clean and reliable news board. |
 
+- - -
 
 ## Browser Compatibility
 
@@ -185,6 +187,8 @@ AccountSphere was thoroughly tested to ensure consistent performance across diff
 
 3. **Performance Testing**:
    - Pages were tested for quick load times and responsive interactions under typical usage conditions.
+
+- - - 
 
 ## Responsiveness Testing
 
@@ -231,6 +235,7 @@ AccountSphere was designed with a mobile-first approach, ensuring that it provid
 
 The comprehensive responsiveness testing ensures that AccountSphere adapts flawlessly to different devices and screen sizes, providing a consistent, reliable experience for all users.
 
+- - - 
 
 ## Code Validation
 
@@ -292,3 +297,29 @@ All Python files were validated for PEP8 compliance using the [CI PEP8 Linter](h
 | run.py | ![Python Validation](./accountsphere/static/testing/code_validation/python/run.PNG) |
 
 Through these validation efforts, AccountSphere aims to maintain a high standard of quality, delivering a reliable, accessible, and user-friendly platform for all users.
+
+- - - 
+
+## Lighthouse Performance Assessment
+
+To ensure that the Accountsphere offers an optimised user experience, I conducted a series of performance and quality assessments using Google's Lighthouse tool within Chrome Developer Tools. This allowed me to evaluate the site's performance, accessibility, adherence to best practices, and SEO effectiveness across both desktop and mobile platforms. Here are the summarised results:
+
+### `Desktop Results`
+
+The desktop version of Accountsphere demonstrated excellent performance, with all pages scoring well above average in the key areas of performance, accessibility, best practices, and SEO.
+
+
+| Landing Page | Registration Page | Login Page | Profile Page | Account Page | Add Account Page | AD Group Page | Add AD Group Page |News Page |
+|---------------|-------------|---------------|---------------------|---------------------|---------------------|---------------------|---------------------|---------------------|
+|![Desktop](./accountsphere/static/testing/lighthouse_testing/landing-d.PNG)|![Desktop](./accountsphere/static/testing/lighthouse_testing/register-d.PNG)|![Desktop](./accountsphere/static/testing/lighthouse_testing/login-d.PNG)|![Desktop](./accountsphere/static/testing/lighthouse_testing/profile-d.PNG)|![Desktop](./accountsphere/static/testing/lighthouse_testing/account-d.PNG)|![Desktop](./accountsphere/static/testing/lighthouse_testing/add_account-d.PNG) |![Desktop](./accountsphere/static/testing/lighthouse_testing/ad_group-d.PNG)|![Desktop](./accountsphere/static/testing/lighthouse_testing/add_ad_group-d.PNG)|![Desktop](./accountsphere/static/testing/lighthouse_testing/news-d.PNG)|
+
+
+### `Mobile Results`
+
+Similarly, the mobile version of Accountsphere achieved impressive results, ensuring a seamless experience for mobile users.
+
+| Landing Page | Registration Page | Login Page | Profile Page | Account Page | Add Account Page | AD Group Page | Add AD Group Page |News Page |
+|---------------|-------------|---------------|---------------------|---------------------|---------------------|---------------------|---------------------|---------------------|
+|![Mobile](./accountsphere/static/testing/lighthouse_testing/landing-m.PNG)|![Mobile](./accountsphere/static/testing/lighthouse_testing/register-m.PNG)|![Mobile](./accountsphere/static/testing/lighthouse_testing/login-m.PNG)|![Mobile](./accountsphere/static/testing/lighthouse_testing/profile-m.PNG)|![Mobile](./accountsphere/static/testing/lighthouse_testing/account-m.PNG)|![Mobile](./accountsphere/static/testing/lighthouse_testing/add_account-m.PNG) |![Mobile](./accountsphere/static/testing/lighthouse_testing/ad_group-m.PNG)|![Mobile](./accountsphere/static/testing/lighthouse_testing/add_ad_group-m.PNG)|![Mobile](./accountsphere/static/testing/lighthouse_testing/news-m.PNG)|
+
+- - -

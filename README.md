@@ -26,6 +26,8 @@ AccountSphere empowers you to manage your financial workflows seamlessly in one 
 ![Contributors](https://img.shields.io/badge/Contributors%20-%201%20-%20navy)
 ![Testing](https://img.shields.io/badge/Testing%20-%20Passed%20-%20lime)
 
+- - -
+
 ## `CONTENTS`
 
 - **[User Experience](#user-experience-ux)**
@@ -185,6 +187,8 @@ The business strategy includes continuous improvement based on user feedback, le
 - Read: As a News Analyst, I want to analyse news trends and readership so that I can identify emerging risks or opportunities.
 - Update: As a News Analyst, I want to revise or update articles to ensure the information remains relevant and accurate.
 - Delete: As a News Analyst, I want to remove outdated or inaccurate articles so that I can provide a clean and reliable news board.
+
+- - -
 
 ## Design Choices
 
@@ -659,6 +663,8 @@ AccountSphere prioritises accessibility to ensure an inclusive and user-friendly
 - **Goal**: Ensure the application functions smoothly with popular assistive technologies.
 - **Features**: Regular testing with screen readers, magnifiers, and speech recognition tools to address compatibility issues.
 
+- - -
+
 ## Technologies Used
 
 The development of AccountSphere involves a range of modern web technologies and software tools, ensuring a robust, secure, and user-friendly platform for financial management. Below is a detailed overview of the key technologies and tools utilized in creating AccountSphere:
@@ -697,7 +703,6 @@ The development of AccountSphere involves a range of modern web technologies and
 
 * [Heroku](https://www.heroku.com/) - A cloud platform as a service supporting several programming languages, used to deploy the web application.
 
-
 * [Jinja](https://jinja.palletsprojects.com/) - A modern and designer-friendly templating language for Python, modeled after Django’s templates. Used to dynamically render HTML templates.
 
 * [Microsoft Visio](https://www.microsoft.com/en-us/microsoft-365/visio/flowchart-software) - Employed for creating clear and detailed flowcharts and ERDs (Entity-Relationship Diagrams) to visualize data relationships and process flows in the application.
@@ -708,6 +713,7 @@ The development of AccountSphere involves a range of modern web technologies and
 
 * [Visual Studio Code](https://code.visualstudio.com/) - The source-code editor used for software development, offering features such as debugging, syntax highlighting, and code refactoring.
 
+- - -
 
 ## Deployment & Local Development
 
@@ -754,6 +760,8 @@ To clone the repository:
 6. Type `git clone`, then paste the URL you copied earlier.
 7. Press Enter to create your local clone.
 
+- - -
+
 ## Testing
 
 For a comprehensive overview of all testing conducted during the development of AccountSphere, please refer to the [Testing.md](testing.md) file. This document includes detailed test cases, results, and methodologies used.
@@ -775,6 +783,9 @@ The development of AccountSphere involved identifying and resolving several bugs
 | 9 | `Group management access rights` | Non-administrative users were able to access and modify group settings. | Revised access controls to restrict group management functionalities to administrators only. |
 
 These fixes have significantly improved the stability, security, and usability of AccountSphere, ensuring a reliable and efficient experience for all users.
+
+- - -
+
 ## Credits
 
 ### Code References
