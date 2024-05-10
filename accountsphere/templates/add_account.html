@@ -49,19 +49,18 @@
       </div>
     </div>
 
-    <!-- Account Type -->
+ <!-- Account Type using products -->
 <div class="row mb-3 ms-5">
-  <label for="product_id" class="col-sm-2 col-md-3 col-form-label">Product Type</label>
-  <div class="col-sm-4">
-      <select class="form-select form-control" name="product_id" id="product_id" onchange="updateProductID()" required>
-          <option value="">--select--</option>
-          {% for product in products %}
-          <option value="{{ product.id }}" {{ 'selected' if account and product.id == account.product_id else '' }}>{{ product.name }}</option>
-          {% endfor %}
-      </select>
+  <label for="account_type" class="col-sm-2 col-md-3 col-form-label">Account Type</label>
+  <div class="col-sm-3 col-md-4">
+    <select class="form-select form-control" name="account_type" id="account_type" onchange="updateProductID()" required>
+      <option value="">--select--</option>
+      {% for product in products %}
+      <option value="{{ product.id }}">{{ product.name }}</option>
+      {% endfor %}
+    </select>
   </div>
 </div>
-
 
     <!-- Product ID -->
     <div class="row mb-3 ms-5">
