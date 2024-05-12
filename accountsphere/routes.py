@@ -552,10 +552,6 @@ def user():
 @app.route("/add_user", methods=["GET", "POST"])
 @login_required
 def add_user():
-    if not has_any_role('administrator'):
-        flash("You do not have permission to view this page.", 'error')
-        return redirect(url_for('profile'))
-    
     groups = Group.query.all()
 
     if request.method == "POST":
