@@ -7,17 +7,6 @@ from flask_login import login_user, logout_user, login_required, current_user
 from sqlalchemy import or_
 
 
-# Function to verify user role(s)
-def has_any_role(*roles):
-    """Check if the current user has any of the given roles."""
-    if not current_user.is_authenticated:
-        return False
-    # Convert the current user's roles into a list of lowercase strings
-    user_roles = [role.strip().lower() for role in current_user.role.split(',')]
-    # Check if any of the given roles match the user's roles
-    return any(role.lower() in user_roles for role in roles)
-
-
 # Define the home route
 @app.route("/")
 def home():
@@ -128,10 +117,7 @@ def profile():
 @app.route("/account")
 @login_required
 def account():
-    if not has_any_role('administrator', 'account officer'):
-        flash("You do not have permission to view this page.", 'error')
-        return redirect(url_for('profile'))
-
+    
     accounts = Account.query.options(joinedload(Account.product))\
         .order_by(Account.first_name, Account.last_name).all()
     return render_template("account.html", accounts=accounts)
@@ -141,10 +127,7 @@ def account():
 @app.route('/add_account', methods=['GET', 'POST'])
 @login_required
 def add_account():
-    if not has_any_role('administrator', 'account officer'):
-        flash("You do not have permission to view this page.", 'error')
-        return redirect(url_for('profile'))
-
+    
     products = Product.query.order_by(Product.name.asc()).all()
 
     if request.method == 'POST':
@@ -157,11 +140,6 @@ def add_account():
         account_type = request.form.get('account_type')
         balance = request.form.get('balance') or 0.00
         currency = request.form.get('currency')
-
-        if not first_name or not last_name or not email or not product_id or not account_type or not currency:
-            flash('All fields are required.', 'error')
-            return render_template('add_account.html', products=products)
-
         existing_account = Account.query.filter_by(email=email).first()
         if existing_account:
             flash('An account with this email already exists.', 'error')
@@ -192,9 +170,6 @@ def add_account():
 @app.route('/edit_account/<int:account_id>', methods=['GET', 'POST'])
 @login_required
 def edit_account(account_id):
-    if not has_any_role('administrator', 'account officer'):
-        flash("You do not have permission to edit this item.", 'error')
-        return redirect(url_for('profile'))
 
     account = Account.query.get_or_404(account_id)
     products = Product.query.all()
@@ -221,9 +196,7 @@ def edit_account(account_id):
 @app.route('/delete_account/<int:account_id>')
 @login_required
 def delete_account(account_id):
-    if not has_any_role('administrator'):
-        flash("You do not have permission to delete this item.", 'error')
-        return redirect(url_for('profile'))
+
 
     account = Account.query.get_or_404(account_id)
     db.session.delete(account)
@@ -268,9 +241,6 @@ def account_search():
 @login_required
 def ad_group():
 
-    if not has_any_role('administrator'):
-        flash("You do not have permission to view this page.", 'error')
-        return redirect(url_for('profile'))
 
     # Fetch all groups and sort them by name
     ad_groups = list(Group.query.order_by(Group.name).all())
@@ -283,9 +253,7 @@ def ad_group():
 @login_required
 def add_ad_group():
 
-    if not has_any_role('administrator'):
-        flash("You do not have permission to view this page.", 'error')
-        return redirect(url_for('profile'))
+
     
     if request.method == "POST":
         name = request.form.get("name")
@@ -317,9 +285,7 @@ def add_ad_group():
 @login_required
 def edit_ad_group(group_id):
 
-    if not has_any_role('administrator'):
-        flash("You do not have permission to edit this item.", 'error')
-        return redirect(url_for('profile'))
+
     
     group = Group.query.get_or_404(group_id)
     if request.method == "POST":
@@ -339,9 +305,7 @@ def edit_ad_group(group_id):
 @login_required
 def delete_ad_group(group_id):
 
-    if not has_any_role('administrator'):
-        flash("You do not have permission to delete this item.", 'error')
-        return redirect(url_for('profile'))
+
     
     group = Group.query.get_or_404(group_id)
     db.session.delete(group)
@@ -361,9 +325,6 @@ def delete_ad_group(group_id):
 @login_required
 def ad_group_search():
 
-    if not has_any_role('administrator'):
-        flash("You do not have permission to view this page.", 'error')
-        return redirect(url_for('profile'))
     
     query = request.args.get('query', '').strip()
 
@@ -386,9 +347,7 @@ def ad_group_search():
 @login_required
 def news():
 
-    if not has_any_role('administrator', 'news analyst'):
-        flash("You do not have permission to view this page.", 'error')
-        return redirect(url_for('profile'))
+
     
     news_items = NewsItem.query.all()
     return render_template("news.html", news_items=news_items)
@@ -399,9 +358,6 @@ def news():
 @login_required
 def add_news():
 
-    if not has_any_role('administrator', 'news analyst'):
-        flash("You do not have permission to view this page.", 'error')
-        return redirect(url_for('profile'))
     
     if request.method == "POST":
         headline = request.form.get("headline")
@@ -430,10 +386,6 @@ def add_news():
 @app.route('/edit_news/<int:news_id>', methods=["GET", "POST"])
 @login_required
 def edit_news(news_id):
-
-    if not has_any_role('administrator', 'news analyst'):
-        flash("You do not have permission to edit this item.", 'error')
-        return redirect(url_for('profile'))
     
     news_item = NewsItem.query.get_or_404(news_id)
     if request.method == "POST":
@@ -454,10 +406,6 @@ def edit_news(news_id):
 @app.route('/delete_news/<int:news_id>')
 @login_required
 def delete_news(news_id):
-
-    if not has_any_role('administrator', 'news analyst'):
-        flash("You do not have permission to delete this item.", 'error')
-        return redirect(url_for('profile'))
     
     news_item = NewsItem.query.get_or_404(news_id)
     db.session.delete(news_item)
@@ -476,10 +424,6 @@ def delete_news(news_id):
 @app.route('/news_search')
 @login_required
 def news_search():
-
-    if not has_any_role('administrator', 'news analyst'):
-        flash("You do not have permission to view this page.", 'error')
-        return redirect(url_for('profile'))
     
     query = request.args.get('query', '').strip()
 
@@ -500,10 +444,6 @@ def news_search():
 @app.route("/product")
 @login_required
 def product():
-
-    if not has_any_role('administrator', 'product manager'):
-        flash("You do not have permission to view this page.", 'error')
-        return redirect(url_for('profile'))
     
     products = list(Product.query.order_by(Product.name).all())
     print("Number of products fetched:", len(products))
@@ -514,10 +454,6 @@ def product():
 @app.route("/add_product", methods=["GET", "POST"])
 @login_required
 def add_product():
-
-    if not has_any_role('administrator', 'product manager'):
-        flash("You do not have permission to view this page.", 'error')
-        return redirect(url_for('profile'))
     
     if request.method == "POST":
         name = request.form.get("name")
@@ -551,10 +487,6 @@ def add_product():
 @app.route("/edit_product/<int:product_id>", methods=["GET", "POST"])
 @login_required
 def edit_product(product_id):
-
-    if not has_any_role('administrator', 'product manager'):
-        flash("You do not have permission to edit this item.", 'error')
-        return redirect(url_for('profile'))
     
     product = Product.query.get_or_404(product_id)
     if request.method == "POST":
@@ -573,10 +505,6 @@ def edit_product(product_id):
 @app.route("/delete_product/<int:product_id>")
 @login_required
 def delete_product(product_id):
-
-    if not has_any_role('administrator', 'product manager'):
-        flash("You do not have permission to delete this item.", 'error')
-        return redirect(url_for('profile'))
     
     product = Product.query.get_or_404(product_id)
     db.session.delete(product)
@@ -593,10 +521,6 @@ def delete_product(product_id):
 @app.route("/product_search")
 @login_required
 def product_search():
-
-    if not has_any_role('administrator', 'product manager'):
-        flash("You do not have permission to view this page.", 'error')
-        return redirect(url_for('profile'))
     
     query = request.args.get('query', '').strip()
 
@@ -619,9 +543,6 @@ def product_search():
 @login_required
 def user():
 
-    if not has_any_role('administrator'):
-        flash("You do not have permission to view this page.", 'error')
-        return redirect(url_for('profile'))
     
     users = User.query.order_by(User.first_name, User.last_name).all()
     return render_template("user.html", users=users)
@@ -668,10 +589,6 @@ def add_user():
 @app.route("/edit_user/<int:user_id>", methods=["GET", "POST"])
 @login_required
 def edit_user(user_id):
-
-    if not has_any_role('administrator'):
-        flash("You do not have permission to edit this item.", 'error')
-        return redirect(url_for('profile'))
     
     user = User.query.get_or_404(user_id)
     groups = Group.query.all()
@@ -695,10 +612,6 @@ def edit_user(user_id):
 @app.route("/delete_user/<int:user_id>")
 @login_required
 def delete_user(user_id):
-
-    if not has_any_role('administrator'):
-        flash("You do not have permission to delete this item.", 'error')
-        return redirect(url_for('profile'))
     
     user = User.query.get_or_404(user_id)
     db.session.delete(user)
@@ -715,10 +628,6 @@ def delete_user(user_id):
 @app.route("/user_search")
 @login_required
 def user_search():
-
-    if not has_any_role('administrator'):
-        flash("You do not have permission to view this page.", 'error')
-        return redirect(url_for('profile'))
     
     query = request.args.get('query', '').strip()
 
