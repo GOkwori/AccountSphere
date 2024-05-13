@@ -117,7 +117,7 @@ def profile():
 @app.route("/account")
 @login_required
 def account():
-    
+
     accounts = Account.query.options(joinedload(Account.product))\
         .order_by(Account.first_name, Account.last_name).all()
     return render_template("account.html", accounts=accounts)
@@ -127,7 +127,7 @@ def account():
 @app.route('/add_account', methods=['GET', 'POST'])
 @login_required
 def add_account():
-    
+
     products = Product.query.order_by(Product.name.asc()).all()
 
     if request.method == 'POST':
@@ -197,7 +197,6 @@ def edit_account(account_id):
 @login_required
 def delete_account(account_id):
 
-
     account = Account.query.get_or_404(account_id)
     db.session.delete(account)
     try:
@@ -213,9 +212,6 @@ def delete_account(account_id):
 @app.route('/account_search')
 @login_required
 def account_search():
-    if not has_any_role('administrator', 'account officer'):
-        flash("You do not have permission to view this page.", 'error')
-        return redirect(url_for('profile'))
 
     query = request.args.get('query', '').strip()
 
@@ -241,7 +237,6 @@ def account_search():
 @login_required
 def ad_group():
 
-
     # Fetch all groups and sort them by name
     ad_groups = list(Group.query.order_by(Group.name).all())
     # This will show you how many groups are fetched
@@ -253,8 +248,6 @@ def ad_group():
 @login_required
 def add_ad_group():
 
-
-    
     if request.method == "POST":
         name = request.form.get("name")
         description = request.form.get("description")
@@ -285,8 +278,6 @@ def add_ad_group():
 @login_required
 def edit_ad_group(group_id):
 
-
-    
     group = Group.query.get_or_404(group_id)
     if request.method == "POST":
         group.name = request.form.get("name")
@@ -305,8 +296,6 @@ def edit_ad_group(group_id):
 @login_required
 def delete_ad_group(group_id):
 
-
-    
     group = Group.query.get_or_404(group_id)
     db.session.delete(group)
     try:
@@ -325,7 +314,6 @@ def delete_ad_group(group_id):
 @login_required
 def ad_group_search():
 
-    
     query = request.args.get('query', '').strip()
 
     if query:
@@ -347,8 +335,6 @@ def ad_group_search():
 @login_required
 def news():
 
-
-    
     news_items = NewsItem.query.all()
     return render_template("news.html", news_items=news_items)
 
@@ -358,7 +344,6 @@ def news():
 @login_required
 def add_news():
 
-    
     if request.method == "POST":
         headline = request.form.get("headline")
         description = request.form.get("description")
@@ -386,7 +371,7 @@ def add_news():
 @app.route('/edit_news/<int:news_id>', methods=["GET", "POST"])
 @login_required
 def edit_news(news_id):
-    
+
     news_item = NewsItem.query.get_or_404(news_id)
     if request.method == "POST":
         news_item.headline = request.form.get("headline")
@@ -406,7 +391,7 @@ def edit_news(news_id):
 @app.route('/delete_news/<int:news_id>')
 @login_required
 def delete_news(news_id):
-    
+
     news_item = NewsItem.query.get_or_404(news_id)
     db.session.delete(news_item)
 
@@ -424,7 +409,7 @@ def delete_news(news_id):
 @app.route('/news_search')
 @login_required
 def news_search():
-    
+
     query = request.args.get('query', '').strip()
 
     if query:
@@ -444,7 +429,7 @@ def news_search():
 @app.route("/product")
 @login_required
 def product():
-    
+
     products = list(Product.query.order_by(Product.name).all())
     print("Number of products fetched:", len(products))
     return render_template("product.html", products=products)
@@ -454,7 +439,7 @@ def product():
 @app.route("/add_product", methods=["GET", "POST"])
 @login_required
 def add_product():
-    
+
     if request.method == "POST":
         name = request.form.get("name")
         description = request.form.get("description")
@@ -487,7 +472,7 @@ def add_product():
 @app.route("/edit_product/<int:product_id>", methods=["GET", "POST"])
 @login_required
 def edit_product(product_id):
-    
+
     product = Product.query.get_or_404(product_id)
     if request.method == "POST":
         product.name = request.form.get("name")
@@ -505,7 +490,7 @@ def edit_product(product_id):
 @app.route("/delete_product/<int:product_id>")
 @login_required
 def delete_product(product_id):
-    
+
     product = Product.query.get_or_404(product_id)
     db.session.delete(product)
     try:
@@ -521,7 +506,7 @@ def delete_product(product_id):
 @app.route("/product_search")
 @login_required
 def product_search():
-    
+
     query = request.args.get('query', '').strip()
 
     if query:
@@ -543,7 +528,6 @@ def product_search():
 @login_required
 def user():
 
-    
     users = User.query.order_by(User.first_name, User.last_name).all()
     return render_template("user.html", users=users)
 
@@ -585,7 +569,7 @@ def add_user():
 @app.route("/edit_user/<int:user_id>", methods=["GET", "POST"])
 @login_required
 def edit_user(user_id):
-    
+
     user = User.query.get_or_404(user_id)
     groups = Group.query.all()
 
@@ -608,7 +592,7 @@ def edit_user(user_id):
 @app.route("/delete_user/<int:user_id>")
 @login_required
 def delete_user(user_id):
-    
+
     user = User.query.get_or_404(user_id)
     db.session.delete(user)
     try:
@@ -624,7 +608,7 @@ def delete_user(user_id):
 @app.route("/user_search")
 @login_required
 def user_search():
-    
+
     query = request.args.get('query', '').strip()
 
     if query:
