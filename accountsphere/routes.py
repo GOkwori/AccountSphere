@@ -1,16 +1,31 @@
-from flask import render_template, request, redirect, url_for, flash, session
+from flask import render_template, request, redirect, url_for, flash, session, abort
 from werkzeug.security import generate_password_hash, check_password_hash
 from accountsphere import app, db
 from accountsphere.models import User, Group, Product, Account, NewsItem
 from sqlalchemy.orm import joinedload
 from flask_login import login_user, logout_user, login_required, current_user
 from sqlalchemy import or_
+from functools import wraps
 
 
 # Define the home route
 @app.route("/")
 def home():
     return render_template("landing.html")
+
+# Define the role_required decorator
+
+
+def role_required(*roles):
+    def wrapper(f):
+        @wraps(f)
+        def decorated_function(*args, **kwargs):
+            if not current_user.is_authenticated or not any(getattr(current_user, f'is_{role}')() for role in roles):
+                flash("You do not have permission to access this page.", 'error')
+                return redirect(url_for('profile'))
+            return f(*args, **kwargs)
+        return decorated_function
+    return wrapper
 
 
 # Define the register route
@@ -116,11 +131,8 @@ def profile():
 # Define the account route
 @app.route("/account")
 @login_required
+@role_required('administrator', 'account_officer')
 def account():
-
-    if not current_user.is_administrator() and not current_user.is_account_officer():
-        flash("You do not have permission to view this page.", 'error')
-        return redirect(url_for('profile'))
 
     accounts = Account.query.options(joinedload(Account.product))\
         .order_by(Account.first_name, Account.last_name).all()
@@ -130,11 +142,8 @@ def account():
 # Define the add account route
 @app.route('/add_account', methods=['GET', 'POST'])
 @login_required
+@role_required('administrator', 'account_officer')
 def add_account():
-
-    if not current_user.is_administrator() and not current_user.is_account_officer():
-        flash("You do not have permission to perform this action.", 'error')
-        return redirect(url_for('profile'))
 
     products = Product.query.order_by(Product.name.asc()).all()
 
@@ -177,10 +186,8 @@ def add_account():
 # Define the edit account route
 @app.route('/edit_account/<int:account_id>', methods=['GET', 'POST'])
 @login_required
+@role_required('administrator', 'account_officer')
 def edit_account(account_id):
-    if not current_user.is_administrator() and not current_user.is_account_officer():
-        flash("You do not have permission to perform this action.", 'error')
-        return redirect(url_for('profile'))
 
     account = Account.query.get_or_404(account_id)
     products = Product.query.all()
@@ -206,10 +213,8 @@ def edit_account(account_id):
 # Define the delete account route
 @app.route('/delete_account/<int:account_id>')
 @login_required
+@role_required('administrator')
 def delete_account(account_id):
-    if not current_user.is_administrator():
-        flash("You do not have permission to perform this action.", 'error')
-        return redirect(url_for('profile'))
 
     account = Account.query.get_or_404(account_id)
     db.session.delete(account)
@@ -225,10 +230,8 @@ def delete_account(account_id):
 # Define the account search route
 @app.route('/account_search')
 @login_required
+@role_required('administrator', 'account_officer')
 def account_search():
-    if not current_user.is_administrator() and not current_user.is_account_officer():
-        flash("You do not have permission to perform this action.", 'error')
-        return redirect(url_for('profile'))
 
     query = request.args.get('query', '').strip()
 
