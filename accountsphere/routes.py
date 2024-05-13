@@ -14,19 +14,21 @@ def home():
     return render_template("landing.html")
 
 # Define the role_required decorator
-
-
 def role_required(*roles):
-    def wrapper(f):
+    """
+    Decorator to require any of a set of roles to access a route.
+    :param roles: Allowed roles to access the route.
+    """
+    def decorator(f):
         @wraps(f)
         def decorated_function(*args, **kwargs):
-            if not current_user.is_authenticated or not any(getattr(current_user, f'is_{role}')() for role in roles):
+            # Check if not logged in or if the current user's role is not in the allowed roles
+            if not current_user.is_authenticated or current_user.role not in roles:
                 flash("You do not have permission to access this page.", 'error')
-                return redirect(url_for('profile'))
+                return redirect(url_for('login'))
             return f(*args, **kwargs)
         return decorated_function
-    return wrapper
-
+    return decorator
 
 # Define the register route
 @app.route("/register", methods=["GET", "POST"])
@@ -131,7 +133,7 @@ def profile():
 # Define the account route
 @app.route("/account")
 @login_required
-@role_required('administrator', 'account_officer')
+@role_required('account officer', 'administrator')
 def account():
 
     accounts = Account.query.options(joinedload(Account.product))\
@@ -142,7 +144,6 @@ def account():
 # Define the add account route
 @app.route('/add_account', methods=['GET', 'POST'])
 @login_required
-@role_required('administrator', 'account_officer')
 def add_account():
 
     products = Product.query.order_by(Product.name.asc()).all()
@@ -186,7 +187,7 @@ def add_account():
 # Define the edit account route
 @app.route('/edit_account/<int:account_id>', methods=['GET', 'POST'])
 @login_required
-@role_required('administrator', 'account_officer')
+@role_required('account officer', 'administrator')
 def edit_account(account_id):
 
     account = Account.query.get_or_404(account_id)
@@ -230,7 +231,7 @@ def delete_account(account_id):
 # Define the account search route
 @app.route('/account_search')
 @login_required
-@role_required('administrator', 'account_officer')
+@role_required('account officer', 'administrator')
 def account_search():
 
     query = request.args.get('query', '').strip()
