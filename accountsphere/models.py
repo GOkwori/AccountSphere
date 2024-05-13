@@ -26,14 +26,8 @@ class User(db.Model, UserMixin):
     def is_active(self):
         return self.active
 
-    # Check if the user has any of the specified roles
-    def has_role(self, *roles):
-        # Convert to list if multiple roles
-        user_roles = [role.strip().lower() for role in self.role.split(',')]
-        return any(role.lower() in user_roles for role in roles)
 
-
-# Define other models below (Group, Product, etc.)
+# Define the Group model
 class Group(db.Model):
     __tablename__ = 'groups'
     id = db.Column(db.Integer, primary_key=True)
@@ -50,7 +44,7 @@ class Group(db.Model):
         return f'<Group {self.name}>'
 
 
-# Define the Product models
+#  Define the Product model
 class Product(db.Model):
     __tablename__ = 'products'
     id = db.Column(db.Integer, primary_key=True)
@@ -87,7 +81,7 @@ class Account(db.Model):
         return f'<Account {self.first_name} {self.last_name} | Account ID:{self.id}>'
 
 
-# Define the NewsItem model
+# Define the Transaction model
 class NewsItem(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     headline = db.Column(db.String(255), nullable=False)

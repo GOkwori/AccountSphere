@@ -5,7 +5,7 @@
   <h3 class="text-center">
     Create Account <i class="fa-regular fa-folder-open ms-2"></i>
   </h3>
-  <br />
+  <br>
   <form class="text-center" action="{{ url_for('add_account')}}" method="post">
     <!-- Ensure the form action is correct -->
 
@@ -49,18 +49,19 @@
       </div>
     </div>
 
- <!-- Account Type using products -->
-<div class="row mb-3 ms-5">
-  <label for="account_type" class="col-sm-2 col-md-3 col-form-label">Account Type</label>
-  <div class="col-sm-3 col-md-4">
-    <select class="form-select form-control" name="account_type" id="account_type" onchange="updateProductID()" required>
-      <option value="">--select--</option>
-      {% for product in products %}
-      <option value="{{ product.id }}">{{ product.name }}</option>
-      {% endfor %}
-    </select>
-  </div>
-</div>
+    <!-- Account Type using products -->
+    <div class="row mb-3 ms-5">
+      <label for="account_type" class="col-sm-2 col-md-3 col-form-label">Account Type</label>
+      <div class="col-sm-3 col-md-4">
+        <select class="form-select form-control" name="account_type" id="account_type" onchange="updateProductID()"
+          required>
+          <option value="">--select--</option>
+          {% for product in products %}
+          <option value="{{ product.id }}">{{ product.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
 
     <!-- Product ID -->
     <div class="row mb-3 ms-5">
@@ -84,8 +85,7 @@
 
       <!-- Balance -->
       <div class="col-sm-3 col-md-4">
-        <input type="number" class="form-control" id="balance" name="balance" placeholder="Amount" step="0.01"
-          min="0" />
+        <input type="number" class="form-control" id="balance" name="balance" placeholder="Amount" step="0.01" min="0">
       </div>
     </div>
 
@@ -93,8 +93,8 @@
     <div class="row mb-3 ms-5">
       <div class="col-sm-7">
         <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="terms" required />
-          <label class="form-check-label" for="terms">I confirm that all details have been verified.</label>
+          <input type="checkbox" class="form-check-input" id="terms" required>
+          <label class="form-check-label col-sm-3" for="terms">I confirm that all details have been verified.</label>
         </div>
       </div>
     </div>
