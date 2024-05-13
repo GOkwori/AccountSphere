@@ -8,6 +8,7 @@ Visit the deployed site: [AccountSphere](https://flask-accountsphere-d734c062c29
 
 ## CONTENTS
 
+* [RBAC Security Testing](#rbac-security-testing)
 * [Feature Testing](#feature-testing)
 * [User Story Testing](#user-story-testing)
 * [Browser Compatibility](#browser-compatibility)
@@ -20,7 +21,50 @@ Throughout the development process, Chrome Developer Tools and other browser too
 To ensure responsiveness across multiple screen sizes and devices, every page was tested using Chrome Developer Tools and Microsoft Edge Inspector.
 
 - - -
+## RBAC Security Testing
 
+Role-Based Access Control (RBAC) is a critical aspect of my application, ensuring that users can only access resources that they are authorised to view or modify based on their roles. This section outlines the manual testing process used to verify that access controls are correctly enforced.
+
+### Overview
+
+Manual testing was conducted to ensure that different user roles have appropriate access to resources. The testing process involved simulating actions from users of various roles and verifying access restrictions.
+
+### Test Setup
+
+Before starting the manual testing, the following steps were completed:
+
+1. **Setup Test Accounts**: User accounts for each role in the application were created (e.g., Administrator, Account Officer, News Analyst, Product Manager), with typical permissions assigned to each role.
+2. **Test Data**: The application was populated with sufficient data to test various functionalities (e.g., user management, account management).
+3. **Testing Environment**: A dedicated testing environment was set up to mirror the production settings without affecting live data.
+
+### Test Cases
+
+| Test Case                        | Objective                                                               | Steps                                                                                                                                      | Expected Result                                                                                                      | Snapshot                                     |
+|----------------------------------|-------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|----------------------------------------------|
+| **Administrator Access**      | Verify access to all sections                                           | 1. Log in as an Administrator.<br>2. Navigate to each section (User Management, AD Groups, Account Management, News Board, Product Management).<br>3. Verify access.            | Administrator can access all sections and perform all administrative functions.                                      | ![Admin Access](./accountsphere/static/testing/rbac/admin.PNG)  |
+| **Account Officer Access**    | Ensure access only to Account Management                                | 1. Log in as an Account Officer.<br>2. Access Account Management.<br>3. Attempt to access other sections (User Management, AD Groups, News Board, Product Management).            | Access to Account Management is granted; access to other sections is denied.                                         | ![Account Officer Access](./accountsphere/static/testing/rbac/account_officer.PNG) |
+| **News Analyst Access**       | Ensure access only to News Board                                        | 1. Log in as a News Analyst.<br>2. Access the News Board.<br>3. Attempt to access other sections (Account Management, Product Management).                                       | Access to News Board is granted; access to other sections is denied.                                                 | ![News Analyst Access](./accountsphere/static/testing/rbac/news_analyst.PNG) |
+| **Product Manager Access**    | Verify access only to Product Management                                | 1. Log in as a Product Manager.<br>2. Access Product Management.<br>3. Attempt to access other administrative areas (User Management).                                           | Access to Product Management is granted; access to other sections is denied.                                         | ![Product Manager Access](./accountsphere/static/testing/rbac/product_manager.PNG) |
+| **General Security Checks**   | Test for URL manipulation and unauthorized access through direct entry  | 1. Log in with one role and note accessible URLs.<br>2. Log out and log in with a different role.<br>3. Attempt to access noted URLs directly.                                    | Unauthorized access attempts are blocked, and appropriate access denials are enforced.                               | ![Security Checks](./accountsphere/static/testing/rbac/unauthorised_access.PNG) |
+| **Administrator Deletion Access** | Ensure only administrators can delete any resources                     | 1. Log in as an Administrator and navigate to any section with delete functionality (e.g., User Management, Account Management).<br>2. Perform delete actions. <br>3. Log in as another role and attempt to perform delete actions. | Only administrators can successfully delete resources; other roles are denied access to delete functionality.        | ![Admin Delete Access](./accountsphere/static/testing/rbac/unauthorised_access.PNG) |
+
+### Test Results
+
+All test scenarios were executed successfully, and the following results were observed:
+
+- **Administrator Access**: Administrators were able to access all sections and perform all administrative functions without any issues.
+- **Account Officer Access**: Account Officers were able to access Account Management but were restricted from accessing User Management, AD Groups, News Board, and Product Management.
+- **News Analyst Access**: News Analysts were able to access the News Board but were restricted from accessing other sections like Account and Product Management.
+- **Product Manager Access**: Product Managers were able to access Product Management but were restricted from accessing User Management and other administrative areas.
+- **General Security Checks**: Attempts to manipulate URLs or access unauthorized sections resulted in appropriate access denials.
+- **Administrator Deletion Access**: Only administrators were able to perform delete actions across the application; other roles were denied access to delete functionality.
+
+### Conclusion
+
+The manual testing of RBAC was successfully completed, ensuring that each user role can only access its authorised resources and that only administrators can perform delete actions. This thorough testing confirms that the RBAC implementation is robust and correctly restricts access based on user roles. 
+
+
+- - -
 ## Feature Testing
 
 Each feature was tested to ensure seamless user interactions, proper form validation, intuitive navigation, and functional features. Testing involved verifying accuracy, reliability, and usability.

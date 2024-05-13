@@ -27,9 +27,8 @@ def role_required(*roles):
         return decorated_function
     return decorator
 
+
 # Define the register route
-
-
 @app.route("/register", methods=["GET", "POST"])
 def register():
     groups = Group.query.all()
