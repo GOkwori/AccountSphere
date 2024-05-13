@@ -549,7 +549,8 @@ def product_search():
 @login_required
 def user():
 
-    users = User.query.order_by(User.first_name, User.last_name).all()
+    users = list(User.query.order_by(User.first_name, User.last_name).all())
+    print("Number of users fetched:", len(users))
     return render_template("user.html", users=users)
 
 
