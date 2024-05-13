@@ -12,9 +12,10 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(80), unique=True, nullable=False)
     password_hash = db.Column(db.String(256))
     email = db.Column(db.String(120), unique=True, nullable=False)
-    # Store a single role or multiple roles as a comma-separated string
     role = db.Column(db.String(50), nullable=False)
     active = db.Column(db.Boolean, default=True)
+    group_id = db.Column(db.Integer, db.ForeignKey(
+        'groups.id'), nullable=True)  # ForeignKey linking to Group
     created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
     updated_at = db.Column(db.DateTime, default=db.func.current_timestamp(
     ), onupdate=db.func.current_timestamp())
@@ -34,8 +35,9 @@ class Group(db.Model):
     name = db.Column(db.String(100), unique=True, nullable=False)
     description = db.Column(db.Text)
     group_type = db.Column(db.String(50), nullable=False)
+    # Relationship with dynamic loading
     users = db.relationship('User', backref='group',
-                            cascade='all, delete', lazy=True)
+                            cascade='all, delete', lazy='dynamic')
     created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
     updated_at = db.Column(db.DateTime, default=db.func.current_timestamp(
     ), onupdate=db.func.current_timestamp())
