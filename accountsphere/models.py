@@ -38,20 +38,6 @@ class User(db.Model, UserMixin):
     
     def is_news_analyst(self):
         return self.role == 'news analyst'
-
-# Define the AnonymousUser model
-class AnonymousUser(AnonymousUserMixin):
-    def is_administrator(self):
-        return False
-
-    def is_account_officer(self):
-        return False
-
-    def is_product_manager(self):
-        return False
-
-    def is_news_analyst(self):
-        return False
     
 
 # Define the Group model
