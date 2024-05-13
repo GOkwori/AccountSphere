@@ -91,38 +91,38 @@
                         <hr>
 
                         <!-- Account Management, visible to administrators and account officers -->
-                        {% if current_user.is_authenticated and (current_user.role == 'administrator' or
-                        current_user.role == 'account officer') %}
+                        {% if current_user.is_authenticated and (current_user.role == 'Administrator' or
+                        current_user.role == 'Account Officer') %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('account_management') }}">Account Management</a>
                     </li>
                     {% endif %}
 
                     <!-- AD Groups, visible only to administrators -->
-                    {% if current_user.is_authenticated and current_user.role == 'administrator' %}
+                    {% if current_user.is_authenticated and current_user.role == 'Administrator' %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('ad_groups') }}">AD Groups</a>
                     </li>
                     {% endif %}
 
                     <!-- News Board, visible to administrators and news analysts -->
-                    {% if current_user.is_authenticated and (current_user.role == 'administrator' or current_user.role
-                    == 'news analyst') %}
+                    {% if current_user.is_authenticated and (current_user.role == 'Administrator' or current_user.role
+                    == 'News Analyst') %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('news_board') }}">News Board</a>
                     </li>
                     {% endif %}
 
                     <!-- Product Management, visible to administrators and product managers -->
-                    {% if current_user.is_authenticated and (current_user.role == 'administrator' or current_user.role
-                    == 'product manager') %}
+                    {% if current_user.is_authenticated and (current_user.role == 'Administrator' or current_user.role
+                    == 'Product Manager') %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('product_management') }}">Product Management</a>
                     </li>
                     {% endif %}
 
                     <!-- User Management, visible only to administrators -->
-                    {% if current_user.is_authenticated and current_user.role == 'administrator' %}
+                    {% if current_user.is_authenticated and current_user.role == 'Administrator' %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('user_management') }}">User Management</a>
                     </li>
