@@ -14,6 +14,8 @@ def home():
     return render_template("landing.html")
 
 # Define the role_required decorator
+
+
 def role_required(*roles):
     """
     Decorator to require any of a set of roles to access a route.
@@ -25,12 +27,14 @@ def role_required(*roles):
             # Check if not logged in or if the current user's role is not in the allowed roles
             if not current_user.is_authenticated or current_user.role not in roles:
                 flash("You do not have permission to access this page.", 'error')
-                return redirect(url_for('login'))
+                return redirect(url_for('profile'))
             return f(*args, **kwargs)
         return decorated_function
     return decorator
 
 # Define the register route
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     groups = Group.query.all()
@@ -133,7 +137,7 @@ def profile():
 # Define the account route
 @app.route("/account")
 @login_required
-@role_required('account officer', 'administrator')
+@role_required('Account Officer', 'Administrator')
 def account():
 
     accounts = Account.query.options(joinedload(Account.product))\
@@ -144,6 +148,7 @@ def account():
 # Define the add account route
 @app.route('/add_account', methods=['GET', 'POST'])
 @login_required
+@role_required('Account Officer', 'Administrator')
 def add_account():
 
     products = Product.query.order_by(Product.name.asc()).all()
@@ -187,7 +192,7 @@ def add_account():
 # Define the edit account route
 @app.route('/edit_account/<int:account_id>', methods=['GET', 'POST'])
 @login_required
-@role_required('account officer', 'administrator')
+@role_required('Account Officer', 'Administrator')
 def edit_account(account_id):
 
     account = Account.query.get_or_404(account_id)
@@ -214,7 +219,7 @@ def edit_account(account_id):
 # Define the delete account route
 @app.route('/delete_account/<int:account_id>')
 @login_required
-@role_required('administrator')
+@role_required('Administrator')
 def delete_account(account_id):
 
     account = Account.query.get_or_404(account_id)
@@ -231,7 +236,7 @@ def delete_account(account_id):
 # Define the account search route
 @app.route('/account_search')
 @login_required
-@role_required('account officer', 'administrator')
+@role_required('Account Officer', 'Administrator')
 def account_search():
 
     query = request.args.get('query', '').strip()
@@ -256,6 +261,7 @@ def account_search():
 # Define the group route
 @app.route("/ad_group")
 @login_required
+@role_required('Administrator')
 def ad_group():
 
     # Fetch all groups and sort them by name
@@ -267,6 +273,7 @@ def ad_group():
 
 @app.route("/add_ad_group", methods=["GET", "POST"])
 @login_required
+@role_required('Administrator')
 def add_ad_group():
 
     if request.method == "POST":
@@ -297,6 +304,7 @@ def add_ad_group():
 # Define the edit ad group route
 @app.route("/edit_ad_group/<int:group_id>", methods=["GET", "POST"])
 @login_required
+@role_required('Administrator')
 def edit_ad_group(group_id):
 
     group = Group.query.get_or_404(group_id)
@@ -315,6 +323,7 @@ def edit_ad_group(group_id):
 # Define the delete ad group route
 @app.route("/delete_ad_group/<int:group_id>")
 @login_required
+@role_required('Administrator')
 def delete_ad_group(group_id):
 
     group = Group.query.get_or_404(group_id)
@@ -333,6 +342,7 @@ def delete_ad_group(group_id):
 # Define the ad group search route
 @app.route("/ad_group_search")
 @login_required
+@role_required('Administrator')
 def ad_group_search():
 
     query = request.args.get('query', '').strip()
@@ -354,6 +364,7 @@ def ad_group_search():
 # Define the news route
 @app.route("/news")
 @login_required
+@role_required('News Analyst', 'Administrator')
 def news():
 
     news_items = NewsItem.query.all()
@@ -363,6 +374,7 @@ def news():
 # Define the add news route
 @app.route('/add_news', methods=["GET", "POST"])
 @login_required
+@role_required('News Analyst', 'Administrator')
 def add_news():
 
     if request.method == "POST":
@@ -391,6 +403,7 @@ def add_news():
 # Define the edit news route
 @app.route('/edit_news/<int:news_id>', methods=["GET", "POST"])
 @login_required
+@role_required('News Analyst', 'Administrator')
 def edit_news(news_id):
 
     news_item = NewsItem.query.get_or_404(news_id)
@@ -411,6 +424,7 @@ def edit_news(news_id):
 # Define the delete news route
 @app.route('/delete_news/<int:news_id>')
 @login_required
+@role_required('News Analyst', 'Administrator')
 def delete_news(news_id):
 
     news_item = NewsItem.query.get_or_404(news_id)
@@ -429,6 +443,7 @@ def delete_news(news_id):
 # Define the news search route
 @app.route('/news_search')
 @login_required
+@role_required('News Analyst', 'Administrator')
 def news_search():
 
     query = request.args.get('query', '').strip()
@@ -449,6 +464,7 @@ def news_search():
 # Define the product route
 @app.route("/product")
 @login_required
+@role_required('Product Manager', 'Administrator')
 def product():
 
     products = list(Product.query.order_by(Product.name).all())
@@ -492,6 +508,7 @@ def add_product():
 # Define the edit product route
 @app.route("/edit_product/<int:product_id>", methods=["GET", "POST"])
 @login_required
+@role_required('Product Manager', 'Administrator')
 def edit_product(product_id):
 
     product = Product.query.get_or_404(product_id)
@@ -510,6 +527,7 @@ def edit_product(product_id):
 # Define the delete product route
 @app.route("/delete_product/<int:product_id>")
 @login_required
+@role_required('Administrator')
 def delete_product(product_id):
 
     product = Product.query.get_or_404(product_id)
@@ -526,6 +544,7 @@ def delete_product(product_id):
 # Define the product search route
 @app.route("/product_search")
 @login_required
+@role_required('Product Manager', 'Administrator')
 def product_search():
 
     query = request.args.get('query', '').strip()
@@ -547,6 +566,7 @@ def product_search():
 # Define the user route
 @app.route("/user")
 @login_required
+@role_required('Administrator')
 def user():
 
     users = list(User.query.order_by(User.first_name, User.last_name).all())
@@ -557,6 +577,7 @@ def user():
 # Define the add user route
 @app.route("/add_user", methods=["GET", "POST"])
 @login_required
+@role_required('Administrator')
 def add_user():
     groups = Group.query.all()
 
@@ -590,6 +611,7 @@ def add_user():
 # Define the edit user route
 @app.route("/edit_user/<int:user_id>", methods=["GET", "POST"])
 @login_required
+@role_required('Administrator')
 def edit_user(user_id):
 
     user = User.query.get_or_404(user_id)
@@ -613,6 +635,7 @@ def edit_user(user_id):
 # Define the delete user route
 @app.route("/delete_user/<int:user_id>")
 @login_required
+@role_required('Administrator')
 def delete_user(user_id):
 
     user = User.query.get_or_404(user_id)
@@ -629,6 +652,7 @@ def delete_user(user_id):
 # Define the user search route
 @app.route("/user_search")
 @login_required
+@role_required('Administrator')
 def user_search():
 
     query = request.args.get('query', '').strip()

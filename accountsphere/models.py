@@ -27,18 +27,6 @@ class User(db.Model, UserMixin):
     def is_active(self):
         return self.active
     
-    def is_administrator(self):
-        return self.role == 'administrator'
-    
-    def is_account_officer(self):
-        return self.role == 'account officer'
-    
-    def is_product_manager(self):
-        return self.role == 'product manager'
-    
-    def is_news_analyst(self):
-        return self.role == 'news analyst'
-    
 
 # Define the Group model
 class Group(db.Model):
