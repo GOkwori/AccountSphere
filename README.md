@@ -240,9 +240,6 @@ The development of AccountSphere began with the creation of detailed wireframes 
 
 Each wireframe was crafted with careful attention to user experience, emphasising intuitive navigation and efficient workflows that align with the goals of various user roles, including administrators, account officers, product managers, and news analysts.
 
-<details>
-  <summary>Expand to view wireframes</summary>
-
 #### `Login Page Wireframe`
 
 The login page wireframe shows a streamlined, user-friendly design focused on getting users into the system efficiently. It includes fields for username and password, as well as buttons for submission and navigation to the registration page for new users.
@@ -285,16 +282,12 @@ These wireframes depict the user management page, where administrators can effic
 ![User Management Page Wireframe](./accountsphere/static/documentation/wireframes/wireframe_10.png)
 
 These wireframes guided the design process to ensure that AccountSphere provides a visually consistent and efficient user interface that aligns with the platform's overall goals.
-</details>
 
 ### Flowchart
 
 To visualise the user journey and functionality of AccountSphere, detailed flowcharts were developed. These flowcharts outline the interactions between the different components of the platform, demonstrating how users navigate through various features and perform essential tasks.
 
 Each flowchart focuses on a specific aspect of AccountSphere, capturing the logical flow of user actions and system responses, ensuring that the platform operates smoothly and efficiently. The flowcharts serve as valuable guides for understanding the system's architecture and how different roles—such as administrators, account officers, product managers, and news analysts—interact with the platform.
-
-<details>
-  <summary>Expand to view flowcharts</summary>
 
 #### `Authentication Flow`
 
@@ -326,10 +319,7 @@ This diagram illustrates the responsibilities of Administrators in maintaining s
 
 ![Settings Flowchart](./accountsphere/static/documentation/flow_chart/admin.PNG)
 
-
 These flowcharts illustrate the interactions between users and the system, highlighting key functionalities and decision points within AccountSphere. They ensure that the platform is designed to meet user needs effectively while maintaining robust security and operational efficiency.
-
-</details>
 
 ### Entity-Relationship Diagram
 The Entity-Relationship Diagram (ERD) provides a visual overview of the relationships and data structure within the AccountSphere application. This diagram illustrates how different data entities such as users, groups, accounts, products, and news items interact with each other, helping to clarify the system's architecture.
