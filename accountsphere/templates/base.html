@@ -94,14 +94,14 @@
                         {% if current_user.is_authenticated and (current_user.role == 'Administrator' or
                         current_user.role == 'Account Officer') %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('account_management') }}">Account Management</a>
+                        <a class="nav-link" href="{{ url_for('account') }}">Account Management</a>
                     </li>
                     {% endif %}
 
                     <!-- AD Groups, visible only to administrators -->
                     {% if current_user.is_authenticated and current_user.role == 'Administrator' %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('ad_groups') }}">AD Groups</a>
+                        <a class="nav-link" href="{{ url_for('ad_group') }}">AD Groups</a>
                     </li>
                     {% endif %}
 
@@ -109,7 +109,7 @@
                     {% if current_user.is_authenticated and (current_user.role == 'Administrator' or current_user.role
                     == 'News Analyst') %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('news_board') }}">News Board</a>
+                        <a class="nav-link" href="{{ url_for('news') }}">News Board</a>
                     </li>
                     {% endif %}
 
@@ -117,14 +117,14 @@
                     {% if current_user.is_authenticated and (current_user.role == 'Administrator' or current_user.role
                     == 'Product Manager') %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('product_management') }}">Product Management</a>
+                        <a class="nav-link" href="{{ url_for('product') }}">Product Management</a>
                     </li>
                     {% endif %}
 
                     <!-- User Management, visible only to administrators -->
                     {% if current_user.is_authenticated and current_user.role == 'Administrator' %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('user_management') }}">User Management</a>
+                        <a class="nav-link" href="{{ url_for('user') }}">User Management</a>
                     </li>
                     {% endif %}
 
