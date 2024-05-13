@@ -13,20 +13,15 @@ from functools import wraps
 def home():
     return render_template("landing.html")
 
+
 # Define the role_required decorator
-
-
 def role_required(*roles):
-    """
-    Decorator to require any of a set of roles to access a route.
-    :param roles: Allowed roles to access the route.
-    """
     def decorator(f):
         @wraps(f)
         def decorated_function(*args, **kwargs):
             # Check if not logged in or if the current user's role is not in the allowed roles
             if not current_user.is_authenticated or current_user.role not in roles:
-                flash("You do not have permission to access this page.", 'error')
+                flash("You do not have permission to perform this action.", 'error')
                 return redirect(url_for('profile'))
             return f(*args, **kwargs)
         return decorated_function
