@@ -8,28 +8,32 @@ Visit the deployed site: [AccountSphere](https://flask-accountsphere-d734c062c29
 
 ## CONTENTS
 
-* [RBAC Security Testing](#rbac-security-testing)
-* [Feature Testing](#feature-testing)
-* [User Story Testing](#user-story-testing)
-* [Browser Compatibility](#browser-compatibility)
-* [Responsiveness Testing](#responsiveness-testing)
-* [Code Validation](#code-validation)
-* [Lighthouse Performance Assessment](#lighthouse-performance-assessment)
+* [Manual Testing](#manual-testing)
+   - [RBAC Security Testing](#rbac-security-testing)
+   - [Feature Testing](#feature-testing)
+   - [User Story Testing](#user-story-testing)
+   - [Browser Compatibility](#browser-compatibility)
+   - [Responsiveness Testing](#responsiveness-testing)
+* [Automated Testing](#automated-testing)
+  - [Code Validation](#code-validation)
+  - [Lighthouse Performance Assessment](#lighthouse-performance-assessment)
 
 Throughout the development process, Chrome Developer Tools and other browser tools have been employed to identify and resolve issues promptly. This involved monitoring console logs, diagnosing JavaScript and Python errors, and ensuring consistent styles across browsers.
 
 To ensure responsiveness across multiple screen sizes and devices, every page was tested using Chrome Developer Tools and Microsoft Edge Inspector.
 
 - - -
-## RBAC Security Testing
+## Manual Testing 
+
+### RBAC Security Testing
 
 Role-Based Access Control (RBAC) is a critical aspect of my application, ensuring that users can only access resources that they are authorised to view or modify based on their roles. This section outlines the manual testing process used to verify that access controls are correctly enforced.
 
-### Overview
+#### `Overview`
 
 Manual testing was conducted to ensure that different user roles have appropriate access to resources. The testing process involved simulating actions from users of various roles and verifying access restrictions.
 
-### Test Setup
+#### `Test Setup`
 
 Before starting the manual testing, the following steps were completed:
 
@@ -37,7 +41,7 @@ Before starting the manual testing, the following steps were completed:
 2. **Test Data**: The application was populated with sufficient data to test various functionalities (e.g., user management, account management).
 3. **Testing Environment**: A dedicated testing environment was set up to mirror the production settings without affecting live data.
 
-### Test Cases
+#### `Test Cases`
 
 | Test Case                        | Objective                                                               | Steps                                                                                                                                      | Expected Result                                                                                                      | Snapshot                                     |
 |----------------------------------|-------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|----------------------------------------------|
@@ -59,29 +63,29 @@ All test scenarios were executed successfully, and the following results were ob
 - **General Security Checks**: Attempts to manipulate URLs or access unauthorized sections resulted in appropriate access denials.
 - **Administrator Deletion Access**: Only administrators were able to perform delete actions across the application; other roles were denied access to delete functionality.
 
-### Conclusion
+#### `Conclusion`
 
 The manual testing of RBAC was successfully completed, ensuring that each user role can only access its authorised resources and that only administrators can perform delete actions. This thorough testing confirms that the RBAC implementation is robust and correctly restricts access based on user roles. 
 
 
 - - -
-## Feature Testing
+### Feature Testing
 
 Each feature was tested to ensure seamless user interactions, proper form validation, intuitive navigation, and functional features. Testing involved verifying accuracy, reliability, and usability.
 
-### `Login Page`
+#### `Login Page`
 
 | **Description** | **Functionality** | **Test Steps** | **Expected Result** | **Actual Result** | **Status** | **Snapshot** |
 |-----------------|-------------------|----------------|----------------------|------------------|------------|--------------|
 | Verify login form | Login Form | Load the login page <br> Enter credentials <br> Submit | Redirects to the profile page | Redirects to the profile page | Pass | ![Login Form](./accountsphere/static/documentation/web_pages/login_page.png) |
 
-### `Registration Page`
+#### `Registration Page`
 
 | **Description** | **Functionality** | **Test Steps** | **Expected Result** | **Actual Result** | **Status** | **Snapshot** |
 |-----------------|-------------------|----------------|----------------------|------------------|------------|--------------|
 | Verify registration form | Registration Form | Load the registration page <br> Enter user details <br> Submit | Registers new user and redirects to login page | Registers new user and redirects to login page | Pass | ![Registration Form](./accountsphere/static/documentation/web_pages/register_page.png) |
 
-### `Profile Page`
+#### `Profile Page`
 
 | **Description**                              | **Functionality**            | **Test Steps**                                                            | **Expected Result**                         | **Actual Result**                          | **Status** | **Snapshot**                                                      |
 |----------------------------------------------|------------------------------|--------------------------------------------------------------------------|---------------------------------------------|--------------------------------------------|------------|--------------------------------------------------------------------|
@@ -94,7 +98,7 @@ Each feature was tested to ensure seamless user interactions, proper form valida
 | Verify smooth scrolling in the news panel    | Smooth Scrolling             | Use the mouse or touchpad to scroll through the news panel               | Smooth and uninterrupted scrolling experience | Smooth and uninterrupted scrolling experience | Pass       | ![Smooth Scrolling](./accountsphere/static/testing/feature_testing/news_panel.PNG) |
 
 
-### `Account Management Page`
+#### `Account Management Page`
 
 | **Description**                               | **Functionality**            | **Test Steps**                                                                                 | **Expected Result**                               | **Actual Result**                                | **Status** | **Snapshot**                                                               |
 |-----------------------------------------------|------------------------------|------------------------------------------------------------------------------------------------|-------------------------------------------------|-------------------------------------------------|------------|-------------------------------------------------------------------------|
@@ -104,7 +108,7 @@ Each feature was tested to ensure seamless user interactions, proper form valida
 | Verify responsiveness of the account page     | Account Page Responsiveness  | View the account management page on various devices and orientations                           | Layout adjusts appropriately                       | Layout adjusts appropriately                      | Pass       | ![Responsive Layout](./accountsphere/static/documentation/web_pages/account_dashboard.png)  |
 
 
-### `AD Group Management Page`
+#### `AD Group Management Page`
 
 | **Description**                               | **Functionality**            | **Test Steps**                                                                                  | **Expected Result**                               | **Actual Result**                                | **Status** | **Snapshot**                                                             |
 |-----------------------------------------------|------------------------------|------------------------------------------------------------------------------------------------|-------------------------------------------------|-------------------------------------------------|------------|-------------------------------------------------------------------------|
@@ -113,7 +117,7 @@ Each feature was tested to ensure seamless user interactions, proper form valida
 | Verify form validation during AD group creation| Form Validation              | Attempt to create an AD group with invalid data                                                 | Displays appropriate validation error messages   | Displays appropriate validation error messages   | Pass       | ![Form Validation](./accountsphere/static/testing/feature_testing/ad_validation.PNG)       |
 | Verify responsiveness of the AD group page    | AD Group Page Responsiveness  | View the AD group management page on various devices and orientations                           | Layout adjusts appropriately                       | Layout adjusts appropriately                       | Pass       | ![Responsive Layout](./accountsphere/static/documentation/web_pages/ad_group_page.png)  |
 
-### `Product Management Page`
+#### `Product Management Page`
 
 | **Description**                            | **Functionality**           | **Test Steps**                                                                                  | **Expected Result**                              | **Actual Result**                               | **Status** | **Snapshot**                                                             |
 |--------------------------------------------|-----------------------------|------------------------------------------------------------------------------------------------|------------------------------------------------|------------------------------------------------|------------|-------------------------------------------------------------------------|
@@ -122,7 +126,7 @@ Each feature was tested to ensure seamless user interactions, proper form valida
 | Verify form validation during product creation| Form Validation            | Attempt to create a product with invalid data                                                   | Displays appropriate validation error messages   | Displays appropriate validation error messages  | Pass       | ![Form Validation](./accountsphere/static/testing/feature_testing/product_validation.PNG)       |
 | Verify responsiveness of the product page | Product Page Responsiveness | View the product management page on various devices and orientations                            | Layout adjusts appropriately                      | Layout adjusts appropriately                      | Pass       | ![Responsive Layout](./accountsphere/static/documentation/web_pages/product_page.png)  |
 
-### `User Board Page`
+#### `User Board Page`
 
 | **Description**                           | **Functionality**           | **Test Steps**                                                                                  | **Expected Result**                               | **Actual Result**                                | **Status** | **Snapshot**                                                         |
 |-------------------------------------------|-----------------------------|------------------------------------------------------------------------------------------------|-------------------------------------------------|-------------------------------------------------|------------|---------------------------------------------------------------------|
@@ -130,25 +134,25 @@ Each feature was tested to ensure seamless user interactions, proper form valida
 | Verify search functionality for users    | User Search                 | Use the search bar to find specific users                                                       | Users matching search criteria are displayed      | Users matching search criteria are displayed      | Pass       | ![User Search](./accountsphere/static/documentation/web_pages/search_feature.PNG)      |
 | Verify responsiveness of the user page   | User Page Responsiveness    | View the user board page on various devices and orientations                                   | Layout adjusts appropriately                       | Layout adjusts appropriately                       | Pass       | ![Responsive Layout](./accountsphere/static/documentation/web_pages/user_page.png) |
 
-### `News Board Page`
+#### `News Board Page`
 
 | **Description** | **Functionality** | **Test Steps** | **Expected Result** | **Actual Result** | **Status** | **Snapshot** |
 |-----------------|-------------------|----------------|----------------------|------------------|------------|--------------|
 | Verify news board functionality | News Board | Navigate to the news board page <br> Create, update, delete news items | Manages news items correctly | Manages news items correctly | Pass | ![News Board](./accountsphere/static/documentation/web_pages/news_board.png) |
 
-### `Password Reset Page`
+#### `Password Reset Page`
 
 | **Description** | **Functionality** | **Test Steps** | **Expected Result** | **Actual Result** | **Status** | **Snapshot** |
 |-----------------|-------------------|----------------|----------------------|------------------|------------|--------------|
 | Verify password reset functionality | Password Reset | Load the password reset page <br> Enter existing password <br> Enter new password <br> Confirm new password <br> Update | Changes Password | Changes Password | Pass | ![Password Reset](./accountsphere/static/documentation/web_pages/change_password.png) |
 
-### `Logout Functionality`
+#### `Logout Functionality`
 
 | **Description** | **Functionality** | **Test Steps** | **Expected Result** | **Actual Result** | **Status** | **Snapshot** |
 |-----------------|-------------------|----------------|----------------------|------------------|------------|--------------|
 | Verify logout functionality | Logout | Navigate to the logout Icons <br> Click logout button | Logs out and redirects to welcome page | Logs out and redirects to welcome page | Pass | ![Logout](./accountsphere/static/documentation/web_pages/landing_page.png) |
 
-### `Error Pages`
+#### `Error Pages`
 
 | **Description** | **Functionality** | **Test Steps** | **Expected Result** | **Actual Result** | **Status** | **Snapshot** |
 |-----------------|-------------------|----------------|----------------------|------------------|------------|--------------|
@@ -156,11 +160,11 @@ Each feature was tested to ensure seamless user interactions, proper form valida
 
 - - -
 
-## User Story Testing
+### User Story Testing
 
 To verify that AccountSphere meets the needs of different user types, we conducted thorough user story testing based on their specific goals. Here's a detailed breakdown of how each role's CRUD functionalities were tested and achieved:
 
-### `First-Time User Stories`
+#### `First-Time User Stories`
 
 | **Action** | **How Was It Achieved?** |
 |---|---|
@@ -169,7 +173,7 @@ To verify that AccountSphere meets the needs of different user types, we conduct
 | **Update** | The dashboard allows users to customise their view, letting them prioritise frequently used features. |
 | **Delete** | Users can remove any test data created during onboarding via clear data management controls, ensuring accurate records. |
 
-### `Account Officer User Stories`
+#### `Account Officer User Stories`
 
 | **Action** | **How Was It Achieved?** |
 |---|---|
@@ -178,7 +182,7 @@ To verify that AccountSphere meets the needs of different user types, we conduct
 | **Update** | Officers can update client details directly on the account management page to ensure accurate data and compliance. |
 | **Delete** | They can deactivate or delete outdated client accounts through the account management dashboard to maintain a clean database. |
 
-### `Administrator User Stories`
+#### `Administrator User Stories`
 
 | **Action** | **How Was It Achieved?** |
 |---|---|
@@ -187,7 +191,7 @@ To verify that AccountSphere meets the needs of different user types, we conduct
 | **Update** | Permissions can be modified easily to reflect changing responsibilities, using the flexible role management controls. |
 | **Delete** | Administrators can remove inactive or unauthorised users via user management tools to ensure system security. |
 
-### `Product Manager User Stories`
+#### `Product Manager User Stories`
 
 | **Action** | **How Was It Achieved?** |
 |---|---|
@@ -195,7 +199,7 @@ To verify that AccountSphere meets the needs of different user types, we conduct
 | **Update** | Managers can update product details directly via the product page to ensure current and accurate information. |
 | **Delete** | Obsolete products can be archived or removed, helping managers maintain a clean product portfolio. |
 
-###    `News Analyst User Stories`
+####    `News Analyst User Stories`
 
 | **Action** | **How Was It Achieved?** |
 |---|---|
@@ -205,11 +209,11 @@ To verify that AccountSphere meets the needs of different user types, we conduct
 
 - - -
 
-## Browser Compatibility
+### Browser Compatibility
 
 AccountSphere was thoroughly tested to ensure consistent performance across different web browsers. This step is crucial to ensure that every user experiences the platform as intended regardless of their choice of browser.
 
-### `Tested Browsers`
+#### `Tested Browsers`
 
 | **Browser** | **Compatibility** | **Performance** |
 |-------------|--------------------|-----------------|
@@ -219,7 +223,7 @@ AccountSphere was thoroughly tested to ensure consistent performance across diff
 | **Microsoft Edge** | Fully Compatible | Excellent |
 | **Opera** | Fully Compatible | Excellent |
 
-### `Specific Tests Conducted`
+#### `Specific Tests Conducted`
 
 1. **Functionality Testing**:
    - All CRUD operations (Create, Read, Update, Delete) across all user roles were tested to ensure smooth functionality.
@@ -234,11 +238,11 @@ AccountSphere was thoroughly tested to ensure consistent performance across diff
 
 - - - 
 
-## Responsiveness Testing
+### Responsiveness Testing
 
 AccountSphere was designed with a mobile-first approach, ensuring that it provides an optimal user experience across devices of varying screen sizes. This testing process involved using browser developer tools and real devices to confirm that the platform is fully responsive.
 
-### `Tested Devices`
+#### `Tested Devices`
 
 | **Device** | **Screen Size** | **Compatibility** |
 |------------|-----------------|-------------------|
@@ -250,7 +254,7 @@ AccountSphere was designed with a mobile-first approach, ensuring that it provid
 | **Laptop (13-inch)** | 1280px x 800px | Fully Responsive |
 | **Desktop (Full HD)** | 1920px x 1080px | Fully Responsive |
 
-### `Testing Results`
+#### `Testing Results`
 
 1. **Navigation**:
    - The navigation menu was checked to ensure it adapts properly to smaller screen sizes.
@@ -263,7 +267,7 @@ AccountSphere was designed with a mobile-first approach, ensuring that it provid
 3. **Performance**:
    - Each page was tested for smooth scrolling, quick load times, and responsive interactions on all screen sizes.
 
-### Visual Examples of Responsiveness
+#### `Visual Examples of Responsiveness`
 
 | **Device** | **Screenshot** |
 |------------|----------------|
@@ -271,7 +275,7 @@ AccountSphere was designed with a mobile-first approach, ensuring that it provid
 | **iPad Mini** | ![iPad Mini Screenshot](./accountsphere/static/testing/responsiveness/ipad.PNG) |
 | **Laptop (13-inch)** | ![Laptop Screenshot](./accountsphere/static/testing/responsiveness/desktop.PNG) |
 
-### Tools Used
+#### `Tools Used`
 
 - **Google Chrome DevTools**: Verified responsiveness through simulated devices and screen sizes.
 - **BrowserStack**: Allowed live testing across multiple device simulators.
@@ -280,12 +284,13 @@ AccountSphere was designed with a mobile-first approach, ensuring that it provid
 The comprehensive responsiveness testing ensures that AccountSphere adapts flawlessly to different devices and screen sizes, providing a consistent, reliable experience for all users.
 
 - - - 
+## Automated Testing 
 
-## Code Validation
+### Code Validation
 
 To ensure AccountSphere adheres to web standards and delivers a high-quality experience across all browsers and platforms, extensive code validation was conducted. This involved using industry-standard tools to assess the HTML, CSS, JavaScript, and Python files against current web standards, accessibility guidelines, and best practices.
 
-### `HTML Validation`
+#### `HTML Validation`
 
 The HTML code from all pages in AccountSphere was validated using the [W3C Markup Validation Service](https://validator.w3.org/) to ensure they are error-free and standards-compliant.
 
@@ -312,7 +317,7 @@ The HTML code from all pages in AccountSphere was validated using the [W3C Marku
 | User Edit Page | ![HTML Validation](./accountsphere/static/testing/code_validation/html/edit_user.PNG) |
 
 
-### `CSS Validation`
+#### `CSS Validation`
 
 CSS files were checked using the [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/) to confirm adherence to CSS3 standards and improve visual consistency across platforms.
 
@@ -320,7 +325,7 @@ CSS files were checked using the [W3C CSS Validation Service](https://jigsaw.w3.
 |----------|-------------------|
 | Main Stylesheet | ![CSS Validation](./accountsphere/static/testing/code_validation/css/css_validator.PNG) |
 
-### `JavaScript Validation`
+#### `JavaScript Validation`
 
 JavaScript code was scrutinized for syntax errors and compatibility issues using [JSHint](https://jshint.com/), ensuring smooth functionality and interactivity across different browsers.
 
@@ -329,7 +334,7 @@ JavaScript code was scrutinized for syntax errors and compatibility issues using
 | Main Script | ![JavaScript Validation](./accountsphere/static/testing/code_validation/js/js_validator.PNG) |
 
 
-### `Python Validation`
+#### `Python Validation`
 
 All Python files were validated for PEP8 compliance using the [CI PEP8 Linter](https://pep8ci.herokuapp.com/). This step ensures that the Python code follows the coding conventions outlined in PEP8, improving code readability and maintainability.
 
@@ -344,11 +349,11 @@ Through these validation efforts, AccountSphere aims to maintain a high standard
 
 - - - 
 
-## Lighthouse Performance Assessment
+### Lighthouse Performance Assessment
 
 To ensure that the Accountsphere offers an optimised user experience, I conducted a series of performance and quality assessments using Google's Lighthouse tool within Chrome Developer Tools. This allowed me to evaluate the site's performance, accessibility, adherence to best practices, and SEO effectiveness across both desktop and mobile platforms. Here are the summarised results:
 
-### `Desktop Results`
+#### `Desktop Results`
 
 The desktop version of Accountsphere demonstrated excellent performance, with all pages scoring well above average in the key areas of performance, accessibility, best practices, and SEO.
 
@@ -358,7 +363,7 @@ The desktop version of Accountsphere demonstrated excellent performance, with al
 |![Desktop](./accountsphere/static/testing/lighthouse_testing/landing-d.PNG)|![Desktop](./accountsphere/static/testing/lighthouse_testing/register-d.PNG)|![Desktop](./accountsphere/static/testing/lighthouse_testing/login-d.PNG)|![Desktop](./accountsphere/static/testing/lighthouse_testing/profile-d.PNG)|![Desktop](./accountsphere/static/testing/lighthouse_testing/account-d.PNG)|![Desktop](./accountsphere/static/testing/lighthouse_testing/add_account-d.PNG) |![Desktop](./accountsphere/static/testing/lighthouse_testing/ad_group-d.PNG)|![Desktop](./accountsphere/static/testing/lighthouse_testing/add_ad_group-d.PNG)|![Desktop](./accountsphere/static/testing/lighthouse_testing/news-d.PNG)|
 
 
-### `Mobile Results`
+#### `Mobile Results`
 
 Similarly, the mobile version of Accountsphere achieved impressive results, ensuring a seamless experience for mobile users.
 
