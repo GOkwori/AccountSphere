@@ -701,6 +701,8 @@ The development of AccountSphere involves a range of modern web technologies and
 
 * [GitHub](https://github.com/) - Hosts the repository that can be deployed to GitHub Pages, providing backup and version control.
 
+* [Github Project Board](https://github.com/users/GOkwori/projects/3/views/3) - For project management and tracking.
+
 * [Heroku](https://www.heroku.com/) - A cloud platform as a service supporting several programming languages, used to deploy the web application.
 
 * [Jinja](https://jinja.palletsprojects.com/) - A modern and designer-friendly templating language for Python, modeled after Django’s templates. Used to dynamically render HTML templates.
