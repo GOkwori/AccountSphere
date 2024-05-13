@@ -31,7 +31,6 @@
 
 <body>
     <header>
-
         <!-- Check if the user is not on the login, home or register page -->
         {% if not (request.path == url_for('login') or request.path == url_for('home') or request.path ==
         url_for('register') or error_page) %}
@@ -93,42 +92,36 @@
                         <!-- Account Management, visible to administrators and account officers -->
                         {% if current_user.is_authenticated and (current_user.role == 'Administrator' or
                         current_user.role == 'Account Officer') %}
-                    <li class="nav-item">
+
                         <a class="nav-link" href="{{ url_for('account') }}">Account Management</a>
-                    </li>
-                    {% endif %}
 
-                    <!-- AD Groups, visible only to administrators -->
-                    {% if current_user.is_authenticated and current_user.role == 'Administrator' %}
-                    <li class="nav-item">
+                        {% endif %}
+
+                        <!-- AD Groups, visible only to administrators -->
+                        {% if current_user.is_authenticated and current_user.role == 'Administrator' %}
+
                         <a class="nav-link" href="{{ url_for('ad_group') }}">AD Groups</a>
-                    </li>
-                    {% endif %}
 
-                    <!-- News Board, visible to administrators and news analysts -->
-                    {% if current_user.is_authenticated and (current_user.role == 'Administrator' or current_user.role
-                    == 'News Analyst') %}
-                    <li class="nav-item">
+                        {% endif %}
+
+                        <!-- News Board, visible to administrators and news analysts -->
+                        {% if current_user.is_authenticated and (current_user.role == 'Administrator' or
+                        current_user.role
+                        == 'News Analyst') %}
                         <a class="nav-link" href="{{ url_for('news') }}">News Board</a>
-                    </li>
-                    {% endif %}
+                        {% endif %}
 
-                    <!-- Product Management, visible to administrators and product managers -->
-                    {% if current_user.is_authenticated and (current_user.role == 'Administrator' or current_user.role
-                    == 'Product Manager') %}
-                    <li class="nav-item">
+                        <!-- Product Management, visible to administrators and product managers -->
+                        {% if current_user.is_authenticated and (current_user.role == 'Administrator' or
+                        current_user.role
+                        == 'Product Manager') %}
                         <a class="nav-link" href="{{ url_for('product') }}">Product Management</a>
-                    </li>
-                    {% endif %}
+                        {% endif %}
 
-                    <!-- User Management, visible only to administrators -->
-                    {% if current_user.is_authenticated and current_user.role == 'Administrator' %}
-                    <li class="nav-item">
+                        <!-- User Management, visible only to administrators -->
+                        {% if current_user.is_authenticated and current_user.role == 'Administrator' %}
                         <a class="nav-link" href="{{ url_for('user') }}">User Management</a>
-                    </li>
-                    {% endif %}
-
-
+                        {% endif %}
                     </li>
 
                     <li class="nav-item">
