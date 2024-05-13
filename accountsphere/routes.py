@@ -118,6 +118,10 @@ def profile():
 @login_required
 def account():
 
+    if not current_user.is_administrator() and not current_user.is_account_officer():
+        flash("You do not have permission to view this page.", 'error')
+        return redirect(url_for('profile'))
+
     accounts = Account.query.options(joinedload(Account.product))\
         .order_by(Account.first_name, Account.last_name).all()
     return render_template("account.html", accounts=accounts)
@@ -127,6 +131,10 @@ def account():
 @app.route('/add_account', methods=['GET', 'POST'])
 @login_required
 def add_account():
+
+    if not current_user.is_administrator() and not current_user.is_account_officer():
+        flash("You do not have permission to perform this action.", 'error')
+        return redirect(url_for('profile'))
 
     products = Product.query.order_by(Product.name.asc()).all()
 
@@ -170,6 +178,9 @@ def add_account():
 @app.route('/edit_account/<int:account_id>', methods=['GET', 'POST'])
 @login_required
 def edit_account(account_id):
+    if not current_user.is_administrator() and not current_user.is_account_officer():
+        flash("You do not have permission to perform this action.", 'error')
+        return redirect(url_for('profile'))
 
     account = Account.query.get_or_404(account_id)
     products = Product.query.all()
@@ -196,6 +207,9 @@ def edit_account(account_id):
 @app.route('/delete_account/<int:account_id>')
 @login_required
 def delete_account(account_id):
+    if not current_user.is_administrator():
+        flash("You do not have permission to perform this action.", 'error')
+        return redirect(url_for('profile'))
 
     account = Account.query.get_or_404(account_id)
     db.session.delete(account)
@@ -212,6 +226,9 @@ def delete_account(account_id):
 @app.route('/account_search')
 @login_required
 def account_search():
+    if not current_user.is_administrator() and not current_user.is_account_officer():
+        flash("You do not have permission to perform this action.", 'error')
+        return redirect(url_for('profile'))
 
     query = request.args.get('query', '').strip()
 
