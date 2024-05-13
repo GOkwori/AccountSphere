@@ -90,8 +90,6 @@
                         <strong><i class="fa-solid fa-calendar me-2"></i>Dashboard</strong>
                         <hr>
 
-
-
                         <!-- Account Management, visible to administrators and account officers -->
                         {% if current_user.is_authenticated and (current_user.role == 'administrator' or
                         current_user.role == 'account officer') %}
@@ -128,7 +126,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('user_management') }}">User Management</a>
                     </li>
-                    {% endif %
+                    {% endif %}
 
 
                     </li>
