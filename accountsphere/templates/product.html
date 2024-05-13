@@ -11,10 +11,11 @@
             <div class="input-group">
                 <input type="text" class="form-control" name="query" placeholder="Search products">
                 <!-- Search Button -->
-                <button class="btn btn-outline-secondary" type="submit"><i class="fa-solid fa-search" title="Search"></i></button>
+                <button class="btn btn-outline-secondary" type="submit"><i class="fa-solid fa-search"
+                        title="Search"></i></button>
 
-                <a href="{{ url_for('product') }}" role="button" class="btn btn-outline-secondary ms-2" title="Clear Search"><i
-                        class="fa-solid fa-power-off"></i></a>
+                <a href="{{ url_for('product') }}" role="button" class="btn btn-outline-secondary ms-2"
+                    title="Clear Search"><i class="fa-solid fa-power-off"></i></a>
             </div>
         </form>
 
@@ -42,12 +43,12 @@
 
                 <!-- Product Buttons -->
                 <div class="card-footer text-center">
-                    <a href="{{ url_for('edit_product', product_id=product.id)}}" class="btn btn-primary" title="Edit"><i
-                        class="fa-solid fa-pen-to-square"></i></a>
+                    <a href="{{ url_for('edit_product', product_id=product.id)}}" class="btn btn-primary"
+                        title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-danger ms-2" data-bs-toggle="modal"
-                      data-bs-target="#deleteModal-{{ product.id }}" title="Delete">
-                      <i class="fa-solid fa-trash"></i>
+                        data-bs-target="#deleteModal-{{ product.id }}" title="Delete">
+                        <i class="fa-solid fa-trash"></i>
                     </button>
                 </div>
             </div>
