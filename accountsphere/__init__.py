@@ -27,18 +27,16 @@ else:
     app.config["SQLALCHEMY_DATABASE_URI"] = uri
 
 # Initialize the application with the database
-db = SQLAlchemy(app)    # Initialize SQLAlchemy
-migrate = Migrate(app, db)    # Initialize Flask-Migrate
-bcrypt = Bcrypt(app)    # Initialize Bcrypt
-login_manager = LoginManager(app)    # Initialize
-login_manager.login_view = 'login'    # Set the login view for the application
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+bcrypt = Bcrypt(app)
+login_manager = LoginManager(app)
+login_manager.login_view = 'login'
 
 # Import routes and models from the application
 from accountsphere import routes, models
-
 
 # User loader function to load the user by ID
 @login_manager.user_loader
 def load_user(user_id):
     return models.User.query.get(int(user_id))
-
