@@ -31,12 +31,12 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
-login_manager.login_view = 'auth.login'
-login_manager.anonymous_user = AnonymousUser
+login_manager.login_view = 'login'
+
 
 # Import routes and models from the application
 from accountsphere import routes, models
-from .models import AnonymousUser
+
 
 # User loader function to load the user by ID
 @login_manager.user_loader
