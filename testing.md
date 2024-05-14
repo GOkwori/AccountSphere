@@ -23,7 +23,7 @@ Throughout the development process, Chrome Developer Tools and other browser too
 To ensure responsiveness across multiple screen sizes and devices, every page was tested using Chrome Developer Tools and Microsoft Edge Inspector.
 
 - - -
-## Manual Testing 
+## MANUAL TESTING 
 
 ### RBAC Security Testing
 
@@ -284,7 +284,7 @@ AccountSphere was designed with a mobile-first approach, ensuring that it provid
 The comprehensive responsiveness testing ensures that AccountSphere adapts flawlessly to different devices and screen sizes, providing a consistent, reliable experience for all users.
 
 - - - 
-## Automated Testing 
+## AUTOMATED TESTING 
 
 ### Code Validation
 
