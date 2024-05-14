@@ -380,9 +380,6 @@ The AccountSphere web application provides a comprehensive solution for financia
 
 These features collectively contribute to a robust financial management platform that addresses the unique needs of different user roles, ensuring accurate, efficient, and secure workflows.
 
-<details>
-  <summary>Expand to view web pages</summary>
-
 #### `Login Page`
 ![Login Page](./accountsphere/static/documentation/web_pages/login_page.png)
 
@@ -591,7 +588,6 @@ The 404 error page provides a user-friendly way to handle navigation issues:
 * `Consistent Design`: Maintains the overall style of the platform to ensure a cohesive user experience, even in error states.
 
 * `Mobile Responsiveness`: Adapts gracefully across screen sizes to ensure users can always recover from errors on any device.
-</details>
 
 ### Future Implementations
 
