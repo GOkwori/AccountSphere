@@ -4,7 +4,7 @@
 <div class="container-fluid p-0">
   <!-- Top header row to align with nav bar -->
   <div class="row mt-2 align-items-center" id="profile-container">
-    <div class="col-md-6">
+    <div class="col-md-6" id="name-container">
       <!-- Check if user is authenticated -->
       {% if current_user.is_authenticated %}
       <div id="user-data" data-name="{{ current_user.first_name | safe }}" style="display: none"></div>
@@ -13,7 +13,7 @@
       </div>
       {% endif %}
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6" id="time-container">
       <!-- Day and Time -->
       <div class="text-end dash-end">
         <i class="fa-solid fa-business-time me-2 py-0 mt-1"></i>
