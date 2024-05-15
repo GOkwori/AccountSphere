@@ -145,22 +145,21 @@
         </div>
     </header>
 
-    <section>
-        <!-- Flash Messages -->
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        <div class="alert alert-secondary alert-dismissible fade show text-center" id="flash-messages">
-            {% for message in messages %}
-            <div class="flash-message"> {{message}} </div>
-            {% endfor %}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        {% endif %}
-        {% endwith %}
-    </section>
-
     <!-- Main Content -->
     <main class="container-fluid" id="main-content">
+        <div>
+            <!-- Flash Messages -->
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class="alert alert-secondary alert-dismissible fade show text-center" id="flash-messages">
+                {% for message in messages %}
+                <div class="flash-message"> {{message}} </div>
+                {% endfor %}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endif %}
+            {% endwith %}
+        </div>
         {% block content %}
         {% endblock %}
     </main>
