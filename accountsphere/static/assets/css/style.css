@@ -33,6 +33,9 @@ body {
   transition: margin-left 0.3s;
 }
 
+#flash {
+  margin-top: auto;
+}
 
 /* Navbar */
 .navbar {
