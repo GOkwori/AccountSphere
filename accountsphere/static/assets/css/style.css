@@ -33,12 +33,6 @@ body {
   transition: margin-left 0.3s;
 }
 
-#flash {
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 1000;
-}
 
 /* Navbar */
 .navbar {
@@ -903,6 +897,10 @@ footer i {
 
   #profile-container {
     width: 100%;
+  }
+
+  #flash {
+    margin: 2% 0 0 0;
   }
 
   .section_1 {
