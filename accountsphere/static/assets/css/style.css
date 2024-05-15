@@ -639,7 +639,7 @@ footer i {
   }
 
   /* Table Container on forms */
-  .table-responsive-sm {
+  .table-responsive {
     width: 100%;
   }
 
@@ -727,7 +727,7 @@ footer i {
   }
 
   /* Table Container on forms */
-  .table-responsive-sm {
+  .table-responsive {
     width: 100%;
   }
 
@@ -796,8 +796,14 @@ footer i {
   }
 
   /* Table Container on forms */
-  .table-responsive-sm {
-    width: 100%;
+  .table-responsive {
+    display: none;
+  }
+  .card-deck-wrapper {
+    display: block;
+    border-radius: 10px;
+    font-size: xx-small;
+    background-color: #fff;
   }
 
   .table i {
