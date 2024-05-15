@@ -33,6 +33,12 @@ body {
   transition: margin-left 0.3s;
 }
 
+#flash {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+}
 
 /* Navbar */
 .navbar {
