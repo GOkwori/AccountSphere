@@ -658,6 +658,11 @@ footer i {
     margin: 7% 0 0 0;
   }
 
+  #profile-container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
 
   .dash-content {
     padding: 15px;
