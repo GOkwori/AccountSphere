@@ -31,24 +31,20 @@ def role_required(*roles):
 # Define the register route
 @app.route("/register", methods=["GET", "POST"])
 def register():
-    # Define the allowed roles
-    allowed_roles = ['Account Officer', 'News Analyst', 'Product Manager']
-    # Fetch only groups that match the allowed roles
-    groups = Group.query.filter(Group.role.in_(allowed_roles)).all()
+    # Fetch all groups except the 'Administrator'
+    groups = Group.query.filter(Group.name != 'Administrator').all()
     if request.method == "POST":
-        # Existing code to handle registration
         username = request.form.get("username")
         email = request.form.get("email")
         password = request.form.get("password")
         confirm_password = request.form.get("confirm_password")
         role = request.form.get("role")
 
-        # Ensure the role is one of the allowed roles
-        if role not in allowed_roles:
+        # Check if the role is 'Administrator' by mistake or bypass
+        if role == 'Administrator':
             flash("Invalid role selected!")
             return render_template("register.html", groups=groups)
 
-        # Check for existing users by username or email
         if User.query.filter_by(username=username).first():
             flash("Username already exists!")
             return render_template("register.html", groups=groups)
@@ -61,23 +57,20 @@ def register():
             flash("Passwords do not match!")
             return render_template("register.html", groups=groups)
 
-        # Create new user if all checks pass
         new_user = User(
             first_name=request.form.get("first_name"),
             last_name=request.form.get("last_name"),
             username=username,
             email=email,
             password_hash=generate_password_hash(password),
-            role=role  # make sure 'role' is captured correctly
+            role=role
         )
         db.session.add(new_user)
         db.session.commit()
         flash("User created successfully, you can now log-in!")
         return redirect(url_for('login'))
 
-    # Render the registration page with filtered groups
     return render_template("register.html", groups=groups)
-
 
 
 # Define the login route
