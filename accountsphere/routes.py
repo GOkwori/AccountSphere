@@ -31,6 +31,8 @@ def role_required(*roles):
 # Define the register route
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    # Define the allowed roles
+    allowed_roles = ['Account Officer', 'News Analyst', 'Product Manager']
     groups = Group.query.all()
     if request.method == "POST":
         username = request.form.get("username")
