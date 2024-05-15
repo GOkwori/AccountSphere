@@ -33,8 +33,9 @@ body {
   transition: margin-left 0.3s;
 }
 
+/* Flash Messages */
 #flash {
-  margin-top: auto;
+  margin-top: 1%;
   padding-top: auto;
 }
 
