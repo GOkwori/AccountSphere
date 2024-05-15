@@ -31,28 +31,28 @@
 
 <body>
     <header>
-
         <!-- Navigation Bar -->
         <nav class="navbar navbar-expand fixed-top">
             <div class="container-fluid">
                 <!-- Toggle Button for Offcanvas Sidebar and Brand Logo -->
                 <div class="d-flex align-items-center">
                     {% if not (request.path == url_for('login') or request.path == url_for('home') or request.path ==
-        url_for('register') or error_page) %}
+                    url_for('register') or error_page) %}
                     <button class="btn btn-primary me-2" type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
                         <i class="fas fa-bars" id="staticBackdropLabel"></i>
                     </button>
+                    {% endif %}
                     <a class="navbar-brand" href="{{url_for('profile')}}">
                         <img class="logo" src="{{ url_for('static', filename='assets/images/image_8.jpg')}}" alt="logo">
                     </a>
-                    {% endif %}
+
                 </div>
 
                 <!-- Right-aligned Nav Links -->
                 <div class="d-flex justify-content-end flex-grow-1 pe-3">
                     {% if not (request.path == url_for('login') or request.path == url_for('home') or request.path ==
-        url_for('register') or error_page) %}
+                    url_for('register') or error_page) %}
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link d-none d-sm-block" href="{{url_for('password_reset')}}"
@@ -67,7 +67,7 @@
                 </div>
             </div>
         </nav>
-   
+
 
         <!-- Offcanvas Sidebar -->
         <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop"
