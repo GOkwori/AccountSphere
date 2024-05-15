@@ -27,7 +27,7 @@ body {
 
 /* Main Content */
 #main-content {
-  margin: 3% 0 0 0;
+  margin: 2% 0 0 0;
   padding: 0;
   flex: 1 0 auto;
   transition: margin-left 0.3s;
@@ -892,7 +892,7 @@ footer i {
 
 @media (min-width: 1500px) and (max-width: 1920px) {
   #main-content {
-    margin: 3% 0 0 0;
+    margin: 2% 0 0 0;
   }
 
   #profile-container {
