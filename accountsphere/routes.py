@@ -21,7 +21,7 @@ def role_required(*roles):
         def decorated_function(*args, **kwargs):
             # Check if not logged in or if the current user's role is not in the allowed roles
             if not current_user.is_authenticated or current_user.role not in roles:
-                flash("You do not have permission to perform this action.", 'error')
+                flash("You do not have permission to perform this action!")
                 return redirect(url_for('profile'))
             return f(*args, **kwargs)
         return decorated_function
@@ -39,15 +39,15 @@ def register():
         confirm_password = request.form.get("confirm_password")
 
         if User.query.filter_by(username=username).first():
-            flash("Username already exists.", "error")
+            flash("Username already exists!")
             return render_template("register.html", groups=groups)
 
         if User.query.filter_by(email=email).first():
-            flash("Email already exists.", "error")
+            flash("Email already exists!")
             return render_template("register.html", groups=groups)
 
         if password != confirm_password:
-            flash("Passwords do not match.", "error")
+            flash("Passwords do not match!")
             return render_template("register.html", groups=groups)
 
         new_user = User(
@@ -60,7 +60,7 @@ def register():
         )
         db.session.add(new_user)
         db.session.commit()
-        flash("Account created successfully", 'success')
+        flash("User created successfully, you can now log-in!")
         return redirect(url_for('login'))
 
     return render_template("register.html", groups=groups)
@@ -75,10 +75,10 @@ def login():
         user = User.query.filter_by(username=username).first()
         if user and check_password_hash(user.password_hash, password):
             login_user(user)
-            flash('Login successful!', 'success')
+            flash('Login successful!')
             return redirect(url_for('profile'))
         else:
-            flash('Invalid username or password.', 'error')
+            flash('Invalid username or password!')
     return render_template("login.html")
 
 
@@ -87,7 +87,7 @@ def login():
 @login_required
 def logout():
     logout_user()
-    flash("You have been logged out.")
+    flash("You have been logged out!")
     return redirect(url_for("home"))
 
 
@@ -101,20 +101,20 @@ def password_reset():
         confirm_password = request.form.get('confirm_password')
 
         if not check_password_hash(current_user.password_hash, old_password):
-            flash('Old password is incorrect.', 'error')
+            flash('Old password is incorrect!')
             return redirect(url_for('password_reset'))
 
         if new_password != confirm_password:
-            flash('New passwords do not match.', 'error')
+            flash('New passwords do not match!')
             return redirect(url_for('password_reset'))
 
         if check_password_hash(current_user.password_hash, new_password):
-            flash('New password must be different from the old password.', 'error')
+            flash('New password must be different from the old password!')
             return redirect(url_for('password_reset'))
 
         current_user.password_hash = generate_password_hash(new_password)
         db.session.commit()
-        flash('Your password has been updated successfully!', 'success')
+        flash('Your password has been updated successfully!')
         return redirect(url_for('profile'))
 
     return render_template('password_reset.html')
@@ -159,7 +159,7 @@ def add_account():
         currency = request.form.get('currency')
         existing_account = Account.query.filter_by(email=email).first()
         if existing_account:
-            flash('An account with this email already exists.', 'error')
+            flash('An account with this email already exists!')
             return render_template('add_account.html', products=products)
 
         account = Account(
@@ -177,7 +177,7 @@ def add_account():
 
         db.session.add(account)
         db.session.commit()
-        flash('Account created successfully!', 'success')
+        flash('Account created successfully!')
         return redirect(url_for('account'))
 
     return render_template('add_account.html', products=products)
@@ -204,7 +204,7 @@ def edit_account(account_id):
 
         db.session.add(account)
         db.session.commit()
-        flash('Account updated successfully!', 'success')
+        flash('Account updated successfully!')
         return redirect(url_for('account', success=True))
 
     return render_template('edit_account.html', account=account, products=products)
@@ -220,10 +220,10 @@ def delete_account(account_id):
     db.session.delete(account)
     try:
         db.session.commit()
-        flash('Account deleted successfully!', 'success')
+        flash('Account deleted successfully!')
     except Exception as e:
         db.session.rollback()
-        flash(f'Error deleting account: {str(e)}', 'error')
+        flash(f'Error deleting account: {str(e)}')
     return redirect(url_for('account'))
 
 
@@ -276,12 +276,12 @@ def add_ad_group():
         group_type = request.form.get("group_type")
 
         if not name or not description or not group_type:
-            flash("All fields are required.")
+            flash("All fields are required!")
             return render_template("add_ad_group.html")
 
         existing_group = Group.query.filter_by(name=name).first()
         if existing_group:
-            flash("An AD-Group with this name already exists.")
+            flash("An AD-Group with this name already exists!")
             return render_template("add_ad_group.html")
 
         new_group = Group(name=name, description=description,
@@ -376,13 +376,13 @@ def add_news():
         description = request.form.get("description")
 
         if not headline or not description:
-            flash("All fields are required.")
+            flash("All fields are required!")
             return render_template("add_news.html")
 
         existing_news_item = NewsItem.query.filter_by(
             headline=headline).first()
         if existing_news_item:
-            flash("A news item with this headline already exists.")
+            flash("A news item with this headline already exists!")
             return render_template("add_news.html")
 
         news_item = NewsItem(headline=headline, description=description)
@@ -480,7 +480,7 @@ def add_product():
             (Product.name == name) |
             (Product.description == description)).first()
         if existing_product:
-            flash("This product name or description already exists.")
+            flash("This product name or description already exists!")
             return render_template("add_product.html")
 
         new_product = Product(
@@ -580,10 +580,10 @@ def add_user():
         email = request.form.get("email")
 
         if User.query.filter_by(username=username).first():
-            flash("Username already exists.")
+            flash("Username already exists!")
             return render_template("add_user.html", groups=groups)
         if User.query.filter_by(email=email).first():
-            flash("Email already exists.")
+            flash("Email already exists!")
             return render_template("add_user.html", groups=groups)
 
         user = User(

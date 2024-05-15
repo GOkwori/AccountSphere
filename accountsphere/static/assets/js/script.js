@@ -16,31 +16,6 @@ document.addEventListener("DOMContentLoaded", function () {
     accountTypeSelect.addEventListener("change", updateProductID);
   }
 
-  // Handle flash messages
-  function handleFlashMessages() {
-    const flashMessagesContainer = document.getElementById("flash-messages");
-    if (flashMessagesContainer) {
-      const messages =
-        flashMessagesContainer.querySelectorAll(".flash-message");
-      if (messages.length > 0) {
-        console.log(`Found ${messages.length} flash messages.`);
-        messages.forEach((messageDiv) => {
-          setTimeout(() => {
-            const message = messageDiv.getAttribute("data-message");
-            const category = messageDiv.getAttribute("data-category");
-            alert(`${category.toUpperCase()}: ${message}`);
-          }, 100);
-        });
-      } else {
-        console.log("No flash messages found.");
-      }
-    } else {
-      console.log("Flash messages container not found.");
-    }
-  }
-
-  handleFlashMessages();
-
   // Update day and time panel
   const dateTimeElement = document.getElementById("datetime");
 

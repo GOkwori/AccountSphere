@@ -139,20 +139,22 @@
                     <p>Copyright &copy; 2024 AccountSphere</p>
                 </div>
             </div>
-
-            <!-- Flash Messages -->
-            {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-            <div id="flash-messages">
-                {% for category, message in messages %}
-                <div class="flash-message" data-category="{{ category }}" data-message="{{ message }}"></div>
-                {% endfor %}
-            </div>
-            {% endif %}
-            {% endwith %}
         </div>
-
     </header>
+
+    <section>
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="alert alert-secondary alert-dismissible fade show text-center" id="flash-messages">
+            {% for message in messages %}
+            <div class="flash-message"> {{message}} </div>
+            {% endfor %}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+        {% endwith %}
+    </section>
 
     <!-- Main Content -->
     <main class="container-fluid" id="main-content">
