@@ -4,7 +4,7 @@
 <div class="container-fluid p-0">
   <!-- Top header row to align with nav bar -->
   <div class="row align-items-center" id="profile-container">
-    <div class="col-md-6" id="name-container">
+    <div class="col-md-6 mt-2" id="name-container">
       <!-- Check if user is authenticated -->
       {% if current_user.is_authenticated %}
       <div id="user-data" data-name="{{ current_user.first_name | safe }}" style="display: none"></div>
