@@ -151,7 +151,7 @@
             <!-- Flash Messages -->
             {% with messages = get_flashed_messages() %}
             {% if messages %}
-            <div class="alert alert-secondary alert-dismissible fade show text-center" id="flash-messages">
+            <div class="alert alert-info alert-dismissible fade show text-center" id="flash-messages">
                 {% for message in messages %}
                 <div class="flash-message"> {{message}} </div>
                 {% endfor %}
