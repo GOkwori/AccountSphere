@@ -404,7 +404,7 @@ label {
   border-color: #3a405a;
 }
 
-.table-responsive-sm {
+.table-responsive {
   width: 100%;
 }
 
@@ -642,7 +642,7 @@ footer i {
 
 
   /* Table Container on forms */
-  .table-responsive-sm {
+  .table-responsive {
     width: 100%;
   }
 
@@ -731,7 +731,7 @@ footer i {
   }
 
   /* Table Container on forms */
-  .table-responsive-sm {
+  .table-responsive {
     width: 100%;
   }
 
@@ -800,7 +800,7 @@ footer i {
   }
 
   /* Table Container on forms */
-  .table-responsive-sm {
+  .table-responsive {
     width: 100%;
   }
 
