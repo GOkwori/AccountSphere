@@ -1,33 +1,39 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Function to update product ID
   function updateProductID() {
-    var accountTypeSelect = document.getElementById("account_type");
-    var productIdInput = document.getElementById("product_id");
+    const accountTypeSelect = document.getElementById("account_type");
+    const productIdInput = document.getElementById("product_id");
     if (accountTypeSelect && productIdInput) {
       productIdInput.value = accountTypeSelect.value;
       console.log("Product ID updated to: " + accountTypeSelect.value);
     } else {
-      console.log("Error: Elements not found.");
+      console.error("Error: Elements not found.");
     }
   }
 
-  var accountTypeSelect = document.getElementById("account_type");
+  const accountTypeSelect = document.getElementById("account_type");
   if (accountTypeSelect) {
     accountTypeSelect.addEventListener("change", updateProductID);
+  } else {
+    console.error("Error: Element with id 'account_type' not found.");
   }
 
   // Update day and time panel
   const dateTimeElement = document.getElementById("datetime");
 
   function updateDateTime() {
-    const now = new Date();
-    const dateString = now.toLocaleDateString("en-US", { weekday: "long" });
-    const timeString = now.toLocaleTimeString("en-US", {
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-    });
-    dateTimeElement.innerHTML = `<span>${dateString}</span> <span>${timeString}</span>`;
+    if (dateTimeElement) {
+      const now = new Date();
+      const dateString = now.toLocaleDateString("en-US", { weekday: "long" });
+      const timeString = now.toLocaleTimeString("en-US", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+      });
+      dateTimeElement.innerHTML = `<span>${dateString}</span> <span>${timeString}</span>`;
+    } else {
+      console.error("Error: Element with id 'datetime' not found.");
+    }
   }
 
   setInterval(updateDateTime, 1000);
@@ -38,13 +44,17 @@ document.addEventListener("DOMContentLoaded", function () {
   const userName = userDataDiv ? userDataDiv.dataset.name : "User";
 
   function updateGreeting() {
-    const hours = new Date().getHours();
-    let greeting = "Good Day,";
-    if (hours < 12) greeting = "Good Morning";
-    else if (hours < 16) greeting = "Good Afternoon";
-    else greeting = "Good Evening";
-    greetingElement.textContent = `${greeting} ${userName}`;
-    smoothScrollGreeting(greetingElement);
+    if (greetingElement) {
+      const hours = new Date().getHours();
+      let greeting = "Good Day,";
+      if (hours < 12) greeting = "Good Morning";
+      else if (hours < 16) greeting = "Good Afternoon";
+      else greeting = "Good Evening";
+      greetingElement.textContent = `${greeting} ${userName}`;
+      smoothScrollGreeting(greetingElement);
+    } else {
+      console.error("Error: Element with id 'greeting' not found.");
+    }
   }
 
   updateGreeting();
@@ -66,38 +76,37 @@ document.addEventListener("DOMContentLoaded", function () {
   // Smooth scroll for the news panel
   function smoothScrollNews() {
     const newsPanel = document.querySelector(".news-panel");
-    if (!newsPanel) {
-      console.error("News panel element not found!");
-      return;
-    }
+    if (newsPanel) {
+      let lastPosition = -1;
+      let frame;
 
-    let lastPosition = -1;
-    let frame;
-
-    function scroll() {
-      if (newsPanel.scrollTop !== lastPosition) {
-        lastPosition = newsPanel.scrollTop;
-        newsPanel.scrollTop = lastPosition + 1;
-      } else {
-        newsPanel.scrollTop = 0; // Reset if reached the bottom
+      function scroll() {
+        if (newsPanel.scrollTop !== lastPosition) {
+          lastPosition = newsPanel.scrollTop;
+          newsPanel.scrollTop = lastPosition + 1;
+        } else {
+          newsPanel.scrollTop = 0; // Reset if reached the bottom
+        }
+        frame = requestAnimationFrame(scroll);
       }
-      frame = requestAnimationFrame(scroll);
+
+      function stopScrolling() {
+        cancelAnimationFrame(frame);
+        frame = requestAnimationFrame(scroll); // Restart scrolling
+      }
+
+      newsPanel.addEventListener("mouseenter", function () {
+        cancelAnimationFrame(frame); // Pause on hover
+      });
+
+      newsPanel.addEventListener("mouseleave", function () {
+        stopScrolling(); // Resume scrolling
+      });
+
+      scroll(); // Start scrolling
+    } else {
+      console.error("Error: News panel element not found.");
     }
-
-    function stopScrolling() {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(scroll); // Restart scrolling
-    }
-
-    newsPanel.addEventListener("mouseenter", function () {
-      cancelAnimationFrame(frame); // Pause on hover
-    });
-
-    newsPanel.addEventListener("mouseleave", function () {
-      stopScrolling(); // Resume scrolling
-    });
-
-    scroll(); // Start scrolling
   }
 
   smoothScrollNews();
