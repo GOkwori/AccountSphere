@@ -17,5 +17,4 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     console.error("Error: Element with id 'account_type' not found.");
   }
-
 });
