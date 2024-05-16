@@ -418,9 +418,6 @@ label {
   color: #3a405a;
 }
 
-.d-sm-none {
-  display: none;
-}
 
 /* Modal */
 .modal {
@@ -643,6 +640,7 @@ footer i {
     width: 100%;
   }
 
+
   /* Table Container on forms */
   .table-responsive-sm {
     width: 100%;
@@ -651,6 +649,10 @@ footer i {
   .table i {
     margin: 0 !important;
     padding-left: 5px;
+  }
+
+  .d-sm-none {
+    display: none;
   }
 
   /* Footer */
