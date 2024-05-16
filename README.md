@@ -46,6 +46,7 @@ AccountSphere empowers you to manage your financial workflows seamlessly in one 
   - [Wireframes](#wireframes)
   - [FlowChart](#flowchart)
   - [Entity-Relationship Diagram](#entity-relationship-diagram)
+  - [Role-Based Access Control](#role-based-access-control)
   - [Features](#features)
     - [Landing Page](#landing-page)
     - [Login Page](#login-page)
@@ -337,6 +338,24 @@ In this diagram:
 ![ERD](./accountsphere/static/documentation/entity_diagram/erd.PNG)
 
 This diagram not only showcases the logical structure of the database but also provides insight into how CRUD operations are performed across different modules in the application. Understanding this structure is essential for maintaining, enhancing, and scaling the application over time.
+
+### Role-Based Access Control (RBAC)
+
+The application employs Role-Based Access Control (RBAC) to manage user permissions and ensure that only authorized users can access certain functionalities. This approach enhances security by limiting access to sensitive operations based on the user's role within the system.
+
+#### `Roles Defined`
+- **Administrator:** Has the highest level of access, including managing users, groups, products, accounts, and news items.
+- **Account Officer:** Responsible for managing accounts, including adding and editing accounts.
+- **News Analyst:** Responsible for managing news items, including adding, editing, and deleting news.
+- **Product Manager:** Responsible for managing products, including adding and editing products.
+
+#### `RBAC Implementation`
+
+RBAC is implemented using a decorator function, `role_required`, which checks if the currently logged-in user has the required role(s) to access a specific route. If the user does not have the necessary permissions, they are redirected to the profile page with a flash message indicating insufficient permissions.
+
+#### `Administrator Role Protection`
+
+To protect the administrator role from being selected by public users during registration, it is excluded from the list of roles presented in the registration form. This is done by filtering out the 'Administrator' role from the available options.
 
 ### Features
 
