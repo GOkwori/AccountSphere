@@ -404,8 +404,12 @@ label {
   border-color: #3a405a;
 }
 
-.table-responsive {
+.table-responsive-sm {
   width: 20%;
+}
+
+.card-deck-wrapper {
+  display: none
 }
 
 .table {
@@ -639,8 +643,16 @@ footer i {
   }
 
   /* Table Container on forms */
-  .table-responsive {
+  .table-responsive-sm {
     width: 100%;
+    display: none;
+  }
+
+  .card-deck-wrapper {
+    display: block;
+    border-radius: 10px;
+    font-size: xx-small;
+    background-color: #fff;
   }
 
   .table i {
@@ -727,8 +739,12 @@ footer i {
   }
 
   /* Table Container on forms */
-  .table-responsive {
+  .table-responsive-sm {
     width: 100%;
+  }
+
+  .card-deck-wrapper {
+    display: none
   }
 
   .table i {
@@ -796,14 +812,9 @@ footer i {
   }
 
   /* Table Container on forms */
-  .table-responsive {
-    display: none;
-  }
+  
   .card-deck-wrapper {
-    display: block;
-    border-radius: 10px;
-    font-size: xx-small;
-    background-color: #fff;
+    display: none;
   }
 
   .table i {
@@ -839,6 +850,10 @@ footer i {
   /* Forms */
   .form-content {
     width: 70%;
+  }
+
+  .card-deck-wrapper {
+    display: none
   }
 
   /* Login Form */
@@ -898,6 +913,10 @@ footer i {
     height: 40vh;
   }
 
+  .card-deck-wrapper {
+    display: none;
+  }
+
   /* Footer */
   #footer-container {
     margin: 0;
@@ -945,6 +964,10 @@ footer i {
   #landing-section {
     padding-top: 1%;
     height: 40vh;
+  }
+
+  .card-deck-wrapper {
+    display: none;
   }
 
   /* Footer */
