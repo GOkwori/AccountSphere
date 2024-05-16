@@ -69,28 +69,6 @@
           </td>
         </tr>
 
-        <!-- Cards View (visible on small screens) -->
-        <div class="card-deck-wrapper d-flex d-sm-block d-md-none d-lg-none">
-          <div class="card-deck">
-            {% for account in accounts %}
-            <div class="card mb-3">
-              <div class="card-body">
-                <h5 class="card-title">{{ account.first_name }} {{ account.last_name }}</h5>
-                <p class="card-text"><strong>Email:</strong> {{ account.email }}</p>
-                <p class="card-text"><strong>Phone:</strong> {{ account.phone_number }}</p>
-                <p class="card-text"><strong>Product:</strong> {{ account.product.name }}</p>
-                <p class="card-text"><strong>Currency:</strong> {{ account.currency }}</p>
-                <p class="card-text"><strong>Balance:</strong> ${"{:,.2f}".format(account.balance)}</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <a href="{{ url_for('edit_account', account_id=account.id)}}" class="btn btn-primary">Edit</a>
-                  <button class="btn btn-danger" data-bs-toggle="modal"
-                    data-bs-target="#deleteModal-{{ account.id }}">Delete</button>
-                </div>
-              </div>
-            </div>
-            {% endfor %}
-          </div>
-        </div>
 
         <!-- Modal for each account -->
         <div class="modal fade" id="deleteModal-{{ account.id }}" tabindex="-1"
@@ -133,4 +111,29 @@
     {% endif %}
   </div>
 </div>
+
+<!-- Cards View (visible on small screens) -->
+<div class="card-deck-wrapper d-flex d-sm-block d-md-none d-lg-none">
+  <div class="card-deck">
+    {% for account in accounts %}
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">{{ account.first_name }} {{ account.last_name }}</h5>
+        <p class="card-text"><strong>Email:</strong> {{ account.email }}</p>
+        <p class="card-text"><strong>Phone:</strong> {{ account.phone_number }}</p>
+        <p class="card-text"><strong>Product:</strong> {{ account.product.name }}</p>
+        <p class="card-text"><strong>Currency:</strong> {{ account.currency }}</p>
+        <p class="card-text"><strong>Balance:</strong> ${"{:,.2f}".format(account.balance)}</p>
+        <div class="d-flex justify-content-between align-items-center">
+          <a href="{{ url_for('edit_account', account_id=account.id)}}" aria-label="Edit Account" title="Edit"><i
+              class="fa-solid fa-pen-to-square me-4"></i></a>
+          <a role="button" data-bs-toggle="modal" data-bs-target="#deleteModal-{{ account.id }}" title="Delete"><i
+              class="fa-solid fa-trash"></i></a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
 {% endblock %}
