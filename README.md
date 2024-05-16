@@ -341,7 +341,7 @@ This diagram not only showcases the logical structure of the database but also p
 
 ### Role-Based Access Control
 
-The application employs Role-Based Access Control (RBAC) to manage user permissions and ensure that only authorized users can access certain functionalities. This approach enhances security by limiting access to sensitive operations based on the user's role within the system.
+The application employs Role-Based Access Control (RBAC) to manage user permissions and ensure that only authorised users can access certain functionalities. This approach enhances security by limiting access to sensitive operations based on the user's role within the system.
 
 #### `Roles Defined`
 - **Administrator:** Has the highest level of access, including managing users, groups, products, accounts, and news items.
@@ -376,7 +376,7 @@ The AccountSphere web application provides a comprehensive solution for financia
 * `Mobile-Friendly Layout`: The application's responsive design ensures a seamless user experience across desktops, tablets, and mobile devices. Content adapts dynamically to different screen sizes, maintaining usability and clarity across devices.
 
 
-* `Access Control`: Role-based access control ensures that each user has permissions aligned with their role, whether it's an Account Officer, Administrator, Product Manager, or News Analyst. This minimises risks associated with data security and unauthorized access.
+* `Access Control`: Role-based access control ensures that each user has permissions aligned with their role, whether it's an Account Officer, Administrator, Product Manager, or News Analyst. This minimises risks associated with data security and unauthorised access.
 
 **Specific Role-Based Features:**
 
@@ -784,7 +784,7 @@ The development of AccountSphere involved identifying and resolving several bugs
 | 3 | `Database connection timeout` | The application experienced frequent database timeouts. | Optimised database queries and revalidated database connection settings. |
 | 4 | `Responsive layout issues` | Some pages were not displaying correctly on mobile devices. | Applied additional responsive CSS fixes to ensure compatibility across all devices. |
 | 5 | `Search functionality not working` | The search feature in user management was returning incorrect results. | Refined the search algorithm to accurately filter and display results based on user queries. |
-| 6 | `Security vulnerability in user session` | A security vulnerability was discovered that could allow an unauthorized user to access session data. | Enhanced session management and implemented additional security checks. |
+| 6 | `Security vulnerability in user session` | A security vulnerability was discovered that could allow an unauthorised user to access session data. | Enhanced session management and implemented additional security checks. |
 | 7 | `Missing error messages` | Error messages were not displayed to the user on failed login attempts. | Added error handling to catch and display appropriate feedback messages to the user. |
 | 8 | `Product deletion error` | Users were unable to delete products due to a foreign key constraint error. | Adjusted the database schema to properly handle deletions with cascade rules. |
 | 9 | `Group management access rights` | Non-administrative users were able to access and modify group settings. | Revised access controls to restrict group management functionalities to administrators only. |
