@@ -642,7 +642,6 @@ footer i {
   /* Table Container on forms */
   .table-responsive-sm {
     width: 100%;
-    display: none;
   }
 
   .table i {

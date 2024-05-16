@@ -30,7 +30,7 @@
   </div>
 
   <!-- Users Table -->
-  <div class="table-container table-responsive-sm d-none d-md-block">
+  <div class="table-container table-responsive-sm d-sm-none">
     {% if users %}
     <table class="table table-striped">
       <thead>
@@ -96,7 +96,7 @@
   </div>
 
   <!-- Cards View (visible on small screens) -->
-  <div class="card-deck-wrapper d-sm-block d-md-none">
+  <div class="card-deck-wrapper d-sm-block d-md-none d-lg-none">
     <div class="row">
       {% for user in users %}
       <div class="col-md-4 col-lg-3 mb-4">
