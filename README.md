@@ -507,7 +507,7 @@ The News Board page in AccountSphere serves as a centralised hub for keeping tea
 
 * `Edit and Delete Actions`: Each article entry includes edit and delete buttons, providing Analysts with full control over the content. Confirmation dialogs are used to prevent accidental deletions.
   ![News Board Wireframe](./accountsphere/static/documentation/web_pages/update_news.png)
-  ![News Board Wireframe](./accountsphere/static/documentation/web_pages/delete_news.pngg)
+  ![News Board Wireframe](./accountsphere/static/documentation/web_pages/delete_news.png)
 
 * `Trending Articles`: Highlights important or popular articles to draw attention to them. This helps team members prioritise their reading.
 
