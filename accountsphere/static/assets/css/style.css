@@ -546,6 +546,10 @@ footer i {
     font-size: 2rem;
   }
 
+  .table-responsive {
+    display: none;
+  }
+
   #landing-section h2 {
     font-size: 1.2rem;
   }
