@@ -190,7 +190,7 @@ To verify that AccountSphere meets the needs of different user types, we conduct
 | **Create** | Account Officers can create new client accounts using standardised templates that help expand the client base while maintaining accuracy. |
 | **Read** | An advanced search function enables Account Officers to quickly find and retrieve specific account information efficiently. |
 | **Update** | Officers can update client details directly on the account management page to ensure accurate data and compliance. |
-| **Delete** | They can deactivate or delete outdated client accounts through the account management dashboard to maintain a clean database. |
+| **Delete** | This has been limited to only users with administrative privileges. |
 
 #### `Administrator User Stories`
 
@@ -207,7 +207,7 @@ To verify that AccountSphere meets the needs of different user types, we conduct
 |---|---|
 | **Create** | New product entries can be created easily with the product creation module, enabling managers to handle lifecycles efficiently. |
 | **Update** | Managers can update product details directly via the product page to ensure current and accurate information. |
-| **Delete** | Obsolete products can be archived or removed, helping managers maintain a clean product portfolio. |
+| **Delete** | This has been limited to only users with administrative privileges. |
 
 ####    `News Analyst User Stories`
 
