@@ -645,12 +645,6 @@ footer i {
     display: none;
   }
 
-  .card-deck-wrapper {
-    border-radius: 10px;
-    font-size: xx-small;
-    background-color: #fff;
-  }
-
   .table i {
     margin: 0 !important;
     padding-left: 5px;
