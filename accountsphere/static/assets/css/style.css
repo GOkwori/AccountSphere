@@ -418,6 +418,10 @@ label {
   color: #3a405a;
 }
 
+.d-sm-none {
+  display: none;
+}
+
 /* Modal */
 .modal {
   opacity: 0.9;
