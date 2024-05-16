@@ -339,7 +339,7 @@ In this diagram:
 
 This diagram not only showcases the logical structure of the database but also provides insight into how CRUD operations are performed across different modules in the application. Understanding this structure is essential for maintaining, enhancing, and scaling the application over time.
 
-### Role-Based Access Control (RBAC)
+### Role-Based Access Control
 
 The application employs Role-Based Access Control (RBAC) to manage user permissions and ensure that only authorized users can access certain functionalities. This approach enhances security by limiting access to sensitive operations based on the user's role within the system.
 
