@@ -408,9 +408,6 @@ label {
   width: 100%;
 }
 
-.card-deck-wrapper {
-  display: none
-}
 
 .table {
   background-color: #fff;
@@ -649,7 +646,6 @@ footer i {
   }
 
   .card-deck-wrapper {
-    display: block;
     border-radius: 10px;
     font-size: xx-small;
     background-color: #fff;
@@ -743,10 +739,6 @@ footer i {
     width: 100%;
   }
 
-  .card-deck-wrapper {
-    display: none
-  }
-
   .table i {
     margin: 0 !important;
     padding-left: 5px;
@@ -812,9 +804,8 @@ footer i {
   }
 
   /* Table Container on forms */
-  
-  .card-deck-wrapper {
-    display: none;
+  .table-responsive-sm {
+    width: 100%;
   }
 
   .table i {
@@ -850,10 +841,6 @@ footer i {
   /* Forms */
   .form-content {
     width: 70%;
-  }
-
-  .card-deck-wrapper {
-    display: none
   }
 
   /* Login Form */
@@ -913,10 +900,6 @@ footer i {
     height: 40vh;
   }
 
-  .card-deck-wrapper {
-    display: none;
-  }
-
   /* Footer */
   #footer-container {
     margin: 0;
@@ -966,9 +949,6 @@ footer i {
     height: 40vh;
   }
 
-  .card-deck-wrapper {
-    display: none;
-  }
 
   /* Footer */
   #footer-container {
