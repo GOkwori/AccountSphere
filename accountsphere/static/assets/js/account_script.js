@@ -1,3 +1,5 @@
+// This script is used to update the product ID based on the account type selected by the user.
+
 document.addEventListener("DOMContentLoaded", function () {
   // Function to update product ID
   function updateProductID() {

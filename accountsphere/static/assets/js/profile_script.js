@@ -1,3 +1,4 @@
+// This script is used to update the day and time panel, greeting message, and smooth scroll for the news panel.
 document.addEventListener("DOMContentLoaded", function () {
   // Update day and time panel
   const dateTimeElement = document.getElementById("datetime");

@@ -341,7 +341,8 @@ JavaScript code was scrutinized for syntax errors and compatibility issues using
 
 | JavaScript File | Validation Output |
 |-----------------|-------------------|
-| Main Script | ![JavaScript Validation](./accountsphere/static/testing/code_validation/js/js_validator.PNG) |
+| Account_Type Script | ![JavaScript Validation](./accountsphere/static/testing/code_validation/js/js_validator_2.PNG) |
+| Profile Script | ![JavaScript Validation](./accountsphere/static/testing/code_validation/js/js_validator_1.PNG) |
 
 
 #### `Python Validation`
